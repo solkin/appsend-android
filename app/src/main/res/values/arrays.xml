@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pref_sort_order_strings">
+        <item>@string/sort_order_ascending</item>
+        <item>@string/sort_order_descending</item>
+        <item>@string/sort_order_app_size</item>
+        <item>@string/sort_order_install_time</item>
+        <item>@string/sort_order_update_time</item>
+    </string-array>
+
+    <string-array name="pref_sort_order_values">
+        <item>@string/sort_order_ascending_value</item>
+        <item>@string/sort_order_descending_value</item>
+        <item>@string/sort_order_app_size_value</item>
+        <item>@string/sort_order_install_time_value</item>
+        <item>@string/sort_order_update_time_value</item>
+    </string-array>
+
+    <string-array name="pref_sort_order_strings_legacy">
+        <item>@string/sort_order_ascending</item>
+        <item>@string/sort_order_descending</item>
+        <item>@string/sort_order_app_size</item>
+    </string-array>
+
+    <string-array name="pref_sort_order_values_legacy">
+        <item>@string/sort_order_ascending_value</item>
+        <item>@string/sort_order_descending_value</item>
+        <item>@string/sort_order_app_size_value</item>
+    </string-array>
+
+    <string name="sort_order_ascending_value" translatable="false">sort_order_ascending</string>
+    <string name="sort_order_descending_value" translatable="false">sort_order_descending</string>
+    <string name="sort_order_app_size_value" translatable="false">sort_order_app_size</string>
+    <string name="sort_order_install_time_value" translatable="false">sort_order_install_time</string>
+    <string name="sort_order_update_time_value" translatable="false">sort_order_update_time</string>
+
+    <string-array name="app_actions_titles">
+        <item>@string/run_app</item>
+        <item>@string/share_apk</item>
+        <item>@string/extract_apk</item>
+        <item>@string/upload_apk</item>
+        <item>@string/bluetooth_apk</item>
+        <item>@string/find_on_gp</item>
+        <item>@string/required_permissions</item>
+        <item>@string/app_details</item>
+        <item>@string/remove_app</item>
+    </string-array>
+
+    <string-array name="apk_actions_titles">
+        <item>@string/install_app</item>
+        <item>@string/share_apk</item>
+        <item>@string/upload_apk</item>
+        <item>@string/bluetooth_apk</item>
+        <item>@string/find_on_gp</item>
+        <item>@string/required_permissions</item>
+        <item>@string/remove_app</item>
+    </string-array>
+
+    <array name="app_actions_icons">
+        <item>@drawable/run</item>
+        <item>@drawable/share</item>
+        <item>@drawable/floppy</item>
+        <item>@drawable/cloud_upload</item>
+        <item>@drawable/bluetooth</item>
+        <item>@drawable/google_play</item>
+        <item>@drawable/lock_open</item>
+        <item>@drawable/settings_box</item>
+        <item>@drawable/delete</item>
+    </array>
+
+    <array name="apk_actions_icons">
+        <item>@drawable/download</item>
+        <item>@drawable/share</item>
+        <item>@drawable/cloud_upload</item>
+        <item>@drawable/bluetooth</item>
+        <item>@drawable/google_play</item>
+        <item>@drawable/lock_open</item>
+        <item>@drawable/delete</item>
+    </array>
+</resources>
