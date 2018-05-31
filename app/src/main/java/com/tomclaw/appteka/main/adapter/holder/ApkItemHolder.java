@@ -6,9 +6,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.tomclaw.appteka.PackageIconGlideLoader;
 import com.tomclaw.appteka.R;
+import com.tomclaw.appteka.core.GlideApp;
 import com.tomclaw.appteka.main.adapter.BaseItemAdapter;
 import com.tomclaw.appteka.main.item.ApkItem;
 import com.tomclaw.appteka.util.FileHelper;
@@ -34,18 +33,16 @@ public class ApkItemHolder extends AbstractItemHolder<ApkItem> {
     private TriangleLabelView badgeNew;
     private TextView apkLocation;
 
-    private static PackageIconGlideLoader loader;
-
     public ApkItemHolder(View itemView) {
         super(itemView);
         this.itemView = itemView;
-        appIcon = (ImageView) itemView.findViewById(R.id.app_icon);
-        appName = (TextView) itemView.findViewById(R.id.app_name);
-        appVersion = (TextView) itemView.findViewById(R.id.app_version);
-        apkCreateTime = (TextView) itemView.findViewById(R.id.apk_create_time);
-        appSize = (TextView) itemView.findViewById(R.id.app_size);
-        badgeNew = (TriangleLabelView) itemView.findViewById(R.id.badge_new);
-        apkLocation = (TextView) itemView.findViewById(R.id.apk_location);
+        appIcon = itemView.findViewById(R.id.app_icon);
+        appName = itemView.findViewById(R.id.app_name);
+        appVersion = itemView.findViewById(R.id.app_version);
+        apkCreateTime = itemView.findViewById(R.id.apk_create_time);
+        appSize = itemView.findViewById(R.id.app_size);
+        badgeNew = itemView.findViewById(R.id.badge_new);
+        apkLocation = itemView.findViewById(R.id.apk_location);
     }
 
     public void bind(Context context, final ApkItem item, final boolean isLast, final BaseItemAdapter.BaseItemClickListener<ApkItem> listener) {
@@ -58,11 +55,7 @@ public class ApkItemHolder extends AbstractItemHolder<ApkItem> {
             });
         }
 
-        if (loader == null) {
-            loader = new PackageIconGlideLoader(context.getPackageManager());
-        }
-        Glide.with(context)
-                .using(loader)
+        GlideApp.with(context)
                 .load(item.getPackageInfo())
                 .into(appIcon);
 

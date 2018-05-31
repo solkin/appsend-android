@@ -30,12 +30,12 @@ public class SettingsFragment extends PreferenceFragment {
             preference.setEntries(R.array.pref_sort_order_strings_legacy);
             preference.setEntryValues(R.array.pref_sort_order_values_legacy);
         }
-        Preference myPref = (Preference) findPreference(getString(R.string.pref_clear_cache));
+        Preference myPref = findPreference(getString(R.string.pref_clear_cache));
         myPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             public boolean onPreferenceClick(Preference preference) {
                 TaskExecutor.getInstance().execute(new PleaseWaitTask(getActivity()) {
                     @Override
-                    public void executeBackground() throws Throwable {
+                    public void executeBackground() {
                         File directory = getExternalDirectory();
                         File[] files = directory.listFiles(new FileFilter() {
                             @Override

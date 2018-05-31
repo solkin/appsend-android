@@ -5,9 +5,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.tomclaw.appteka.PackageIconGlideLoader;
 import com.tomclaw.appteka.R;
+import com.tomclaw.appteka.core.GlideApp;
 import com.tomclaw.appteka.main.adapter.BaseItemAdapter;
 import com.tomclaw.appteka.main.item.AppItem;
 import com.tomclaw.appteka.util.FileHelper;
@@ -32,17 +31,15 @@ public class AppItemHolder extends AbstractItemHolder<AppItem> {
     private TextView appSize;
     private TriangleLabelView badgeNew;
 
-    private static PackageIconGlideLoader loader;
-
     public AppItemHolder(View itemView) {
         super(itemView);
         this.itemView = itemView;
-        appIcon = (ImageView) itemView.findViewById(R.id.app_icon);
-        appName = (TextView) itemView.findViewById(R.id.app_name);
-        appVersion = (TextView) itemView.findViewById(R.id.app_version);
-        appUpdateTime = (TextView) itemView.findViewById(R.id.app_update_time);
-        appSize = (TextView) itemView.findViewById(R.id.app_size);
-        badgeNew = (TriangleLabelView) itemView.findViewById(R.id.badge_new);
+        appIcon = itemView.findViewById(R.id.app_icon);
+        appName = itemView.findViewById(R.id.app_name);
+        appVersion = itemView.findViewById(R.id.app_version);
+        appUpdateTime = itemView.findViewById(R.id.app_update_time);
+        appSize = itemView.findViewById(R.id.app_size);
+        badgeNew = itemView.findViewById(R.id.badge_new);
     }
 
     public void bind(Context context, final AppItem item, final boolean isLast, final BaseItemAdapter.BaseItemClickListener<AppItem> listener) {
@@ -55,13 +52,8 @@ public class AppItemHolder extends AbstractItemHolder<AppItem> {
             });
         }
 
-        if (loader == null) {
-            loader = new PackageIconGlideLoader(context.getPackageManager());
-        }
-
         try {
-            Glide.with(context)
-                    .using(loader)
+            GlideApp.with(context)
                     .load(item.getPackageInfo())
                     .into(appIcon);
         } catch (Throwable ignored) {
