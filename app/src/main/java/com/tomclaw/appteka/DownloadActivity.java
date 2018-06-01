@@ -108,7 +108,7 @@ public class DownloadActivity extends PermisoActivity implements DownloadControl
 
         timeHelper = new TimeHelper(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -135,29 +135,29 @@ public class DownloadActivity extends PermisoActivity implements DownloadControl
 
         setTitle(appLabel);
 
-        viewFlipper = (ViewFlipper) findViewById(R.id.view_flipper);
-        iconView = (ImageView) findViewById(R.id.app_icon);
-        labelView = (TextView) findViewById(R.id.app_label);
-        packageView = (TextView) findViewById(R.id.app_package);
-        downloadsView = (PlayView) findViewById(R.id.app_downloads);
-        sizeView = (PlayView) findViewById(R.id.app_size);
-        minAndroidView = (PlayView) findViewById(R.id.min_android);
-        permissionsBlock = (RelativeLayout) findViewById(R.id.permissions_block);
-        permissionsContainer = (ViewGroup) findViewById(R.id.permissions_container);
-        versionView = (TextView) findViewById(R.id.app_version);
-        uploadedTimeView = (TextView) findViewById(R.id.uploaded_time);
-        checksumView = (TextView) findViewById(R.id.app_checksum);
+        viewFlipper = findViewById(R.id.view_flipper);
+        iconView = findViewById(R.id.app_icon);
+        labelView = findViewById(R.id.app_label);
+        packageView = findViewById(R.id.app_package);
+        downloadsView = findViewById(R.id.app_downloads);
+        sizeView = findViewById(R.id.app_size);
+        minAndroidView = findViewById(R.id.min_android);
+        permissionsBlock = findViewById(R.id.permissions_block);
+        permissionsContainer = findViewById(R.id.permissions_container);
+        versionView = findViewById(R.id.app_version);
+        uploadedTimeView = findViewById(R.id.uploaded_time);
+        checksumView = findViewById(R.id.app_checksum);
         shadowView = findViewById(R.id.read_more_shadow);
         readMoreButton = findViewById(R.id.read_more_button);
         otherVersionsTitle = findViewById(R.id.other_versions_title);
-        versionsContainer = (ViewGroup) findViewById(R.id.app_versions);
-        buttonsSwitcher = (ViewFlipper) findViewById(R.id.buttons_switcher);
-        buttonOne = (Button) findViewById(R.id.button_one);
-        buttonFirst = (Button) findViewById(R.id.button_first);
-        buttonSecond = (Button) findViewById(R.id.button_second);
-        progress = (ProgressBar) findViewById(R.id.progress);
-        extraAccess = (TextView) findViewById(R.id.extra_access);
-        swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
+        versionsContainer = findViewById(R.id.app_versions);
+        buttonsSwitcher = findViewById(R.id.buttons_switcher);
+        buttonOne = findViewById(R.id.button_one);
+        buttonFirst = findViewById(R.id.button_first);
+        buttonSecond = findViewById(R.id.button_second);
+        progress = findViewById(R.id.progress);
+        extraAccess = findViewById(R.id.extra_access);
+        swipeRefresh = findViewById(R.id.swipe_refresh);
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -483,8 +483,8 @@ public class DownloadActivity extends PermisoActivity implements DownloadControl
         for (int c = 0; c < count; c++) {
             String permission = permissions.get(c);
             View permissionView = getLayoutInflater().inflate(R.layout.permission_view, permissionsContainer, false);
-            TextView permissionDescription = (TextView) permissionView.findViewById(R.id.permission_description);
-            TextView permissionName = (TextView) permissionView.findViewById(R.id.permission_name);
+            TextView permissionDescription = permissionView.findViewById(R.id.permission_description);
+            TextView permissionName = permissionView.findViewById(R.id.permission_name);
             String description = getPermissionSmallInfo(this, permission).getDescription();
             permissionDescription.setText(description);
             permissionName.setText(permission);
@@ -552,10 +552,10 @@ public class DownloadActivity extends PermisoActivity implements DownloadControl
                 continue;
             }
             View versionView = getLayoutInflater().inflate(R.layout.version_view, versionsContainer, false);
-            TextView versionNameView = (TextView) versionView.findViewById(R.id.app_version_name);
-            TextView versionCodeView = (TextView) versionView.findViewById(R.id.app_version_code);
-            TextView versionDownloads = (TextView) versionView.findViewById(R.id.app_version_downloads);
-            TextView newerBadge = (TextView) versionView.findViewById(R.id.app_newer_badge);
+            TextView versionNameView = versionView.findViewById(R.id.app_version_name);
+            TextView versionCodeView = versionView.findViewById(R.id.app_version_code);
+            TextView versionDownloads = versionView.findViewById(R.id.app_version_downloads);
+            TextView newerBadge = versionView.findViewById(R.id.app_newer_badge);
             versionNameView.setText(version.getVerName());
             versionCodeView.setText('(' + String.valueOf(version.getVerCode()) + ')');
             versionDownloads.setText(String.valueOf(version.getDownloads()));

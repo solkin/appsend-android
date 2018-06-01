@@ -24,9 +24,9 @@ public class CouchItemHolder extends AbstractItemHolder<CouchItem> {
     public CouchItemHolder(View itemView) {
         super(itemView);
         this.itemView = itemView;
-        couchText = (TextView) itemView.findViewById(R.id.couch_text);
+        couchText = itemView.findViewById(R.id.couch_text);
         divider = itemView.findViewById(R.id.divider);
-        couchButtons = (ViewGroup) itemView.findViewById(R.id.couch_buttons);
+        couchButtons = itemView.findViewById(R.id.couch_buttons);
     }
 
     public void bind(Context context, final CouchItem item, final boolean isLast, final BaseItemAdapter.BaseItemClickListener<CouchItem> listener) {

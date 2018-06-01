@@ -49,7 +49,7 @@ public class AbuseActivity extends AppCompatActivity implements AbuseController.
         label = getIntent().getStringExtra(APP_LABEL);
         appId = getIntent().getStringExtra(APP_ID);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setBackgroundColor(getResources().getColor(R.color.abuse_color));
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getString(R.string.abuse_on, label));
@@ -57,9 +57,9 @@ public class AbuseActivity extends AppCompatActivity implements AbuseController.
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
-        viewFlipper = (ViewFlipper) findViewById(R.id.view_flipper);
-        reasonGroup = (RadioGroup) findViewById(R.id.reason_group);
-        emailInput = (EditText) findViewById(R.id.input_email);
+        viewFlipper = findViewById(R.id.view_flipper);
+        reasonGroup = findViewById(R.id.reason_group);
+        emailInput = findViewById(R.id.input_email);
 
         int color = getResources().getColor(R.color.abuse_color);
         StatusBarUtil.setColor(this, color);

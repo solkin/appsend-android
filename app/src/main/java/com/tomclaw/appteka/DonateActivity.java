@@ -38,7 +38,7 @@ public class DonateActivity extends AppCompatActivity implements BillingProcesso
 
         rootView = findViewById(R.id.root_view);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setBackgroundColor(getResources().getColor(R.color.chocolate_color));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

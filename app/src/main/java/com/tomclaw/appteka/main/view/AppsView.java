@@ -61,7 +61,7 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
         String licenseKey = context.getString(R.string.license_key);
         bp = new BillingProcessor(context, licenseKey, this);
 
-        viewFlipper = (ViewFlipper) findViewById(R.id.apps_view_switcher);
+        viewFlipper = findViewById(R.id.apps_view_switcher);
 
         findViewById(R.id.button_retry).setOnClickListener(new OnClickListener() {
             @Override
@@ -71,7 +71,7 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
         });
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
-        recyclerView = (RecyclerView) findViewById(R.id.apps_list_view);
+        recyclerView = findViewById(R.id.apps_list_view);
         recyclerView.setLayoutManager(layoutManager);
         RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
         recyclerView.setItemAnimator(itemAnimator);
@@ -102,7 +102,7 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
             }
         };
 
-        swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
+        swipeRefresh = findViewById(R.id.swipe_refresh);
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
