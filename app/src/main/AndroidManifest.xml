@@ -7,10 +7,10 @@
     <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
+        android:name="com.tomclaw.appteka.Appteka"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:name="com.tomclaw.appteka.Appteka">
+        android:theme="@style/AppTheme">
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -20,6 +20,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
+
         <meta-data
             android:name="net.hockeyapp.android.appIdentifier"
             android:value="${HOCKEYAPP_APP_ID}" />
@@ -35,9 +36,6 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <meta-data
-                android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
         </activity>
         <activity
             android:name="com.tomclaw.appteka.AboutActivity"
@@ -48,9 +46,6 @@
         <activity
             android:name="com.tomclaw.appteka.DonateActivity"
             android:label="@string/donate" />
-        <activity
-            android:name="com.tomclaw.appteka.UploadActivity"
-            android:label="@string/upload" />
         <activity
             android:name="com.tomclaw.appteka.PermissionsActivity"
             android:label="@string/required_permissions" />

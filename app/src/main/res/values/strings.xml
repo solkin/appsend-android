@@ -84,13 +84,8 @@
     <string name="upload_size">Uploading %s</string>
     <string name="upload">Upload</string>
     <string name="uploaded_url" translatable="false">%1$s (%2$s)\n%3$s</string>
-    <string name="cancel_upload_title">Cancel upload</string>
-    <string name="cancel_upload_text">Are you sure you want to cancel uploading the application?</string>
     <string name="url_copied">Link to the application copied</string>
     <string name="tab_apps">My apps</string>
-    <string name="tab_install">Install</string>
-    <string name="tab_store">Store</string>
-    <string name="apps_loading_error">Failed to get list of installed applications</string>
     <string name="retry">Retry</string>
     <string name="store_loading_error">Failed to retrieve applications list</string>
     <string name="download">Download</string>
@@ -110,9 +105,6 @@
     <string name="unknown_permission_description">Unknown permission</string>
     <string name="read_more">Read more</string>
     <string name="required_permissions">Required permissions</string>
-    <string name="app_version_title">Version</string>
-    <string name="uploaded_title">Uploaded</string>
-    <string name="checksum_title">Checksum (SHA1)</string>
     <string name="app_version_format" translatable="false">%1$s (%2$d)</string>
     <string name="newer">newer</string>
     <string name="same">same version</string>

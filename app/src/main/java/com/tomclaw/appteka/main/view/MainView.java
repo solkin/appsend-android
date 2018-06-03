@@ -2,6 +2,9 @@ package com.tomclaw.appteka.main.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -16,8 +19,8 @@ public abstract class MainView extends FrameLayout {
     protected View view;
     private WeakReference<ActivityCallback> weakActivityCallback;
 
-    public MainView(Context context) {
-        super(context);
+    public MainView(@NonNull Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
         view = LayoutInflater.from(context).inflate(getLayout(), this, false);
         addView(view, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
     }

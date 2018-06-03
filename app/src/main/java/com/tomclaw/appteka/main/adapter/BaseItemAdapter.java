@@ -8,21 +8,17 @@ import android.view.ViewGroup;
 
 import com.tomclaw.appteka.R;
 import com.tomclaw.appteka.main.adapter.holder.AbstractItemHolder;
-import com.tomclaw.appteka.main.adapter.holder.ApkItemHolder;
 import com.tomclaw.appteka.main.adapter.holder.AppItemHolder;
 import com.tomclaw.appteka.main.adapter.holder.CouchItemHolder;
 import com.tomclaw.appteka.main.adapter.holder.DonateItemHolder;
-import com.tomclaw.appteka.main.adapter.holder.StoreItemHolder;
 import com.tomclaw.appteka.main.item.BaseItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.tomclaw.appteka.main.item.BaseItem.APK_ITEM;
 import static com.tomclaw.appteka.main.item.BaseItem.APP_ITEM;
 import static com.tomclaw.appteka.main.item.BaseItem.COUCH_ITEM;
 import static com.tomclaw.appteka.main.item.BaseItem.DONATE_ITEM;
-import static com.tomclaw.appteka.main.item.BaseItem.STORE_ITEM;
 
 /**
  * Created by Solkin on 10.12.2014.
@@ -52,12 +48,6 @@ public class BaseItemAdapter extends RecyclerView.Adapter<AbstractItemHolder> {
             case APP_ITEM:
                 view = inflater.inflate(R.layout.app_item, viewGroup, false);
                 return new AppItemHolder(view);
-            case APK_ITEM:
-                view = inflater.inflate(R.layout.apk_item, viewGroup, false);
-                return new ApkItemHolder(view);
-            case STORE_ITEM:
-                view = inflater.inflate(R.layout.store_item, viewGroup, false);
-                return new StoreItemHolder(view);
             case DONATE_ITEM:
                 view = inflater.inflate(R.layout.donate_item, viewGroup, false);
                 return new DonateItemHolder(view);
