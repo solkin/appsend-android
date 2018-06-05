@@ -89,6 +89,7 @@ public class MainActivity extends PermisoActivity implements MainView.ActivityCa
         MetricsManager.register(this, getApplication());
 
         appsView.activate();
+        appsView.activate(this);
     }
 
     private void updateList() {
