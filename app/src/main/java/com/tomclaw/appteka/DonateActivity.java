@@ -19,7 +19,6 @@ import com.tomclaw.appteka.util.ThemeHelper;
 /**
  * Created by ivsolkin on 06.09.16.
  */
-
 public class DonateActivity extends AppCompatActivity implements BillingProcessor.IBillingHandler {
 
     private BillingProcessor bp;
