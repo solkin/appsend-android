@@ -86,7 +86,7 @@ public class MainActivity extends PermisoActivity implements MainView.ActivityCa
         }
 
         checkForCrashes();
-        MetricsManager.register(this, getApplication());
+        MetricsManager.register(getApplication());
 
         appsView.activate();
         appsView.activate(this);

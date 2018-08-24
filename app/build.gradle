@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.tomclaw.appteka"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 27
         versionCode = 1
         versionName = "1.0"
@@ -34,13 +34,13 @@ dependencies {
     implementation 'com.github.machinarius:preferencefragment:0.1.1'
     implementation 'com.greysonparrelli.permiso:permiso:0.3.0'
     implementation 'io.github.kobakei:ratethisapp:1.1.0'
-    implementation 'net.hockeyapp.android:HockeySDK:4.0.2'
+    implementation 'net.hockeyapp.android:HockeySDK:5.1.0'
     implementation 'com.anjlab.android.iab.v3:library:1.0.32'
     implementation 'com.jaeger.statusbaruitl:library:1.2.4'
     implementation 'com.github.shts:TriangleLabelView:1.1.2'
     implementation 'com.github.bumptech.glide:glide:4.6.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
     implementation 'com.orhanobut:logger:1.15'
-    implementation 'com.aurelhubert:ahbottomnavigation:2.0.3'
+    implementation 'com.aurelhubert:ahbottomnavigation:2.0.6'
     implementation 'com.flurry.android:analytics:7.2.3'
 }
