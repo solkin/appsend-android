@@ -2,7 +2,6 @@ package com.tomclaw.appteka.main.view;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -12,14 +11,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ViewFlipper;
 
 import com.anjlab.android.iab.v3.BillingProcessor;
@@ -32,7 +29,6 @@ import com.tomclaw.appteka.R;
 import com.tomclaw.appteka.core.TaskExecutor;
 import com.tomclaw.appteka.main.adapter.BaseItemAdapter;
 import com.tomclaw.appteka.main.adapter.FilterableItemAdapter;
-import com.tomclaw.appteka.main.adapter.MenuAdapter;
 import com.tomclaw.appteka.main.controller.AppsController;
 import com.tomclaw.appteka.main.item.AppItem;
 import com.tomclaw.appteka.main.item.BaseItem;
@@ -57,7 +53,6 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
     private SwipeRefreshLayout swipeRefresh;
     private RecyclerView recyclerView;
     private FilterableItemAdapter adapter;
-    private BaseItemAdapter.BaseItemClickListener listener;
     private BillingProcessor bp;
 
     public AppsView(@NonNull Context context, @Nullable AttributeSet attrs) {
@@ -89,7 +84,7 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
             }
         });
 
-        listener = new BaseItemAdapter.BaseItemClickListener() {
+        BaseItemAdapter.BaseItemClickListener listener = new BaseItemAdapter.BaseItemClickListener() {
             @Override
             public void onItemClicked(final BaseItem item) {
                 boolean donateItem = item.getType() == BaseItem.DONATE_ITEM;
@@ -204,70 +199,80 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
         bottomSheet.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch ((int) id) {
-                    case 0: {
-                        FlurryAgent.logEvent("App menu: run");
-                        PackageManager packageManager = getContext().getPackageManager();
-                        Intent launchIntent = packageManager.getLaunchIntentForPackage(appItem.getPackageName());
-                        if (launchIntent == null) {
-                            Snackbar.make(recyclerView, R.string.non_launchable_package, Snackbar.LENGTH_LONG).show();
-                        } else {
-                            startActivity(launchIntent);
-                        }
-                        break;
-                    }
-                    case 1: {
-                        FlurryAgent.logEvent("App menu: Google Play");
-                        String packageName = appItem.getPackageName();
-                        openGooglePlay(getContext(), packageName);
-                        break;
-                    }
-                    case 2: {
-                        FlurryAgent.logEvent("App menu: share");
-                        TaskExecutor.getInstance().execute(new ExportApkTask(getContext(), appItem, ExportApkTask.ACTION_SHARE));
-                        break;
-                    }
-                    case 3: {
-                        FlurryAgent.logEvent("App menu: extract");
-                        TaskExecutor.getInstance().execute(new ExportApkTask(getContext(), appItem, ExportApkTask.ACTION_EXTRACT));
-                        break;
-                    }
-                    case 4: {
-                        FlurryAgent.logEvent("App menu: permissions");
-                        try {
-                            PackageInfo packageInfo = appItem.getPackageInfo();
-                            List<String> permissions = Arrays.asList(packageInfo.requestedPermissions);
-                            Intent intent = new Intent(getContext(), PermissionsActivity.class)
-                                    .putStringArrayListExtra(PermissionsActivity.EXTRA_PERMISSIONS,
-                                            new ArrayList<>(permissions));
-                            startActivity(intent);
-                        } catch (Throwable ex) {
-                            Snackbar.make(recyclerView, R.string.unable_to_get_permissions, Snackbar.LENGTH_LONG).show();
-                        }
-                        break;
-                    }
-                    case 5: {
-                        FlurryAgent.logEvent("App menu: details");
-                        setRefreshOnResume();
-                        final Intent intent = new Intent()
-                                .setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                                .addCategory(Intent.CATEGORY_DEFAULT)
-                                .setData(Uri.parse("package:" + appItem.getPackageName()))
-                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        break;
-                    }
-                    case 6: {
-                        FlurryAgent.logEvent("App menu: remove");
-                        setRefreshOnResume();
-                        Uri packageUri = Uri.parse("package:" + appItem.getPackageName());
-                        Intent uninstallIntent = new Intent(Intent.ACTION_DELETE, packageUri);
-                        startActivity(uninstallIntent);
-                        break;
-                    }
-                }
+                AppsView.this.onItemClick(appItem, id);
             }
         });
+        bottomSheet.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                return false;
+            }
+        });
+    }
+
+    private void onItemClick(AppItem appItem, long id) {
+        switch ((int) id) {
+            case 0: {
+                FlurryAgent.logEvent("App menu: run");
+                PackageManager packageManager = getContext().getPackageManager();
+                Intent launchIntent = packageManager.getLaunchIntentForPackage(appItem.getPackageName());
+                if (launchIntent == null) {
+                    Snackbar.make(recyclerView, R.string.non_launchable_package, Snackbar.LENGTH_LONG).show();
+                } else {
+                    startActivity(launchIntent);
+                }
+                break;
+            }
+            case 1: {
+                FlurryAgent.logEvent("App menu: Google Play");
+                String packageName = appItem.getPackageName();
+                openGooglePlay(getContext(), packageName);
+                break;
+            }
+            case 2: {
+                FlurryAgent.logEvent("App menu: share");
+                TaskExecutor.getInstance().execute(new ExportApkTask(getContext(), appItem, ExportApkTask.ACTION_SHARE));
+                break;
+            }
+            case 3: {
+                FlurryAgent.logEvent("App menu: extract");
+                TaskExecutor.getInstance().execute(new ExportApkTask(getContext(), appItem, ExportApkTask.ACTION_EXTRACT));
+                break;
+            }
+            case 4: {
+                FlurryAgent.logEvent("App menu: permissions");
+                try {
+                    PackageInfo packageInfo = appItem.getPackageInfo();
+                    List<String> permissions = Arrays.asList(packageInfo.requestedPermissions);
+                    Intent intent = new Intent(getContext(), PermissionsActivity.class)
+                            .putStringArrayListExtra(PermissionsActivity.EXTRA_PERMISSIONS,
+                                    new ArrayList<>(permissions));
+                    startActivity(intent);
+                } catch (Throwable ex) {
+                    Snackbar.make(recyclerView, R.string.unable_to_get_permissions, Snackbar.LENGTH_LONG).show();
+                }
+                break;
+            }
+            case 5: {
+                FlurryAgent.logEvent("App menu: details");
+                setRefreshOnResume();
+                final Intent intent = new Intent()
+                        .setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                        .addCategory(Intent.CATEGORY_DEFAULT)
+                        .setData(Uri.parse("package:" + appItem.getPackageName()))
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                break;
+            }
+            case 6: {
+                FlurryAgent.logEvent("App menu: remove");
+                setRefreshOnResume();
+                Uri packageUri = Uri.parse("package:" + appItem.getPackageName());
+                Intent uninstallIntent = new Intent(Intent.ACTION_DELETE, packageUri);
+                startActivity(uninstallIntent);
+                break;
+            }
+        }
     }
 
     private void setAppInfoList(List<BaseItem> appItemList) {

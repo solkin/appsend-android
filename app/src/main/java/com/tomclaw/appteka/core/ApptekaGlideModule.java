@@ -18,7 +18,7 @@ import java.io.InputStream;
  * Created by solkin on 21/01/2018.
  */
 @GlideModule
-public class AppSendGlideModule extends AppGlideModule {
+public class ApptekaGlideModule extends AppGlideModule {
 
     @Override
     public void registerComponents(final Context context, Glide glide, Registry registry) {
