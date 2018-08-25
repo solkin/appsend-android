@@ -215,18 +215,18 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
                                 TaskExecutor.getInstance().execute(new ExportApkTask(getContext(), appItem, ExportApkTask.ACTION_EXTRACT));
                                 break;
                             }
-                            case 4: {
+                            case 3: {
                                 FlurryAgent.logEvent("App menu: bluetooth");
                                 TaskExecutor.getInstance().execute(new ExportApkTask(getContext(), appItem, ExportApkTask.ACTION_BLUETOOTH));
                                 break;
                             }
-                            case 5: {
+                            case 4: {
                                 FlurryAgent.logEvent("App menu: Google Play");
                                 String packageName = appItem.getPackageName();
                                 openGooglePlay(getContext(), packageName);
                                 break;
                             }
-                            case 6: {
+                            case 5: {
                                 FlurryAgent.logEvent("App menu: permissions");
                                 try {
                                     PackageInfo packageInfo = appItem.getPackageInfo();
@@ -240,7 +240,7 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
                                 }
                                 break;
                             }
-                            case 7: {
+                            case 6: {
                                 FlurryAgent.logEvent("App menu: details");
                                 setRefreshOnResume();
                                 final Intent intent = new Intent()
@@ -251,7 +251,7 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
                                 startActivity(intent);
                                 break;
                             }
-                            case 8: {
+                            case 7: {
                                 FlurryAgent.logEvent("App menu: remove");
                                 setRefreshOnResume();
                                 Uri packageUri = Uri.parse("package:" + appItem.getPackageName());
