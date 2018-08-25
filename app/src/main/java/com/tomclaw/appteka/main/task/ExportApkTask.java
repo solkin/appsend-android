@@ -19,7 +19,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import static com.tomclaw.appteka.util.FileHelper.getExternalDirectory;
-import static com.tomclaw.appteka.util.IntentHelper.bluetoothApk;
 import static com.tomclaw.appteka.util.IntentHelper.shareApk;
 
 /**
@@ -29,7 +28,6 @@ public class ExportApkTask extends PleaseWaitTask {
 
     public static final int ACTION_EXTRACT = 0x00;
     public static final int ACTION_SHARE = 0x01;
-    public static final int ACTION_BLUETOOTH = 0x02;
 
     private final AppItem appItem;
     private final int actionType;
@@ -98,10 +96,6 @@ public class ExportApkTask extends PleaseWaitTask {
                 }
                 case ACTION_SHARE: {
                     shareApk(context, destination);
-                    break;
-                }
-                case ACTION_BLUETOOTH: {
-                    bluetoothApk(context, appItem);
                     break;
                 }
             }

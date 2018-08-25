@@ -43,4 +43,5 @@ dependencies {
     implementation 'com.orhanobut:logger:1.15'
     implementation 'com.aurelhubert:ahbottomnavigation:2.0.6'
     implementation 'com.flurry.android:analytics:7.2.3'
+    implementation 'com.github.michael-rapp:android-bottom-sheet:1.4.6'
 }

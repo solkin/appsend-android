@@ -18,6 +18,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ViewFlipper;
 
@@ -42,6 +43,8 @@ import com.tomclaw.appteka.util.EdgeChanger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import de.mrapp.android.bottomsheet.BottomSheet;
 
 import static com.tomclaw.appteka.util.IntentHelper.openGooglePlay;
 
@@ -188,80 +191,83 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
     }
 
     private void showActionDialog(final AppItem appItem) {
-        ListAdapter menuAdapter = new MenuAdapter(getContext(), R.array.app_actions_titles, R.array.app_actions_icons);
-        new AlertDialog.Builder(getContext())
-                .setAdapter(menuAdapter, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        switch (which) {
-                            case 0: {
-                                FlurryAgent.logEvent("App menu: run");
-                                PackageManager packageManager = getContext().getPackageManager();
-                                Intent launchIntent = packageManager.getLaunchIntentForPackage(appItem.getPackageName());
-                                if (launchIntent == null) {
-                                    Snackbar.make(recyclerView, R.string.non_launchable_package, Snackbar.LENGTH_LONG).show();
-                                } else {
-                                    startActivity(launchIntent);
-                                }
-                                break;
-                            }
-                            case 1: {
-                                FlurryAgent.logEvent("App menu: share");
-                                TaskExecutor.getInstance().execute(new ExportApkTask(getContext(), appItem, ExportApkTask.ACTION_SHARE));
-                                break;
-                            }
-                            case 2: {
-                                FlurryAgent.logEvent("App menu: extract");
-                                TaskExecutor.getInstance().execute(new ExportApkTask(getContext(), appItem, ExportApkTask.ACTION_EXTRACT));
-                                break;
-                            }
-                            case 3: {
-                                FlurryAgent.logEvent("App menu: bluetooth");
-                                TaskExecutor.getInstance().execute(new ExportApkTask(getContext(), appItem, ExportApkTask.ACTION_BLUETOOTH));
-                                break;
-                            }
-                            case 4: {
-                                FlurryAgent.logEvent("App menu: Google Play");
-                                String packageName = appItem.getPackageName();
-                                openGooglePlay(getContext(), packageName);
-                                break;
-                            }
-                            case 5: {
-                                FlurryAgent.logEvent("App menu: permissions");
-                                try {
-                                    PackageInfo packageInfo = appItem.getPackageInfo();
-                                    List<String> permissions = Arrays.asList(packageInfo.requestedPermissions);
-                                    Intent intent = new Intent(getContext(), PermissionsActivity.class)
-                                            .putStringArrayListExtra(PermissionsActivity.EXTRA_PERMISSIONS,
-                                                    new ArrayList<>(permissions));
-                                    startActivity(intent);
-                                } catch (Throwable ex) {
-                                    Snackbar.make(recyclerView, R.string.unable_to_get_permissions, Snackbar.LENGTH_LONG).show();
-                                }
-                                break;
-                            }
-                            case 6: {
-                                FlurryAgent.logEvent("App menu: details");
-                                setRefreshOnResume();
-                                final Intent intent = new Intent()
-                                        .setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                                        .addCategory(Intent.CATEGORY_DEFAULT)
-                                        .setData(Uri.parse("package:" + appItem.getPackageName()))
-                                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
-                                break;
-                            }
-                            case 7: {
-                                FlurryAgent.logEvent("App menu: remove");
-                                setRefreshOnResume();
-                                Uri packageUri = Uri.parse("package:" + appItem.getPackageName());
-                                Intent uninstallIntent = new Intent(Intent.ACTION_DELETE, packageUri);
-                                startActivity(uninstallIntent);
-                                break;
-                            }
+        BottomSheet.Builder builder = new BottomSheet.Builder(getContext());
+        builder.addItem(0, R.string.run_app, R.drawable.run);
+        builder.addItem(1, R.string.find_on_gp, R.drawable.google_play);
+        builder.addItem(2, R.string.share_apk, R.drawable.share);
+        builder.addItem(3, R.string.extract_apk, R.drawable.floppy);
+        builder.addItem(4, R.string.required_permissions, R.drawable.lock_open);
+        builder.addItem(5, R.string.app_details, R.drawable.settings_box);
+        builder.addItem(6, R.string.remove, R.drawable.delete);
+        BottomSheet bottomSheet = builder.create();
+        bottomSheet.show();
+        bottomSheet.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch ((int) id) {
+                    case 0: {
+                        FlurryAgent.logEvent("App menu: run");
+                        PackageManager packageManager = getContext().getPackageManager();
+                        Intent launchIntent = packageManager.getLaunchIntentForPackage(appItem.getPackageName());
+                        if (launchIntent == null) {
+                            Snackbar.make(recyclerView, R.string.non_launchable_package, Snackbar.LENGTH_LONG).show();
+                        } else {
+                            startActivity(launchIntent);
                         }
+                        break;
                     }
-                }).show();
+                    case 1: {
+                        FlurryAgent.logEvent("App menu: Google Play");
+                        String packageName = appItem.getPackageName();
+                        openGooglePlay(getContext(), packageName);
+                        break;
+                    }
+                    case 2: {
+                        FlurryAgent.logEvent("App menu: share");
+                        TaskExecutor.getInstance().execute(new ExportApkTask(getContext(), appItem, ExportApkTask.ACTION_SHARE));
+                        break;
+                    }
+                    case 3: {
+                        FlurryAgent.logEvent("App menu: extract");
+                        TaskExecutor.getInstance().execute(new ExportApkTask(getContext(), appItem, ExportApkTask.ACTION_EXTRACT));
+                        break;
+                    }
+                    case 4: {
+                        FlurryAgent.logEvent("App menu: permissions");
+                        try {
+                            PackageInfo packageInfo = appItem.getPackageInfo();
+                            List<String> permissions = Arrays.asList(packageInfo.requestedPermissions);
+                            Intent intent = new Intent(getContext(), PermissionsActivity.class)
+                                    .putStringArrayListExtra(PermissionsActivity.EXTRA_PERMISSIONS,
+                                            new ArrayList<>(permissions));
+                            startActivity(intent);
+                        } catch (Throwable ex) {
+                            Snackbar.make(recyclerView, R.string.unable_to_get_permissions, Snackbar.LENGTH_LONG).show();
+                        }
+                        break;
+                    }
+                    case 5: {
+                        FlurryAgent.logEvent("App menu: details");
+                        setRefreshOnResume();
+                        final Intent intent = new Intent()
+                                .setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                                .addCategory(Intent.CATEGORY_DEFAULT)
+                                .setData(Uri.parse("package:" + appItem.getPackageName()))
+                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        break;
+                    }
+                    case 6: {
+                        FlurryAgent.logEvent("App menu: remove");
+                        setRefreshOnResume();
+                        Uri packageUri = Uri.parse("package:" + appItem.getPackageName());
+                        Intent uninstallIntent = new Intent(Intent.ACTION_DELETE, packageUri);
+                        startActivity(uninstallIntent);
+                        break;
+                    }
+                }
+            }
+        });
     }
 
     private void setAppInfoList(List<BaseItem> appItemList) {
