@@ -13,8 +13,8 @@
     <color name="grey">#dadada</color>
     <color name="grey_dark">#747474</color>
     <color name="black">#000</color>
-    <color name="dark_back_color">#FF101010</color>
-    <color name="cardview_dark_background">#FF202020</color>
+    <color name="dark_back_color">#FF020404</color>
+    <color name="cardview_dark_background">#FF0b1415</color>
     <color name="cardview_light_background">#FFFFFFFF</color>
 
     <color name="permissions_container_light_background">#def1e8</color>
@@ -75,7 +75,7 @@
 
         <item name="bottom_bar_background">#181818</item>
 
-        <item name="toolbar_background">#263238</item>
+        <item name="toolbar_background">#132526</item>
 
         <item name="play_view_color">@color/play_view_dark_color</item>
 
