@@ -10,7 +10,6 @@ import android.os.Build;
 import android.support.v4.content.FileProvider;
 
 import com.tomclaw.appteka.R;
-import com.tomclaw.appteka.main.item.CommonItem;
 
 import java.io.File;
 import java.util.List;
@@ -18,7 +17,6 @@ import java.util.List;
 /**
  * Created by ivsolkin on 27.01.17.
  */
-
 public class IntentHelper {
 
     public static void openGooglePlay(Context context, String packageName) {

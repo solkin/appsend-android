@@ -8,7 +8,6 @@ import com.tomclaw.appteka.R;
 /**
  * Created by ivsolkin on 21.09.16.
  */
-
 public class ThemeHelper {
 
     public static boolean updateTheme(Activity activity) {
