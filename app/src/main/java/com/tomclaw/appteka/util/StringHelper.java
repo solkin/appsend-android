@@ -16,7 +16,7 @@ import java.util.Random;
  * Date: 13.10.13
  * Time: 20:09
  */
-public class StringUtil {
+public class StringHelper {
 
     public static final int DEFAULT_ALPHABET_INDEX = '?';
 
@@ -60,8 +60,8 @@ public class StringUtil {
     }
 
     public static String appendIfNotEmpty(String where, String what, String divider) {
-        if (!StringUtil.isEmptyOrWhitespace(what)) {
-            if (!StringUtil.isEmptyOrWhitespace(where)) {
+        if (!StringHelper.isEmptyOrWhitespace(what)) {
+            if (!StringHelper.isEmptyOrWhitespace(where)) {
                 where += divider;
             }
             where += what;
@@ -100,19 +100,19 @@ public class StringUtil {
     }
 
     public static String generateCookie() {
-        return Long.toHexString(System.currentTimeMillis()) + "-" + StringUtil.generateRandomString(random, 16, 16);
+        return Long.toHexString(System.currentTimeMillis()) + "-" + StringHelper.generateRandomString(random, 16, 16);
     }
 
     public static String generateBoundary() {
-        return Long.toHexString(System.currentTimeMillis()) + StringUtil.generateRandomString(random, 16, 16);
+        return Long.toHexString(System.currentTimeMillis()) + StringHelper.generateRandomString(random, 16, 16);
     }
 
     public static String generateRandomString() {
-        return StringUtil.generateRandomString(16);
+        return StringHelper.generateRandomString(16);
     }
 
     public static String generateRandomString(int length) {
-        return StringUtil.generateRandomString(random, length, length);
+        return StringHelper.generateRandomString(random, length, length);
     }
 
     public static String generateRandomString(Random r, int minChars, int maxChars) {
