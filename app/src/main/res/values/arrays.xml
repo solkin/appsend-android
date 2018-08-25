@@ -34,26 +34,4 @@
     <string name="sort_order_install_time_value" translatable="false">sort_order_install_time</string>
     <string name="sort_order_update_time_value" translatable="false">sort_order_update_time</string>
 
-    <string-array name="app_actions_titles">
-        <item>@string/run_app</item>
-        <item>@string/share_apk</item>
-        <item>@string/extract_apk</item>
-        <item>@string/bluetooth_apk</item>
-        <item>@string/find_on_gp</item>
-        <item>@string/required_permissions</item>
-        <item>@string/app_details</item>
-        <item>@string/remove_app</item>
-    </string-array>
-
-    <array name="app_actions_icons">
-        <item>@drawable/run</item>
-        <item>@drawable/share</item>
-        <item>@drawable/floppy</item>
-        <item>@drawable/bluetooth</item>
-        <item>@drawable/google_play</item>
-        <item>@drawable/lock_open</item>
-        <item>@drawable/settings_box</item>
-        <item>@drawable/delete</item>
-    </array>
-
 </resources>
