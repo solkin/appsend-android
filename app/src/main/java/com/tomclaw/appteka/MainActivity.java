@@ -22,6 +22,8 @@ import net.hockeyapp.android.metrics.MetricsManager;
 public class MainActivity extends PermisoActivity implements MainView.ActivityCallback {
 
     private static final int REQUEST_UPDATE_SETTINGS = 6;
+    private static final String REFRESH_ON_RESUME = "refresh_on_resume";
+
     private AppsView appsView;
     private SearchView.OnQueryTextListener onQueryTextListener;
     private SearchView.OnCloseListener onCloseListener;
@@ -32,6 +34,10 @@ public class MainActivity extends PermisoActivity implements MainView.ActivityCa
     public void onCreate(final Bundle savedInstanceState) {
         isDarkTheme = ThemeHelper.updateTheme(this);
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            isRefreshOnResume = savedInstanceState.getBoolean(REFRESH_ON_RESUME, false);
+        }
 
         setContentView(R.layout.main);
         ThemeHelper.updateStatusBar(this);
@@ -89,7 +95,6 @@ public class MainActivity extends PermisoActivity implements MainView.ActivityCa
         MetricsManager.register(getApplication());
 
         appsView.activate();
-        appsView.activate(this);
     }
 
     private void updateList() {
@@ -115,8 +120,15 @@ public class MainActivity extends PermisoActivity implements MainView.ActivityCa
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(REFRESH_ON_RESUME, isRefreshOnResume);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
+        appsView.activate(this);
         if (isRefreshOnResume) {
             updateList();
             isRefreshOnResume = false;
