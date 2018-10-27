@@ -1,0 +1,14 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 28
+    }
+
+    dependencies {
+        implementation 'androidx.appcompat:appcompat:1.0.0'
+    }
+}
