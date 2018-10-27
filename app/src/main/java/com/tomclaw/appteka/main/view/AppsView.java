@@ -8,8 +8,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.provider.Settings;
 import android.util.AttributeSet;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ViewFlipper;
 
 import com.anjlab.android.iab.v3.BillingProcessor;
@@ -63,14 +61,9 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
 
         viewFlipper = findViewById(R.id.apps_view_switcher);
 
-        findViewById(R.id.button_retry).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                refresh();
-            }
-        });
+        findViewById(R.id.button_retry).setOnClickListener(v -> refresh());
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
         recyclerView = findViewById(R.id.apps_list_view);
         recyclerView.setLayoutManager(layoutManager);
         RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
@@ -103,12 +96,7 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
         };
 
         swipeRefresh = findViewById(R.id.swipe_refresh);
-        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refresh();
-            }
-        });
+        swipeRefresh.setOnRefreshListener(this::refresh);
 
         adapter = new FilterableItemAdapter(context);
         adapter.setListener(listener);
@@ -196,18 +184,8 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
         builder.addItem(6, R.string.remove, R.drawable.delete);
         BottomSheet bottomSheet = builder.create();
         bottomSheet.show();
-        bottomSheet.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AppsView.this.onItemClick(appItem, id);
-            }
-        });
-        bottomSheet.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                return false;
-            }
-        });
+        bottomSheet.setOnItemClickListener((parent, view, position, id) -> AppsView.this.onItemClick(appItem, id));
+        bottomSheet.setOnItemLongClickListener((parent, view, position, id) -> false);
     }
 
     private void onItemClick(AppItem appItem, long id) {
@@ -243,11 +221,19 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
                 FlurryAgent.logEvent("App menu: permissions");
                 try {
                     PackageInfo packageInfo = appItem.getPackageInfo();
-                    List<String> permissions = Arrays.asList(packageInfo.requestedPermissions);
-                    Intent intent = new Intent(getContext(), PermissionsActivity.class)
-                            .putStringArrayListExtra(PermissionsActivity.EXTRA_PERMISSIONS,
-                                    new ArrayList<>(permissions));
-                    startActivity(intent);
+                    if (packageInfo.requestedPermissions != null) {
+                        List<String> permissions = Arrays.asList(packageInfo.requestedPermissions);
+                        Intent intent = new Intent(getContext(), PermissionsActivity.class)
+                                .putStringArrayListExtra(PermissionsActivity.EXTRA_PERMISSIONS,
+                                        new ArrayList<>(permissions));
+                        startActivity(intent);
+                    } else {
+                        String message = getContext().getString(
+                                R.string.no_required_permissions,
+                                appItem.getLabel()
+                        );
+                        Snackbar.make(recyclerView, message, Snackbar.LENGTH_LONG).show();
+                    }
                 } catch (Throwable ex) {
                     Snackbar.make(recyclerView, R.string.unable_to_get_permissions, Snackbar.LENGTH_LONG).show();
                 }
