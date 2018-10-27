@@ -45,12 +45,7 @@ public class DonateActivity extends AppCompatActivity implements BillingProcesso
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
-        findViewById(R.id.donate_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onChocolateClicked();
-            }
-        });
+        findViewById(R.id.donate_button).setOnClickListener(view -> onChocolateClicked());
 
         int color = getResources().getColor(R.color.chocolate_color);
         StatusBarUtil.setColor(this, color);

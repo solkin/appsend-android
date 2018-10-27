@@ -62,27 +62,12 @@ public class AboutActivity extends AppCompatActivity implements BillingProcessor
         } catch (PackageManager.NameNotFoundException ignored) {
         }
 
-        findViewById(R.id.rate_app).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rateApplication();
-            }
-        });
+        findViewById(R.id.rate_app).setOnClickListener(v -> rateApplication());
 
-        findViewById(R.id.all_apps).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                allProjects();
-            }
-        });
+        findViewById(R.id.all_apps).setOnClickListener(v -> allProjects());
 
         presentButton = findViewById(R.id.present_chocolate);
-        presentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onChocolateClicked();
-            }
-        });
+        presentButton.setOnClickListener(view -> onChocolateClicked());
 
         if (bp.loadOwnedPurchasesFromGoogle() &&
                 bp.isPurchased(getString(R.string.chocolate_id))) {

@@ -49,7 +49,7 @@ public class PermissionsActivity extends AppCompatActivity {
 
         setTitle(R.string.required_permissions);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(layoutManager);
         RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();

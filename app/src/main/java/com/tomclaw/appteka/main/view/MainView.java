@@ -67,5 +67,6 @@ public abstract class MainView extends FrameLayout {
         void startActivity(Intent intent);
 
         void setRefreshOnResume();
+
     }
 }
