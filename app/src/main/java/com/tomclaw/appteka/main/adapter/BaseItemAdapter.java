@@ -1,7 +1,6 @@
 package com.tomclaw.appteka.main.adapter;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,8 @@ import com.tomclaw.appteka.main.item.BaseItem;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import static com.tomclaw.appteka.main.item.BaseItem.APP_ITEM;
 import static com.tomclaw.appteka.main.item.BaseItem.COUCH_ITEM;

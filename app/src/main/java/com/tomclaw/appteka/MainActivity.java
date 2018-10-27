@@ -2,9 +2,6 @@ package com.tomclaw.appteka;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.MenuRes;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +15,10 @@ import com.tomclaw.appteka.util.ThemeHelper;
 
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.metrics.MetricsManager;
+
+import androidx.annotation.MenuRes;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends PermisoActivity implements MainView.ActivityCallback {
 

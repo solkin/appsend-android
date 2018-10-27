@@ -2,13 +2,14 @@ package com.tomclaw.appteka.main.adapter.holder;
 
 import android.content.Context;
 import android.os.Build;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.tomclaw.appteka.R;
 import com.tomclaw.appteka.main.adapter.BaseItemAdapter;
 import com.tomclaw.appteka.main.item.BaseItem;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by ivsolkin on 06.09.16.

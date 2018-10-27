@@ -1,12 +1,6 @@
 package com.tomclaw.appteka;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.tomclaw.appteka.main.adapter.PermissionsAdapter;
@@ -15,6 +9,13 @@ import com.tomclaw.appteka.util.EdgeChanger;
 import com.tomclaw.appteka.util.ThemeHelper;
 
 import java.util.List;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by ivsolkin on 27.01.17.
