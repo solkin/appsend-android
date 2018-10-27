@@ -86,6 +86,7 @@
     <string name="uploaded_url" translatable="false">%1$s (%2$s)\n%3$s</string>
     <string name="url_copied">Link to the application copied</string>
     <string name="tab_apps">My apps</string>
+    <string name="apps_loading_error">Unable to load apps list</string>
     <string name="retry">Retry</string>
     <string name="store_loading_error">Failed to retrieve applications list</string>
     <string name="download">Download</string>
