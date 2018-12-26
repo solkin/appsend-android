@@ -15,6 +15,7 @@ import com.tomclaw.appteka.main.item.BaseItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import static com.tomclaw.appteka.main.item.BaseItem.APP_ITEM;
@@ -43,7 +44,7 @@ public class BaseItemAdapter extends RecyclerView.Adapter<AbstractItemHolder> {
     }
 
     @Override
-    public AbstractItemHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public AbstractItemHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View view;
         switch (viewType) {
             case APP_ITEM:
@@ -61,7 +62,7 @@ public class BaseItemAdapter extends RecyclerView.Adapter<AbstractItemHolder> {
     }
 
     @Override
-    public void onBindViewHolder(AbstractItemHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AbstractItemHolder holder, int position) {
         BaseItem appInfo = itemsList.get(position);
         boolean isLast = (itemsList.size() - 1 == position);
         holder.bind(context, appInfo, isLast, listener);

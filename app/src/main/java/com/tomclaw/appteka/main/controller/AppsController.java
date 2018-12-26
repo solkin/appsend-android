@@ -17,7 +17,6 @@ import com.tomclaw.appteka.util.PreferenceHelper;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
@@ -69,14 +68,11 @@ public class AppsController extends AbstractController<AppsController.AppsCallba
     public void reload(final Context context) {
         list = null;
         isError = false;
-        future = executor.submit(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    loadInternal(context);
-                } catch (Throwable ignored) {
-                    onError();
-                }
+        future = executor.submit(() -> {
+            try {
+                loadInternal(context);
+            } catch (Throwable ignored) {
+                onError();
             }
         });
     }
@@ -86,47 +82,17 @@ public class AppsController extends AbstractController<AppsController.AppsCallba
     }
 
     private void onProgress() {
-        MainExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
-                operateCallbacks(new CallbackOperation<AppsCallback>() {
-                    @Override
-                    public void invoke(AppsCallback callback) {
-                        callback.onProgress();
-                    }
-                });
-            }
-        });
+        MainExecutor.execute(() -> operateCallbacks(AppsCallback::onProgress));
     }
 
     private void onLoaded(final List<BaseItem> list) {
         this.list = list;
-        MainExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
-                operateCallbacks(new CallbackOperation<AppsCallback>() {
-                    @Override
-                    public void invoke(AppsCallback callback) {
-                        callback.onLoaded(list);
-                    }
-                });
-            }
-        });
+        MainExecutor.execute(() -> operateCallbacks(callback -> callback.onLoaded(list)));
     }
 
     private void onError() {
         this.isError = true;
-        MainExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
-                operateCallbacks(new CallbackOperation<AppsCallback>() {
-                    @Override
-                    public void invoke(AppsCallback callback) {
-                        callback.onError();
-                    }
-                });
-            }
-        });
+        MainExecutor.execute(() -> operateCallbacks(AppsCallback::onError));
     }
 
     private void loadInternal(Context context) {
@@ -161,43 +127,17 @@ public class AppsController extends AbstractController<AppsController.AppsCallba
         }
         String sortOrder = PreferenceHelper.getSortOrder(context);
         if (TextUtils.equals(sortOrder, context.getString(R.string.sort_order_ascending_value))) {
-            Collections.sort(appItemList, new Comparator<AppItem>() {
-                @Override
-                public int compare(AppItem lhs, AppItem rhs) {
-                    return lhs.getLabel().toUpperCase().compareTo(rhs.getLabel().toUpperCase());
-                }
-            });
+            Collections.sort(appItemList, (lhs, rhs) -> lhs.getLabel().toUpperCase().compareTo(rhs.getLabel().toUpperCase()));
         } else if (TextUtils.equals(sortOrder, context.getString(R.string.sort_order_descending_value))) {
-            Collections.sort(appItemList, new Comparator<AppItem>() {
-                @Override
-                public int compare(AppItem lhs, AppItem rhs) {
-                    return rhs.getLabel().toUpperCase().compareTo(lhs.getLabel().toUpperCase());
-                }
-            });
+            Collections.sort(appItemList, (lhs, rhs) -> rhs.getLabel().toUpperCase().compareTo(lhs.getLabel().toUpperCase()));
         } else if (TextUtils.equals(sortOrder, context.getString(R.string.sort_order_app_size_value))) {
-            Collections.sort(appItemList, new Comparator<AppItem>() {
-                @Override
-                public int compare(AppItem lhs, AppItem rhs) {
-                    return compareLong(rhs.getSize(), lhs.getSize());
-                }
-            });
+            Collections.sort(appItemList, (lhs, rhs) -> compareLong(rhs.getSize(), lhs.getSize()));
         } else if (TextUtils.equals(sortOrder, context.getString(R.string.sort_order_install_time_value))) {
-            Collections.sort(appItemList, new Comparator<AppItem>() {
-                @Override
-                public int compare(AppItem lhs, AppItem rhs) {
-                    return compareLong(rhs.getFirstInstallTime(), lhs.getFirstInstallTime());
-                }
-            });
+            Collections.sort(appItemList, (lhs, rhs) -> compareLong(rhs.getFirstInstallTime(), lhs.getFirstInstallTime()));
         } else if (TextUtils.equals(sortOrder, context.getString(R.string.sort_order_update_time_value))) {
-            Collections.sort(appItemList, new Comparator<AppItem>() {
-                @Override
-                public int compare(AppItem lhs, AppItem rhs) {
-                    return compareLong(rhs.getLastUpdateTime(), lhs.getLastUpdateTime());
-                }
-            });
+            Collections.sort(appItemList, (lhs, rhs) -> compareLong(rhs.getLastUpdateTime(), lhs.getLastUpdateTime()));
         }
-        List<BaseItem> baseItems = new ArrayList<>();
-        baseItems.addAll(appItemList);
+        List<BaseItem> baseItems = new ArrayList<>(appItemList);
         int count = Math.min(baseItems.size(), 7);
         Random random = new Random(System.currentTimeMillis());
         int position = random.nextInt(count);
@@ -207,7 +147,7 @@ public class AppsController extends AbstractController<AppsController.AppsCallba
     }
 
     private int compareLong(long lhs, long rhs) {
-        return lhs < rhs ? -1 : (lhs == rhs ? 0 : 1);
+        return Long.compare(lhs, rhs);
     }
 
     public interface AppsCallback extends AbstractController.ControllerCallback {

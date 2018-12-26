@@ -36,12 +36,7 @@ public class DonateItemHolder extends AbstractItemHolder {
                 .error(R.drawable.chocolate)
                 .into(appIcon);
         if (listener != null) {
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onItemClicked(item);
-                }
-            });
+            itemView.setOnClickListener(v -> listener.onItemClicked(item));
         }
         try {
             PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);

@@ -44,12 +44,7 @@ public class AppItemHolder extends AbstractItemHolder<AppItem> {
 
     public void bind(Context context, final AppItem item, final boolean isLast, final BaseItemAdapter.BaseItemClickListener<AppItem> listener) {
         if (listener != null) {
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onItemClicked(item);
-                }
-            });
+            itemView.setOnClickListener(v -> listener.onItemClicked(item));
         }
 
         try {

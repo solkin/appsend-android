@@ -38,12 +38,7 @@ public class CouchItemHolder extends AbstractItemHolder<CouchItem> {
                 LayoutInflater inflater = LayoutInflater.from(context);
                 Button couchButton = (Button) inflater.inflate(R.layout.couch_button, couchButtons, false);
                 couchButton.setText(button.getLabel());
-                couchButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        listener.onActionClicked(item, button.getAction());
-                    }
-                });
+                couchButton.setOnClickListener(v -> listener.onActionClicked(item, button.getAction()));
                 couchButtons.addView(couchButton);
             }
         } else {

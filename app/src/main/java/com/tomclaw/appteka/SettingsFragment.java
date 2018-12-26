@@ -1,9 +1,7 @@
 package com.tomclaw.appteka;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.preference.ListPreference;
 import android.preference.Preference;
 import android.widget.Toast;
 
@@ -12,7 +10,6 @@ import com.tomclaw.appteka.core.PleaseWaitTask;
 import com.tomclaw.appteka.core.TaskExecutor;
 
 import java.io.File;
-import java.io.FileFilter;
 
 import static com.tomclaw.appteka.util.FileHelper.getExternalDirectory;
 
@@ -23,13 +20,7 @@ public class SettingsFragment extends PreferenceFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Load the preferences from an XML resource.
         addPreferencesFromResource(R.xml.preferences);
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-            ListPreference preference = (ListPreference) findPreference(getString(R.string.pref_sort_order));
-            preference.setEntries(R.array.pref_sort_order_strings_legacy);
-            preference.setEntryValues(R.array.pref_sort_order_values_legacy);
-        }
         Preference myPref = findPreference(getString(R.string.pref_clear_cache));
         myPref.setOnPreferenceClickListener(preference -> {
             TaskExecutor.getInstance().execute(new PleaseWaitTask(getActivity()) {

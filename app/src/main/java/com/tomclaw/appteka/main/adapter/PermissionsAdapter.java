@@ -13,6 +13,7 @@ import com.tomclaw.appteka.util.PermissionHelper;
 import java.util.List;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import static com.tomclaw.appteka.util.ColorHelper.getAttributedColor;
@@ -36,14 +37,14 @@ public class PermissionsAdapter extends RecyclerView.Adapter<PermissionsAdapter.
     }
 
     @Override
-    public PermissionItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PermissionItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.permission_large_view, parent, false);
         PermissionItemHolder holder = new PermissionItemHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(PermissionItemHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PermissionItemHolder holder, int position) {
         String permission = permissions.get(position);
         holder.bind(context, permission);
     }
@@ -53,12 +54,12 @@ public class PermissionsAdapter extends RecyclerView.Adapter<PermissionsAdapter.
         return permissions.size();
     }
 
-    public class PermissionItemHolder extends RecyclerView.ViewHolder {
+    class PermissionItemHolder extends RecyclerView.ViewHolder {
 
         private TextView permissionDescription;
         private TextView permissionName;
 
-        public PermissionItemHolder(View itemView) {
+        PermissionItemHolder(View itemView) {
             super(itemView);
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
@@ -72,7 +73,7 @@ public class PermissionsAdapter extends RecyclerView.Adapter<PermissionsAdapter.
             permissionName = itemView.findViewById(R.id.permission_name);
         }
 
-        public void bind(Context context, final String permission) {
+        void bind(Context context, final String permission) {
             PermissionHelper.PermissionSmallInfo info = getPermissionSmallInfo(context, permission);
             permissionDescription.setText(info.getDescription());
             @ColorInt int descriptionColor = info.isDangerous() ?
