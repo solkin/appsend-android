@@ -24,12 +24,9 @@ public class TaskExecutor {
 
     public void execute(final Task task) {
         if (task.isPreExecuteRequired()) {
-            MainExecutor.execute(new Runnable() {
-                @Override
-                public void run() {
-                    task.onPreExecuteMain();
-                    threadExecutor.submit(task);
-                }
+            MainExecutor.execute(() -> {
+                task.onPreExecuteMain();
+                threadExecutor.submit(task);
             });
         } else {
             threadExecutor.submit(task);

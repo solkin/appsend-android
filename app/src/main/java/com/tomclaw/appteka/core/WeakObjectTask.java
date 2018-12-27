@@ -5,6 +5,7 @@ import java.lang.ref.WeakReference;
 /**
  * Created by solkin on 16.05.14.
  */
+@SuppressWarnings("WeakerAccess")
 public abstract class WeakObjectTask<W> extends Task {
 
     private final WeakReference<W> weakObject;

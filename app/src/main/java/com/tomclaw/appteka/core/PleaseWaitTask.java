@@ -13,6 +13,7 @@ import java.lang.ref.WeakReference;
  * Date: 09.11.13
  * Time: 14:19
  */
+@SuppressWarnings("WeakerAccess")
 public abstract class PleaseWaitTask extends WeakObjectTask<Context> {
 
     private WeakReference<ProgressDialog> weakProgressDialog;

@@ -71,7 +71,7 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
         final int toolbarColor = ColorHelper.getAttributedColor(context, R.attr.toolbar_background);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 EdgeChanger.setEdgeGlowColor(recyclerView, toolbarColor);
             }

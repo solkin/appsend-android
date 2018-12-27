@@ -9,6 +9,7 @@ import android.os.Looper;
  * Date: 09.11.13
  * Time: 13:33
  */
+@SuppressWarnings("WeakerAccess")
 public class MainExecutor {
 
     private static Handler mainHandler = new Handler(Looper.getMainLooper());

@@ -6,6 +6,7 @@ package com.tomclaw.appteka.core;
  * Date: 31.10.13
  * Time: 11:08
  */
+@SuppressWarnings("WeakerAccess")
 public abstract class Task implements Runnable {
 
     @Override
@@ -13,21 +14,15 @@ public abstract class Task implements Runnable {
         try {
             executeBackground();
             onSuccessBackground();
-            MainExecutor.execute(new Runnable() {
-                @Override
-                public void run() {
-                    onPostExecuteMain();
-                    onSuccessMain();
-                }
+            MainExecutor.execute(() -> {
+                onPostExecuteMain();
+                onSuccessMain();
             });
         } catch (final Throwable ex) {
             onFailBackground();
-            MainExecutor.execute(new Runnable() {
-                @Override
-                public void run() {
-                    onPostExecuteMain();
-                    onFailMain(ex);
-                }
+            MainExecutor.execute(() -> {
+                onPostExecuteMain();
+                onFailMain(ex);
             });
         }
     }

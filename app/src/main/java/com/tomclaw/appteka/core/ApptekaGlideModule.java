@@ -14,6 +14,8 @@ import com.tomclaw.appteka.util.PackageIconGlideLoader;
 
 import java.io.InputStream;
 
+import androidx.annotation.NonNull;
+
 /**
  * Created by solkin on 21/01/2018.
  */
@@ -21,16 +23,20 @@ import java.io.InputStream;
 public class ApptekaGlideModule extends AppGlideModule {
 
     @Override
-    public void registerComponents(final Context context, Glide glide, Registry registry) {
+    public void registerComponents(@NonNull final Context context, @NonNull Glide glide, @NonNull Registry registry) {
         registry.append(PackageInfo.class, InputStream.class, new ModelLoaderFactory<PackageInfo, InputStream>() {
+
+            @NonNull
             @Override
-            public ModelLoader<PackageInfo, InputStream> build(MultiModelLoaderFactory multiFactory) {
+            public ModelLoader<PackageInfo, InputStream> build(@NonNull MultiModelLoaderFactory multiFactory) {
                 return new PackageIconGlideLoader(context.getPackageManager());
             }
 
             @Override
             public void teardown() {
             }
+
         });
     }
+
 }
