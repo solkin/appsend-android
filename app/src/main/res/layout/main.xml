@@ -6,7 +6,7 @@
 
     <include layout="@layout/toolbar" />
 
-    <com.tomclaw.appteka.main.view.AppsView
+    <com.tomclaw.appsend_rb.main.view.AppsView
         android:id="@+id/apps_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

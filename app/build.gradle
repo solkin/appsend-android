@@ -3,14 +3,13 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.tomclaw.appteka"
+        applicationId "com.tomclaw.appsend_rb"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode = 1
         versionName = "1.0"
         manifestPlaceholders = [
-                HOCKEYAPP_APP_ID: "c8564e901f354fcc9858e6ad5b1594f9",
-                FLURRY_APP_ID: "VDGFHF3THYWJ53SKX5VK"
+                HOCKEYAPP_APP_ID: "b23ac4e6fe7843b49ec1a61c7ed7d495"
         ]
     }
 
@@ -31,8 +30,8 @@ dependencies {
     implementation project(path: ':preference-fragment')
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.0.2'
-    annotationProcessor 'androidx.annotation:annotation:1.0.1'
-    implementation 'androidx.annotation:annotation:1.0.1'
+    annotationProcessor 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.palette:palette:1.0.0'
@@ -40,7 +39,7 @@ dependencies {
     implementation 'cz.msebera.android:httpclient:4.4.1.2'
     implementation 'com.greysonparrelli.permiso:permiso:0.3.0'
     implementation 'io.github.kobakei:ratethisapp:1.1.0'
-    implementation 'net.hockeyapp.android:HockeySDK:5.1.0'
+    implementation 'net.hockeyapp.android:HockeySDK:5.1.1'
     implementation 'com.anjlab.android.iab.v3:library:1.0.32'
     implementation 'com.jaeger.statusbaruitl:library:1.2.4'
     implementation 'com.github.shts:TriangleLabelView:1.1.2'
@@ -48,6 +47,5 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     implementation 'com.orhanobut:logger:1.15'
     implementation 'com.aurelhubert:ahbottomnavigation:2.0.6'
-    implementation 'com.flurry.android:analytics:7.2.3'
     implementation 'com.github.michael-rapp:android-bottom-sheet:1.4.6'
 }

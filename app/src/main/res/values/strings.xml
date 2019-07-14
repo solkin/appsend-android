@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Appteka</string>
+    <string name="app_name">AppSend</string>
     <string name="bytes">%d B</string>
     <string name="kibibytes">%.1f KB</string>
     <string name="mibibytes">%.1f MB</string>
@@ -58,7 +58,7 @@
     <string name="menu_search">Search</string>
     <string name="run_app">Run application</string>
     <string name="rate_title">Rate this app</string>
-    <string name="rate_message">Please, help us to develop the best tool! Rate Appteka in Google Play, this will take less than a 15 seconds! And you make us happy :)</string>
+    <string name="rate_message">Please, help us to develop the best tool! Rate AppSend in Google Play, this will take less than a 15 seconds! And you make us happy :)</string>
     <string name="yes_rate">Rate!</string>
     <string name="no_thanks">No</string>
     <string name="rate_cancel">Later</string>
@@ -116,7 +116,7 @@
     <string name="cancel_download_title">Cancel installation</string>
     <string name="cancel_download_text">Are you sure want to cancel installation of this application?</string>
     <string name="responsibility_denial_title">Denial of responsibility</string>
-    <string name="responsibility_denial_text">Submitted applications in this cloud are uploaded by Appteka users. The author is not responsible for the quality of the content provided. By clicking \"Yes\" you accept this condition.</string>
+    <string name="responsibility_denial_text">Submitted applications in this cloud are uploaded by AppSend users. The author is not responsible for the quality of the content provided. By clicking \"Yes\" you accept this condition.</string>
     <string name="agree_with_responsibility_condition">To install applications from cloud you must agree with this condition</string>
     <string name="abuse">Abuse</string>
     <string name="abuse_on">Abuse on %s</string>
