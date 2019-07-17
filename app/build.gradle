@@ -51,6 +51,5 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     implementation 'com.orhanobut:logger:1.15'
-    implementation 'com.aurelhubert:ahbottomnavigation:2.0.6'
-    implementation 'com.github.michael-rapp:android-bottom-sheet:1.4.6'
+    implementation 'com.github.rubensousa:bottomsheetbuilder:1.6.1'
 }

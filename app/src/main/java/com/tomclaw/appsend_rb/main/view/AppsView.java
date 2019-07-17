@@ -8,10 +8,13 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.provider.Settings;
 import android.util.AttributeSet;
+import android.view.MenuItem;
 import android.widget.ViewFlipper;
 
 import com.anjlab.android.iab.v3.BillingProcessor;
 import com.anjlab.android.iab.v3.TransactionDetails;
+import com.github.rubensousa.bottomsheetbuilder.BottomSheetBuilder;
+import com.github.rubensousa.bottomsheetbuilder.adapter.BottomSheetItemClickListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.greysonparrelli.permiso.Permiso;
 import com.tomclaw.appsend_rb.DonateActivity;
@@ -37,7 +40,6 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import de.mrapp.android.bottomsheet.BottomSheet;
 
 import static com.tomclaw.appsend_rb.util.IntentHelper.openGooglePlay;
 import static com.tomclaw.appsend_rb.util.Logger.logEvent;
@@ -174,18 +176,19 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
     }
 
     private void showActionDialog(final AppItem appItem) {
-        BottomSheet.Builder builder = new BottomSheet.Builder(getContext());
-        builder.addItem(0, R.string.run_app, R.drawable.run);
-        builder.addItem(1, R.string.find_on_gp, R.drawable.google_play);
-        builder.addItem(2, R.string.share_apk, R.drawable.share);
-        builder.addItem(3, R.string.extract_apk, R.drawable.floppy);
-        builder.addItem(4, R.string.required_permissions, R.drawable.lock_open);
-        builder.addItem(5, R.string.app_details, R.drawable.settings_box);
-        builder.addItem(6, R.string.remove, R.drawable.delete);
-        BottomSheet bottomSheet = builder.create();
-        bottomSheet.show();
-        bottomSheet.setOnItemClickListener((parent, view, position, id) -> AppsView.this.onItemClick(appItem, id));
-        bottomSheet.setOnItemLongClickListener((parent, view, position, id) -> false);
+        new BottomSheetBuilder(getContext(), R.style.AppTheme_BottomSheetDialog)
+                .setMode(BottomSheetBuilder.MODE_LIST)
+                .setIconTintColorResource(R.color.icons_grey)
+                .addItem(0, R.string.run_app, R.drawable.run)
+                .addItem(1, R.string.find_on_gp, R.drawable.google_play)
+                .addItem(2, R.string.share_apk, R.drawable.share)
+                .addItem(3, R.string.extract_apk, R.drawable.floppy)
+                .addItem(4, R.string.required_permissions, R.drawable.lock_open)
+                .addItem(5, R.string.app_details, R.drawable.settings_box)
+                .addItem(6, R.string.remove, R.drawable.delete)
+                .setItemClickListener(item -> AppsView.this.onItemClick(appItem, item.getItemId()))
+                .createDialog()
+                .show();
     }
 
     private void onItemClick(AppItem appItem, long id) {
