@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            if (project.hasProperty("storeFile")) storeFile file("$rootDir/" + project.storeFile)
+            if (project.hasProperty("storePassword")) storePassword project.storePassword
+            if (project.hasProperty("keyAlias")) keyAlias project.keyAlias
+            if (project.hasProperty("keyPassword")) keyPassword project.keyPassword
+        }
+    }
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.tomclaw.appsend_rb"
