@@ -14,7 +14,7 @@ android {
         applicationId "com.tomclaw.appsend_rb"
         minSdkVersion 15
         targetSdkVersion 29
-        versionCode = 1
+        versionCode = project.hasProperty("versionCode") ? Integer.parseInt(project.versionCode) : 1
         versionName = "1.0"
         manifestPlaceholders = [
                 HOCKEYAPP_APP_ID: "b23ac4e6fe7843b49ec1a61c7ed7d495"
