@@ -48,8 +48,8 @@ dependencies {
     implementation 'com.anjlab.android.iab.v3:library:1.0.32'
     implementation 'com.jaeger.statusbaruitl:library:1.2.4'
     implementation 'com.github.shts:TriangleLabelView:1.1.2'
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     implementation 'com.orhanobut:logger:1.15'
     implementation 'com.github.rubensousa:bottomsheetbuilder:1.6.1'
 }
