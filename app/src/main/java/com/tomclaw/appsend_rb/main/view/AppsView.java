@@ -29,11 +29,13 @@ import com.tomclaw.appsend_rb.main.item.BaseItem;
 import com.tomclaw.appsend_rb.main.task.ExportApkTask;
 import com.tomclaw.appsend_rb.util.ColorHelper;
 import com.tomclaw.appsend_rb.util.EdgeChanger;
+import com.tomclaw.appsend_rb.util.PreferenceHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -41,6 +43,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import static com.tomclaw.appsend_rb.util.ColorHelper.getAttributedColor;
 import static com.tomclaw.appsend_rb.util.IntentHelper.openGooglePlay;
 import static com.tomclaw.appsend_rb.util.Logger.logEvent;
 
@@ -176,9 +179,14 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
     }
 
     private void showActionDialog(final AppItem appItem) {
-        new BottomSheetBuilder(getContext(), R.style.AppTheme_BottomSheetDialog)
+        boolean isDarkTheme = PreferenceHelper.isDarkTheme(getContext());
+        @ColorInt int textColor = getAttributedColor(getContext(), R.attr.text_primary_color);
+        @ColorInt int tintColor = getAttributedColor(getContext(), R.attr.menu_icons_tint);
+        int theme = isDarkTheme ? R.style.AppTheme_BottomSheetDialog_Dark : R.style.AppTheme_BottomSheetDialog_Light;
+        new BottomSheetBuilder(getContext(), theme)
                 .setMode(BottomSheetBuilder.MODE_LIST)
-                .setIconTintColorResource(R.color.icons_grey)
+                .setIconTintColor(tintColor)
+                .setItemTextColor(textColor)
                 .addItem(0, R.string.run_app, R.drawable.run)
                 .addItem(1, R.string.find_on_gp, R.drawable.google_play)
                 .addItem(2, R.string.share_apk, R.drawable.share)

@@ -65,14 +65,11 @@ public class MainActivity extends PermisoActivity implements MainView.ActivityCa
                 return false;
             }
         };
-        onCloseListener = new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                if (appsView.isFilterable()) {
-                    appsView.filter("");
-                }
-                return false;
+        onCloseListener = () -> {
+            if (appsView.isFilterable()) {
+                appsView.filter("");
             }
+            return false;
         };
 
         if (savedInstanceState == null) {
