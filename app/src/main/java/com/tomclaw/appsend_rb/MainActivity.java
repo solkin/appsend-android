@@ -93,6 +93,8 @@ public class MainActivity extends PermisoActivity implements MainView.ActivityCa
         MetricsManager.register(getApplication());
 
         appsView.activate();
+
+        MetricsManager.register(getApplication());
     }
 
     private void updateList() {
@@ -191,6 +193,7 @@ public class MainActivity extends PermisoActivity implements MainView.ActivityCa
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_UPDATE_SETTINGS) {
             if (resultCode == SettingsActivity.RESULT_UPDATE) {
                 updateList();
