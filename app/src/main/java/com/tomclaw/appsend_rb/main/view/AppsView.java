@@ -8,13 +8,19 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.provider.Settings;
 import android.util.AttributeSet;
-import android.view.MenuItem;
 import android.widget.ViewFlipper;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.anjlab.android.iab.v3.BillingProcessor;
 import com.anjlab.android.iab.v3.TransactionDetails;
 import com.github.rubensousa.bottomsheetbuilder.BottomSheetBuilder;
-import com.github.rubensousa.bottomsheetbuilder.adapter.BottomSheetItemClickListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.greysonparrelli.permiso.Permiso;
 import com.tomclaw.appsend_rb.DonateActivity;
@@ -34,14 +40,6 @@ import com.tomclaw.appsend_rb.util.PreferenceHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import androidx.annotation.ColorInt;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import static com.tomclaw.appsend_rb.util.ColorHelper.getAttributedColor;
 import static com.tomclaw.appsend_rb.util.IntentHelper.openGooglePlay;
@@ -288,7 +286,7 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
     }
 
     @Override
-    public void onProductPurchased(String productId, TransactionDetails details) {
+    public void onProductPurchased(@NonNull String productId, TransactionDetails details) {
     }
 
     @Override

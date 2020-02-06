@@ -6,6 +6,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.MenuRes;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+
 import com.greysonparrelli.permiso.PermisoActivity;
 import com.kobakei.ratethisapp.RateThisApp;
 import com.tomclaw.appsend_rb.main.view.AppsView;
@@ -15,10 +21,6 @@ import com.tomclaw.appsend_rb.util.ThemeHelper;
 
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.metrics.MetricsManager;
-
-import androidx.annotation.MenuRes;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends PermisoActivity implements MainView.ActivityCallback {
 
@@ -45,9 +47,12 @@ public class MainActivity extends PermisoActivity implements MainView.ActivityCa
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setIcon(R.drawable.ic_logo_ab);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setIcon(R.drawable.ic_logo_ab);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(true);
+        }
 
         appsView = findViewById(R.id.apps_view);
 
@@ -93,8 +98,6 @@ public class MainActivity extends PermisoActivity implements MainView.ActivityCa
         MetricsManager.register(getApplication());
 
         appsView.activate();
-
-        MetricsManager.register(getApplication());
     }
 
     private void updateList() {
@@ -120,7 +123,7 @@ public class MainActivity extends PermisoActivity implements MainView.ActivityCa
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(REFRESH_ON_RESUME, isRefreshOnResume);
     }

@@ -24,6 +24,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import static android.content.pm.PackageManager.GET_PERMISSIONS;
+import static com.tomclaw.appsend_rb.util.PreferenceHelper.IS_DONATE_ENABLED;
 
 /**
  * Created by ivsolkin on 08.01.17.
@@ -138,11 +139,13 @@ public class AppsController extends AbstractController<AppsController.AppsCallba
             Collections.sort(appItemList, (lhs, rhs) -> compareLong(rhs.getLastUpdateTime(), lhs.getLastUpdateTime()));
         }
         List<BaseItem> baseItems = new ArrayList<>(appItemList);
-        int count = Math.min(baseItems.size(), 7);
-        Random random = new Random(System.currentTimeMillis());
-        int position = random.nextInt(count);
-        DonateItem donateItem = new DonateItem();
-        baseItems.add(position, donateItem);
+        if (IS_DONATE_ENABLED) {
+            int count = Math.min(baseItems.size(), 7);
+            Random random = new Random(System.currentTimeMillis());
+            int position = random.nextInt(count);
+            DonateItem donateItem = new DonateItem();
+            baseItems.add(position, donateItem);
+        }
         onLoaded(baseItems);
     }
 

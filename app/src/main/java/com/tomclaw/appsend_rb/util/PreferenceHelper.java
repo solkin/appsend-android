@@ -13,6 +13,8 @@ import com.tomclaw.appsend_rb.R;
  */
 public class PreferenceHelper {
 
+    public static final boolean IS_DONATE_ENABLED = false;
+
     public static boolean isDarkTheme(Context context) {
         return getBooleanPreference(context, R.string.pref_dark_theme, R.bool.pref_dark_theme_default);
     }

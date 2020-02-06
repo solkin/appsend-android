@@ -10,15 +10,17 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.anjlab.android.iab.v3.BillingProcessor;
 import com.anjlab.android.iab.v3.Constants;
 import com.anjlab.android.iab.v3.TransactionDetails;
 import com.google.android.material.snackbar.Snackbar;
 import com.tomclaw.appsend_rb.util.ThemeHelper;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import static com.tomclaw.appsend_rb.util.PreferenceHelper.IS_DONATE_ENABLED;
 
 /**
  * Created by Solkin on 17.12.2014.
@@ -69,8 +71,8 @@ public class AboutActivity extends AppCompatActivity implements BillingProcessor
         presentButton = findViewById(R.id.present_chocolate);
         presentButton.setOnClickListener(view -> onChocolateClicked());
 
-        if (bp.loadOwnedPurchasesFromGoogle() &&
-                bp.isPurchased(getString(R.string.chocolate_id))) {
+        if ((bp.loadOwnedPurchasesFromGoogle() && bp.isPurchased(getString(R.string.chocolate_id)))
+                || !IS_DONATE_ENABLED) {
             presentButton.setVisibility(View.GONE);
         }
     }
