@@ -13,9 +13,11 @@
 
     <application
         android:name="com.tomclaw.appsend_rb.Appsend"
+        android:fullBackupContent="@xml/appcenter_backup_rule"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -27,8 +29,8 @@
         </provider>
 
         <meta-data
-            android:name="net.hockeyapp.android.appIdentifier"
-            android:value="${HOCKEYAPP_APP_ID}" />
+            android:name="com.microsoft.appcenter.android.appIdentifier"
+            android:value="${APPCENTER_APP_ID}" />
 
         <activity
             android:name="com.tomclaw.appsend_rb.MainActivity"
@@ -51,8 +53,5 @@
         <activity
             android:name="com.tomclaw.appsend_rb.PermissionsActivity"
             android:label="@string/required_permissions" />
-        <activity
-            android:name="com.tomclaw.appsend_rb.AbuseActivity"
-            android:label="@string/abuse" />
     </application>
 </manifest>

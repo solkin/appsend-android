@@ -1,7 +1,11 @@
 package com.tomclaw.appsend_rb;
 
+import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,18 +18,19 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.greysonparrelli.permiso.PermisoActivity;
 import com.kobakei.ratethisapp.RateThisApp;
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
 import com.tomclaw.appsend_rb.main.view.AppsView;
 import com.tomclaw.appsend_rb.main.view.MainView;
 import com.tomclaw.appsend_rb.util.PreferenceHelper;
 import com.tomclaw.appsend_rb.util.ThemeHelper;
 
-import net.hockeyapp.android.CrashManager;
-import net.hockeyapp.android.metrics.MetricsManager;
-
 public class MainActivity extends PermisoActivity implements MainView.ActivityCallback {
 
     private static final int REQUEST_UPDATE_SETTINGS = 6;
     private static final String REFRESH_ON_RESUME = "refresh_on_resume";
+    private static final String APP_IDENTIFIER_KEY = "com.microsoft.appcenter.android.appIdentifier";
 
     private AppsView appsView;
     private SearchView.OnQueryTextListener onQueryTextListener;
@@ -94,8 +99,7 @@ public class MainActivity extends PermisoActivity implements MainView.ActivityCa
             RateThisApp.showRateDialogIfNeeded(this);
         }
 
-        checkForCrashes();
-        MetricsManager.register(getApplication());
+        register(getApplication());
 
         appsView.activate();
     }
@@ -214,13 +218,43 @@ public class MainActivity extends PermisoActivity implements MainView.ActivityCa
         startActivity(intent);
     }
 
-    private void checkForCrashes() {
-        CrashManager.register(this);
-    }
-
     @Override
     public void setRefreshOnResume() {
         isRefreshOnResume = true;
+    }
+
+    private static void register(Application application) {
+        String appIdentifier = getAppIdentifier(application.getApplicationContext());
+        if (appIdentifier == null || appIdentifier.length() == 0) {
+            throw new IllegalArgumentException("AppCenter app identifier was not configured correctly in manifest or build configuration.");
+        }
+        register(application, appIdentifier);
+    }
+
+    private static void register(Application application, String appIdentifier) {
+        AppCenter.start(application, appIdentifier, Analytics.class, Crashes.class);
+    }
+
+    public static String getAppIdentifier(Context context) {
+        String appIdentifier = getManifestString(context, APP_IDENTIFIER_KEY);
+        if (TextUtils.isEmpty(appIdentifier)) {
+            throw new IllegalArgumentException("AppCenter app identifier was not configured correctly in manifest or build configuration.");
+        }
+        return appIdentifier;
+    }
+
+    public static String getManifestString(Context context, String key) {
+        return getBundle(context).getString(key);
+    }
+
+    private static Bundle getBundle(Context context) {
+        Bundle bundle;
+        try {
+            bundle = context.getPackageManager().getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA).metaData;
+        } catch (PackageManager.NameNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return bundle;
     }
 
 }
