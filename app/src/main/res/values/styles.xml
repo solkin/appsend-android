@@ -33,6 +33,9 @@
     <color name="icons_grey_light">#6a6a6a</color>
     <color name="icons_grey_dark">#E1E1E1</color>
 
+    <color name="color_semitransparent">#baffffff</color>
+    <color name="color_semitransparent_black">#cc000000</color>
+
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorAccent">@color/accent_color</item>
         <item name="colorPrimary">@color/primary_color</item>

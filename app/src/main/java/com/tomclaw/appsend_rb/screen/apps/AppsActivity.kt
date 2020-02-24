@@ -1,8 +1,11 @@
 package com.tomclaw.appsend_rb.screen.apps
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.tomclaw.appsend_rb.AboutActivity
 import com.tomclaw.appsend_rb.R
+import com.tomclaw.appsend_rb.SettingsActivity
 import com.tomclaw.appsend_rb.getComponent
 import com.tomclaw.appsend_rb.screen.apps.di.AppsModule
 import javax.inject.Inject
@@ -19,7 +22,7 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
                 .inject(activity = this)
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
+        setContentView(R.layout.apps_activity)
 
         val view = AppsViewImpl(window.decorView)
 
@@ -48,6 +51,22 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putBundle(KEY_PRESENTER_STATE, presenter.saveState())
+    }
+
+    override fun showPrefsScreen() {
+        val intent = Intent(
+                this,
+                SettingsActivity::class.java
+        )
+        startActivity(intent)
+    }
+
+    override fun showInfoScreen() {
+        val intent = Intent(
+                this,
+                AboutActivity::class.java
+        )
+        startActivity(intent)
     }
 
     override fun leaveScreen() {

@@ -3,6 +3,7 @@ package com.tomclaw.appsend_rb.screen.apps
 import android.os.Bundle
 import com.tomclaw.appsend_rb.util.SchedulersFactory
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.plusAssign
 
 interface AppsPresenter {
 
@@ -19,6 +20,10 @@ interface AppsPresenter {
     fun onBackPressed()
 
     interface AppsRouter {
+
+        fun showPrefsScreen()
+
+        fun showInfoScreen()
 
         fun leaveScreen()
 
@@ -39,6 +44,17 @@ class AppsPresenterImpl(
 
     override fun attachView(view: AppsView) {
         this.view = view
+        subscriptions += view.refreshClicks().subscribe { }
+        subscriptions += view.prefsClicks().subscribe { onPrefsClicked() }
+        subscriptions += view.infoClicks().subscribe { onInfoClicked() }
+    }
+
+    private fun onPrefsClicked() {
+        router?.showPrefsScreen()
+    }
+
+    private fun onInfoClicked() {
+        router?.showInfoScreen()
     }
 
     override fun detachView() {
