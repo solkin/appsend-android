@@ -15,7 +15,7 @@
         tools:remove="android:maxSdkVersion" />
 
     <application
-        android:name="com.tomclaw.appsend_rb.Appsend"
+        android:name="com.tomclaw.appsend_rb.App"
         android:fullBackupContent="@xml/appcenter_backup_rule"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

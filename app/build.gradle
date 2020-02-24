@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     signingConfigs {
@@ -37,10 +40,9 @@ android {
 
 dependencies {
     implementation project(path: ':preference-fragment')
-    annotationProcessor 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0'
     implementation 'com.greysonparrelli.permiso:permiso:0.3.0'
     implementation 'io.github.kobakei:ratethisapp:1.1.0'
     implementation 'com.microsoft.appcenter:appcenter-analytics:3.0.0'
@@ -49,8 +51,21 @@ dependencies {
     implementation 'com.jaeger.statusbaruitl:library:1.2.4'
     implementation 'com.github.shts:TriangleLabelView:1.1.2'
     implementation 'com.github.bumptech.glide:glide:4.9.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    kapt 'com.github.bumptech.glide:compiler:4.9.0'
     implementation 'com.orhanobut:logger:1.15'
     implementation 'com.github.rubensousa:bottomsheetbuilder:1.6.1'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation "androidx.core:core-ktx:1.2.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'com.jakewharton.rxrelay2:rxrelay:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+    implementation 'com.github.avito-tech:Konveyor:0.42.2'
+    implementation 'com.google.dagger:dagger:2.24'
+    kapt 'com.google.dagger:dagger-compiler:2.24'
+    kapt 'com.google.dagger:dagger-android-processor:2.23.2'
+}
+repositories {
+    mavenCentral()
 }
