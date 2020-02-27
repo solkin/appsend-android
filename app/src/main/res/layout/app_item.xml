@@ -122,8 +122,13 @@
                         android:singleLine="true"
                         android:textColor="?text_secondary_color"
                         android:textSize="15sp" />
+
                 </LinearLayout>
+
             </LinearLayout>
+
         </LinearLayout>
+
     </FrameLayout>
+
 </androidx.cardview.widget.CardView>
