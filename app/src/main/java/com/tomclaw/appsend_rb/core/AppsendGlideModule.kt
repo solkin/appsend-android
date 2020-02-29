@@ -8,7 +8,8 @@ import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.load.model.ModelLoaderFactory
 import com.bumptech.glide.load.model.MultiModelLoaderFactory
 import com.bumptech.glide.module.AppGlideModule
-import com.tomclaw.appsend_rb.util.PackageIconGlideLoader
+import com.tomclaw.appsend_rb.util.AppIconData
+import com.tomclaw.appsend_rb.util.AppIconGlideLoader
 import java.io.InputStream
 
 /**
@@ -19,12 +20,12 @@ class AppsendGlideModule : AppGlideModule() {
 
     override fun registerComponents(context: Context, glide: Glide, registry: Registry) {
         registry.append(
-                PackageInfo::class.java,
+                AppIconData::class.java,
                 InputStream::class.java,
-                object : ModelLoaderFactory<PackageInfo, InputStream> {
+                object : ModelLoaderFactory<AppIconData, InputStream> {
 
                     override fun build(multiFactory: MultiModelLoaderFactory) =
-                            PackageIconGlideLoader(context.packageManager)
+                            AppIconGlideLoader(context.packageManager)
 
                     override fun teardown() {}
 
