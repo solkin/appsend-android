@@ -25,7 +25,7 @@ class AppIconGlideLoader(private val packageManager: PackageManager) : ModelLoad
                                width: Int,
                                height: Int,
                                options: Options): LoadData<InputStream>? {
-        return LoadData<InputStream>(IconKey(iconData), object : DataFetcher<InputStream> {
+        return LoadData(IconKey(iconData), object : DataFetcher<InputStream> {
             override fun loadData(priority: Priority, callback: DataFetcher.DataCallback<in InputStream>) {
                 try {
                     val icon = packageManager.getApplicationIcon(iconData.packageName)

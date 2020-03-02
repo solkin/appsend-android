@@ -37,7 +37,7 @@ public class AppItemHolder extends AbstractItemHolder<AppItem> {
         appIcon = itemView.findViewById(R.id.app_icon);
         appName = itemView.findViewById(R.id.app_name);
         appVersion = itemView.findViewById(R.id.app_version);
-        appUpdateTime = itemView.findViewById(R.id.app_update_time);
+        appUpdateTime = itemView.findViewById(R.id.app_time);
         appSize = itemView.findViewById(R.id.app_size);
         badgeNew = itemView.findViewById(R.id.badge_new);
     }

@@ -59,7 +59,7 @@ class AppsPresenterImpl(
 
         val items = listOf(AppItem(
                 id = 1,
-                icon = AppIconData("com.tomclaw.appsend", 1),
+                icon = AppIconData("com.tomclaw.appsend_rb", 1),
                 name = "AppSend",
                 versionName = "1.0",
                 versionCode = 1
