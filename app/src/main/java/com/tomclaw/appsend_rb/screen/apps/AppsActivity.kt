@@ -3,6 +3,9 @@ package com.tomclaw.appsend_rb.screen.apps
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.avito.konveyor.ItemBinder
+import com.avito.konveyor.adapter.AdapterPresenter
+import com.avito.konveyor.adapter.SimpleRecyclerAdapter
 import com.tomclaw.appsend_rb.AboutActivity
 import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.SettingsActivity
@@ -15,6 +18,12 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
     @Inject
     lateinit var presenter: AppsPresenter
 
+    @Inject
+    lateinit var adapterPresenter: AdapterPresenter
+
+    @Inject
+    lateinit var binder: ItemBinder
+
     override fun onCreate(savedInstanceState: Bundle?) {
         val presenterState = savedInstanceState?.getBundle(KEY_PRESENTER_STATE)
         application.getComponent()
@@ -24,7 +33,8 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.apps_activity)
 
-        val view = AppsViewImpl(window.decorView)
+        val adapter = SimpleRecyclerAdapter(adapterPresenter, binder)
+        val view = AppsViewImpl(window.decorView, adapter)
 
         presenter.attachView(view)
     }

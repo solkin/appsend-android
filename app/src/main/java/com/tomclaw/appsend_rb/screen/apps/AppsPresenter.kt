@@ -1,11 +1,18 @@
 package com.tomclaw.appsend_rb.screen.apps
 
 import android.os.Bundle
+import com.avito.konveyor.adapter.AdapterPresenter
+import com.avito.konveyor.blueprint.Item
+import com.avito.konveyor.data_source.ListDataSource
+import com.tomclaw.appsend_rb.screen.apps.adapter.ItemClickListener
+import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItem
+import com.tomclaw.appsend_rb.util.AppIconData
 import com.tomclaw.appsend_rb.util.SchedulersFactory
+import dagger.Lazy
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
 
-interface AppsPresenter {
+interface AppsPresenter : ItemClickListener {
 
     fun attachView(view: AppsView)
 
@@ -33,6 +40,8 @@ interface AppsPresenter {
 
 class AppsPresenterImpl(
         private val interactor: AppsInteractor,
+        private val adapterPresenter: Lazy<AdapterPresenter>,
+        private val appInfoConverter: AppInfoConverter,
         private val schedulers: SchedulersFactory,
         state: Bundle?
 ) : AppsPresenter {
@@ -47,6 +56,17 @@ class AppsPresenterImpl(
         subscriptions += view.refreshClicks().subscribe { }
         subscriptions += view.prefsClicks().subscribe { onPrefsClicked() }
         subscriptions += view.infoClicks().subscribe { onInfoClicked() }
+
+        val items = listOf(AppItem(
+                id = 1,
+                icon = AppIconData("com.tomclaw.appsend", 1),
+                name = "AppSend",
+                versionName = "1.0",
+                versionCode = 1
+        ))
+        val dataSource = ListDataSource(items)
+        adapterPresenter.get().onDataSourceChanged(dataSource)
+        view.contentUpdated()
     }
 
     private fun onPrefsClicked() {
@@ -74,6 +94,9 @@ class AppsPresenterImpl(
     }
 
     override fun onBackPressed() {
+    }
+
+    override fun onItemClick(item: Item) {
     }
 
 }

@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.avito.konveyor.adapter.SimpleRecyclerAdapter
 import com.jakewharton.rxrelay2.PublishRelay
 import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.util.hideWithAlphaAnimation
@@ -17,6 +18,8 @@ interface AppsView {
 
     fun showContent()
 
+    fun contentUpdated()
+
     fun refreshClicks(): Observable<Unit>
 
     fun prefsClicks(): Observable<Unit>
@@ -26,9 +29,9 @@ interface AppsView {
 }
 
 class AppsViewImpl(
-        private val view: View
+        private val view: View,
+        private val adapter: SimpleRecyclerAdapter
 ) : AppsView {
-
 
     private val context = view.context
     private val toolbar: Toolbar = view.findViewById(R.id.toolbar)
@@ -50,6 +53,8 @@ class AppsViewImpl(
             }
             true
         }
+        adapter.setHasStableIds(true)
+        recycler.adapter = adapter
         recycler.layoutManager = LinearLayoutManager(
                 context,
                 RecyclerView.VERTICAL,
@@ -64,6 +69,10 @@ class AppsViewImpl(
 
     override fun showContent() {
         overlayProgress.hideWithAlphaAnimation(animateFully = false)
+    }
+
+    override fun contentUpdated() {
+        adapter.notifyDataSetChanged()
     }
 
     override fun refreshClicks(): Observable<Unit> = refreshRelay
