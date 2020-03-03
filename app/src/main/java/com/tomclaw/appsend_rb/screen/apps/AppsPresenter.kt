@@ -4,9 +4,8 @@ import android.os.Bundle
 import com.avito.konveyor.adapter.AdapterPresenter
 import com.avito.konveyor.blueprint.Item
 import com.avito.konveyor.data_source.ListDataSource
+import com.tomclaw.appsend_rb.dto.AppEntity
 import com.tomclaw.appsend_rb.screen.apps.adapter.ItemClickListener
-import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItem
-import com.tomclaw.appsend_rb.util.AppIconData
 import com.tomclaw.appsend_rb.util.SchedulersFactory
 import dagger.Lazy
 import io.reactivex.disposables.CompositeDisposable
@@ -41,7 +40,7 @@ interface AppsPresenter : ItemClickListener {
 class AppsPresenterImpl(
         private val interactor: AppsInteractor,
         private val adapterPresenter: Lazy<AdapterPresenter>,
-        private val appInfoConverter: AppInfoConverter,
+        private val appEntityConverter: AppEntityConverter,
         private val schedulers: SchedulersFactory,
         state: Bundle?
 ) : AppsPresenter {
@@ -57,16 +56,7 @@ class AppsPresenterImpl(
         subscriptions += view.prefsClicks().subscribe { onPrefsClicked() }
         subscriptions += view.infoClicks().subscribe { onInfoClicked() }
 
-        val items = listOf(AppItem(
-                id = 1,
-                icon = AppIconData("com.tomclaw.appsend_rb", 1),
-                name = "AppSend",
-                versionName = "1.0",
-                versionCode = 1
-        ))
-        val dataSource = ListDataSource(items)
-        adapterPresenter.get().onDataSourceChanged(dataSource)
-        view.contentUpdated()
+        loadAppItems()
     }
 
     private fun onPrefsClicked() {
@@ -88,6 +78,27 @@ class AppsPresenterImpl(
 
     override fun detachRouter() {
         this.router = null
+    }
+
+    private fun loadAppItems() {
+        subscriptions += interactor.loadApps()
+                .observeOn(schedulers.mainThread())
+                .doOnSubscribe { view?.showProgress() }
+                .doAfterTerminate { view?.showContent() }
+                .subscribe({ apps ->
+                    bindAppItems(apps)
+                }, {})
+    }
+
+    private fun bindAppItems(apps: List<AppEntity>) {
+        var id: Long = 0
+        val items = apps
+                .sortedBy { it.lastUpdateTime }
+                .reversed()
+                .map { appEntityConverter.convert(id++, it) }
+        val dataSource = ListDataSource(items)
+        adapterPresenter.get().onDataSourceChanged(dataSource)
+        view?.contentUpdated()
     }
 
     override fun saveState() = Bundle().apply {

@@ -6,8 +6,8 @@ import com.avito.konveyor.ItemBinder
 import com.avito.konveyor.adapter.AdapterPresenter
 import com.avito.konveyor.adapter.SimpleAdapterPresenter
 import com.avito.konveyor.blueprint.ItemBlueprint
-import com.tomclaw.appsend_rb.screen.apps.AppInfoConverter
-import com.tomclaw.appsend_rb.screen.apps.AppInfoConverterImpl
+import com.tomclaw.appsend_rb.screen.apps.AppEntityConverter
+import com.tomclaw.appsend_rb.screen.apps.AppEntityConverterImpl
 import com.tomclaw.appsend_rb.screen.apps.AppsInteractor
 import com.tomclaw.appsend_rb.screen.apps.AppsInteractorImpl
 import com.tomclaw.appsend_rb.screen.apps.AppsPresenter
@@ -38,9 +38,9 @@ class AppsModule(
     internal fun providePresenter(
             interactor: AppsInteractor,
             adapterPresenter: Lazy<AdapterPresenter>,
-            appInfoConverter: AppInfoConverter,
+            appEntityConverter: AppEntityConverter,
             schedulers: SchedulersFactory
-    ): AppsPresenter = AppsPresenterImpl(interactor, adapterPresenter, appInfoConverter, schedulers, state)
+    ): AppsPresenter = AppsPresenterImpl(interactor, adapterPresenter, appEntityConverter, schedulers, state)
 
     @Provides
     @PerActivity
@@ -50,8 +50,8 @@ class AppsModule(
 
     @Provides
     @PerActivity
-    internal fun provideAppInfoConverter(): AppInfoConverter {
-        return AppInfoConverterImpl()
+    internal fun provideAppInfoConverter(): AppEntityConverter {
+        return AppEntityConverterImpl()
     }
 
     @Provides
