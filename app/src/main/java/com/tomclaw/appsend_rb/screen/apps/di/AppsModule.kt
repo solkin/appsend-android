@@ -12,6 +12,8 @@ import com.tomclaw.appsend_rb.screen.apps.AppsInteractor
 import com.tomclaw.appsend_rb.screen.apps.AppsInteractorImpl
 import com.tomclaw.appsend_rb.screen.apps.AppsPresenter
 import com.tomclaw.appsend_rb.screen.apps.AppsPresenterImpl
+import com.tomclaw.appsend_rb.screen.apps.PackageManagerWrapper
+import com.tomclaw.appsend_rb.screen.apps.PackageManagerWrapperImpl
 import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItemBlueprint
 import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItemPresenter
 import com.tomclaw.appsend_rb.util.PerActivity
@@ -45,13 +47,20 @@ class AppsModule(
     @Provides
     @PerActivity
     internal fun provideInteractor(
+            packageManager: PackageManagerWrapper,
             schedulers: SchedulersFactory
-    ): AppsInteractor = AppsInteractorImpl(schedulers)
+    ): AppsInteractor = AppsInteractorImpl(packageManager, schedulers)
 
     @Provides
     @PerActivity
     internal fun provideAppInfoConverter(): AppEntityConverter {
         return AppEntityConverterImpl()
+    }
+
+    @Provides
+    @PerActivity
+    internal fun providePackageManagerWrapper(): PackageManagerWrapper {
+        return PackageManagerWrapperImpl(context.packageManager)
     }
 
     @Provides
