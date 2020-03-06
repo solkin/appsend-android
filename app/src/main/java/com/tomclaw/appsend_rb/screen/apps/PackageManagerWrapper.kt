@@ -33,3 +33,8 @@ class PackageManagerWrapperImpl(
             packageManager.getLaunchIntentForPackage(packageName)
 
 }
+
+const val FLAG_SYSTEM = ApplicationInfo.FLAG_SYSTEM
+const val FLAG_UPDATED_SYSTEM_APP = ApplicationInfo.FLAG_UPDATED_SYSTEM_APP
+const val GET_META_DATA = PackageManager.GET_META_DATA
+const val GET_PERMISSIONS = PackageManager.GET_PERMISSIONS

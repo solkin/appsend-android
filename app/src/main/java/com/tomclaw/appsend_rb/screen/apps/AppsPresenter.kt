@@ -81,7 +81,11 @@ class AppsPresenterImpl(
     }
 
     private fun loadAppItems() {
-        subscriptions += interactor.loadApps()
+        subscriptions += interactor.loadApps(
+                        systemApps = false,
+                        runnableOnly = false,
+                        sortOrder = NAME_ASCENDING
+                )
                 .observeOn(schedulers.mainThread())
                 .doOnSubscribe { view?.showProgress() }
                 .doAfterTerminate { view?.showContent() }
