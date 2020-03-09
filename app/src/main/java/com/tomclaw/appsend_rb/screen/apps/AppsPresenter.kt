@@ -41,6 +41,7 @@ class AppsPresenterImpl(
         private val interactor: AppsInteractor,
         private val adapterPresenter: Lazy<AdapterPresenter>,
         private val appEntityConverter: AppEntityConverter,
+        private val preferences: PreferencesProvider,
         private val schedulers: SchedulersFactory,
         state: Bundle?
 ) : AppsPresenter {
@@ -82,9 +83,9 @@ class AppsPresenterImpl(
 
     private fun loadAppItems() {
         subscriptions += interactor.loadApps(
-                        systemApps = false,
-                        runnableOnly = false,
-                        sortOrder = NAME_ASCENDING
+                        systemApps = preferences.isShowSystemApps(),
+                        runnableOnly = preferences.isRunnableOnly(),
+                        sortOrder = preferences.getSortOrder()
                 )
                 .observeOn(schedulers.mainThread())
                 .doOnSubscribe { view?.showProgress() }
