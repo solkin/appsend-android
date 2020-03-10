@@ -49,6 +49,8 @@ class AppsPresenterImpl(
     private var view: AppsView? = null
     private var router: AppsPresenter.AppsRouter? = null
 
+    private var entities: List<AppEntity>? = state?.getParcelableArrayList(KEY_ENTITIES)
+
     private val subscriptions = CompositeDisposable()
 
     override fun attachView(view: AppsView) {
@@ -57,7 +59,9 @@ class AppsPresenterImpl(
         subscriptions += view.prefsClicks().subscribe { onPrefsClicked() }
         subscriptions += view.infoClicks().subscribe { onInfoClicked() }
 
-        loadAppItems()
+        entities.takeIf { it != null }
+                ?.run { bindAppEntities(this) }
+                ?: loadAppItems()
     }
 
     private fun onPrefsClicked() {
@@ -90,14 +94,15 @@ class AppsPresenterImpl(
                 .observeOn(schedulers.mainThread())
                 .doOnSubscribe { view?.showProgress() }
                 .doAfterTerminate { view?.showContent() }
-                .subscribe({ apps ->
-                    bindAppItems(apps)
+                .subscribe({ entities ->
+                    bindAppEntities(entities)
                 }, {})
     }
 
-    private fun bindAppItems(apps: List<AppEntity>) {
+    private fun bindAppEntities(entities: List<AppEntity>) {
+        this.entities = entities
         var id: Long = 0
-        val items = apps
+        val items = entities
                 .sortedBy { it.lastUpdateTime }
                 .reversed()
                 .map { appEntityConverter.convert(id++, it) }
@@ -107,6 +112,7 @@ class AppsPresenterImpl(
     }
 
     override fun saveState() = Bundle().apply {
+        entities?.let { putParcelableArrayList(KEY_ENTITIES, ArrayList(it)) }
     }
 
     override fun onBackPressed() {
@@ -116,3 +122,5 @@ class AppsPresenterImpl(
     }
 
 }
+
+private const val KEY_ENTITIES = "entities"

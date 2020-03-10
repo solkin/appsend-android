@@ -14,6 +14,8 @@ import com.tomclaw.appsend_rb.screen.apps.AppsPresenter
 import com.tomclaw.appsend_rb.screen.apps.AppsPresenterImpl
 import com.tomclaw.appsend_rb.screen.apps.PackageManagerWrapper
 import com.tomclaw.appsend_rb.screen.apps.PackageManagerWrapperImpl
+import com.tomclaw.appsend_rb.screen.apps.PreferencesProvider
+import com.tomclaw.appsend_rb.screen.apps.PreferencesProviderImpl
 import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItemBlueprint
 import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItemPresenter
 import com.tomclaw.appsend_rb.util.PerActivity
@@ -41,8 +43,9 @@ class AppsModule(
             interactor: AppsInteractor,
             adapterPresenter: Lazy<AdapterPresenter>,
             appEntityConverter: AppEntityConverter,
+            preferences: PreferencesProvider,
             schedulers: SchedulersFactory
-    ): AppsPresenter = AppsPresenterImpl(interactor, adapterPresenter, appEntityConverter, schedulers, state)
+    ): AppsPresenter = AppsPresenterImpl(interactor, adapterPresenter, appEntityConverter, preferences, schedulers, state)
 
     @Provides
     @PerActivity
@@ -55,6 +58,12 @@ class AppsModule(
     @PerActivity
     internal fun provideAppInfoConverter(): AppEntityConverter {
         return AppEntityConverterImpl()
+    }
+
+    @Provides
+    @PerActivity
+    internal fun providePreferencesProvider(): PreferencesProvider {
+        return PreferencesProviderImpl(context)
     }
 
     @Provides
