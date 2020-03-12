@@ -25,6 +25,20 @@ class AppsInteractorImpl(
             runnableOnly: Boolean,
             sortOrder: Int
     ): Observable<List<AppEntity>> {
+        return Single
+                .create<List<AppEntity>> { emitter ->
+                    val entities = loadEntities(systemApps, runnableOnly, sortOrder)
+                    emitter.onSuccess(entities)
+                }
+                .toObservable()
+                .subscribeOn(schedulers.io())
+    }
+
+    private fun loadEntities(
+            systemApps: Boolean,
+            runnableOnly: Boolean,
+            sortOrder: Int
+    ): List<AppEntity> {
         val entities = ArrayList<AppEntity>()
         val packages = packageManager.getInstalledApplications(GET_META_DATA)
         for (info in packages) {
@@ -62,9 +76,8 @@ class AppsInteractorImpl(
             INSTALL_TIME -> entities.sortWith(Comparator { lhs: AppEntity, rhs: AppEntity -> rhs.firstInstallTime.compareTo(lhs.firstInstallTime) })
             UPDATE_TIME -> entities.sortWith(Comparator { lhs: AppEntity, rhs: AppEntity -> rhs.lastUpdateTime.compareTo(lhs.lastUpdateTime) })
         }
-        return Single.just(entities as List<AppEntity>)
-                .toObservable()
-                .subscribeOn(schedulers.io())
+
+        return entities
     }
 
 }
