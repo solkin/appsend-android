@@ -116,6 +116,7 @@ class AppsPresenterImpl(
     }
 
     override fun onBackPressed() {
+        router?.leaveScreen()
     }
 
     override fun onItemClick(item: Item) {
