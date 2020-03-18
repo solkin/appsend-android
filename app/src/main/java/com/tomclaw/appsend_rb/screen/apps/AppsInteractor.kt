@@ -9,6 +9,7 @@ import java.util.ArrayList
 import java.util.Locale
 
 interface AppsInteractor {
+
     fun loadApps(systemApps: Boolean, runnableOnly: Boolean, sortOrder: Int): Observable<List<AppEntity>>
 
 }

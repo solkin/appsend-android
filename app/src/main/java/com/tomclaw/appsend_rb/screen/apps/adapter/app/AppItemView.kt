@@ -19,6 +19,10 @@ interface AppItemView : ItemView {
 
     fun setVersion(version: String?)
 
+    fun setSize(size: String?)
+
+    fun setTime(time: String?)
+
     fun setOnClickListener(listener: (() -> Unit)?)
 
 }
@@ -29,6 +33,8 @@ class AppItemViewHolder(view: View) : BaseViewHolder(view), AppItemView {
     private val icon: ImageView = view.findViewById(R.id.app_icon)
     private val name: TextView = view.findViewById(R.id.app_name)
     private val version: TextView = view.findViewById(R.id.app_version)
+    private val size: TextView = view.findViewById(R.id.app_size)
+    private val time: TextView = view.findViewById(R.id.app_time)
 
     private var listener: (() -> Unit)? = null
 
@@ -51,6 +57,14 @@ class AppItemViewHolder(view: View) : BaseViewHolder(view), AppItemView {
 
     override fun setVersion(version: String?) {
         this.version.bind(version)
+    }
+
+    override fun setSize(size: String?) {
+        this.size.bind(size)
+    }
+
+    override fun setTime(time: String?) {
+        this.time.bind(time)
     }
 
     override fun setOnClickListener(listener: (() -> Unit)?) {
