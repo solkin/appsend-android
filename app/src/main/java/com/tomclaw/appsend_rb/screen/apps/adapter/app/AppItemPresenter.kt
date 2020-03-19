@@ -11,6 +11,8 @@ class AppItemPresenter(
         view.setIcon(item.icon)
         view.setName(item.name)
         view.setVersion(item.versionName)
+        view.setSize(item.size)
+        view.setTime(item.lastUpdateTime)
         view.setOnClickListener { listener.onItemClick(item) }
     }
 

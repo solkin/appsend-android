@@ -9,6 +9,9 @@ class AppItem(
         override val id: Long,
         val icon: AppIconData,
         val name: String,
+        val size: String,
+        val firstInstallTime: String,
+        val lastUpdateTime: String,
         val versionName: String,
         val versionCode: Int
 ) : Item, Parcelable {
@@ -17,6 +20,9 @@ class AppItem(
         writeLong(id)
         writeParcelable(icon, 0)
         writeString(name)
+        writeString(size)
+        writeString(firstInstallTime)
+        writeString(lastUpdateTime)
         writeString(versionName)
         writeInt(versionCode)
     }
@@ -28,9 +34,12 @@ class AppItem(
             val id = parcel.readLong()
             val icon = parcel.readParcelable(AppIconData::class.java.classLoader) as AppIconData
             val name = parcel.readString().orEmpty()
+            val size = parcel.readString().orEmpty()
+            val firstInstallTime = parcel.readString().orEmpty()
+            val lastUpdateTime = parcel.readString().orEmpty()
             val versionName = parcel.readString().orEmpty()
             val versionCode = parcel.readInt()
-            return AppItem(id, icon, name, versionName, versionCode)
+            return AppItem(id, icon, name, size, firstInstallTime, lastUpdateTime, versionName, versionCode)
         }
 
         override fun newArray(size: Int): Array<AppItem?> {

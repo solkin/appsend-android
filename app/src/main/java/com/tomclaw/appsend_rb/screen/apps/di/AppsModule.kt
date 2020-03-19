@@ -1,5 +1,6 @@
 package com.tomclaw.appsend_rb.screen.apps.di
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import com.avito.konveyor.ItemBinder
@@ -16,6 +17,8 @@ import com.tomclaw.appsend_rb.screen.apps.PackageManagerWrapper
 import com.tomclaw.appsend_rb.screen.apps.PackageManagerWrapperImpl
 import com.tomclaw.appsend_rb.screen.apps.PreferencesProvider
 import com.tomclaw.appsend_rb.screen.apps.PreferencesProviderImpl
+import com.tomclaw.appsend_rb.screen.apps.ResourceProvider
+import com.tomclaw.appsend_rb.screen.apps.ResourceProviderImpl
 import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItemBlueprint
 import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItemPresenter
 import com.tomclaw.appsend_rb.util.PerActivity
@@ -24,6 +27,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.Lazy
 import dagger.multibindings.IntoSet
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 
 @Module
 class AppsModule(
@@ -56,8 +61,21 @@ class AppsModule(
 
     @Provides
     @PerActivity
-    internal fun provideAppInfoConverter(): AppEntityConverter {
-        return AppEntityConverterImpl()
+    internal fun provideAppInfoConverter(resourceProvider: ResourceProvider): AppEntityConverter {
+        return AppEntityConverterImpl(resourceProvider)
+    }
+
+    @Provides
+    @PerActivity
+    internal fun provideResourceProvider(dateFormat: DateFormat): ResourceProvider {
+        return ResourceProviderImpl(context, dateFormat)
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    @Provides
+    @PerActivity
+    internal fun provideDateFormat(): DateFormat {
+        return SimpleDateFormat("dd.MM.yy")
     }
 
     @Provides
