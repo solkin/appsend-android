@@ -6,6 +6,7 @@ import com.avito.konveyor.blueprint.Item
 import com.avito.konveyor.data_source.ListDataSource
 import com.tomclaw.appsend_rb.dto.AppEntity
 import com.tomclaw.appsend_rb.screen.apps.adapter.ItemClickListener
+import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItem
 import com.tomclaw.appsend_rb.util.SchedulersFactory
 import dagger.Lazy
 import io.reactivex.disposables.CompositeDisposable
@@ -120,6 +121,9 @@ class AppsPresenterImpl(
     }
 
     override fun onItemClick(item: Item) {
+        when (item) {
+            is AppItem -> view?.showAppMenu(item.id)
+        }
     }
 
 }

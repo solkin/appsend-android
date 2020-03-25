@@ -26,6 +26,8 @@ interface AppsView {
 
     fun infoClicks(): Observable<Unit>
 
+    fun showAppMenu(id: Long)
+
 }
 
 class AppsViewImpl(
@@ -80,5 +82,8 @@ class AppsViewImpl(
     override fun prefsClicks(): Observable<Unit> = prefsRelay
 
     override fun infoClicks(): Observable<Unit> = infoRelay
+
+    override fun showAppMenu(id: Long) {
+    }
 
 }
