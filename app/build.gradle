@@ -66,6 +66,7 @@ dependencies {
     implementation 'com.jakewharton.rxrelay2:rxrelay:2.1.0'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
     implementation 'com.github.avito-tech:Konveyor:0.42.2'
+    implementation 'com.github.rubensousa:bottomsheetbuilder:1.6.1'
     implementation 'com.google.dagger:dagger:2.24'
     kapt 'com.google.dagger:dagger-compiler:2.24'
     kapt 'com.google.dagger:dagger-android-processor:2.23.2'
