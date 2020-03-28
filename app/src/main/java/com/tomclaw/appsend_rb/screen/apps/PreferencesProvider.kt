@@ -7,6 +7,8 @@ import com.tomclaw.appsend_rb.util.getStringPreference
 
 interface PreferencesProvider {
 
+    fun isDarkTheme(): Boolean
+
     fun isShowSystemApps(): Boolean
 
     fun isRunnableOnly(): Boolean
@@ -16,6 +18,13 @@ interface PreferencesProvider {
 }
 
 class PreferencesProviderImpl(private val context: Context) : PreferencesProvider {
+
+    override fun isDarkTheme(): Boolean {
+        return context.getBooleanPreference(
+                R.string.pref_dark_theme,
+                R.bool.pref_dark_theme_default
+        )
+    }
 
     override fun isShowSystemApps(): Boolean {
         return context.getBooleanPreference(

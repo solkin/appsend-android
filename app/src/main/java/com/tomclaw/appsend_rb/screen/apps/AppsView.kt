@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.avito.konveyor.adapter.SimpleRecyclerAdapter
+import com.github.rubensousa.bottomsheetbuilder.BottomSheetBuilder
 import com.jakewharton.rxrelay2.PublishRelay
 import com.tomclaw.appsend_rb.R
+import com.tomclaw.appsend_rb.util.ColorHelper.getAttributedColor
 import com.tomclaw.appsend_rb.util.hideWithAlphaAnimation
 import com.tomclaw.appsend_rb.util.showWithAlphaAnimation
 import io.reactivex.Observable
@@ -32,7 +34,8 @@ interface AppsView {
 
 class AppsViewImpl(
         private val view: View,
-        private val adapter: SimpleRecyclerAdapter
+        private val adapter: SimpleRecyclerAdapter,
+        private val preferences: PreferencesProvider
 ) : AppsView {
 
     private val context = view.context
@@ -84,6 +87,18 @@ class AppsViewImpl(
     override fun infoClicks(): Observable<Unit> = infoRelay
 
     override fun showAppMenu(id: Long) {
+        val theme = R.style.AppTheme_BottomSheetDialog_Dark.takeIf { preferences.isDarkTheme() }
+                ?: R.style.AppTheme_BottomSheetDialog_Light
+        BottomSheetBuilder(view.context, theme)
+                .setMode(BottomSheetBuilder.MODE_LIST)
+                .setItemTextColorResource(getAttributedColor(context, R.attr.text_primary_color))
+                .setIconTintColorResource(getAttributedColor(context, R.attr.menu_icons_tint))
+                .apply {
+                }
+                .setItemClickListener {
+                }
+                .createDialog()
+                .show()
     }
 
 }
