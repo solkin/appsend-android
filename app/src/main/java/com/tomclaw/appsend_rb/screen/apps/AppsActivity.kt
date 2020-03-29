@@ -22,6 +22,9 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
     lateinit var adapterPresenter: AdapterPresenter
 
     @Inject
+    lateinit var preferences: PreferencesProvider
+
+    @Inject
     lateinit var binder: ItemBinder
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +37,7 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         setContentView(R.layout.apps_activity)
 
         val adapter = SimpleRecyclerAdapter(adapterPresenter, binder)
-        val view = AppsViewImpl(window.decorView, adapter)
+        val view = AppsViewImpl(window.decorView, adapter, preferences)
 
         presenter.attachView(view)
     }

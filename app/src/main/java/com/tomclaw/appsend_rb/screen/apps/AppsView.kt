@@ -94,6 +94,13 @@ class AppsViewImpl(
                 .setItemTextColorResource(getAttributedColor(context, R.attr.text_primary_color))
                 .setIconTintColorResource(getAttributedColor(context, R.attr.menu_icons_tint))
                 .apply {
+                    addItem(0, R.string.run_app, R.drawable.run)
+                    addItem(1, R.string.find_on_gp, R.drawable.google_play)
+                    addItem(2, R.string.share_apk, R.drawable.share)
+                    addItem(3, R.string.extract_apk, R.drawable.floppy)
+                    addItem(4, R.string.required_permissions, R.drawable.lock_open)
+                    addItem(5, R.string.app_details, R.drawable.settings_box)
+                    addItem(6, R.string.remove, R.drawable.delete)
                 }
                 .setItemClickListener {
                 }
