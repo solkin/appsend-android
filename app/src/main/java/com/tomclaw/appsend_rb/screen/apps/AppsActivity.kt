@@ -11,6 +11,8 @@ import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.SettingsActivity
 import com.tomclaw.appsend_rb.getComponent
 import com.tomclaw.appsend_rb.screen.apps.di.AppsModule
+import com.tomclaw.appsend_rb.util.updateStatusBar
+import com.tomclaw.appsend_rb.util.updateTheme
 import javax.inject.Inject
 
 class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
@@ -33,6 +35,8 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
                 .appsComponent(AppsModule(this, presenterState))
                 .inject(activity = this)
 
+        updateTheme(preferences)
+        updateStatusBar()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.apps_activity)
 

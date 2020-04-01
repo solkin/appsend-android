@@ -91,8 +91,8 @@ class AppsViewImpl(
                 ?: R.style.AppTheme_BottomSheetDialog_Light
         BottomSheetBuilder(view.context, theme)
                 .setMode(BottomSheetBuilder.MODE_LIST)
-                .setItemTextColor(getAttributedColor(context, R.attr.text_primary_color))
                 .setIconTintColor(getAttributedColor(context, R.attr.menu_icons_tint))
+                .setItemTextColor(getAttributedColor(context, R.attr.text_primary_color))
                 .apply {
                     addItem(0, R.string.run_app, R.drawable.run)
                     addItem(1, R.string.find_on_gp, R.drawable.google_play)
