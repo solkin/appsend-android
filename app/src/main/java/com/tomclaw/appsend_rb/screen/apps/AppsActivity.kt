@@ -29,13 +29,15 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
     @Inject
     lateinit var binder: ItemBinder
 
+    private var isDarkTheme: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         val presenterState = savedInstanceState?.getBundle(KEY_PRESENTER_STATE)
         application.getComponent()
                 .appsComponent(AppsModule(this, presenterState))
                 .inject(activity = this)
 
-        updateTheme(preferences)
+        isDarkTheme = updateTheme(preferences)
         updateStatusBar()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.apps_activity)
@@ -58,6 +60,15 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
     override fun onStop() {
         presenter.detachRouter()
         super.onStop()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (isDarkTheme != preferences.isDarkTheme()) {
+            val intent = intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            finish()
+            startActivity(intent)
+        }
     }
 
     override fun onDestroy() {
