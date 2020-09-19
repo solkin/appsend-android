@@ -28,6 +28,8 @@ interface AppsView {
 
     fun infoClicks(): Observable<Unit>
 
+    fun appMenuClicks(): Observable<Int>
+
     fun showAppMenu(id: Long)
 
 }
@@ -46,6 +48,7 @@ class AppsViewImpl(
     private val refreshRelay = PublishRelay.create<Unit>()
     private val prefsRelay = PublishRelay.create<Unit>()
     private val infoRelay = PublishRelay.create<Unit>()
+    private val appMenuRelay = PublishRelay.create<Int>()
 
     init {
         toolbar.setTitle(R.string.app_name)
@@ -86,6 +89,8 @@ class AppsViewImpl(
 
     override fun infoClicks(): Observable<Unit> = infoRelay
 
+    override fun appMenuClicks(): Observable<Int> = appMenuRelay
+
     override fun showAppMenu(id: Long) {
         val theme = R.style.AppTheme_BottomSheetDialog_Dark.takeIf { preferences.isDarkTheme() }
                 ?: R.style.AppTheme_BottomSheetDialog_Light
@@ -94,18 +99,27 @@ class AppsViewImpl(
                 .setIconTintColor(getAttributedColor(context, R.attr.menu_icons_tint))
                 .setItemTextColor(getAttributedColor(context, R.attr.text_primary_color))
                 .apply {
-                    addItem(0, R.string.run_app, R.drawable.run)
-                    addItem(1, R.string.find_on_gp, R.drawable.google_play)
-                    addItem(2, R.string.share_apk, R.drawable.share)
-                    addItem(3, R.string.extract_apk, R.drawable.floppy)
-                    addItem(4, R.string.required_permissions, R.drawable.lock_open)
-                    addItem(5, R.string.app_details, R.drawable.settings_box)
-                    addItem(6, R.string.remove, R.drawable.delete)
+                    addItem(ACTION_RUN_APP, R.string.run_app, R.drawable.run)
+                    addItem(ACTION_FIND_IN_GP, R.string.find_on_gp, R.drawable.google_play)
+                    addItem(ACTION_SHARE_APP, R.string.share_apk, R.drawable.share)
+                    addItem(ACTION_EXTRACT_APP, R.string.extract_apk, R.drawable.floppy)
+                    addItem(ACTION_SHOW_PERMISSIONS, R.string.required_permissions, R.drawable.lock_open)
+                    addItem(ACTION_SHOW_DETAILS, R.string.app_details, R.drawable.settings_box)
+                    addItem(ACTION_REMOVE_APP, R.string.remove, R.drawable.delete)
                 }
                 .setItemClickListener {
+                    appMenuRelay.accept(it.itemId)
                 }
                 .createDialog()
                 .show()
     }
 
 }
+
+const val ACTION_RUN_APP = 0
+const val ACTION_FIND_IN_GP = 1
+const val ACTION_SHARE_APP = 2
+const val ACTION_EXTRACT_APP = 3
+const val ACTION_SHOW_PERMISSIONS = 4
+const val ACTION_SHOW_DETAILS = 5
+const val ACTION_REMOVE_APP = 6
