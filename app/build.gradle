@@ -18,7 +18,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 30
         versionCode = project.hasProperty("versionCode") ? Integer.parseInt(project.versionCode) : 1
-        versionName = "1.0"
+        versionName = "2.0"
         manifestPlaceholders = [
                 APPCENTER_APP_ID: "b23ac4e6-fe78-43b4-9ec1-a61c7ed7d495"
         ]
