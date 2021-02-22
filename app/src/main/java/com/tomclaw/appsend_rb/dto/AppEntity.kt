@@ -7,7 +7,7 @@ class AppEntity(
         val label: String,
         val packageName: String,
         val versionName: String,
-        val versionCode: Int,
+        val versionCode: Long,
         val path: String,
         val size: Long,
         val firstInstallTime: Long,
@@ -18,7 +18,7 @@ class AppEntity(
         writeString(label)
         writeString(packageName)
         writeString(versionName)
-        writeInt(versionCode)
+        writeLong(versionCode)
         writeString(path)
         writeLong(size)
         writeLong(firstInstallTime)
@@ -32,7 +32,7 @@ class AppEntity(
             val label = parcel.readString().orEmpty()
             val packageName = parcel.readString().orEmpty()
             val versionName = parcel.readString().orEmpty()
-            val versionCode = parcel.readInt()
+            val versionCode = parcel.readLong()
             val path = parcel.readString().orEmpty()
             val size = parcel.readLong()
             val firstInstallTime = parcel.readLong()

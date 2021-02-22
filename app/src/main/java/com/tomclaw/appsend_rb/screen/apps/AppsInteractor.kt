@@ -1,5 +1,6 @@
 package com.tomclaw.appsend_rb.screen.apps
 
+import android.os.Build
 import com.tomclaw.appsend_rb.dto.AppEntity
 import com.tomclaw.appsend_rb.util.SchedulersFactory
 import io.reactivex.Observable
@@ -47,11 +48,17 @@ class AppsInteractorImpl(
                 val packageInfo = packageManager.getPackageInfo(info.packageName, GET_PERMISSIONS)
                 val file = File(info.publicSourceDir)
                 if (file.exists()) {
+                    val versionCode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                        packageInfo.longVersionCode
+                    } else {
+                        @Suppress("DEPRECATION")
+                        packageInfo.versionCode.toLong()
+                    }
                     val entity = AppEntity(
                             label = packageManager.getApplicationLabel(info),
                             packageName = info.packageName,
                             versionName = packageInfo.versionName,
-                            versionCode = packageInfo.versionCode,
+                            versionCode = versionCode,
                             path = file.path,
                             size = file.length(),
                             firstInstallTime = packageInfo.firstInstallTime,
