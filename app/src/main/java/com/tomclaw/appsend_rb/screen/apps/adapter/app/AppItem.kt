@@ -32,14 +32,14 @@ class AppItem(
     companion object CREATOR : Parcelable.Creator<AppItem> {
         override fun createFromParcel(parcel: Parcel): AppItem {
             val id = parcel.readLong()
-            val icon = parcel.readParcelable(AppIconData::class.java.classLoader) as AppIconData
+            val icon = parcel.readParcelable(AppIconData::class.java.classLoader) as AppIconData?
             val name = parcel.readString().orEmpty()
             val size = parcel.readString().orEmpty()
             val firstInstallTime = parcel.readString().orEmpty()
             val lastUpdateTime = parcel.readString().orEmpty()
             val versionName = parcel.readString().orEmpty()
             val versionCode = parcel.readInt()
-            return AppItem(id, icon, name, size, firstInstallTime, lastUpdateTime, versionName, versionCode)
+            return AppItem(id, icon!!, name, size, firstInstallTime, lastUpdateTime, versionName, versionCode)
         }
 
         override fun newArray(size: Int): Array<AppItem?> {
