@@ -71,11 +71,11 @@ class AppsInteractorImpl(
             }
         }
         when (sortOrder) {
-            NAME_ASCENDING -> entities.sortWith(Comparator { lhs: AppEntity, rhs: AppEntity -> lhs.label.toUpperCase(locale).compareTo(rhs.label.toUpperCase(locale)) })
-            NAME_DESCENDING -> entities.sortWith(Comparator { lhs: AppEntity, rhs: AppEntity -> rhs.label.toUpperCase(locale).compareTo(lhs.label.toUpperCase(locale)) })
-            APP_SIZE -> entities.sortWith(Comparator { lhs: AppEntity, rhs: AppEntity -> rhs.size.compareTo(lhs.size) })
-            INSTALL_TIME -> entities.sortWith(Comparator { lhs: AppEntity, rhs: AppEntity -> rhs.firstInstallTime.compareTo(lhs.firstInstallTime) })
-            UPDATE_TIME -> entities.sortWith(Comparator { lhs: AppEntity, rhs: AppEntity -> rhs.lastUpdateTime.compareTo(lhs.lastUpdateTime) })
+            NAME_ASCENDING -> entities.sortWith { lhs: AppEntity, rhs: AppEntity -> lhs.label.toUpperCase(locale).compareTo(rhs.label.toUpperCase(locale)) }
+            NAME_DESCENDING -> entities.sortWith { lhs: AppEntity, rhs: AppEntity -> rhs.label.toUpperCase(locale).compareTo(lhs.label.toUpperCase(locale)) }
+            APP_SIZE -> entities.sortWith { lhs: AppEntity, rhs: AppEntity -> rhs.size.compareTo(lhs.size) }
+            INSTALL_TIME -> entities.sortWith { lhs: AppEntity, rhs: AppEntity -> rhs.firstInstallTime.compareTo(lhs.firstInstallTime) }
+            UPDATE_TIME -> entities.sortWith { lhs: AppEntity, rhs: AppEntity -> rhs.lastUpdateTime.compareTo(lhs.lastUpdateTime) }
         }
 
         return entities
