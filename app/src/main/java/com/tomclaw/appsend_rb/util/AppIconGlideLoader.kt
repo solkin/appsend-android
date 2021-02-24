@@ -51,14 +51,12 @@ class AppIconGlideLoader(private val packageManager: PackageManager) : ModelLoad
     }
 
     private fun drawableToBitmap(drawable: Drawable): Bitmap {
-        val bitmap: Bitmap
         if (drawable is BitmapDrawable) {
-            val bitmapDrawable = drawable
-            if (bitmapDrawable.bitmap != null) {
-                return bitmapDrawable.bitmap
+            if (drawable.bitmap != null) {
+                return drawable.bitmap
             }
         }
-        bitmap = if (drawable.intrinsicWidth <= 0 || drawable.intrinsicHeight <= 0) {
+        val bitmap: Bitmap = if (drawable.intrinsicWidth <= 0 || drawable.intrinsicHeight <= 0) {
             Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
         } else {
             Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
