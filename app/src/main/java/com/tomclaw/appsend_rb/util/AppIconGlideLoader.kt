@@ -71,7 +71,7 @@ class AppIconGlideLoader(private val packageManager: PackageManager) : ModelLoad
         return true
     }
 
-    private class IconKey internal constructor(private val iconData: AppIconData) : Key {
+    private class IconKey(private val iconData: AppIconData) : Key {
         override fun updateDiskCacheKey(messageDigest: MessageDigest) {
             messageDigest.update((iconData.packageName + iconData.versionCode).toByteArray())
         }
