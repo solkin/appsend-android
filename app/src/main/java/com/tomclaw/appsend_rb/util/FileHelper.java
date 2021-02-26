@@ -65,6 +65,7 @@ public class FileHelper {
         }
     }
 
+    @SuppressLint("DefaultLocale")
     public static String formatSpeed(float bytesPerSecond) {
         float bitsPerSecond = bytesPerSecond * 8;
         int unit = 1000;
@@ -83,8 +84,7 @@ public class FileHelper {
 
     @SuppressLint("NewApi")
     public static File getExternalDirectory() {
-        File externalDirectory = Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ?
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) : Environment.getExternalStorageDirectory();
+        File externalDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         File directory = new File(externalDirectory, "Apps");
         directory.mkdirs();
         return directory;
