@@ -2,6 +2,7 @@
 *.zip
 *.apk
 *.iml
+.DS_Store
 
 # IDE folders #
 gen/

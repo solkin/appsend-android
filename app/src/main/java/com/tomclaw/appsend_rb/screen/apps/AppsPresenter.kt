@@ -11,6 +11,7 @@ import com.tomclaw.appsend_rb.util.SchedulersFactory
 import dagger.Lazy
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
+import java.io.File
 
 interface AppsPresenter : ItemClickListener {
 
@@ -41,6 +42,8 @@ interface AppsPresenter : ItemClickListener {
         fun showAppDetails(packageName: String)
 
         fun runAppUninstall(packageName: String)
+
+        fun shareApk(file: File)
 
     }
 
@@ -90,6 +93,7 @@ class AppsPresenterImpl(
                         if (!result) view?.showAppLaunchError()
                     }
             ACTION_FIND_IN_GP -> router?.openGooglePlay(item.packageName)
+            ACTION_SHARE_APP -> shareApp(item)
             ACTION_SHOW_DETAILS -> router?.showAppDetails(item.packageName)
             ACTION_REMOVE_APP -> router?.runAppUninstall(item.packageName)
         }
@@ -132,6 +136,19 @@ class AppsPresenterImpl(
         val dataSource = ListDataSource(items)
         adapterPresenter.get().onDataSourceChanged(dataSource)
         view?.contentUpdated()
+    }
+
+    private fun shareApp(item: AppItem) {
+        val entity = entities?.find { it.packageName == item.packageName } ?: return
+        subscriptions += interactor.exportApp(entity)
+                .observeOn(schedulers.mainThread())
+                .doOnSubscribe { view?.showProgress() }
+                .doAfterTerminate { view?.showContent() }
+                .subscribe({ file ->
+                    router?.shareApk(file)
+                }, {
+                    view?.showAppExportError()
+                })
     }
 
     override fun saveState() = Bundle().apply {

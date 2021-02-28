@@ -37,6 +37,8 @@ interface AppsView {
 
     fun showAppLaunchError()
 
+    fun showAppExportError()
+
 }
 
 class AppsViewImpl(
@@ -121,6 +123,10 @@ class AppsViewImpl(
 
     override fun showAppLaunchError() {
         Snackbar.make(recycler, R.string.non_launchable_package, Snackbar.LENGTH_LONG).show()
+    }
+
+    override fun showAppExportError() {
+        Snackbar.make(recycler, R.string.app_extract_failed, Snackbar.LENGTH_LONG).show()
     }
 
 }

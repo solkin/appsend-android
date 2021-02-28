@@ -12,11 +12,11 @@ android {
             if (project.hasProperty("keyPassword")) keyPassword project.keyPassword
         }
     }
-    compileSdkVersion 30
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.tomclaw.appsend_rb"
         minSdkVersion 16
-        targetSdkVersion 30
+        targetSdkVersion 28
         versionCode = project.hasProperty("versionCode") ? Integer.parseInt(project.versionCode) : 1
         versionName = "2.0"
         manifestPlaceholders = [

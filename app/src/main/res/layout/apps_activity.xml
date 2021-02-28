@@ -12,13 +12,13 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize">
 
-        <include layout="@layout/progress_view" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false" />
+
+        <include layout="@layout/progress_view" />
 
     </FrameLayout>
 

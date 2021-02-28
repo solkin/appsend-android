@@ -2,10 +2,12 @@ package com.tomclaw.appsend_rb.screen.apps
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.content.Intent.*
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import com.avito.konveyor.ItemBinder
 import com.avito.konveyor.adapter.AdapterPresenter
 import com.avito.konveyor.adapter.SimpleRecyclerAdapter
@@ -14,8 +16,8 @@ import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.SettingsActivity
 import com.tomclaw.appsend_rb.getComponent
 import com.tomclaw.appsend_rb.screen.apps.di.AppsModule
-import com.tomclaw.appsend_rb.util.updateStatusBar
-import com.tomclaw.appsend_rb.util.updateTheme
+import com.tomclaw.appsend_rb.util.*
+import java.io.File
 import javax.inject.Inject
 
 class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
@@ -68,7 +70,7 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
     override fun onResume() {
         super.onResume()
         if (isDarkTheme != preferences.isDarkTheme()) {
-            val intent = intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            val intent = intent.addFlags(FLAG_ACTIVITY_NO_ANIMATION)
             finish()
             startActivity(intent)
         }
@@ -112,18 +114,18 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
 
     override fun openGooglePlay(packageName: String) {
         try {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
+            startActivity(Intent(ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
         } catch (ex: ActivityNotFoundException) {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
+            startActivity(Intent(ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
         }
     }
 
     override fun showAppDetails(packageName: String) {
         val intent = Intent()
                 .setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                .addCategory(Intent.CATEGORY_DEFAULT)
+                .addCategory(CATEGORY_DEFAULT)
                 .setData(Uri.parse("package:$packageName"))
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                .addFlags(FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
 
@@ -131,6 +133,22 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         val packageUri = Uri.parse("package:$packageName")
         val uninstallIntent = Intent(Intent.ACTION_DELETE, packageUri)
         startActivity(uninstallIntent)
+    }
+
+    override fun shareApk(file: File) {
+        val uri: Uri = if (isFileProviderUri()) {
+            FileProvider.getUriForFile(this, "$packageName.provider", file)
+        } else {
+            Uri.fromFile(file)
+        }
+        val intent = Intent().apply {
+            action = ACTION_SEND
+            putExtra(EXTRA_TEXT, file.name)
+            putExtra(EXTRA_STREAM, uri)
+            type = "application/zip"
+        }
+        grantProviderUriPermission(this, uri, intent)
+        startActivity(createChooser(intent, resources.getText(R.string.send_to)))
     }
 
 }

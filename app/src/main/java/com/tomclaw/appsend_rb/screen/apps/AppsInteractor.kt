@@ -1,17 +1,22 @@
 package com.tomclaw.appsend_rb.screen.apps
 
 import android.os.Build
+import android.os.Environment
+import android.os.Environment.DIRECTORY_DOWNLOADS
 import com.tomclaw.appsend_rb.dto.AppEntity
 import com.tomclaw.appsend_rb.util.SchedulersFactory
+import com.tomclaw.appsend_rb.util.getApkName
+import com.tomclaw.appsend_rb.util.safeClose
 import io.reactivex.Observable
 import io.reactivex.Single
-import java.io.File
-import java.util.ArrayList
-import java.util.Locale
+import java.io.*
+import java.util.*
 
 interface AppsInteractor {
 
     fun loadApps(systemApps: Boolean, runnableOnly: Boolean, sortOrder: Int): Observable<List<AppEntity>>
+
+    fun exportApp(entity: AppEntity): Observable<File>
 
 }
 
@@ -88,6 +93,47 @@ class AppsInteractorImpl(
         return entities
     }
 
+    override fun exportApp(entity: AppEntity): Observable<File> {
+        return Single
+                .create<File> { emitter ->
+                    val file = File(entity.path)
+                    val directory = File(
+                            Environment.getExternalStoragePublicDirectory(DIRECTORY_DOWNLOADS),
+                            APPS_DIR_NAME
+                    )
+                    if (!(directory.exists() || directory.mkdirs())) {
+                        emitter.onError(IOException("unable to create directory"))
+                        return@create
+                    }
+                    val destination = File(directory, getApkName(entity))
+                    if (destination.exists() && !destination.delete()) {
+                        emitter.onError(IOException("unable to delete destination file"))
+                        return@create
+                    }
+                    val buffer = ByteArray(524288)
+                    var inputStream: InputStream? = null
+                    var outputStream: OutputStream? = null
+                    try {
+                        inputStream = FileInputStream(file)
+                        outputStream = FileOutputStream(destination)
+                        var read: Int
+                        while (inputStream.read(buffer).also { read = it } != -1) {
+                            outputStream.write(buffer, 0, read)
+                        }
+                        outputStream.flush()
+                    } catch (ex: Throwable) {
+                        emitter.onError(ex)
+                        return@create
+                    } finally {
+                        outputStream.safeClose()
+                        inputStream.safeClose()
+                    }
+                    emitter.onSuccess(destination)
+                }
+                .toObservable()
+                .subscribeOn(schedulers.io())
+    }
+
 }
 
 const val NAME_ASCENDING = 1
@@ -95,3 +141,5 @@ const val NAME_DESCENDING = 2
 const val APP_SIZE = 3
 const val INSTALL_TIME = 4
 const val UPDATE_TIME = 5
+
+const val APPS_DIR_NAME = "Apps"
