@@ -71,7 +71,7 @@ class AppsPresenterImpl(
 
     override fun attachView(view: AppsView) {
         this.view = view
-        subscriptions += view.refreshClicks().subscribe { }
+        subscriptions += view.refreshClicks().subscribe { loadAppItems() }
         subscriptions += view.prefsClicks().subscribe { onPrefsClicked() }
         subscriptions += view.infoClicks().subscribe { onInfoClicked() }
         subscriptions += view.appMenuClicks().subscribe { onAppMenuClicked(it) }
