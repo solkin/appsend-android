@@ -16,6 +16,7 @@ class AppEntityConverterImpl(private val resourceProvider: ResourceProvider) : A
     override fun convert(id: Long, entity: AppEntity): Item = AppItem(
             id = id,
             icon = AppIconData(entity.packageName, entity.versionCode),
+            packageName = entity.packageName,
             name = entity.label,
             size = resourceProvider.formatBytes(entity.size),
             firstInstallTime = resourceProvider.formatTime(entity.firstInstallTime),

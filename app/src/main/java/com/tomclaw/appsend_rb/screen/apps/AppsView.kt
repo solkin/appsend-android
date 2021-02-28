@@ -9,6 +9,8 @@ import com.avito.konveyor.adapter.SimpleRecyclerAdapter
 import com.github.rubensousa.bottomsheetbuilder.BottomSheetBuilder
 import com.jakewharton.rxrelay2.PublishRelay
 import com.tomclaw.appsend_rb.R
+import com.tomclaw.appsend_rb.dto.AppEntity
+import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItem
 import com.tomclaw.appsend_rb.util.ColorHelper.getAttributedColor
 import com.tomclaw.appsend_rb.util.hideWithAlphaAnimation
 import com.tomclaw.appsend_rb.util.showWithAlphaAnimation
@@ -28,9 +30,9 @@ interface AppsView {
 
     fun infoClicks(): Observable<Unit>
 
-    fun appMenuClicks(): Observable<Int>
+    fun appMenuClicks(): Observable<Pair<Int, AppItem>>
 
-    fun showAppMenu(id: Long)
+    fun showAppMenu(item: AppItem)
 
 }
 
@@ -48,7 +50,7 @@ class AppsViewImpl(
     private val refreshRelay = PublishRelay.create<Unit>()
     private val prefsRelay = PublishRelay.create<Unit>()
     private val infoRelay = PublishRelay.create<Unit>()
-    private val appMenuRelay = PublishRelay.create<Int>()
+    private val appMenuRelay = PublishRelay.create<Pair<Int, AppItem>>()
 
     init {
         toolbar.setTitle(R.string.app_name)
@@ -89,9 +91,9 @@ class AppsViewImpl(
 
     override fun infoClicks(): Observable<Unit> = infoRelay
 
-    override fun appMenuClicks(): Observable<Int> = appMenuRelay
+    override fun appMenuClicks(): Observable<Pair<Int, AppItem>> = appMenuRelay
 
-    override fun showAppMenu(id: Long) {
+    override fun showAppMenu(item: AppItem) {
         val theme = R.style.AppTheme_BottomSheetDialog_Dark.takeIf { preferences.isDarkTheme() }
                 ?: R.style.AppTheme_BottomSheetDialog_Light
         BottomSheetBuilder(view.context, theme)
@@ -108,7 +110,7 @@ class AppsViewImpl(
                     addItem(ACTION_REMOVE_APP, R.string.remove, R.drawable.delete)
                 }
                 .setItemClickListener {
-                    appMenuRelay.accept(it.itemId)
+                    appMenuRelay.accept(Pair(it.itemId, item))
                 }
                 .createDialog()
                 .show()

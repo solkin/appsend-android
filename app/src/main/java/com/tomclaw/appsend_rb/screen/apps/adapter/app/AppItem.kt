@@ -8,6 +8,7 @@ import com.tomclaw.appsend_rb.util.AppIconData
 class AppItem(
         override val id: Long,
         val icon: AppIconData,
+        val packageName: String,
         val name: String,
         val size: String,
         val firstInstallTime: String,
@@ -19,6 +20,7 @@ class AppItem(
     override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
         writeLong(id)
         writeParcelable(icon, 0)
+        writeString(packageName)
         writeString(name)
         writeString(size)
         writeString(firstInstallTime)
@@ -34,12 +36,13 @@ class AppItem(
             val id = parcel.readLong()
             val icon = parcel.readParcelable(AppIconData::class.java.classLoader) as AppIconData?
             val name = parcel.readString().orEmpty()
+            val packageName = parcel.readString().orEmpty()
             val size = parcel.readString().orEmpty()
             val firstInstallTime = parcel.readString().orEmpty()
             val lastUpdateTime = parcel.readString().orEmpty()
             val versionName = parcel.readString().orEmpty()
             val versionCode = parcel.readLong()
-            return AppItem(id, icon!!, name, size, firstInstallTime, lastUpdateTime, versionName, versionCode)
+            return AppItem(id, icon!!, packageName, name, size, firstInstallTime, lastUpdateTime, versionName, versionCode)
         }
 
         override fun newArray(size: Int): Array<AppItem?> {

@@ -34,6 +34,8 @@ interface AppsPresenter : ItemClickListener {
 
         fun leaveScreen()
 
+        fun runApp(packageName: String)
+
     }
 
 }
@@ -59,6 +61,7 @@ class AppsPresenterImpl(
         subscriptions += view.refreshClicks().subscribe { }
         subscriptions += view.prefsClicks().subscribe { onPrefsClicked() }
         subscriptions += view.infoClicks().subscribe { onInfoClicked() }
+        subscriptions += view.appMenuClicks().subscribe { onAppMenuClicked(it) }
 
         entities.takeIf { it != null }
                 ?.run { bindAppEntities(this) }
@@ -71,6 +74,13 @@ class AppsPresenterImpl(
 
     private fun onInfoClicked() {
         router?.showInfoScreen()
+    }
+
+    private fun onAppMenuClicked(pair: Pair<Int, AppItem>) {
+        val item = pair.second
+        when (pair.first) {
+            ACTION_RUN_APP -> router?.runApp(item.packageName)
+        }
     }
 
     override fun detachView() {
@@ -88,10 +98,10 @@ class AppsPresenterImpl(
 
     private fun loadAppItems() {
         subscriptions += interactor.loadApps(
-                        systemApps = preferences.isShowSystemApps(),
-                        runnableOnly = preferences.isRunnableOnly(),
-                        sortOrder = preferences.getSortOrder()
-                )
+                systemApps = preferences.isShowSystemApps(),
+                runnableOnly = preferences.isRunnableOnly(),
+                sortOrder = preferences.getSortOrder()
+        )
                 .observeOn(schedulers.mainThread())
                 .doOnSubscribe { view?.showProgress() }
                 .doAfterTerminate { view?.showContent() }
@@ -122,7 +132,7 @@ class AppsPresenterImpl(
 
     override fun onItemClick(item: Item) {
         when (item) {
-            is AppItem -> view?.showAppMenu(item.id)
+            is AppItem -> view?.showAppMenu(item)
         }
     }
 

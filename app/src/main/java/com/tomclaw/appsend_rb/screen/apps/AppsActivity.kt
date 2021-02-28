@@ -101,6 +101,10 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         finish()
     }
 
+    override fun runApp(packageName: String) {
+        TODO("Not yet implemented")
+    }
+
 }
 
 private const val KEY_PRESENTER_STATE = "presenter_state"
