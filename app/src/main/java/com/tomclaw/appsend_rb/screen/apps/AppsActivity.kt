@@ -127,6 +127,12 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         startActivity(intent)
     }
 
+    override fun runAppUninstall(packageName: String) {
+        val packageUri = Uri.parse("package:$packageName")
+        val uninstallIntent = Intent(Intent.ACTION_DELETE, packageUri)
+        startActivity(uninstallIntent)
+    }
+
 }
 
 private const val KEY_PRESENTER_STATE = "presenter_state"

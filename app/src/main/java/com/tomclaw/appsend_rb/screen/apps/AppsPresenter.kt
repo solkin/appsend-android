@@ -40,6 +40,8 @@ interface AppsPresenter : ItemClickListener {
 
         fun showAppDetails(packageName: String)
 
+        fun runAppUninstall(packageName: String)
+
     }
 
 }
@@ -89,6 +91,7 @@ class AppsPresenterImpl(
                     }
             ACTION_FIND_IN_GP -> router?.openGooglePlay(item.packageName)
             ACTION_SHOW_DETAILS -> router?.showAppDetails(item.packageName)
+            ACTION_REMOVE_APP -> router?.runAppUninstall(item.packageName)
         }
     }
 
