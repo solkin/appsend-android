@@ -36,6 +36,8 @@ interface AppsPresenter : ItemClickListener {
 
         fun runApp(packageName: String): Boolean
 
+        fun openGooglePlay(packageName: String)
+
     }
 
 }
@@ -83,6 +85,7 @@ class AppsPresenterImpl(
                     ?.let { result ->
                         if (!result) view?.showAppLaunchError()
                     }
+            ACTION_FIND_IN_GP -> router?.openGooglePlay(item.packageName)
         }
     }
 

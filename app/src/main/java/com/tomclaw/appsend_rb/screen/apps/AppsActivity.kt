@@ -1,13 +1,13 @@
 package com.tomclaw.appsend_rb.screen.apps
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.avito.konveyor.ItemBinder
 import com.avito.konveyor.adapter.AdapterPresenter
 import com.avito.konveyor.adapter.SimpleRecyclerAdapter
-import com.google.android.material.snackbar.Snackbar
 import com.tomclaw.appsend_rb.AboutActivity
 import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.SettingsActivity
@@ -107,6 +107,14 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         val launchIntent = packageManager.getLaunchIntentForPackage(packageName)
         launchIntent?.run { startActivity(launchIntent) }
         return launchIntent != null
+    }
+
+    override fun openGooglePlay(packageName: String) {
+        try {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
+        } catch (ex: ActivityNotFoundException) {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
+        }
     }
 
 }
