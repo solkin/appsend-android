@@ -1,5 +1,8 @@
 package com.tomclaw.appsend_rb.screen.apps
 
+import android.os.Build
+import android.text.Html
+import android.text.Html.FROM_HTML_MODE_COMPACT
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -34,6 +37,8 @@ interface AppsView {
     fun appMenuClicks(): Observable<Pair<Int, AppItem>>
 
     fun showAppMenu(item: AppItem)
+
+    fun showExtractSuccess(path: String)
 
     fun showAppLaunchError()
 
@@ -119,6 +124,16 @@ class AppsViewImpl(
                 }
                 .createDialog()
                 .show()
+    }
+
+    override fun showExtractSuccess(path: String) {
+        val text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Html.fromHtml(context.getString(R.string.app_extract_success, path), FROM_HTML_MODE_COMPACT)
+        } else {
+            @Suppress("DEPRECATION")
+            Html.fromHtml(context.getString(R.string.app_extract_success, path))
+        }
+        Snackbar.make(recycler, text, Snackbar.LENGTH_LONG).show()
     }
 
     override fun showAppLaunchError() {

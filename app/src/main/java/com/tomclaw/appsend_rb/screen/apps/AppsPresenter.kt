@@ -94,6 +94,7 @@ class AppsPresenterImpl(
                     }
             ACTION_FIND_IN_GP -> router?.openGooglePlay(item.packageName)
             ACTION_SHARE_APP -> shareApp(item)
+            ACTION_EXTRACT_APP -> extractApp(item)
             ACTION_SHOW_DETAILS -> router?.showAppDetails(item.packageName)
             ACTION_REMOVE_APP -> router?.runAppUninstall(item.packageName)
         }
@@ -146,6 +147,19 @@ class AppsPresenterImpl(
                 .doAfterTerminate { view?.showContent() }
                 .subscribe({ file ->
                     router?.shareApk(file)
+                }, {
+                    view?.showAppExportError()
+                })
+    }
+
+    private fun extractApp(item: AppItem) {
+        val entity = entities?.find { it.packageName == item.packageName } ?: return
+        subscriptions += interactor.exportApp(entity)
+                .observeOn(schedulers.mainThread())
+                .doOnSubscribe { view?.showProgress() }
+                .doAfterTerminate { view?.showContent() }
+                .subscribe({ file ->
+                    view?.showExtractSuccess(file.path)
                 }, {
                     view?.showAppExportError()
                 })
