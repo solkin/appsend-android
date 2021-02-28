@@ -1,5 +1,6 @@
 package com.tomclaw.appsend_rb.screen.apps
 
+import android.content.pm.PackageInfo
 import android.os.Build
 import android.os.Environment
 import android.os.Environment.DIRECTORY_DOWNLOADS
@@ -15,6 +16,8 @@ import java.util.*
 interface AppsInteractor {
 
     fun loadApps(systemApps: Boolean, runnableOnly: Boolean, sortOrder: Int): Observable<List<AppEntity>>
+
+    fun loadApp(packageName: String): Observable<AppEntity>
 
     fun exportApp(entity: AppEntity): Observable<File>
 
@@ -41,6 +44,21 @@ class AppsInteractorImpl(
                 .subscribeOn(schedulers.io())
     }
 
+    override fun loadApp(packageName: String): Observable<AppEntity> {
+        return Single
+                .create<AppEntity> { emitter ->
+                    try {
+                        val packageInfo = packageManager.getPackageInfo(packageName, GET_PERMISSIONS)
+                        createAppEntity(packageInfo)?.let { emitter.onSuccess(it) }
+                                ?: emitter.onError(IOException("unable to create app entity"))
+                    } catch (ex: Throwable) {
+                        emitter.onError(ex)
+                    }
+                }
+                .toObservable()
+                .subscribeOn(schedulers.io())
+    }
+
     private fun loadEntities(
             systemApps: Boolean,
             runnableOnly: Boolean,
@@ -51,24 +69,7 @@ class AppsInteractorImpl(
         for (info in packages) {
             try {
                 val packageInfo = packageManager.getPackageInfo(info.packageName, GET_PERMISSIONS)
-                val file = File(info.publicSourceDir)
-                if (file.exists()) {
-                    val versionCode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                        packageInfo.longVersionCode
-                    } else {
-                        @Suppress("DEPRECATION")
-                        packageInfo.versionCode.toLong()
-                    }
-                    val entity = AppEntity(
-                            label = packageManager.getApplicationLabel(info),
-                            packageName = info.packageName,
-                            versionName = packageInfo.versionName,
-                            versionCode = versionCode,
-                            path = file.path,
-                            size = file.length(),
-                            firstInstallTime = packageInfo.firstInstallTime,
-                            lastUpdateTime = packageInfo.lastUpdateTime
-                    )
+                createAppEntity(packageInfo)?.let { entity ->
                     val isUserApp = info.flags and FLAG_SYSTEM != FLAG_SYSTEM &&
                             info.flags and FLAG_UPDATED_SYSTEM_APP != FLAG_UPDATED_SYSTEM_APP
                     if (isUserApp || systemApps) {
@@ -91,6 +92,29 @@ class AppsInteractorImpl(
         }
 
         return entities
+    }
+
+    private fun createAppEntity(packageInfo: PackageInfo): AppEntity? {
+        val file = File(packageInfo.applicationInfo.publicSourceDir)
+        if (file.exists()) {
+            val versionCode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                packageInfo.longVersionCode
+            } else {
+                @Suppress("DEPRECATION")
+                packageInfo.versionCode.toLong()
+            }
+            return AppEntity(
+                    label = packageManager.getApplicationLabel(packageInfo.applicationInfo),
+                    packageName = packageInfo.packageName,
+                    versionName = packageInfo.versionName,
+                    versionCode = versionCode,
+                    path = file.path,
+                    size = file.length(),
+                    firstInstallTime = packageInfo.firstInstallTime,
+                    lastUpdateTime = packageInfo.lastUpdateTime
+            )
+        }
+        return null
     }
 
     override fun exportApp(entity: AppEntity): Observable<File> {

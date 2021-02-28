@@ -27,6 +27,8 @@ interface AppsPresenter : ItemClickListener {
 
     fun onBackPressed()
 
+    fun onResume()
+
     interface AppsRouter {
 
         fun showPrefsScreen()
@@ -63,6 +65,8 @@ class AppsPresenterImpl(
 
     private var entities: List<AppEntity>? = state?.getParcelableArrayList(KEY_ENTITIES)
 
+    private var packageMayBeDeleted: String? = state?.getString(KEY_PACKAGE_MAY_BE_DELETED)
+
     private val subscriptions = CompositeDisposable()
 
     override fun attachView(view: AppsView) {
@@ -92,11 +96,20 @@ class AppsPresenterImpl(
                     ?.let { result ->
                         if (!result) view?.showAppLaunchError()
                     }
-            ACTION_FIND_IN_GP -> router?.openGooglePlay(item.packageName)
+            ACTION_FIND_IN_GP -> {
+                packageMayBeDeleted = item.packageName
+                router?.openGooglePlay(item.packageName)
+            }
             ACTION_SHARE_APP -> shareApp(item)
             ACTION_EXTRACT_APP -> extractApp(item)
-            ACTION_SHOW_DETAILS -> router?.showAppDetails(item.packageName)
-            ACTION_REMOVE_APP -> router?.runAppUninstall(item.packageName)
+            ACTION_SHOW_DETAILS -> {
+                packageMayBeDeleted = item.packageName
+                router?.showAppDetails(item.packageName)
+            }
+            ACTION_REMOVE_APP -> {
+                packageMayBeDeleted = item.packageName
+                router?.runAppUninstall(item.packageName)
+            }
         }
     }
 
@@ -167,10 +180,30 @@ class AppsPresenterImpl(
 
     override fun saveState() = Bundle().apply {
         entities?.let { putParcelableArrayList(KEY_ENTITIES, ArrayList(it)) }
+        packageMayBeDeleted?.let { putString(KEY_PACKAGE_MAY_BE_DELETED, packageMayBeDeleted) }
     }
 
     override fun onBackPressed() {
         router?.leaveScreen()
+    }
+
+    override fun onResume() {
+        packageMayBeDeleted?.let { pkg ->
+            checkAppExist(pkg)
+            packageMayBeDeleted = null
+        }
+    }
+
+    private fun checkAppExist(packageName: String) {
+        subscriptions += interactor.loadApp(packageName)
+                .observeOn(schedulers.mainThread())
+                .subscribe({}, {
+                    entities?.let { actual ->
+                        val entity = actual.find { it.packageName == packageName }
+                                ?: return@subscribe
+                        bindAppEntities(actual - entity)
+                    }
+                })
     }
 
     override fun onItemClick(item: Item) {
@@ -182,3 +215,4 @@ class AppsPresenterImpl(
 }
 
 private const val KEY_ENTITIES = "entities"
+private const val KEY_PACKAGE_MAY_BE_DELETED = "package_may_be_deleted"

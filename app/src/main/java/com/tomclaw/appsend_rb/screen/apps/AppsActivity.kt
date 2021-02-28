@@ -73,6 +73,8 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
             val intent = intent.addFlags(FLAG_ACTIVITY_NO_ANIMATION)
             finish()
             startActivity(intent)
+        } else {
+            presenter.onResume()
         }
     }
 
