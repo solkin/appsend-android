@@ -1,11 +1,13 @@
 package com.tomclaw.appsend_rb.screen.apps
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.avito.konveyor.ItemBinder
 import com.avito.konveyor.adapter.AdapterPresenter
 import com.avito.konveyor.adapter.SimpleRecyclerAdapter
+import com.google.android.material.snackbar.Snackbar
 import com.tomclaw.appsend_rb.AboutActivity
 import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.SettingsActivity
@@ -101,8 +103,10 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         finish()
     }
 
-    override fun runApp(packageName: String) {
-        TODO("Not yet implemented")
+    override fun runApp(packageName: String): Boolean {
+        val launchIntent = packageManager.getLaunchIntentForPackage(packageName)
+        launchIntent?.run { startActivity(launchIntent) }
+        return launchIntent != null
     }
 
 }

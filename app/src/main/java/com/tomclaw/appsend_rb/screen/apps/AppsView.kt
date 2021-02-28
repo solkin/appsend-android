@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.avito.konveyor.adapter.SimpleRecyclerAdapter
 import com.github.rubensousa.bottomsheetbuilder.BottomSheetBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.jakewharton.rxrelay2.PublishRelay
 import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.dto.AppEntity
@@ -33,6 +34,8 @@ interface AppsView {
     fun appMenuClicks(): Observable<Pair<Int, AppItem>>
 
     fun showAppMenu(item: AppItem)
+
+    fun showAppLaunchError()
 
 }
 
@@ -114,6 +117,10 @@ class AppsViewImpl(
                 }
                 .createDialog()
                 .show()
+    }
+
+    override fun showAppLaunchError() {
+        Snackbar.make(recycler, R.string.non_launchable_package, Snackbar.LENGTH_LONG).show()
     }
 
 }

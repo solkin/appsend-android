@@ -34,7 +34,7 @@ interface AppsPresenter : ItemClickListener {
 
         fun leaveScreen()
 
-        fun runApp(packageName: String)
+        fun runApp(packageName: String): Boolean
 
     }
 
@@ -80,6 +80,9 @@ class AppsPresenterImpl(
         val item = pair.second
         when (pair.first) {
             ACTION_RUN_APP -> router?.runApp(item.packageName)
+                    ?.let { result ->
+                        if (!result) view?.showAppLaunchError()
+                    }
         }
     }
 
