@@ -36,9 +36,9 @@
     <string name="sort_order_install_time">By install time</string>
     <string name="sort_order_update_time">By update time</string>
     <string name="pref_summary_sort_order">Apps list sort order variants</string>
-    <string name="extract_apk">Extract APK into Downloads</string>
-    <string name="share_apk">Share APK via apps</string>
-    <string name="upload_apk">Upload APK and get link</string>
+    <string name="extract_apk">Extract apk into Downloads</string>
+    <string name="share_apk">Share apk via apps</string>
+    <string name="upload_apk">Upload apk and get link</string>
     <string name="bluetooth_apk">Send via Bluetooth</string>
     <string name="find_on_gp">Find in Google Play</string>
     <string name="remove_app">Remove application</string>

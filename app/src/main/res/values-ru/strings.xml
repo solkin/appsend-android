@@ -34,7 +34,7 @@
     <string name="sort_order_install_time">Времени установки</string>
     <string name="sort_order_update_time">Времени обновления</string>
     <string name="pref_summary_sort_order">Варианты сортировки списка приложений</string>
-    <string name="extract_apk">Извлечь APK в Downloads</string>
+    <string name="extract_apk">Извлечь apk в Downloads</string>
     <string name="share_apk">Поделиться приложением</string>
     <string name="upload_apk">Загрузить в обменник</string>
     <string name="bluetooth_apk">Отправить по Bluetooth</string>
