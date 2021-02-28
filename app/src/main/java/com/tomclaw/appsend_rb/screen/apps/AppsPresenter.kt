@@ -38,6 +38,8 @@ interface AppsPresenter : ItemClickListener {
 
         fun openGooglePlay(packageName: String)
 
+        fun showAppDetails(packageName: String)
+
     }
 
 }
@@ -86,6 +88,7 @@ class AppsPresenterImpl(
                         if (!result) view?.showAppLaunchError()
                     }
             ACTION_FIND_IN_GP -> router?.openGooglePlay(item.packageName)
+            ACTION_SHOW_DETAILS -> router?.showAppDetails(item.packageName)
         }
     }
 

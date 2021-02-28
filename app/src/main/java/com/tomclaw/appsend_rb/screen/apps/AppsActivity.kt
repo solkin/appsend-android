@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
 import com.avito.konveyor.ItemBinder
 import com.avito.konveyor.adapter.AdapterPresenter
@@ -115,6 +116,15 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         } catch (ex: ActivityNotFoundException) {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
         }
+    }
+
+    override fun showAppDetails(packageName: String) {
+        val intent = Intent()
+                .setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                .addCategory(Intent.CATEGORY_DEFAULT)
+                .setData(Uri.parse("package:$packageName"))
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
     }
 
 }
