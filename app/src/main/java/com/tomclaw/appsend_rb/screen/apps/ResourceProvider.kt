@@ -13,8 +13,8 @@ interface ResourceProvider {
 }
 
 class ResourceProviderImpl(
-        private val context: Context,
-        private val dateFormat: DateFormat
+    private val context: Context,
+    private val dateFormat: DateFormat
 ) : ResourceProvider {
 
     override fun formatBytes(bytes: Long): String {

@@ -14,15 +14,15 @@ interface AppEntityConverter {
 class AppEntityConverterImpl(private val resourceProvider: ResourceProvider) : AppEntityConverter {
 
     override fun convert(id: Long, entity: AppEntity): Item = AppItem(
-            id = id,
-            icon = AppIconData(entity.packageName, entity.versionCode),
-            packageName = entity.packageName,
-            name = entity.label,
-            size = resourceProvider.formatBytes(entity.size),
-            firstInstallTime = resourceProvider.formatTime(entity.firstInstallTime),
-            lastUpdateTime = resourceProvider.formatTime(entity.lastUpdateTime),
-            versionName = entity.versionName,
-            versionCode = entity.versionCode
+        id = id,
+        icon = AppIconData(entity.packageName, entity.versionCode),
+        packageName = entity.packageName,
+        name = entity.label,
+        size = resourceProvider.formatBytes(entity.size),
+        firstInstallTime = resourceProvider.formatTime(entity.firstInstallTime),
+        lastUpdateTime = resourceProvider.formatTime(entity.lastUpdateTime),
+        versionName = entity.versionName,
+        versionCode = entity.versionCode
     )
 
 }

@@ -52,12 +52,12 @@ interface AppsPresenter : ItemClickListener {
 }
 
 class AppsPresenterImpl(
-        private val interactor: AppsInteractor,
-        private val adapterPresenter: Lazy<AdapterPresenter>,
-        private val appEntityConverter: AppEntityConverter,
-        private val preferences: PreferencesProvider,
-        private val schedulers: SchedulersFactory,
-        state: Bundle?
+    private val interactor: AppsInteractor,
+    private val adapterPresenter: Lazy<AdapterPresenter>,
+    private val appEntityConverter: AppEntityConverter,
+    private val preferences: PreferencesProvider,
+    private val schedulers: SchedulersFactory,
+    state: Bundle?
 ) : AppsPresenter {
 
     private var view: AppsView? = null
@@ -77,8 +77,8 @@ class AppsPresenterImpl(
         subscriptions += view.appMenuClicks().subscribe { onAppMenuClicked(it) }
 
         entities.takeIf { it != null }
-                ?.run { bindAppEntities(this) }
-                ?: loadAppItems()
+            ?.run { bindAppEntities(this) }
+            ?: loadAppItems()
     }
 
     private fun onPrefsClicked() {
@@ -93,9 +93,9 @@ class AppsPresenterImpl(
         val item = pair.second
         when (pair.first) {
             ACTION_RUN_APP -> router?.runApp(item.packageName)
-                    ?.let { result ->
-                        if (!result) view?.showAppLaunchError()
-                    }
+                ?.let { result ->
+                    if (!result) view?.showAppLaunchError()
+                }
             ACTION_FIND_IN_GP -> {
                 packageMayBeDeleted = item.packageName
                 router?.openGooglePlay(item.packageName)
@@ -128,25 +128,25 @@ class AppsPresenterImpl(
 
     private fun loadAppItems() {
         subscriptions += interactor.loadApps(
-                systemApps = preferences.isShowSystemApps(),
-                runnableOnly = preferences.isRunnableOnly(),
-                sortOrder = preferences.getSortOrder()
+            systemApps = preferences.isShowSystemApps(),
+            runnableOnly = preferences.isRunnableOnly(),
+            sortOrder = preferences.getSortOrder()
         )
-                .observeOn(schedulers.mainThread())
-                .doOnSubscribe { view?.showProgress() }
-                .doAfterTerminate { view?.showContent() }
-                .subscribe({ entities ->
-                    bindAppEntities(entities)
-                }, {})
+            .observeOn(schedulers.mainThread())
+            .doOnSubscribe { view?.showProgress() }
+            .doAfterTerminate { view?.showContent() }
+            .subscribe({ entities ->
+                bindAppEntities(entities)
+            }, {})
     }
 
     private fun bindAppEntities(entities: List<AppEntity>) {
         this.entities = entities
         var id: Long = 0
         val items = entities
-                .sortedBy { it.lastUpdateTime }
-                .reversed()
-                .map { appEntityConverter.convert(id++, it) }
+            .sortedBy { it.lastUpdateTime }
+            .reversed()
+            .map { appEntityConverter.convert(id++, it) }
         val dataSource = ListDataSource(items)
         adapterPresenter.get().onDataSourceChanged(dataSource)
         view?.contentUpdated()
@@ -155,27 +155,27 @@ class AppsPresenterImpl(
     private fun shareApp(item: AppItem) {
         val entity = entities?.find { it.packageName == item.packageName } ?: return
         subscriptions += interactor.exportApp(entity)
-                .observeOn(schedulers.mainThread())
-                .doOnSubscribe { view?.showProgress() }
-                .doAfterTerminate { view?.showContent() }
-                .subscribe({ file ->
-                    router?.shareApk(file)
-                }, {
-                    view?.showAppExportError()
-                })
+            .observeOn(schedulers.mainThread())
+            .doOnSubscribe { view?.showProgress() }
+            .doAfterTerminate { view?.showContent() }
+            .subscribe({ file ->
+                router?.shareApk(file)
+            }, {
+                view?.showAppExportError()
+            })
     }
 
     private fun extractApp(item: AppItem) {
         val entity = entities?.find { it.packageName == item.packageName } ?: return
         subscriptions += interactor.exportApp(entity)
-                .observeOn(schedulers.mainThread())
-                .doOnSubscribe { view?.showProgress() }
-                .doAfterTerminate { view?.showContent() }
-                .subscribe({ file ->
-                    view?.showExtractSuccess(file.path)
-                }, {
-                    view?.showAppExportError()
-                })
+            .observeOn(schedulers.mainThread())
+            .doOnSubscribe { view?.showProgress() }
+            .doAfterTerminate { view?.showContent() }
+            .subscribe({ file ->
+                view?.showExtractSuccess(file.path)
+            }, {
+                view?.showAppExportError()
+            })
     }
 
     override fun saveState() = Bundle().apply {
@@ -196,14 +196,14 @@ class AppsPresenterImpl(
 
     private fun checkAppExist(packageName: String) {
         subscriptions += interactor.loadApp(packageName)
-                .observeOn(schedulers.mainThread())
-                .subscribe({}, {
-                    entities?.let { actual ->
-                        val entity = actual.find { it.packageName == packageName }
-                                ?: return@subscribe
-                        bindAppEntities(actual - entity)
-                    }
-                })
+            .observeOn(schedulers.mainThread())
+            .subscribe({}, {
+                entities?.let { actual ->
+                    val entity = actual.find { it.packageName == packageName }
+                        ?: return@subscribe
+                    bindAppEntities(actual - entity)
+                }
+            })
     }
 
     override fun onItemClick(item: Item) {

@@ -18,19 +18,20 @@ interface PackageManagerWrapper {
 }
 
 class PackageManagerWrapperImpl(
-        private val packageManager: PackageManager
+    private val packageManager: PackageManager
 ) : PackageManagerWrapper {
 
     override fun getInstalledApplications(flags: Int): List<ApplicationInfo> =
-            packageManager.getInstalledApplications(flags)
+        packageManager.getInstalledApplications(flags)
 
     override fun getPackageInfo(packageName: String, flags: Int): PackageInfo =
-            packageManager.getPackageInfo(packageName, flags)
+        packageManager.getPackageInfo(packageName, flags)
 
-    override fun getApplicationLabel(info: ApplicationInfo) = packageManager.getApplicationLabel(info).toString()
+    override fun getApplicationLabel(info: ApplicationInfo) =
+        packageManager.getApplicationLabel(info).toString()
 
     override fun getLaunchIntentForPackage(packageName: String): Intent? =
-            packageManager.getLaunchIntentForPackage(packageName)
+        packageManager.getLaunchIntentForPackage(packageName)
 
 }
 

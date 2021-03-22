@@ -2,7 +2,14 @@ package com.tomclaw.appsend_rb.screen.apps
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.content.Intent.*
+import android.content.Intent.ACTION_SEND
+import android.content.Intent.ACTION_VIEW
+import android.content.Intent.CATEGORY_DEFAULT
+import android.content.Intent.EXTRA_STREAM
+import android.content.Intent.EXTRA_TEXT
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
+import android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION
+import android.content.Intent.createChooser
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
@@ -16,7 +23,10 @@ import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.SettingsActivity
 import com.tomclaw.appsend_rb.getComponent
 import com.tomclaw.appsend_rb.screen.apps.di.AppsModule
-import com.tomclaw.appsend_rb.util.*
+import com.tomclaw.appsend_rb.util.grantProviderUriPermission
+import com.tomclaw.appsend_rb.util.isFileProviderUri
+import com.tomclaw.appsend_rb.util.updateStatusBar
+import com.tomclaw.appsend_rb.util.updateTheme
 import java.io.File
 import javax.inject.Inject
 
@@ -39,8 +49,8 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
     override fun onCreate(savedInstanceState: Bundle?) {
         val presenterState = savedInstanceState?.getBundle(KEY_PRESENTER_STATE)
         application.getComponent()
-                .appsComponent(AppsModule(this, presenterState))
-                .inject(activity = this)
+            .appsComponent(AppsModule(this, presenterState))
+            .inject(activity = this)
 
         isDarkTheme = updateTheme(preferences)
         updateStatusBar()
@@ -90,16 +100,16 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
 
     override fun showPrefsScreen() {
         val intent = Intent(
-                this,
-                SettingsActivity::class.java
+            this,
+            SettingsActivity::class.java
         )
         startActivity(intent)
     }
 
     override fun showInfoScreen() {
         val intent = Intent(
-                this,
-                AboutActivity::class.java
+            this,
+            AboutActivity::class.java
         )
         startActivity(intent)
     }
@@ -118,16 +128,21 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         try {
             startActivity(Intent(ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
         } catch (ex: ActivityNotFoundException) {
-            startActivity(Intent(ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
+            startActivity(
+                Intent(
+                    ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=$packageName")
+                )
+            )
         }
     }
 
     override fun showAppDetails(packageName: String) {
         val intent = Intent()
-                .setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                .addCategory(CATEGORY_DEFAULT)
-                .setData(Uri.parse("package:$packageName"))
-                .addFlags(FLAG_ACTIVITY_NEW_TASK)
+            .setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+            .addCategory(CATEGORY_DEFAULT)
+            .setData(Uri.parse("package:$packageName"))
+            .addFlags(FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
 

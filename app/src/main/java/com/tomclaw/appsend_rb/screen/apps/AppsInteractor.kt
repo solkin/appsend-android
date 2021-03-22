@@ -15,7 +15,11 @@ import java.util.*
 
 interface AppsInteractor {
 
-    fun loadApps(systemApps: Boolean, runnableOnly: Boolean, sortOrder: Int): Observable<List<AppEntity>>
+    fun loadApps(
+        systemApps: Boolean,
+        runnableOnly: Boolean,
+        sortOrder: Int
+    ): Observable<List<AppEntity>>
 
     fun loadApp(packageName: String): Observable<AppEntity>
 
@@ -24,45 +28,45 @@ interface AppsInteractor {
 }
 
 class AppsInteractorImpl(
-        private val packageManager: PackageManagerWrapper,
-        private val schedulers: SchedulersFactory
+    private val packageManager: PackageManagerWrapper,
+    private val schedulers: SchedulersFactory
 ) : AppsInteractor {
 
     private val locale = Locale.getDefault()
 
     override fun loadApps(
-            systemApps: Boolean,
-            runnableOnly: Boolean,
-            sortOrder: Int
+        systemApps: Boolean,
+        runnableOnly: Boolean,
+        sortOrder: Int
     ): Observable<List<AppEntity>> {
         return Single
-                .create<List<AppEntity>> { emitter ->
-                    val entities = loadEntities(systemApps, runnableOnly, sortOrder)
-                    emitter.onSuccess(entities)
-                }
-                .toObservable()
-                .subscribeOn(schedulers.io())
+            .create<List<AppEntity>> { emitter ->
+                val entities = loadEntities(systemApps, runnableOnly, sortOrder)
+                emitter.onSuccess(entities)
+            }
+            .toObservable()
+            .subscribeOn(schedulers.io())
     }
 
     override fun loadApp(packageName: String): Observable<AppEntity> {
         return Single
-                .create<AppEntity> { emitter ->
-                    try {
-                        val packageInfo = packageManager.getPackageInfo(packageName, GET_PERMISSIONS)
-                        createAppEntity(packageInfo)?.let { emitter.onSuccess(it) }
-                                ?: emitter.onError(IOException("unable to create app entity"))
-                    } catch (ex: Throwable) {
-                        emitter.onError(ex)
-                    }
+            .create<AppEntity> { emitter ->
+                try {
+                    val packageInfo = packageManager.getPackageInfo(packageName, GET_PERMISSIONS)
+                    createAppEntity(packageInfo)?.let { emitter.onSuccess(it) }
+                        ?: emitter.onError(IOException("unable to create app entity"))
+                } catch (ex: Throwable) {
+                    emitter.onError(ex)
                 }
-                .toObservable()
-                .subscribeOn(schedulers.io())
+            }
+            .toObservable()
+            .subscribeOn(schedulers.io())
     }
 
     private fun loadEntities(
-            systemApps: Boolean,
-            runnableOnly: Boolean,
-            sortOrder: Int
+        systemApps: Boolean,
+        runnableOnly: Boolean,
+        sortOrder: Int
     ): List<AppEntity> {
         val entities = ArrayList<AppEntity>()
         val packages = packageManager.getInstalledApplications(GET_META_DATA)
@@ -73,7 +77,8 @@ class AppsInteractorImpl(
                     val isUserApp = info.flags and FLAG_SYSTEM != FLAG_SYSTEM &&
                             info.flags and FLAG_UPDATED_SYSTEM_APP != FLAG_UPDATED_SYSTEM_APP
                     if (isUserApp || systemApps) {
-                        val launchIntent = packageManager.getLaunchIntentForPackage(info.packageName)
+                        val launchIntent =
+                            packageManager.getLaunchIntentForPackage(info.packageName)
                         if (launchIntent != null || !runnableOnly) {
                             entities += entity
                         }
@@ -84,11 +89,27 @@ class AppsInteractorImpl(
             }
         }
         when (sortOrder) {
-            NAME_ASCENDING -> entities.sortWith { lhs: AppEntity, rhs: AppEntity -> lhs.label.toUpperCase(locale).compareTo(rhs.label.toUpperCase(locale)) }
-            NAME_DESCENDING -> entities.sortWith { lhs: AppEntity, rhs: AppEntity -> rhs.label.toUpperCase(locale).compareTo(lhs.label.toUpperCase(locale)) }
+            NAME_ASCENDING -> entities.sortWith { lhs: AppEntity, rhs: AppEntity ->
+                lhs.label.toUpperCase(
+                    locale
+                ).compareTo(rhs.label.toUpperCase(locale))
+            }
+            NAME_DESCENDING -> entities.sortWith { lhs: AppEntity, rhs: AppEntity ->
+                rhs.label.toUpperCase(
+                    locale
+                ).compareTo(lhs.label.toUpperCase(locale))
+            }
             APP_SIZE -> entities.sortWith { lhs: AppEntity, rhs: AppEntity -> rhs.size.compareTo(lhs.size) }
-            INSTALL_TIME -> entities.sortWith { lhs: AppEntity, rhs: AppEntity -> rhs.firstInstallTime.compareTo(lhs.firstInstallTime) }
-            UPDATE_TIME -> entities.sortWith { lhs: AppEntity, rhs: AppEntity -> rhs.lastUpdateTime.compareTo(lhs.lastUpdateTime) }
+            INSTALL_TIME -> entities.sortWith { lhs: AppEntity, rhs: AppEntity ->
+                rhs.firstInstallTime.compareTo(
+                    lhs.firstInstallTime
+                )
+            }
+            UPDATE_TIME -> entities.sortWith { lhs: AppEntity, rhs: AppEntity ->
+                rhs.lastUpdateTime.compareTo(
+                    lhs.lastUpdateTime
+                )
+            }
         }
 
         return entities
@@ -104,14 +125,14 @@ class AppsInteractorImpl(
                 packageInfo.versionCode.toLong()
             }
             return AppEntity(
-                    label = packageManager.getApplicationLabel(packageInfo.applicationInfo),
-                    packageName = packageInfo.packageName,
-                    versionName = packageInfo.versionName,
-                    versionCode = versionCode,
-                    path = file.path,
-                    size = file.length(),
-                    firstInstallTime = packageInfo.firstInstallTime,
-                    lastUpdateTime = packageInfo.lastUpdateTime
+                label = packageManager.getApplicationLabel(packageInfo.applicationInfo),
+                packageName = packageInfo.packageName,
+                versionName = packageInfo.versionName,
+                versionCode = versionCode,
+                path = file.path,
+                size = file.length(),
+                firstInstallTime = packageInfo.firstInstallTime,
+                lastUpdateTime = packageInfo.lastUpdateTime
             )
         }
         return null
@@ -119,43 +140,43 @@ class AppsInteractorImpl(
 
     override fun exportApp(entity: AppEntity): Observable<File> {
         return Single
-                .create<File> { emitter ->
-                    val file = File(entity.path)
-                    val directory = File(
-                            Environment.getExternalStoragePublicDirectory(DIRECTORY_DOWNLOADS),
-                            APPS_DIR_NAME
-                    )
-                    if (!(directory.exists() || directory.mkdirs())) {
-                        emitter.onError(IOException("unable to create directory"))
-                        return@create
-                    }
-                    val destination = File(directory, getApkName(entity))
-                    if (destination.exists() && !destination.delete()) {
-                        emitter.onError(IOException("unable to delete destination file"))
-                        return@create
-                    }
-                    val buffer = ByteArray(524288)
-                    var inputStream: InputStream? = null
-                    var outputStream: OutputStream? = null
-                    try {
-                        inputStream = FileInputStream(file)
-                        outputStream = FileOutputStream(destination)
-                        var read: Int
-                        while (inputStream.read(buffer).also { read = it } != -1) {
-                            outputStream.write(buffer, 0, read)
-                        }
-                        outputStream.flush()
-                    } catch (ex: Throwable) {
-                        emitter.onError(ex)
-                        return@create
-                    } finally {
-                        outputStream.safeClose()
-                        inputStream.safeClose()
-                    }
-                    emitter.onSuccess(destination)
+            .create<File> { emitter ->
+                val file = File(entity.path)
+                val directory = File(
+                    Environment.getExternalStoragePublicDirectory(DIRECTORY_DOWNLOADS),
+                    APPS_DIR_NAME
+                )
+                if (!(directory.exists() || directory.mkdirs())) {
+                    emitter.onError(IOException("unable to create directory"))
+                    return@create
                 }
-                .toObservable()
-                .subscribeOn(schedulers.io())
+                val destination = File(directory, getApkName(entity))
+                if (destination.exists() && !destination.delete()) {
+                    emitter.onError(IOException("unable to delete destination file"))
+                    return@create
+                }
+                val buffer = ByteArray(524288)
+                var inputStream: InputStream? = null
+                var outputStream: OutputStream? = null
+                try {
+                    inputStream = FileInputStream(file)
+                    outputStream = FileOutputStream(destination)
+                    var read: Int
+                    while (inputStream.read(buffer).also { read = it } != -1) {
+                        outputStream.write(buffer, 0, read)
+                    }
+                    outputStream.flush()
+                } catch (ex: Throwable) {
+                    emitter.onError(ex)
+                    return@create
+                } finally {
+                    outputStream.safeClose()
+                    inputStream.safeClose()
+                }
+                emitter.onSuccess(destination)
+            }
+            .toObservable()
+            .subscribeOn(schedulers.io())
     }
 
 }

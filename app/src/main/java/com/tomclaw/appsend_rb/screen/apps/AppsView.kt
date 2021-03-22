@@ -46,9 +46,9 @@ interface AppsView {
 }
 
 class AppsViewImpl(
-        private val view: View,
-        private val adapter: SimpleRecyclerAdapter,
-        private val preferences: PreferencesProvider
+    private val view: View,
+    private val adapter: SimpleRecyclerAdapter,
+    private val preferences: PreferencesProvider
 ) : AppsView {
 
     private val context = view.context
@@ -75,9 +75,9 @@ class AppsViewImpl(
         adapter.setHasStableIds(true)
         recycler.adapter = adapter
         recycler.layoutManager = LinearLayoutManager(
-                context,
-                RecyclerView.VERTICAL,
-                false
+            context,
+            RecyclerView.VERTICAL,
+            false
         )
         recycler.itemAnimator = DefaultItemAnimator()
     }
@@ -104,30 +104,37 @@ class AppsViewImpl(
 
     override fun showAppMenu(item: AppItem) {
         val theme = R.style.AppTheme_BottomSheetDialog_Dark.takeIf { preferences.isDarkTheme() }
-                ?: R.style.AppTheme_BottomSheetDialog_Light
+            ?: R.style.AppTheme_BottomSheetDialog_Light
         BottomSheetBuilder(view.context, theme)
-                .setMode(BottomSheetBuilder.MODE_LIST)
-                .setIconTintColor(getAttributedColor(context, R.attr.menu_icons_tint))
-                .setItemTextColor(getAttributedColor(context, R.attr.text_primary_color))
-                .apply {
-                    addItem(ACTION_RUN_APP, R.string.run_app, R.drawable.run)
-                    addItem(ACTION_FIND_IN_GP, R.string.find_on_gp, R.drawable.google_play)
-                    addItem(ACTION_SHARE_APP, R.string.share_apk, R.drawable.share)
-                    addItem(ACTION_EXTRACT_APP, R.string.extract_apk, R.drawable.floppy)
-                    addItem(ACTION_SHOW_PERMISSIONS, R.string.required_permissions, R.drawable.lock_open)
-                    addItem(ACTION_SHOW_DETAILS, R.string.app_details, R.drawable.settings_box)
-                    addItem(ACTION_REMOVE_APP, R.string.remove, R.drawable.delete)
-                }
-                .setItemClickListener {
-                    appMenuRelay.accept(Pair(it.itemId, item))
-                }
-                .createDialog()
-                .show()
+            .setMode(BottomSheetBuilder.MODE_LIST)
+            .setIconTintColor(getAttributedColor(context, R.attr.menu_icons_tint))
+            .setItemTextColor(getAttributedColor(context, R.attr.text_primary_color))
+            .apply {
+                addItem(ACTION_RUN_APP, R.string.run_app, R.drawable.run)
+                addItem(ACTION_FIND_IN_GP, R.string.find_on_gp, R.drawable.google_play)
+                addItem(ACTION_SHARE_APP, R.string.share_apk, R.drawable.share)
+                addItem(ACTION_EXTRACT_APP, R.string.extract_apk, R.drawable.floppy)
+                addItem(
+                    ACTION_SHOW_PERMISSIONS,
+                    R.string.required_permissions,
+                    R.drawable.lock_open
+                )
+                addItem(ACTION_SHOW_DETAILS, R.string.app_details, R.drawable.settings_box)
+                addItem(ACTION_REMOVE_APP, R.string.remove, R.drawable.delete)
+            }
+            .setItemClickListener {
+                appMenuRelay.accept(Pair(it.itemId, item))
+            }
+            .createDialog()
+            .show()
     }
 
     override fun showExtractSuccess(path: String) {
         val text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            Html.fromHtml(context.getString(R.string.app_extract_success, path), FROM_HTML_MODE_COMPACT)
+            Html.fromHtml(
+                context.getString(R.string.app_extract_success, path),
+                FROM_HTML_MODE_COMPACT
+            )
         } else {
             @Suppress("DEPRECATION")
             Html.fromHtml(context.getString(R.string.app_extract_success, path))

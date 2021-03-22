@@ -21,29 +21,29 @@ class PreferencesProviderImpl(private val context: Context) : PreferencesProvide
 
     override fun isDarkTheme(): Boolean {
         return context.getBooleanPreference(
-                R.string.pref_dark_theme,
-                R.bool.pref_dark_theme_default
+            R.string.pref_dark_theme,
+            R.bool.pref_dark_theme_default
         )
     }
 
     override fun isShowSystemApps(): Boolean {
         return context.getBooleanPreference(
-                R.string.pref_show_system,
-                R.bool.pref_show_system_default
+            R.string.pref_show_system,
+            R.bool.pref_show_system_default
         )
     }
 
     override fun isRunnableOnly(): Boolean {
         return context.getBooleanPreference(
-                R.string.pref_runnable,
-                R.bool.pref_runnable_default
+            R.string.pref_runnable,
+            R.bool.pref_runnable_default
         )
     }
 
     override fun getSortOrder(): Int {
         return context.getStringPreference(
-                R.string.pref_sort_order,
-                R.string.pref_sort_order_default
+            R.string.pref_sort_order,
+            R.string.pref_sort_order_default
         ).run {
             when (this) {
                 context.getString(R.string.sort_order_ascending_value) -> NAME_ASCENDING

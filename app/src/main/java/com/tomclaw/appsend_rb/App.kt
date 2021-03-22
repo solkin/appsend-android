@@ -17,8 +17,8 @@ class App : Application() {
 
     private fun buildComponent(): AppComponent {
         return DaggerAppComponent.builder()
-                .appModule(AppModule(this))
-                .build()
+            .appModule(AppModule(this))
+            .build()
     }
 
 }
