@@ -1,7 +1,6 @@
 package com.tomclaw.appsend_rb.core
 
 import android.content.Context
-import android.content.pm.PackageInfo
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Registry
 import com.bumptech.glide.annotation.GlideModule
@@ -20,16 +19,16 @@ class AppsendGlideModule : AppGlideModule() {
 
     override fun registerComponents(context: Context, glide: Glide, registry: Registry) {
         registry.append(
-                AppIconData::class.java,
-                InputStream::class.java,
-                object : ModelLoaderFactory<AppIconData, InputStream> {
+            AppIconData::class.java,
+            InputStream::class.java,
+            object : ModelLoaderFactory<AppIconData, InputStream> {
 
-                    override fun build(multiFactory: MultiModelLoaderFactory) =
-                            AppIconGlideLoader(context.packageManager)
+                override fun build(multiFactory: MultiModelLoaderFactory) =
+                    AppIconGlideLoader(context.packageManager)
 
-                    override fun teardown() {}
+                override fun teardown() {}
 
-                }
+            }
         )
     }
 
