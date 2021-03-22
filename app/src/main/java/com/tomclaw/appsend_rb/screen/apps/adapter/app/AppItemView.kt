@@ -45,8 +45,8 @@ class AppItemViewHolder(view: View) : BaseViewHolder(view), AppItemView {
     override fun setIcon(iconData: AppIconData) {
         try {
             GlideApp.with(context)
-                    .load(iconData)
-                    .into(icon)
+                .load(iconData)
+                .into(icon)
         } catch (ignored: Throwable) {
         }
     }

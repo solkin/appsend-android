@@ -6,15 +6,15 @@ import com.avito.konveyor.blueprint.Item
 import com.tomclaw.appsend_rb.util.AppIconData
 
 class AppItem(
-        override val id: Long,
-        val icon: AppIconData,
-        val packageName: String,
-        val name: String,
-        val size: String,
-        val firstInstallTime: String,
-        val lastUpdateTime: String,
-        val versionName: String,
-        val versionCode: Long
+    override val id: Long,
+    val icon: AppIconData,
+    val packageName: String,
+    val name: String,
+    val size: String,
+    val firstInstallTime: String,
+    val lastUpdateTime: String,
+    val versionName: String,
+    val versionCode: Long
 ) : Item, Parcelable {
 
     override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
@@ -42,7 +42,17 @@ class AppItem(
             val lastUpdateTime = parcel.readString().orEmpty()
             val versionName = parcel.readString().orEmpty()
             val versionCode = parcel.readLong()
-            return AppItem(id, icon!!, packageName, name, size, firstInstallTime, lastUpdateTime, versionName, versionCode)
+            return AppItem(
+                id,
+                icon!!,
+                packageName,
+                name,
+                size,
+                firstInstallTime,
+                lastUpdateTime,
+                versionName,
+                versionCode
+            )
         }
 
         override fun newArray(size: Int): Array<AppItem?> {

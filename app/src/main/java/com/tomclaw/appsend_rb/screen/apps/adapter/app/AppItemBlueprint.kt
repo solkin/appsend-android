@@ -6,12 +6,12 @@ import com.avito.konveyor.blueprint.ItemPresenter
 import com.avito.konveyor.blueprint.ViewHolderBuilder
 import com.tomclaw.appsend_rb.R
 
-class AppItemBlueprint(override val presenter: ItemPresenter<AppItemView, AppItem>)
-    : ItemBlueprint<AppItemView, AppItem> {
+class AppItemBlueprint(override val presenter: ItemPresenter<AppItemView, AppItem>) :
+    ItemBlueprint<AppItemView, AppItem> {
 
     override val viewHolderProvider = ViewHolderBuilder.ViewHolderProvider(
-            layoutId = R.layout.app_item,
-            creator = { _, view -> AppItemViewHolder(view) }
+        layoutId = R.layout.app_item,
+        creator = { _, view -> AppItemViewHolder(view) }
     )
 
     override fun isRelevantItem(item: Item) = item is AppItem
