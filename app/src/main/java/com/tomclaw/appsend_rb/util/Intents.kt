@@ -8,7 +8,8 @@ import android.os.Build
 
 fun grantProviderUriPermission(context: Context, uri: Uri, intent: Intent) {
     if (isFileProviderUri()) {
-        val resInfoList = context.packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
+        val resInfoList =
+            context.packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
         for (resolveInfo in resInfoList) {
             val packageName = resolveInfo.activityInfo.packageName
             context.grantUriPermission(packageName, uri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
