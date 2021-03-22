@@ -4,14 +4,14 @@ import android.os.Parcel
 import android.os.Parcelable
 
 class AppEntity(
-        val label: String,
-        val packageName: String,
-        val versionName: String,
-        val versionCode: Long,
-        val path: String,
-        val size: Long,
-        val firstInstallTime: Long,
-        val lastUpdateTime: Long
+    val label: String,
+    val packageName: String,
+    val versionName: String,
+    val versionCode: Long,
+    val path: String,
+    val size: Long,
+    val firstInstallTime: Long,
+    val lastUpdateTime: Long
 ) : Parcelable {
 
     override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
@@ -37,7 +37,16 @@ class AppEntity(
             val size = parcel.readLong()
             val firstInstallTime = parcel.readLong()
             val lastUpdateTime = parcel.readLong()
-            return AppEntity(label, packageName, versionName, versionCode, path, size, firstInstallTime, lastUpdateTime)
+            return AppEntity(
+                label,
+                packageName,
+                versionName,
+                versionCode,
+                path,
+                size,
+                firstInstallTime,
+                lastUpdateTime
+            )
         }
 
         override fun newArray(size: Int): Array<AppEntity?> {
