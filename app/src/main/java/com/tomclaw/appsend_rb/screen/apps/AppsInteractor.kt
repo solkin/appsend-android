@@ -129,6 +129,7 @@ class AppsInteractorImpl(
                 packageName = packageInfo.packageName,
                 versionName = packageInfo.versionName,
                 versionCode = versionCode,
+                requestedPermissions = packageInfo.requestedPermissions.asList(),
                 path = file.path,
                 size = file.length(),
                 firstInstallTime = packageInfo.firstInstallTime,

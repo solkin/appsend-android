@@ -43,6 +43,10 @@ interface AppsView {
 
     fun showAppExportError()
 
+    fun showNoRequestedPermissionsMessage()
+
+    fun showUnableToGetPermissionsError()
+
 }
 
 class AppsViewImpl(
@@ -148,6 +152,14 @@ class AppsViewImpl(
 
     override fun showAppExportError() {
         Snackbar.make(recycler, R.string.app_extract_failed, Snackbar.LENGTH_LONG).show()
+    }
+
+    override fun showNoRequestedPermissionsMessage() {
+        Snackbar.make(recycler, R.string.no_requested_permissions, Snackbar.LENGTH_LONG).show()
+    }
+
+    override fun showUnableToGetPermissionsError() {
+        Snackbar.make(recycler, R.string.unable_to_get_permissions, Snackbar.LENGTH_LONG).show()
     }
 
 }

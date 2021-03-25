@@ -19,6 +19,7 @@ import com.avito.konveyor.ItemBinder
 import com.avito.konveyor.adapter.AdapterPresenter
 import com.avito.konveyor.adapter.SimpleRecyclerAdapter
 import com.tomclaw.appsend_rb.AboutActivity
+import com.tomclaw.appsend_rb.PermissionsActivity
 import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.SettingsActivity
 import com.tomclaw.appsend_rb.getComponent
@@ -28,6 +29,7 @@ import com.tomclaw.appsend_rb.util.isFileProviderUri
 import com.tomclaw.appsend_rb.util.updateStatusBar
 import com.tomclaw.appsend_rb.util.updateTheme
 import java.io.File
+import java.util.ArrayList
 import javax.inject.Inject
 
 class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
@@ -143,6 +145,15 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
             .addCategory(CATEGORY_DEFAULT)
             .setData(Uri.parse("package:$packageName"))
             .addFlags(FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+    }
+
+    override fun showRequestedPermissions(permissions: List<String>) {
+        val intent = Intent(this, PermissionsActivity::class.java)
+            .putStringArrayListExtra(
+                PermissionsActivity.EXTRA_PERMISSIONS,
+                ArrayList(permissions)
+            )
         startActivity(intent)
     }
 

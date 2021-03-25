@@ -8,6 +8,7 @@ class AppEntity(
     val packageName: String,
     val versionName: String,
     val versionCode: Long,
+    val requestedPermissions: List<String>?,
     val path: String,
     val size: Long,
     val firstInstallTime: Long,
@@ -19,6 +20,7 @@ class AppEntity(
         writeString(packageName)
         writeString(versionName)
         writeLong(versionCode)
+        writeStringList(requestedPermissions)
         writeString(path)
         writeLong(size)
         writeLong(firstInstallTime)
@@ -33,6 +35,9 @@ class AppEntity(
             val packageName = parcel.readString().orEmpty()
             val versionName = parcel.readString().orEmpty()
             val versionCode = parcel.readLong()
+            val requestedPermissions = ArrayList<String>().apply {
+                parcel.readStringList(this)
+            }
             val path = parcel.readString().orEmpty()
             val size = parcel.readLong()
             val firstInstallTime = parcel.readLong()
@@ -42,6 +47,7 @@ class AppEntity(
                 packageName,
                 versionName,
                 versionCode,
+                requestedPermissions,
                 path,
                 size,
                 firstInstallTime,

@@ -238,7 +238,7 @@ public class AppsView extends MainView implements BillingProcessor.IBillingHandl
                         startActivity(intent);
                     } else {
                         String message = getContext().getString(
-                                R.string.no_required_permissions,
+                                R.string.no_requested_permissions,
                                 appItem.getLabel()
                         );
                         Snackbar.make(recyclerView, message, Snackbar.LENGTH_LONG).show();

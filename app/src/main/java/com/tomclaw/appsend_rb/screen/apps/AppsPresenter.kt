@@ -41,6 +41,8 @@ interface AppsPresenter : ItemClickListener {
 
         fun openGooglePlay(packageName: String)
 
+        fun showRequestedPermissions(permissions: List<String>)
+
         fun showAppDetails(packageName: String)
 
         fun runAppUninstall(packageName: String)
@@ -102,6 +104,7 @@ class AppsPresenterImpl(
             }
             ACTION_SHARE_APP -> shareApp(item)
             ACTION_EXTRACT_APP -> extractApp(item)
+            ACTION_SHOW_PERMISSIONS -> showPermissions(item)
             ACTION_SHOW_DETAILS -> {
                 packageMayBeDeleted = item.packageName
                 router?.showAppDetails(item.packageName)
@@ -175,6 +178,18 @@ class AppsPresenterImpl(
                 view?.showExtractSuccess(file.path)
             }, {
                 view?.showAppExportError()
+            })
+    }
+
+    private fun showPermissions(item: AppItem) {
+        subscriptions += interactor.loadApp(item.packageName)
+            .observeOn(schedulers.mainThread())
+            .subscribe({ entity ->
+                entity.requestedPermissions?.let {
+                    router?.showRequestedPermissions(entity.requestedPermissions)
+                } ?: view?.showNoRequestedPermissionsMessage()
+            }, {
+                view?.showUnableToGetPermissionsError()
             })
     }
 
