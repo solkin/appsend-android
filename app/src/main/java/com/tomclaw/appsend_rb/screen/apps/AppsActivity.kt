@@ -100,12 +100,21 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         outState.putBundle(KEY_PRESENTER_STATE, presenter.saveState())
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_UPDATE_SETTINGS) {
+            if (resultCode == SettingsActivity.RESULT_UPDATE) {
+                presenter.invalidateAppsList()
+            }
+        }
+    }
+
     override fun showPrefsScreen() {
         val intent = Intent(
             this,
             SettingsActivity::class.java
         )
-        startActivity(intent)
+        startActivityForResult(intent, REQUEST_UPDATE_SETTINGS)
     }
 
     override fun showInfoScreen() {
@@ -182,3 +191,4 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
 }
 
 private const val KEY_PRESENTER_STATE = "presenter_state"
+private const val REQUEST_UPDATE_SETTINGS = 6

@@ -29,6 +29,8 @@ interface AppsPresenter : ItemClickListener {
 
     fun onResume()
 
+    fun invalidateAppsList()
+
     interface AppsRouter {
 
         fun showPrefsScreen()
@@ -127,6 +129,10 @@ class AppsPresenterImpl(
 
     override fun detachRouter() {
         this.router = null
+    }
+
+    override fun invalidateAppsList() {
+        loadAppItems()
     }
 
     private fun loadAppItems() {
