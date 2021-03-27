@@ -153,8 +153,6 @@ class AppsPresenterImpl(
         this.entities = entities
         var id: Long = 0
         val items = entities
-            .sortedBy { it.lastUpdateTime }
-            .reversed()
             .map { appEntityConverter.convert(id++, it) }
         val dataSource = ListDataSource(items)
         adapterPresenter.get().onDataSourceChanged(dataSource)
