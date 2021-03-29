@@ -47,6 +47,8 @@ interface AppsView {
 
     fun showUnableToGetPermissionsError()
 
+    fun showWritePermissionsRequiredError()
+
 }
 
 class AppsViewImpl(
@@ -160,6 +162,10 @@ class AppsViewImpl(
 
     override fun showUnableToGetPermissionsError() {
         Snackbar.make(recycler, R.string.unable_to_get_permissions, Snackbar.LENGTH_LONG).show()
+    }
+
+    override fun showWritePermissionsRequiredError() {
+        Snackbar.make(recycler, R.string.write_permission_extract, Snackbar.LENGTH_LONG).show()
     }
 
 }

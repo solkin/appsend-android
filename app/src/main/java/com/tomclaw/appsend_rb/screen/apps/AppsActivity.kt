@@ -1,5 +1,6 @@
 package com.tomclaw.appsend_rb.screen.apps
 
+import android.Manifest
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.Intent.ACTION_SEND
@@ -15,6 +16,7 @@ import android.os.Bundle
 import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import com.androidisland.ezpermission.EzPermission
 import com.avito.konveyor.ItemBinder
 import com.avito.konveyor.adapter.AdapterPresenter
 import com.avito.konveyor.adapter.SimpleRecyclerAdapter
@@ -186,6 +188,20 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         }
         grantProviderUriPermission(this, uri, intent)
         startActivity(createChooser(intent, resources.getText(R.string.send_to)))
+    }
+
+    override fun requestPermissions(onGranted: () -> Unit, onDenied: () -> Unit) {
+        EzPermission.with(this)
+            .permissions(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
+            .request { granted, denied, permanentlyDenied ->
+                if (granted.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                    onGranted()
+                } else {
+                    onDenied()
+                }
+            }
     }
 
 }

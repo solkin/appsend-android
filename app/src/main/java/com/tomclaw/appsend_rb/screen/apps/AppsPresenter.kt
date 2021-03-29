@@ -51,6 +51,8 @@ interface AppsPresenter : ItemClickListener {
 
         fun shareApk(file: File)
 
+        fun requestPermissions(onGranted: () -> Unit, onDenied: () -> Unit)
+
     }
 
 }
@@ -104,8 +106,14 @@ class AppsPresenterImpl(
                 packageMayBeDeleted = item.packageName
                 router?.openGooglePlay(item.packageName)
             }
-            ACTION_SHARE_APP -> shareApp(item)
-            ACTION_EXTRACT_APP -> extractApp(item)
+            ACTION_SHARE_APP -> router?.requestPermissions(
+                onGranted = { shareApp(item) },
+                onDenied = { view?.showWritePermissionsRequiredError() }
+            )
+            ACTION_EXTRACT_APP -> router?.requestPermissions(
+                onGranted = { extractApp(item) },
+                onDenied = { view?.showWritePermissionsRequiredError() }
+            )
             ACTION_SHOW_PERMISSIONS -> showPermissions(item)
             ACTION_SHOW_DETAILS -> {
                 packageMayBeDeleted = item.packageName
