@@ -84,13 +84,6 @@
     <string name="unknown_permission_description">Неизвестное разрешение</string>
     <string name="required_permissions">Требуемые разрешения</string>
     <string name="google_play">Google Play</string>
-    <string name="update">Обновить</string>
-    <string name="downloading_error">Ошибка скачивания приложения. Проверьте наличие сети и попробуйте ущё раз.</string>
-    <string name="cancel_download_title">Отмена установки</string>
-    <string name="cancel_download_text">Вы уверены, что хотите отменить установку этого приложения?</string>
-    <string name="responsibility_denial_title">Отказ от ответственности</string>
-    <string name="responsibility_denial_text">В обменнике представлены приложения, загруженные пользователями AppSend. Автор не несёт ответственность за качество предоставленного контента. Нажимая \"Да\" Вы принимаете данное условие.</string>
-    <string name="agree_with_responsibility_condition">Для установки приложений из обменника необходимо согласиться в этим условием</string>
     <string name="unable_to_get_permissions">Не удалось получить список требуемых разрешений приложения</string>
     <string name="no_requested_permissions">Приложение не требует специальных разрешений.</string>
     <string name="has_access">Имеет доступ к %s</string>
