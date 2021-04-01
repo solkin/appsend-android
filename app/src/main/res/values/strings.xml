@@ -96,10 +96,6 @@
     <string name="responsibility_denial_title">Denial of responsibility</string>
     <string name="responsibility_denial_text">Submitted applications in this cloud are uploaded by AppSend users. The author is not responsible for the quality of the content provided. By clicking \"Yes\" you accept this condition.</string>
     <string name="agree_with_responsibility_condition">To install applications from cloud you must agree with this condition</string>
-    <string name="fill_all_fields">Fill in all the fields</string>
-    <string name="cancel_abuse_title">Cancel abuse</string>
-    <string name="cancel_abuse_text">Do you really want to cancel sending abuse for selected app?</string>
-    <string name="checksum_copied">Checksum copied to clipboard</string>
     <string name="unable_to_get_permissions">Unable to get list or app\'s required permissions</string>
     <string name="no_requested_permissions">App does not have requested permissions.</string>
     <string name="has_access">Has %s access</string>

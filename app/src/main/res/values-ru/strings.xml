@@ -91,10 +91,6 @@
     <string name="responsibility_denial_title">Отказ от ответственности</string>
     <string name="responsibility_denial_text">В обменнике представлены приложения, загруженные пользователями AppSend. Автор не несёт ответственность за качество предоставленного контента. Нажимая \"Да\" Вы принимаете данное условие.</string>
     <string name="agree_with_responsibility_condition">Для установки приложений из обменника необходимо согласиться в этим условием</string>
-    <string name="fill_all_fields">Заполните все поля</string>
-    <string name="cancel_abuse_title">Отмена жалобы</string>
-    <string name="cancel_abuse_text">Вы хотите отменить отправку жалобы на приложение?</string>
-    <string name="checksum_copied">Контрольная сумма скопирована</string>
     <string name="unable_to_get_permissions">Не удалось получить список требуемых разрешений приложения</string>
     <string name="no_requested_permissions">Приложение не требует специальных разрешений.</string>
     <string name="has_access">Имеет доступ к %s</string>
