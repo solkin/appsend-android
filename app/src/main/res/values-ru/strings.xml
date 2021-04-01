@@ -83,9 +83,6 @@
     <string name="remove">Удалить</string>
     <string name="unknown_permission_description">Неизвестное разрешение</string>
     <string name="required_permissions">Требуемые разрешения</string>
-    <string name="newer">новее</string>
-    <string name="same">та же версия</string>
-    <string name="other_versions">Другие версии</string>
     <string name="google_play">Google Play</string>
     <string name="update">Обновить</string>
     <string name="downloading_error">Ошибка скачивания приложения. Проверьте наличие сети и попробуйте ущё раз.</string>

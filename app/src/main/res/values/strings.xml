@@ -88,9 +88,6 @@
     <string name="unknown_permission_description">Unknown permission</string>
     <string name="required_permissions">Required permissions</string>
     <string name="app_version_format" translatable="false">%1$s (%2$d)</string>
-    <string name="newer">newer</string>
-    <string name="same">same version</string>
-    <string name="other_versions">Other version</string>
     <string name="google_play">Google Play</string>
     <string name="update">Update</string>
     <string name="downloading_error">App downloading failed. Check network and can try again.</string>
