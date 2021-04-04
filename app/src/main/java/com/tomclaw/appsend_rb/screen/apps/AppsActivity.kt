@@ -28,6 +28,7 @@ import com.tomclaw.appsend_rb.getComponent
 import com.tomclaw.appsend_rb.screen.apps.di.AppsModule
 import com.tomclaw.appsend_rb.util.grantProviderUriPermission
 import com.tomclaw.appsend_rb.util.isFileProviderUri
+import com.tomclaw.appsend_rb.util.registerAppCenter
 import com.tomclaw.appsend_rb.util.updateStatusBar
 import com.tomclaw.appsend_rb.util.updateTheme
 import java.io.File
@@ -63,6 +64,8 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
 
         val adapter = SimpleRecyclerAdapter(adapterPresenter, binder)
         val view = AppsViewImpl(window.decorView, adapter, preferences)
+
+        registerAppCenter(application)
 
         presenter.attachView(view)
     }
@@ -208,3 +211,4 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
 
 private const val KEY_PRESENTER_STATE = "presenter_state"
 private const val REQUEST_UPDATE_SETTINGS = 6
+private const val APP_IDENTIFIER_KEY = "com.microsoft.appcenter.android.appIdentifier"
