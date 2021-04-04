@@ -3,7 +3,10 @@ package com.tomclaw.appsend_rb.screen.apps
 import android.os.Build
 import android.text.Html
 import android.text.Html.FROM_HTML_MODE_COMPACT
+import android.util.Log
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,6 +37,10 @@ interface AppsView {
     fun infoClicks(): Observable<Unit>
 
     fun appMenuClicks(): Observable<Pair<Int, AppItem>>
+
+    fun searchTextChanged(): Observable<String>
+
+    fun searchCloseChanged(): Observable<Unit>
 
     fun showAppMenu(item: AppItem)
 
@@ -66,6 +73,8 @@ class AppsViewImpl(
     private val prefsRelay = PublishRelay.create<Unit>()
     private val infoRelay = PublishRelay.create<Unit>()
     private val appMenuRelay = PublishRelay.create<Pair<Int, AppItem>>()
+    private val searchTextRelay = PublishRelay.create<String>()
+    private val searchCloseRelay = PublishRelay.create<Unit>()
 
     init {
         toolbar.setTitle(R.string.app_name)
@@ -78,6 +87,26 @@ class AppsViewImpl(
             }
             true
         }
+        val searchMenu: MenuItem = toolbar.menu.findItem(R.id.menu_search)
+        val searchView = searchMenu.actionView as SearchView
+        searchView.queryHint = searchMenu.title
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                searchTextRelay.accept(newText)
+                return true
+            }
+        })
+        searchView.setOnCloseListener { searchCloseRelay.accept(Unit); false }
+        searchView.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
+            override fun onViewAttachedToWindow(v: View) {}
+            override fun onViewDetachedFromWindow(v: View) {
+                searchCloseRelay.accept(Unit)
+            }
+        })
         adapter.setHasStableIds(true)
         recycler.adapter = adapter
         recycler.layoutManager = LinearLayoutManager(
@@ -107,6 +136,10 @@ class AppsViewImpl(
     override fun infoClicks(): Observable<Unit> = infoRelay
 
     override fun appMenuClicks(): Observable<Pair<Int, AppItem>> = appMenuRelay
+
+    override fun searchTextChanged(): Observable<String> = searchTextRelay
+
+    override fun searchCloseChanged(): Observable<Unit> = searchCloseRelay
 
     override fun showAppMenu(item: AppItem) {
         val theme = R.style.AppTheme_BottomSheetDialog_Dark.takeIf { preferences.isDarkTheme() }

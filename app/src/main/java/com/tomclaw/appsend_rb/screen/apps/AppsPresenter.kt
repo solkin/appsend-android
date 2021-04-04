@@ -81,9 +81,11 @@ class AppsPresenterImpl(
         subscriptions += view.prefsClicks().subscribe { onPrefsClicked() }
         subscriptions += view.infoClicks().subscribe { onInfoClicked() }
         subscriptions += view.appMenuClicks().subscribe { onAppMenuClicked(it) }
+        subscriptions += view.searchTextChanged().subscribe { text -> filterApps(text) }
+        subscriptions += view.searchCloseChanged().subscribe { filterApps("") }
 
         entities.takeIf { it != null }
-            ?.run { bindAppEntities(this) }
+            ?.run { applyAppEntities(this) }
             ?: loadAppItems()
     }
 
@@ -153,12 +155,23 @@ class AppsPresenterImpl(
             .doOnSubscribe { view?.showProgress() }
             .doAfterTerminate { view?.showContent() }
             .subscribe({ entities ->
-                bindAppEntities(entities)
+                applyAppEntities(entities)
             }, {})
     }
 
-    private fun bindAppEntities(entities: List<AppEntity>) {
+    private fun filterApps(query: String) {
+        entities.takeIf { it != null }
+            ?.filter { it.label.contains(query, true) }
+            ?.run { bindAppEntities(this) }
+            ?: loadAppItems()
+    }
+
+    private fun applyAppEntities(entities: List<AppEntity>) {
         this.entities = entities
+        bindAppEntities(entities)
+    }
+
+    private fun bindAppEntities(entities: List<AppEntity>) {
         var id: Long = 0
         val items = entities
             .map { appEntityConverter.convert(id++, it) }
@@ -228,7 +241,7 @@ class AppsPresenterImpl(
                 entities?.let { actual ->
                     val entity = actual.find { it.packageName == packageName }
                         ?: return@subscribe
-                    bindAppEntities(actual - entity)
+                    applyAppEntities(actual - entity)
                 }
             })
     }

@@ -4,21 +4,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_search"
-        android:title="@string/menu_search"
         android:icon="@drawable/magnify"
-        app:showAsAction="ifRoom|collapseActionView"
-        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+        android:inputType="text"
+        android:title="@string/menu_search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView" />
     <item
         android:id="@+id/refresh"
         android:icon="@drawable/refresh"
-        app:showAsAction="ifRoom|withText"
-        android:title="@string/refresh" />
+        android:title="@string/refresh"
+        app:showAsAction="ifRoom|withText" />
     <item
         android:id="@+id/settings"
-        app:showAsAction="never"
-        android:title="@string/settings" />
+        android:title="@string/settings"
+        app:showAsAction="never" />
     <item
         android:id="@+id/info"
-        app:showAsAction="never"
-        android:title="@string/info" />
+        android:title="@string/info"
+        app:showAsAction="never" />
 </menu>
