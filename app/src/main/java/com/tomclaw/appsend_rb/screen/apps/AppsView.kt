@@ -3,7 +3,6 @@ package com.tomclaw.appsend_rb.screen.apps
 import android.os.Build
 import android.text.Html
 import android.text.Html.FROM_HTML_MODE_COMPACT
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.SearchView
@@ -94,7 +93,6 @@ class AppsViewImpl(
             override fun onQueryTextSubmit(query: String): Boolean {
                 return true
             }
-
             override fun onQueryTextChange(newText: String): Boolean {
                 searchTextRelay.accept(newText)
                 return true
