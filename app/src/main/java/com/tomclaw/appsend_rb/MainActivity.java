@@ -17,7 +17,6 @@ import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.greysonparrelli.permiso.PermisoActivity;
-import com.kobakei.ratethisapp.RateThisApp;
 import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
@@ -81,23 +80,6 @@ public class MainActivity extends PermisoActivity implements MainView.ActivityCa
             }
             return false;
         };
-
-        if (savedInstanceState == null) {
-            // Custom criteria: 7 days and 10 launches
-            RateThisApp.Config config = new RateThisApp.Config(7, 10);
-            // Custom title ,message and buttons names
-            config.setTitle(R.string.rate_title);
-            config.setMessage(R.string.rate_message);
-            config.setYesButtonText(R.string.yes_rate);
-            config.setNoButtonText(R.string.no_thanks);
-            config.setCancelButtonText(R.string.rate_cancel);
-            RateThisApp.init(config);
-
-            // Monitor launch times and interval from installation
-            RateThisApp.onStart(this);
-            // If the criteria is satisfied, "Rate this app" dialog will be shown
-            RateThisApp.showRateDialogIfNeeded(this);
-        }
 
         register(getApplication());
 

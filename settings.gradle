@@ -1,1 +1,1 @@
-include ':app', ":preference-fragment"
+include ':app', ":preference-fragment", ":statusbar-util"
