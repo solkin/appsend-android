@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import com.tomclaw.appsend_rb.R;
 import com.tomclaw.appsend_rb.main.adapter.holder.AbstractItemHolder;
 import com.tomclaw.appsend_rb.main.adapter.holder.AppItemHolder;
-import com.tomclaw.appsend_rb.main.adapter.holder.CouchItemHolder;
-import com.tomclaw.appsend_rb.main.adapter.holder.DonateItemHolder;
 import com.tomclaw.appsend_rb.main.item.BaseItem;
 
 import java.util.ArrayList;
@@ -19,8 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import static com.tomclaw.appsend_rb.main.item.BaseItem.APP_ITEM;
-import static com.tomclaw.appsend_rb.main.item.BaseItem.COUCH_ITEM;
-import static com.tomclaw.appsend_rb.main.item.BaseItem.DONATE_ITEM;
 
 /**
  * Created by Solkin on 10.12.2014.
@@ -50,12 +46,6 @@ public class BaseItemAdapter extends RecyclerView.Adapter<AbstractItemHolder> {
             case APP_ITEM:
                 view = inflater.inflate(R.layout.app_item, viewGroup, false);
                 return new AppItemHolder(view);
-            case DONATE_ITEM:
-                view = inflater.inflate(R.layout.donate_item, viewGroup, false);
-                return new DonateItemHolder(view);
-            case COUCH_ITEM:
-                view = inflater.inflate(R.layout.couch_item, viewGroup, false);
-                return new CouchItemHolder(view);
             default:
                 throw new IllegalStateException("Unsupported item type: " + viewType);
         }
