@@ -11,7 +11,7 @@ import com.tomclaw.appsend_rb.core.TaskExecutor;
 
 import java.io.File;
 
-import static com.tomclaw.appsend_rb.util.FileHelper.getExternalDirectory;
+import static com.tomclaw.appsend_rb.util.FilesKt.getExternalDirectory;
 
 /**
  * Created by Solkin on 12.01.2015.

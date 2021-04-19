@@ -1,7 +1,7 @@
 package com.tomclaw.appsend_rb.screen.apps
 
 import android.content.Context
-import com.tomclaw.appsend_rb.util.FileHelper
+import com.tomclaw.appsend_rb.util.formatBytesToString
 import java.text.DateFormat
 
 interface ResourceProvider {
@@ -18,7 +18,7 @@ class ResourceProviderImpl(
 ) : ResourceProvider {
 
     override fun formatBytes(bytes: Long): String {
-        return FileHelper.formatBytes(context.resources, bytes)
+        return formatBytesToString(context.resources, bytes)
     }
 
     override fun formatTime(time: Long): String {
