@@ -20,11 +20,12 @@ import com.androidisland.ezpermission.EzPermission
 import com.avito.konveyor.ItemBinder
 import com.avito.konveyor.adapter.AdapterPresenter
 import com.avito.konveyor.adapter.SimpleRecyclerAdapter
-import com.tomclaw.appsend_rb.AboutActivity
 import com.tomclaw.appsend_rb.PermissionsActivity
 import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.SettingsActivity
 import com.tomclaw.appsend_rb.getComponent
+import com.tomclaw.appsend_rb.screen.about.AboutActivity
+import com.tomclaw.appsend_rb.screen.about.createAboutActivityIntent
 import com.tomclaw.appsend_rb.screen.apps.di.AppsModule
 import com.tomclaw.appsend_rb.util.grantProviderUriPermission
 import com.tomclaw.appsend_rb.util.isFileProviderUri
@@ -123,10 +124,7 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
     }
 
     override fun showInfoScreen() {
-        val intent = Intent(
-            this,
-            AboutActivity::class.java
-        )
+        val intent = createAboutActivityIntent(this)
         startActivity(intent)
     }
 
@@ -211,4 +209,3 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
 
 private const val KEY_PRESENTER_STATE = "presenter_state"
 private const val REQUEST_UPDATE_SETTINGS = 6
-private const val APP_IDENTIFIER_KEY = "com.microsoft.appcenter.android.appIdentifier"

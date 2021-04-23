@@ -1,5 +1,7 @@
 package com.tomclaw.appsend_rb.screen.about
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.tomclaw.appsend_rb.R
@@ -59,3 +61,7 @@ class AboutActivity : AppCompatActivity(), AboutPresenter.AboutRouter {
     }
 
 }
+
+fun createAboutActivityIntent(
+    context: Context
+): Intent = Intent(context, AboutActivity::class.java)

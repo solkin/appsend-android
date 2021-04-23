@@ -45,7 +45,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.tomclaw.appsend_rb.AboutActivity"
+            android:name=".screen.about.AboutActivity"
             android:label="@string/info" />
         <activity
             android:name="com.tomclaw.appsend_rb.SettingsActivity"
