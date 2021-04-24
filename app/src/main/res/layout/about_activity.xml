@@ -66,7 +66,7 @@
                 android:text="@string/donate_button" />
 
             <Button
-                android:id="@+id/rate_app"
+                android:id="@+id/rate_button"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
                 android:text="@string/rate_app" />
 
             <Button
-                android:id="@+id/all_apps"
+                android:id="@+id/projects_button"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

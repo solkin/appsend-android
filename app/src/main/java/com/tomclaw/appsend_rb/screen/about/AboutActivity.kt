@@ -2,6 +2,8 @@ package com.tomclaw.appsend_rb.screen.about
 
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.ACTION_VIEW
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.tomclaw.appsend_rb.R
@@ -56,8 +58,30 @@ class AboutActivity : AppCompatActivity(), AboutPresenter.AboutRouter {
         super.onDestroy()
     }
 
+    override fun openRate() {
+        openUriSafe(
+            uri = MARKET_URI_RATE + packageName,
+            fallback = WEB_URI_RATE + packageName
+        )
+    }
+
+    override fun openProjects() {
+        openUriSafe(
+            uri = MARKET_URI_PROJECTS,
+            fallback = WEB_URI_PROJECTS
+        )
+    }
+
     override fun leaveScreen() {
         finish()
+    }
+
+    private fun openUriSafe(uri: String, fallback: String) {
+        try {
+            startActivity(Intent(ACTION_VIEW, Uri.parse(uri)))
+        } catch (ignored: android.content.ActivityNotFoundException) {
+            startActivity(Intent(ACTION_VIEW, Uri.parse(fallback)))
+        }
     }
 
 }
@@ -65,3 +89,8 @@ class AboutActivity : AppCompatActivity(), AboutPresenter.AboutRouter {
 fun createAboutActivityIntent(
     context: Context
 ): Intent = Intent(context, AboutActivity::class.java)
+
+private const val MARKET_URI_RATE = "market://details?id="
+private const val MARKET_URI_PROJECTS = "market://search?q=pub:TomClaw+Software"
+private const val WEB_URI_RATE = "http://play.google.com/store/apps/details?id="
+private const val WEB_URI_PROJECTS = "http://play.google.com/store/apps/developer?id=TomClaw+Software"

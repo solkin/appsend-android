@@ -28,9 +28,9 @@ import static com.tomclaw.appsend_rb.util.PreferenceHelper.IS_DONATE_ENABLED;
 public class AboutActivity extends AppCompatActivity implements BillingProcessor.IBillingHandler {
 
     private static final String MARKET_DETAILS_URI = "market://details?id=";
-    private static final String MARKET_DEVELOPER_URI = "market://search?q=";
+    private static final String MARKET_DEVELOPER_URI = "market://search?q=pub:";
     private static final String GOOGLE_PLAY_DETAILS_URI = "http://play.google.com/store/apps/details?id=";
-    private static final String GOOGLE_PLAY_DEVELOPER_URI = "http://play.google.com/store/apps/search?q=";
+    private static final String GOOGLE_PLAY_DEVELOPER_URI = "http://play.google.com/store/apps/developer?id=";
     public static String DEVELOPER_NAME = "TomClaw Software";
 
     private BillingProcessor bp;
@@ -64,9 +64,9 @@ public class AboutActivity extends AppCompatActivity implements BillingProcessor
         } catch (PackageManager.NameNotFoundException ignored) {
         }
 
-        findViewById(R.id.rate_app).setOnClickListener(v -> rateApplication());
+        findViewById(R.id.rate_button).setOnClickListener(v -> rateApplication());
 
-        findViewById(R.id.all_apps).setOnClickListener(v -> allProjects());
+        findViewById(R.id.projects_button).setOnClickListener(v -> allProjects());
 
         presentButton = findViewById(R.id.present_chocolate);
         presentButton.setOnClickListener(view -> onChocolateClicked());
