@@ -20,7 +20,7 @@ interface AboutView {
 }
 
 class AboutViewImpl(
-    view: View,
+    view: View
 ) : AboutView {
 
     private val toolbar: Toolbar = view.findViewById(R.id.toolbar)
