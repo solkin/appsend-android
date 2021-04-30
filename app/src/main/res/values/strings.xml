@@ -72,10 +72,6 @@
     <string name="pref_title_dark_theme">Dark theme</string>
     <string name="pref_dark_theme_system">Dark colors in application appearance</string>
     <string name="cancel">Cancel</string>
-    <string name="percent" translatable="false">%d %%</string>
-    <string name="upload_size">Uploading %s</string>
-    <string name="upload">Upload</string>
-    <string name="uploaded_url" translatable="false">%1$s (%2$s)\n%3$s</string>
     <string name="tab_apps">My apps</string>
     <string name="apps_loading_error">Unable to load apps list</string>
     <string name="retry">Retry</string>
