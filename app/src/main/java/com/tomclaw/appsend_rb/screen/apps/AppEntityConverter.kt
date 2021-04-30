@@ -4,6 +4,7 @@ import com.avito.konveyor.blueprint.Item
 import com.tomclaw.appsend_rb.dto.AppEntity
 import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItem
 import com.tomclaw.appsend_rb.util.AppIconData
+import java.util.concurrent.TimeUnit
 
 interface AppEntityConverter {
 
@@ -22,7 +23,8 @@ class AppEntityConverterImpl(private val resourceProvider: ResourceProvider) : A
         firstInstallTime = resourceProvider.formatTime(entity.firstInstallTime),
         lastUpdateTime = resourceProvider.formatTime(entity.lastUpdateTime),
         versionName = entity.versionName,
-        versionCode = entity.versionCode
+        versionCode = entity.versionCode,
+        newApp = entity.lastUpdateTime > System.currentTimeMillis() - TimeUnit.DAYS.toMillis(1)
     )
 
 }

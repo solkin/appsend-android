@@ -10,6 +10,8 @@ import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.core.GlideApp
 import com.tomclaw.appsend_rb.util.AppIconData
 import com.tomclaw.appsend_rb.util.bind
+import com.tomclaw.appsend_rb.util.hide
+import com.tomclaw.appsend_rb.util.show
 
 interface AppItemView : ItemView {
 
@@ -23,6 +25,8 @@ interface AppItemView : ItemView {
 
     fun setTime(time: String?)
 
+    fun setBadgeVisible(visible: Boolean)
+
     fun setOnClickListener(listener: (() -> Unit)?)
 
 }
@@ -35,6 +39,7 @@ class AppItemViewHolder(view: View) : BaseViewHolder(view), AppItemView {
     private val version: TextView = view.findViewById(R.id.app_version)
     private val size: TextView = view.findViewById(R.id.app_size)
     private val time: TextView = view.findViewById(R.id.app_time)
+    private val badge: View = view.findViewById(R.id.badge_new)
 
     private var listener: (() -> Unit)? = null
 
@@ -65,6 +70,14 @@ class AppItemViewHolder(view: View) : BaseViewHolder(view), AppItemView {
 
     override fun setTime(time: String?) {
         this.time.bind(time)
+    }
+
+    override fun setBadgeVisible(visible: Boolean) {
+        if (visible) {
+            badge.show()
+        } else {
+            badge.hide()
+        }
     }
 
     override fun setOnClickListener(listener: (() -> Unit)?) {

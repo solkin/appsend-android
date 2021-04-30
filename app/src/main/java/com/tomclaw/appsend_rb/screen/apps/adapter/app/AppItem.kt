@@ -14,7 +14,8 @@ class AppItem(
     val firstInstallTime: String,
     val lastUpdateTime: String,
     val versionName: String,
-    val versionCode: Long
+    val versionCode: Long,
+    val newApp: Boolean
 ) : Item, Parcelable {
 
     override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
@@ -27,6 +28,7 @@ class AppItem(
         writeString(lastUpdateTime)
         writeString(versionName)
         writeLong(versionCode)
+        writeBoolean(newApp)
     }
 
     override fun describeContents(): Int = 0
@@ -42,6 +44,7 @@ class AppItem(
             val lastUpdateTime = parcel.readString().orEmpty()
             val versionName = parcel.readString().orEmpty()
             val versionCode = parcel.readLong()
+            val newApp = parcel.readBoolean()
             return AppItem(
                 id,
                 icon!!,
@@ -51,7 +54,8 @@ class AppItem(
                 firstInstallTime,
                 lastUpdateTime,
                 versionName,
-                versionCode
+                versionCode,
+                newApp
             )
         }
 

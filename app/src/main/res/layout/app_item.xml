@@ -18,6 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="end"
+        android:visibility="gone"
         app:backgroundColor="@color/badge_color"
         app:corner="rightTop"
         app:labelBottomPadding="5dp"
@@ -27,7 +28,8 @@
         app:primaryTextColor="@android:color/white"
         app:primaryTextSize="12sp"
         app:secondaryTextColor="@android:color/white"
-        app:secondaryTextSize="11sp" />
+        app:secondaryTextSize="11sp"
+        tools:visibility="visible" />
 
     <LinearLayout
         android:id="@+id/app_container"

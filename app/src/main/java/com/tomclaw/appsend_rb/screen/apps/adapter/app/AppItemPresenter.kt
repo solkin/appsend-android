@@ -13,6 +13,7 @@ class AppItemPresenter(
         view.setVersion(item.versionName)
         view.setSize(item.size)
         view.setTime(item.lastUpdateTime)
+        view.setBadgeVisible(item.newApp)
         view.setOnClickListener { listener.onItemClick(item) }
     }
 
