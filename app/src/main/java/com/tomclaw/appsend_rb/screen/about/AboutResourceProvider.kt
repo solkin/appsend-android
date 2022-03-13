@@ -19,7 +19,7 @@ class AboutResourceProviderImpl(
     override fun provideVersion(): String {
         try {
             val info = packageManager.getPackageInfo(packageName, 0)
-            return resources.getString(R.string.app_version, info.versionName, info.versionCode)
+            return resources.getString(R.string.app_version, info.versionName)
         } catch (ignored: PackageManager.NameNotFoundException) {
         }
         return ""

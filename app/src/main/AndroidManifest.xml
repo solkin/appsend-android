@@ -8,6 +8,10 @@
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:remove="android:maxSdkVersion" />
     <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:remove="android:maxSdkVersion"
+        tools:ignore="QueryAllPackagesPermission" />
+    <uses-permission
         android:name="android.permission.REQUEST_INSTALL_PACKAGES"
         tools:remove="android:maxSdkVersion" />
     <uses-permission
@@ -38,7 +42,8 @@
         <activity
             android:name=".screen.apps.AppsActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
