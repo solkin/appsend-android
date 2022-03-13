@@ -148,12 +148,12 @@ class AppsInteractorImpl(
                     APPS_DIR_NAME
                 )
                 if (!(directory.exists() || directory.mkdirs())) {
-                    emitter.onError(IOException("unable to create directory"))
+                    emitter.onError(IOException("unable to create directory " + directory.name))
                     return@create
                 }
                 val destination = File(directory, getApkName(entity))
                 if (destination.exists() && !destination.delete()) {
-                    emitter.onError(IOException("unable to delete destination file"))
+                    emitter.onError(IOException("unable to delete destination file " + destination.name))
                     return@create
                 }
                 val buffer = ByteArray(524288)

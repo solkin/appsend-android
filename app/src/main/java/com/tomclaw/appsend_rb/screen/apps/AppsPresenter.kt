@@ -189,7 +189,7 @@ class AppsPresenterImpl(
             .subscribe({ file ->
                 router?.shareApk(file)
             }, {
-                view?.showAppExportError()
+                view?.showAppExportError(it.message.toString())
             })
     }
 
@@ -202,7 +202,7 @@ class AppsPresenterImpl(
             .subscribe({ file ->
                 view?.showExtractSuccess(file.path)
             }, {
-                view?.showAppExportError()
+                view?.showAppExportError(it.message.toString())
             })
     }
 
