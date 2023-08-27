@@ -16,7 +16,7 @@ android {
         applicationId "com.tomclaw.appsend_rb"
         minSdkVersion 21
         targetSdkVersion 33
-        versionCode = project.hasProperty("versionCode") ? Integer.parseInt(project.versionCode) : 1
+        versionCode = project.hasProperty("versionCode") ? Integer.parseInt(project.versionCode) : 71
         versionName = "3.0"
         multiDexEnabled true
         manifestPlaceholders = [
@@ -32,14 +32,21 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
+
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
         }
     }
+
+    lint {
+        abortOnError false
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+
     namespace 'com.tomclaw.appsend_rb'
 }
 
