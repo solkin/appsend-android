@@ -16,7 +16,7 @@ android {
         applicationId "com.tomclaw.appsend_rb"
         minSdkVersion 21
         targetSdkVersion 33
-        versionCode = project.hasProperty("versionCode") ? Integer.parseInt(project.versionCode) : 71
+        versionCode = project.hasProperty("versionCode") ? Integer.parseInt(project.versionCode) : 73
         versionName = "3.0"
         multiDexEnabled true
         manifestPlaceholders = [

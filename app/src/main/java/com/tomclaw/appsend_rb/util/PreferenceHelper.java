@@ -31,14 +31,6 @@ public class PreferenceHelper {
         return getStringPreference(context, R.string.pref_sort_order, R.string.pref_sort_order_default);
     }
 
-    public static boolean isShowInstallCouch(Context context) {
-        return getBooleanPreference(context, R.string.pref_install_couch, R.bool.pref_install_couch_default);
-    }
-
-    public static void setShowInstallCouch(Context context, boolean value) {
-        setBooleanPreference(context, R.string.pref_install_couch, value);
-    }
-
     public static boolean isShowResponsibilityDenial(Context context) {
         return getBooleanPreference(context, R.string.pref_responsibility_denial, R.bool.pref_responsibility_denial_default);
     }
