@@ -1,5 +1,6 @@
 package com.tomclaw.appsend_rb.screen.apps
 
+import android.net.Uri
 import android.os.Bundle
 import com.avito.konveyor.adapter.AdapterPresenter
 import com.avito.konveyor.blueprint.Item
@@ -49,7 +50,7 @@ interface AppsPresenter : ItemClickListener {
 
         fun runAppUninstall(packageName: String)
 
-        fun shareApk(file: File)
+        fun shareApk(uri: Uri)
 
         fun requestPermissions(onGranted: () -> Unit, onDenied: () -> Unit)
 
@@ -199,8 +200,8 @@ class AppsPresenterImpl(
             .observeOn(schedulers.mainThread())
             .doOnSubscribe { view?.showProgress() }
             .doAfterTerminate { view?.showContent() }
-            .subscribe({ file ->
-                view?.showExtractSuccess(file.path)
+            .subscribe({
+                view?.showExtractSuccess()
             }, {
                 view?.showAppExportError()
             })

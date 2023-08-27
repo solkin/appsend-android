@@ -6,7 +6,7 @@
     <string name="mibibytes">%.1f MB</string>
     <string name="gigibytes">%.1f GB</string>
     <string name="please_wait">Please, wait…</string>
-    <string name="app_extract_success">Successfully extracted to \n&lt;b>%s&lt;/b></string>
+    <string name="app_extract_success">Successfully extracted to &lt;b>Downloads&lt;/b> directory</string>
     <string name="app_extract_failed">Exporting failed :(</string>
     <string name="refresh">Refresh</string>
     <string name="tomclaw_software">TomClaw Software</string>

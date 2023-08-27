@@ -1,9 +1,8 @@
 package com.tomclaw.appsend_rb.screen.apps
 
 import android.content.pm.PackageInfo
+import android.net.Uri
 import android.os.Build
-import android.os.Environment
-import android.os.Environment.DIRECTORY_DOWNLOADS
 import com.tomclaw.appsend_rb.dto.AppEntity
 import com.tomclaw.appsend_rb.util.SchedulersFactory
 import com.tomclaw.appsend_rb.util.getApkName
@@ -23,12 +22,13 @@ interface AppsInteractor {
 
     fun loadApp(packageName: String): Observable<AppEntity>
 
-    fun exportApp(entity: AppEntity): Observable<File>
+    fun exportApp(entity: AppEntity): Observable<Uri>
 
 }
 
 class AppsInteractorImpl(
     private val packageManager: PackageManagerWrapper,
+    private val outputWrapper: OutputWrapper,
     private val schedulers: SchedulersFactory
 ) : AppsInteractor {
 
@@ -94,17 +94,20 @@ class AppsInteractorImpl(
                     locale
                 ).compareTo(rhs.label.uppercase(locale))
             }
+
             NAME_DESCENDING -> entities.sortWith { lhs: AppEntity, rhs: AppEntity ->
                 rhs.label.uppercase(
                     locale
                 ).compareTo(lhs.label.uppercase(locale))
             }
+
             APP_SIZE -> entities.sortWith { lhs: AppEntity, rhs: AppEntity -> rhs.size.compareTo(lhs.size) }
             INSTALL_TIME -> entities.sortWith { lhs: AppEntity, rhs: AppEntity ->
                 rhs.firstInstallTime.compareTo(
                     lhs.firstInstallTime
                 )
             }
+
             UPDATE_TIME -> entities.sortWith { lhs: AppEntity, rhs: AppEntity ->
                 rhs.lastUpdateTime.compareTo(
                     lhs.lastUpdateTime
@@ -139,29 +142,20 @@ class AppsInteractorImpl(
         return null
     }
 
-    override fun exportApp(entity: AppEntity): Observable<File> {
+    override fun exportApp(entity: AppEntity): Observable<Uri> {
         return Single
-            .create<File> { emitter ->
-                val file = File(entity.path)
-                val directory = File(
-                    Environment.getExternalStoragePublicDirectory(DIRECTORY_DOWNLOADS),
-                    APPS_DIR_NAME
-                )
-                if (!(directory.exists() || directory.mkdirs())) {
-                    emitter.onError(IOException("unable to create directory"))
-                    return@create
-                }
-                val destination = File(directory, getApkName(entity))
-                if (destination.exists() && !destination.delete()) {
-                    emitter.onError(IOException("unable to delete destination file"))
-                    return@create
-                }
+            .create<Uri> { emitter ->
                 val buffer = ByteArray(524288)
                 var inputStream: InputStream? = null
                 var outputStream: OutputStream? = null
+                val uri = outputWrapper.getOutputUri(
+                    getApkName(entity),
+                    "application/vnd.android.package-archive"
+                )
+                val file = File(entity.path)
                 try {
                     inputStream = FileInputStream(file)
-                    outputStream = FileOutputStream(destination)
+                    outputStream = outputWrapper.openStream(uri)
                     var read: Int
                     while (inputStream.read(buffer).also { read = it } != -1) {
                         outputStream.write(buffer, 0, read)
@@ -174,7 +168,7 @@ class AppsInteractorImpl(
                     outputStream.safeClose()
                     inputStream.safeClose()
                 }
-                emitter.onSuccess(destination)
+                emitter.onSuccess(uri)
             }
             .toObservable()
             .subscribeOn(schedulers.io())

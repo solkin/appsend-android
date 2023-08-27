@@ -43,7 +43,7 @@ interface AppsView {
 
     fun showAppMenu(item: AppItem)
 
-    fun showExtractSuccess(path: String)
+    fun showExtractSuccess()
 
     fun showAppLaunchError()
 
@@ -93,6 +93,7 @@ class AppsViewImpl(
             override fun onQueryTextSubmit(query: String): Boolean {
                 return true
             }
+
             override fun onQueryTextChange(newText: String): Boolean {
                 searchTextRelay.accept(newText)
                 return true
@@ -166,15 +167,15 @@ class AppsViewImpl(
             .show()
     }
 
-    override fun showExtractSuccess(path: String) {
+    override fun showExtractSuccess() {
         val text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             Html.fromHtml(
-                context.getString(R.string.app_extract_success, path),
+                context.getString(R.string.app_extract_success),
                 FROM_HTML_MODE_COMPACT
             )
         } else {
             @Suppress("DEPRECATION")
-            Html.fromHtml(context.getString(R.string.app_extract_success, path))
+            Html.fromHtml(context.getString(R.string.app_extract_success))
         }
         Snackbar.make(recycler, text, Snackbar.LENGTH_LONG).show()
     }

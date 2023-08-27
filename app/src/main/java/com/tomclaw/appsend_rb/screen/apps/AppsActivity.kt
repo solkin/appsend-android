@@ -12,6 +12,7 @@ import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION
 import android.content.Intent.createChooser
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
@@ -175,15 +176,10 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         startActivity(uninstallIntent)
     }
 
-    override fun shareApk(file: File) {
-        val uri: Uri = if (isFileProviderUri()) {
-            FileProvider.getUriForFile(this, "$packageName.provider", file)
-        } else {
-            Uri.fromFile(file)
-        }
+    override fun shareApk(uri: Uri) {
         val intent = Intent().apply {
             action = ACTION_SEND
-            putExtra(EXTRA_TEXT, file.name)
+            putExtra(EXTRA_TEXT, uri.lastPathSegment)
             putExtra(EXTRA_STREAM, uri)
             type = "application/zip"
         }
@@ -192,17 +188,21 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
     }
 
     override fun requestPermissions(onGranted: () -> Unit, onDenied: () -> Unit) {
-        EzPermission.with(this)
-            .permissions(
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            )
-            .request { granted, denied, permanentlyDenied ->
-                if (granted.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                    onGranted()
-                } else {
-                    onDenied()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            onGranted()
+        } else {
+            EzPermission.with(this)
+                .permissions(
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                )
+                .request { granted, denied, permanentlyDenied ->
+                    if (granted.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                        onGranted()
+                    } else {
+                        onDenied()
+                    }
                 }
-            }
+        }
     }
 
 }

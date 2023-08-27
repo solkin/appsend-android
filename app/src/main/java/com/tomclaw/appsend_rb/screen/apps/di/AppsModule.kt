@@ -13,6 +13,8 @@ import com.tomclaw.appsend_rb.screen.apps.AppsInteractor
 import com.tomclaw.appsend_rb.screen.apps.AppsInteractorImpl
 import com.tomclaw.appsend_rb.screen.apps.AppsPresenter
 import com.tomclaw.appsend_rb.screen.apps.AppsPresenterImpl
+import com.tomclaw.appsend_rb.screen.apps.OutputWrapper
+import com.tomclaw.appsend_rb.screen.apps.OutputWrapperImpl
 import com.tomclaw.appsend_rb.screen.apps.PackageManagerWrapper
 import com.tomclaw.appsend_rb.screen.apps.PackageManagerWrapperImpl
 import com.tomclaw.appsend_rb.screen.apps.PreferencesProvider
@@ -56,8 +58,9 @@ class AppsModule(
     @PerActivity
     internal fun provideInteractor(
             packageManager: PackageManagerWrapper,
+            outputWrapper: OutputWrapper,
             schedulers: SchedulersFactory
-    ): AppsInteractor = AppsInteractorImpl(packageManager, schedulers)
+    ): AppsInteractor = AppsInteractorImpl(packageManager, outputWrapper, schedulers)
 
     @Provides
     @PerActivity
@@ -88,6 +91,12 @@ class AppsModule(
     @PerActivity
     internal fun providePackageManagerWrapper(): PackageManagerWrapper {
         return PackageManagerWrapperImpl(context.packageManager)
+    }
+
+    @Provides
+    @PerActivity
+    internal fun provideOutputWrapper(): OutputWrapper {
+        return OutputWrapperImpl(context, context.contentResolver)
     }
 
     @Provides
