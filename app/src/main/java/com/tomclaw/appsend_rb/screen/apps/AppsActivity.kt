@@ -179,7 +179,6 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
     override fun shareApk(uri: Uri) {
         val intent = Intent().apply {
             action = ACTION_SEND
-            putExtra(EXTRA_TEXT, uri.lastPathSegment)
             putExtra(EXTRA_STREAM, uri)
             type = "application/zip"
         }
