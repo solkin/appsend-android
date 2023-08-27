@@ -90,14 +90,14 @@ class AppsInteractorImpl(
         }
         when (sortOrder) {
             NAME_ASCENDING -> entities.sortWith { lhs: AppEntity, rhs: AppEntity ->
-                lhs.label.toUpperCase(
+                lhs.label.uppercase(
                     locale
-                ).compareTo(rhs.label.toUpperCase(locale))
+                ).compareTo(rhs.label.uppercase(locale))
             }
             NAME_DESCENDING -> entities.sortWith { lhs: AppEntity, rhs: AppEntity ->
-                rhs.label.toUpperCase(
+                rhs.label.uppercase(
                     locale
-                ).compareTo(lhs.label.toUpperCase(locale))
+                ).compareTo(lhs.label.uppercase(locale))
             }
             APP_SIZE -> entities.sortWith { lhs: AppEntity, rhs: AppEntity -> rhs.size.compareTo(lhs.size) }
             INSTALL_TIME -> entities.sortWith { lhs: AppEntity, rhs: AppEntity ->

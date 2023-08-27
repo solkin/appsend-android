@@ -14,10 +14,11 @@ android {
     compileSdk 33
     defaultConfig {
         applicationId "com.tomclaw.appsend_rb"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 33
         versionCode = project.hasProperty("versionCode") ? Integer.parseInt(project.versionCode) : 1
         versionName = "3.0"
+        multiDexEnabled true
         manifestPlaceholders = [
                 APPCENTER_APP_ID: "b23ac4e6-fe78-43b4-9ec1-a61c7ed7d495"
         ]
@@ -36,8 +37,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     namespace 'com.tomclaw.appsend_rb'
 }
@@ -54,6 +55,7 @@ dependencies {
     implementation 'com.anjlab.android.iab.v3:library:1.0.44'
     implementation 'com.github.shts:TriangleLabelView:1.1.2'
     implementation 'com.github.bumptech.glide:glide:4.16.0'
+    kapt 'com.github.bumptech.glide:compiler:4.16.0'
     implementation 'com.github.b-yng:BottomSheetBuilder:1.6.1'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation "androidx.core:core-ktx:1.10.1"
@@ -65,7 +67,7 @@ dependencies {
     implementation 'com.github.avito-tech:Konveyor:0.42.2'
     implementation 'com.google.dagger:dagger:2.42'
     kapt 'com.google.dagger:dagger-compiler:2.42'
-    kapt 'com.google.dagger:dagger-android-processor:2.28.3'
+    kapt 'org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0'
 }
 repositories {
     mavenCentral()

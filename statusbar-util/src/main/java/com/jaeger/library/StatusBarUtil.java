@@ -22,7 +22,7 @@ import java.lang.reflect.Method;
  * Created by Jaeger on 16/2/14.
  * <p>
  * Email: chjie.jaeger@gmail.com
- * GitHub: https://github.com/laobie
+ * GitHub: <a href="https://github.com/laobie">https://github.com/laobie</a>
  */
 public class StatusBarUtil {
 
@@ -94,7 +94,7 @@ public class StatusBarUtil {
             ViewGroup contentView = ((ViewGroup) activity.findViewById(android.R.id.content));
             View rootView = contentView.getChildAt(0);
             int statusBarHeight = getStatusBarHeight(activity);
-            if (rootView != null && rootView instanceof CoordinatorLayout) {
+            if (rootView instanceof CoordinatorLayout) {
                 final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) rootView;
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
                     coordinatorLayout.setFitsSystemWindows(false);
