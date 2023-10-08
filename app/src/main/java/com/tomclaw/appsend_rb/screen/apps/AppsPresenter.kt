@@ -1,6 +1,7 @@
 package com.tomclaw.appsend_rb.screen.apps
 
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import com.avito.konveyor.adapter.AdapterPresenter
 import com.avito.konveyor.blueprint.Item
@@ -13,6 +14,7 @@ import dagger.Lazy
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
 import java.io.File
+import java.util.zip.GZIPOutputStream
 
 interface AppsPresenter : ItemClickListener {
 
@@ -70,7 +72,12 @@ class AppsPresenterImpl(
     private var view: AppsView? = null
     private var router: AppsPresenter.AppsRouter? = null
 
-    private var entities: List<AppEntity>? = state?.getParcelableArrayList(KEY_ENTITIES)
+    private var entities: List<AppEntity>? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        state?.getParcelableArrayList(KEY_ENTITIES, AppEntity::class.java)
+    } else {
+        @Suppress("DEPRECATION")
+        state?.getParcelableArrayList(KEY_ENTITIES)
+    }
 
     private var packageMayBeDeleted: String? = state?.getString(KEY_PACKAGE_MAY_BE_DELETED)
 

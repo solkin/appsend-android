@@ -7,7 +7,6 @@ import android.content.Intent.ACTION_SEND
 import android.content.Intent.ACTION_VIEW
 import android.content.Intent.CATEGORY_DEFAULT
 import android.content.Intent.EXTRA_STREAM
-import android.content.Intent.EXTRA_TEXT
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION
 import android.content.Intent.createChooser
@@ -16,7 +15,6 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.FileProvider
 import com.androidisland.ezpermission.EzPermission
 import com.avito.konveyor.ItemBinder
 import com.avito.konveyor.adapter.AdapterPresenter
@@ -25,17 +23,16 @@ import com.tomclaw.appsend_rb.PermissionsActivity
 import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.SettingsActivity
 import com.tomclaw.appsend_rb.getComponent
-import com.tomclaw.appsend_rb.screen.about.AboutActivity
 import com.tomclaw.appsend_rb.screen.about.createAboutActivityIntent
 import com.tomclaw.appsend_rb.screen.apps.di.AppsModule
+import com.tomclaw.appsend_rb.util.ZipParcelable
 import com.tomclaw.appsend_rb.util.grantProviderUriPermission
-import com.tomclaw.appsend_rb.util.isFileProviderUri
 import com.tomclaw.appsend_rb.util.registerAppCenter
+import com.tomclaw.appsend_rb.util.restore
 import com.tomclaw.appsend_rb.util.updateStatusBar
 import com.tomclaw.appsend_rb.util.updateTheme
-import java.io.File
-import java.util.ArrayList
 import javax.inject.Inject
+
 
 class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
 
@@ -54,7 +51,8 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
     private var isDarkTheme: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val presenterState = savedInstanceState?.getBundle(KEY_PRESENTER_STATE)
+        val compressedPresenterState: ZipParcelable? = savedInstanceState?.getParcelable(KEY_PRESENTER_STATE)
+        val presenterState: Bundle? = compressedPresenterState?.restore()
         application.getComponent()
             .appsComponent(AppsModule(this, presenterState))
             .inject(activity = this)
@@ -104,7 +102,7 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putBundle(KEY_PRESENTER_STATE, presenter.saveState())
+        outState.putParcelable(KEY_PRESENTER_STATE, ZipParcelable(presenter.saveState()))
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
