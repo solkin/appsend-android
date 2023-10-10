@@ -28,7 +28,6 @@ import com.tomclaw.appsend_rb.screen.apps.di.AppsModule
 import com.tomclaw.appsend_rb.util.ZipParcelable
 import com.tomclaw.appsend_rb.util.grantProviderUriPermission
 import com.tomclaw.appsend_rb.util.registerAppCenter
-import com.tomclaw.appsend_rb.util.restore
 import com.tomclaw.appsend_rb.util.updateStatusBar
 import com.tomclaw.appsend_rb.util.updateTheme
 import javax.inject.Inject
