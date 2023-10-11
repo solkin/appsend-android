@@ -11,13 +11,13 @@ android {
             if (project.hasProperty("keyPassword")) keyPassword project.keyPassword
         }
     }
-    compileSdk 33
+    compileSdk 34
     defaultConfig {
         applicationId "com.tomclaw.appsend_rb"
         minSdkVersion 21
         targetSdkVersion 33
-        versionCode = project.hasProperty("versionCode") ? Integer.parseInt(project.versionCode) : 73
-        versionName = "3.0"
+        versionCode = project.hasProperty("versionCode") ? Integer.parseInt(project.versionCode) : 74
+        versionName = "3.5"
         multiDexEnabled true
         manifestPlaceholders = [
                 APPCENTER_APP_ID: "b23ac4e6-fe78-43b4-9ec1-a61c7ed7d495"
@@ -53,9 +53,9 @@ android {
 dependencies {
     implementation project(path: ':preference-fragment')
     implementation project(path: ':statusbar-util')
-    implementation 'androidx.annotation:annotation:1.6.0'
+    implementation 'androidx.annotation:annotation:1.7.0'
     implementation 'androidx.recyclerview:recyclerview:1.3.1'
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'com.google.android.material:material:1.10.0'
     implementation 'com.github.FarshadTahmasbi:EzPermission:0.1.4'
     implementation 'com.microsoft.appcenter:appcenter-analytics:4.4.5'
     implementation 'com.microsoft.appcenter:appcenter-crashes:4.4.5'
@@ -65,11 +65,11 @@ dependencies {
     kapt 'com.github.bumptech.glide:compiler:4.16.0'
     implementation 'com.github.b-yng:BottomSheetBuilder:1.6.1'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-    implementation "androidx.core:core-ktx:1.10.1"
+    implementation "androidx.core:core-ktx:1.12.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    implementation 'com.jakewharton.rxrelay2:rxrelay:2.1.0'
+    implementation 'com.jakewharton.rxrelay2:rxrelay:2.1.1'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
     implementation 'com.github.avito-tech:Konveyor:0.42.2'
     implementation 'com.google.dagger:dagger:2.42'

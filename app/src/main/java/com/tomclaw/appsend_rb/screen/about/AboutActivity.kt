@@ -40,6 +40,7 @@ class AboutActivity : AppCompatActivity(), AboutPresenter.AboutRouter {
     }
 
     override fun onBackPressed() {
+        super.onBackPressed()
         presenter.onBackPressed()
     }
 

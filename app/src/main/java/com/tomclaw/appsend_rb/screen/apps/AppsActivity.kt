@@ -70,6 +70,7 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
     }
 
     override fun onBackPressed() {
+        super.onBackPressed()
         presenter.onBackPressed()
     }
 
