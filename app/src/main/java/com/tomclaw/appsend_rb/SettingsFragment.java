@@ -28,8 +28,10 @@ public class SettingsFragment extends PreferenceFragment {
                 public void executeBackground() {
                     File directory = getExternalDirectory();
                     File[] files = directory.listFiles(pathname -> pathname.getName().endsWith(".apk"));
-                    for (File file : files) {
-                        file.delete();
+                    if (files != null) {
+                        for (File file : files) {
+                            file.delete();
+                        }
                     }
                 }
 
