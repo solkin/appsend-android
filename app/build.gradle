@@ -15,7 +15,7 @@ android {
     defaultConfig {
         applicationId "com.tomclaw.appsend_rb"
         minSdkVersion 21
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode = project.hasProperty("versionCode") ? Integer.parseInt(project.versionCode) : 74
         versionName = "3.5"
         multiDexEnabled true
