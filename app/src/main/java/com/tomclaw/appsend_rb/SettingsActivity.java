@@ -26,7 +26,6 @@ public class SettingsActivity extends AppCompatActivity {
     public static final int RESULT_UPDATE = 5;
     private SharedPreferences preferences;
     private OnSettingsChangedListener listener;
-    private SettingsFragment settingsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +41,7 @@ public class SettingsActivity extends AppCompatActivity {
         listener = new OnSettingsChangedListener();
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         preferences.registerOnSharedPreferenceChangeListener(listener);
-        settingsFragment = new SettingsFragment();
+        SettingsFragment settingsFragment = new SettingsFragment();
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
