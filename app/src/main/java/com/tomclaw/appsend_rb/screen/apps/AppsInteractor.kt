@@ -7,10 +7,14 @@ import com.tomclaw.appsend_rb.dto.AppEntity
 import com.tomclaw.appsend_rb.util.SchedulersFactory
 import com.tomclaw.appsend_rb.util.getApkName
 import com.tomclaw.appsend_rb.util.safeClose
-import io.reactivex.Observable
-import io.reactivex.Single
-import java.io.*
-import java.util.*
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Single
+import java.io.File
+import java.io.FileInputStream
+import java.io.IOException
+import java.io.InputStream
+import java.io.OutputStream
+import java.util.Locale
 
 interface AppsInteractor {
 
@@ -29,10 +33,9 @@ interface AppsInteractor {
 class AppsInteractorImpl(
     private val packageManager: PackageManagerWrapper,
     private val outputWrapper: OutputWrapper,
+    private val locale: Locale,
     private val schedulers: SchedulersFactory
 ) : AppsInteractor {
-
-    private val locale = Locale.getDefault()
 
     override fun loadApps(
         systemApps: Boolean,

@@ -11,10 +11,8 @@ import com.tomclaw.appsend_rb.screen.apps.adapter.ItemClickListener
 import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItem
 import com.tomclaw.appsend_rb.util.SchedulersFactory
 import dagger.Lazy
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.plusAssign
-import java.io.File
-import java.util.zip.GZIPOutputStream
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.kotlin.plusAssign
 
 interface AppsPresenter : ItemClickListener {
 

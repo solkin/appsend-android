@@ -13,13 +13,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.avito.konveyor.adapter.SimpleRecyclerAdapter
 import com.github.rubensousa.bottomsheetbuilder.BottomSheetBuilder
 import com.google.android.material.snackbar.Snackbar
-import com.jakewharton.rxrelay2.PublishRelay
+import com.jakewharton.rxrelay3.PublishRelay
 import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItem
 import com.tomclaw.appsend_rb.util.ColorHelper.getAttributedColor
 import com.tomclaw.appsend_rb.util.hideWithAlphaAnimation
 import com.tomclaw.appsend_rb.util.showWithAlphaAnimation
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.Observable
 
 interface AppsView {
 

@@ -3,9 +3,9 @@ package com.tomclaw.appsend_rb.screen.about
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
-import com.jakewharton.rxrelay2.PublishRelay
+import com.jakewharton.rxrelay3.PublishRelay
 import com.tomclaw.appsend_rb.R
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.Observable
 
 interface AboutView {
 

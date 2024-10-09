@@ -19,12 +19,12 @@ import com.androidisland.ezpermission.EzPermission
 import com.avito.konveyor.ItemBinder
 import com.avito.konveyor.adapter.AdapterPresenter
 import com.avito.konveyor.adapter.SimpleRecyclerAdapter
-import com.tomclaw.appsend_rb.PermissionsActivity
 import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.SettingsActivity
 import com.tomclaw.appsend_rb.getComponent
 import com.tomclaw.appsend_rb.screen.about.createAboutActivityIntent
 import com.tomclaw.appsend_rb.screen.apps.di.AppsModule
+import com.tomclaw.appsend_rb.screen.permissions.createPermissionsActivityIntent
 import com.tomclaw.appsend_rb.util.ZipParcelable
 import com.tomclaw.appsend_rb.util.grantProviderUriPermission
 import com.tomclaw.appsend_rb.util.registerAppCenter
@@ -160,11 +160,7 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
     }
 
     override fun showRequestedPermissions(permissions: List<String>) {
-        val intent = Intent(this, PermissionsActivity::class.java)
-            .putStringArrayListExtra(
-                PermissionsActivity.EXTRA_PERMISSIONS,
-                ArrayList(permissions)
-            )
+        val intent = createPermissionsActivityIntent(context = this, permissions)
         startActivity(intent)
     }
 

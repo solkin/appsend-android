@@ -50,13 +50,13 @@
             android:name=".screen.about.AboutActivity"
             android:label="@string/info" />
         <activity
+            android:name=".screen.permissions.PermissionsActivity"
+            android:label="@string/required_permissions" />
+        <activity
             android:name="com.tomclaw.appsend_rb.SettingsActivity"
             android:label="@string/settings" />
         <activity
             android:name="com.tomclaw.appsend_rb.DonateActivity"
             android:label="@string/donate" />
-        <activity
-            android:name="com.tomclaw.appsend_rb.PermissionsActivity"
-            android:label="@string/required_permissions" />
     </application>
 </manifest>

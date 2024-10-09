@@ -12,7 +12,7 @@ import android.view.ViewPropertyAnimator
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.EditText
 import android.widget.TextView
-import com.jakewharton.rxrelay2.Relay
+import com.jakewharton.rxrelay3.Relay
 
 fun View?.toggle() {
     if (this?.visibility == VISIBLE) hide() else show()

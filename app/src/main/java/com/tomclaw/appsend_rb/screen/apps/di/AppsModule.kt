@@ -31,11 +31,12 @@ import dagger.Lazy
 import dagger.multibindings.IntoSet
 import java.text.DateFormat
 import java.text.SimpleDateFormat
+import java.util.Locale
 
 @Module
 class AppsModule(
-        private val context: Context,
-        private val state: Bundle?
+    private val context: Context,
+    private val state: Bundle?
 ) {
 
     @Provides
@@ -47,20 +48,28 @@ class AppsModule(
     @Provides
     @PerActivity
     internal fun providePresenter(
-            interactor: AppsInteractor,
-            adapterPresenter: Lazy<AdapterPresenter>,
-            appEntityConverter: AppEntityConverter,
-            preferences: PreferencesProvider,
-            schedulers: SchedulersFactory
-    ): AppsPresenter = AppsPresenterImpl(interactor, adapterPresenter, appEntityConverter, preferences, schedulers, state)
+        interactor: AppsInteractor,
+        adapterPresenter: Lazy<AdapterPresenter>,
+        appEntityConverter: AppEntityConverter,
+        preferences: PreferencesProvider,
+        schedulers: SchedulersFactory
+    ): AppsPresenter = AppsPresenterImpl(
+        interactor,
+        adapterPresenter,
+        appEntityConverter,
+        preferences,
+        schedulers,
+        state
+    )
 
     @Provides
     @PerActivity
     internal fun provideInteractor(
-            packageManager: PackageManagerWrapper,
-            outputWrapper: OutputWrapper,
-            schedulers: SchedulersFactory
-    ): AppsInteractor = AppsInteractorImpl(packageManager, outputWrapper, schedulers)
+        packageManager: PackageManagerWrapper,
+        outputWrapper: OutputWrapper,
+        locale: Locale,
+        schedulers: SchedulersFactory
+    ): AppsInteractor = AppsInteractorImpl(packageManager, outputWrapper, locale, schedulers)
 
     @Provides
     @PerActivity
@@ -102,7 +111,7 @@ class AppsModule(
     @Provides
     @PerActivity
     internal fun provideItemBinder(
-            blueprintSet: Set<@JvmSuppressWildcards ItemBlueprint<*, *>>
+        blueprintSet: Set<@JvmSuppressWildcards ItemBlueprint<*, *>>
     ): ItemBinder {
         return ItemBinder.Builder().apply {
             blueprintSet.forEach { registerItem(it) }
@@ -113,12 +122,12 @@ class AppsModule(
     @IntoSet
     @PerActivity
     internal fun provideAppItemBlueprint(
-            presenter: AppItemPresenter
+        presenter: AppItemPresenter
     ): ItemBlueprint<*, *> = AppItemBlueprint(presenter)
 
     @Provides
     @PerActivity
     internal fun provideAppItemPresenter(presenter: AppsPresenter) =
-            AppItemPresenter(presenter)
+        AppItemPresenter(presenter)
 
 }
