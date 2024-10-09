@@ -1,6 +1,5 @@
 package com.tomclaw.appsend_rb.dto
 
-import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 

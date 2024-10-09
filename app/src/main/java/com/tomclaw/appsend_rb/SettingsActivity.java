@@ -8,12 +8,12 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.MenuItem;
 
-import com.tomclaw.appsend_rb.util.ThemeHelper;
-
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.tomclaw.appsend_rb.util.ThemeHelper;
 
 /**
  * Created with IntelliJ IDEA.

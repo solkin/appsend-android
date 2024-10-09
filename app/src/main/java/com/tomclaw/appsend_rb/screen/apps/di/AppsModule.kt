@@ -25,9 +25,9 @@ import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItemBlueprint
 import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItemPresenter
 import com.tomclaw.appsend_rb.util.PerActivity
 import com.tomclaw.appsend_rb.util.SchedulersFactory
+import dagger.Lazy
 import dagger.Module
 import dagger.Provides
-import dagger.Lazy
 import dagger.multibindings.IntoSet
 import java.text.DateFormat
 import java.text.SimpleDateFormat

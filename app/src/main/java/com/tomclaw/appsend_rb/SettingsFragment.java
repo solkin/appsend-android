@@ -1,5 +1,7 @@
 package com.tomclaw.appsend_rb;
 
+import static com.tomclaw.appsend_rb.util.FilesKt.getExternalDirectory;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -10,8 +12,6 @@ import com.tomclaw.appsend_rb.core.PleaseWaitTask;
 import com.tomclaw.appsend_rb.core.TaskExecutor;
 
 import java.io.File;
-
-import static com.tomclaw.appsend_rb.util.FilesKt.getExternalDirectory;
 
 /**
  * Created by Solkin on 12.01.2015.

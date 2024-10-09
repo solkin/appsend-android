@@ -1,6 +1,5 @@
 package com.tomclaw.appsend_rb.util
 
-import android.annotation.SuppressLint
 import android.content.res.Resources
 import android.os.Environment
 import com.tomclaw.appsend_rb.R

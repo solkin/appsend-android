@@ -1,14 +1,14 @@
 package com.tomclaw.appsend_rb.util;
 
+import static android.content.pm.PermissionInfo.PROTECTION_DANGEROUS;
+
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.PermissionInfo;
 
-import com.tomclaw.appsend_rb.R;
-
 import androidx.annotation.NonNull;
 
-import static android.content.pm.PermissionInfo.PROTECTION_DANGEROUS;
+import com.tomclaw.appsend_rb.R;
 
 /**
  * Created by ivsolkin on 27.01.17.
