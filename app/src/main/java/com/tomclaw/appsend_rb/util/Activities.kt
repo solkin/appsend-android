@@ -12,6 +12,6 @@ fun Activity.updateTheme(preferences: PreferencesProvider): Boolean {
 }
 
 fun Activity.updateStatusBar() {
-    val color = ColorHelper.getAttributedColor(this, R.attr.toolbar_background)
+    val color = getAttributedColor(this, R.attr.toolbar_background)
     StatusBarUtil.setColor(this, color)
 }
