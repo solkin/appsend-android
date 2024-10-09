@@ -45,12 +45,6 @@
     <string name="run_app">Run application</string>
     <string name="non_launchable_package">This package is not runnable.</string>
     <string name="app_details">Show details</string>
-    <string name="donate">Donate</string>
-    <string name="donate_title">Treat developer!</string>
-    <string name="donate_description">And he continues to make cool updates :)</string>
-    <string name="donate_button">Present chocolate</string>
-    <string name="purchase_error">Error while donating. Try again, please.</string>
-    <string name="thank_you">Thank you for support!</string>
     <string name="pref_title_dark_theme">Dark theme</string>
     <string name="pref_dark_theme_system">Dark colors in application appearance</string>
     <string name="remove">Remove</string>

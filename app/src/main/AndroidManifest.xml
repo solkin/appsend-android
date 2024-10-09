@@ -55,8 +55,5 @@
         <activity
             android:name="com.tomclaw.appsend_rb.SettingsActivity"
             android:label="@string/settings" />
-        <activity
-            android:name="com.tomclaw.appsend_rb.DonateActivity"
-            android:label="@string/donate" />
     </application>
 </manifest>
