@@ -1,5 +1,8 @@
 package com.tomclaw.appsend_rb;
 
+import static com.tomclaw.appsend_rb.util.ThemeHelperKt.updateStatusBar;
+import static com.tomclaw.appsend_rb.util.ThemeHelperKt.updateTheme;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,8 +15,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import com.tomclaw.appsend_rb.util.ThemeHelper;
 
 /**
  * Created with IntelliJ IDEA.
@@ -29,11 +30,11 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ThemeHelper.updateTheme(this);
+        updateTheme(this);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.settings_activity);
-        ThemeHelper.updateStatusBar(this);
+        updateStatusBar(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
