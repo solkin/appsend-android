@@ -96,7 +96,6 @@
                     android:layout_gravity="start|center_vertical"
                     android:ellipsize="end"
                     android:singleLine="true"
-                    android:textColor="?text_secondary_color"
                     android:fontFamily="sans-serif"
                     android:lines="1"
                     android:marqueeRepeatLimit="marquee_forever"
