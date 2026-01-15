@@ -42,7 +42,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:textSize="12sp"
-                style="@style/TextAppearance.Material3.BodySmall" />
+                                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textColor="?attr/colorOnPrimaryContainer" />
 
             <TextView
                 android:layout_width="match_parent"
