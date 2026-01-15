@@ -43,7 +43,8 @@
                 android:gravity="center_horizontal"
                 android:textSize="12sp"
                                         android:textAppearance="?attr/textAppearanceBodyMedium"
-                        android:textColor="?attr/colorOnPrimaryContainer" />
+                        android:textColor="?attr/colorOnPrimaryContainer"
+android:alpha="0.8" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -52,7 +53,9 @@
                 android:paddingTop="6dp"
                 android:text="@string/tomclaw_software"
                 android:textSize="14sp"
-                style="@style/TextAppearance.Material3.BodyMedium" />
+                                        android:textAppearance="?attr/textAppearanceLabelLarge"
+                        android:textColor="?attr/colorOnPrimaryContainer"
+                        android:alpha="0.7" />
 
         </LinearLayout>
 
