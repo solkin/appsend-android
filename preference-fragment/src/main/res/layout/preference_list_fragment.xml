@@ -50,7 +50,7 @@
         android:layout_weight="0"
         android:visibility="gone">
 
-        <Button android:id="@+id/back_button"
+        <com.google.android.material.button.MaterialButton android:id="@+id/back_button"
             android:layout_width="150dip"
             android:layout_height="wrap_content"
             android:layout_margin="5dip"
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true">
 
-            <Button android:id="@+id/skip_button"
+            <com.google.android.material.button.MaterialButton android:id="@+id/skip_button"
                 android:layout_width="150dip"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dip"
@@ -71,7 +71,7 @@
                 android:visibility="gone"
             />
 
-            <Button android:id="@+id/next_button"
+            <com.google.android.material.button.MaterialButton android:id="@+id/next_button"
                 android:layout_width="150dip"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dip"
