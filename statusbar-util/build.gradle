@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 version = "1.5.1"
 
 android {
-    compileSdk 34
+    compileSdk 35
 
     resourcePrefix "statusbarutil_"
 
