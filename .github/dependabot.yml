@@ -23,4 +23,3 @@ updates:
         # Prefix all commit messages with "Changed: "
         prefix: "Changed"
     rebase-strategy: "disabled"
-  
