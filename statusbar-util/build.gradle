@@ -1,9 +1,11 @@
-apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library'
+}
 
 version = "1.5.1"
 
 android {
-    compileSdk 35
+    compileSdk = 35
 
     resourcePrefix "statusbarutil_"
 
