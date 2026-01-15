@@ -17,7 +17,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    namespace 'com.jaeger.library'
+    namespace = "com.jaeger.library"
 }
 
 dependencies {
