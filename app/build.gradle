@@ -28,13 +28,13 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
-            shrinkResources false
+            shrinkResources = false
         }
         release {
             minifyEnabled true
-            shrinkResources true
+            shrinkResources = true
 
-            signingConfig signingConfigs.release
+            signingConfig = signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
         }
     }
@@ -48,7 +48,7 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 
-    namespace 'com.tomclaw.appsend_rb'
+    namespace = "com.tomclaw.appsend_rb"
 }
 
 dependencies {
