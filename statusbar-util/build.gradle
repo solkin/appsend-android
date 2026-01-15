@@ -8,7 +8,7 @@ android {
     resourcePrefix "statusbarutil_"
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 21
         targetSdkVersion 33
     }
     buildTypes {
