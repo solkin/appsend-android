@@ -1,7 +1,9 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-parcelize'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
 
 android {
     signingConfigs {
@@ -12,7 +14,8 @@ android {
             if (project.hasProperty("keyPassword")) keyPassword project.keyPassword
         }
     }
-    compileSdk 35
+    compileSdk = 35
+    namespace = "com.tomclaw.appsend_rb"
     defaultConfig {
         applicationId "com.tomclaw.appsend_rb"
         minSdkVersion 21
@@ -28,27 +31,30 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
+            debuggable true
             shrinkResources = false
+            jniDebuggable true
+            signingConfig = signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'            
         }
         release {
             minifyEnabled true
+            debuggable false
             shrinkResources = true
-
+            jniDebuggable false
             signingConfig = signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
         }
     }
 
     lint {
-        abortOnError false
+        abortOnError = false
     }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
-
-    namespace = "com.tomclaw.appsend_rb"
 }
 
 dependencies {
