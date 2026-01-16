@@ -40,7 +40,7 @@ android {
             shrinkResources = true
             jniDebuggable false
             signingConfig = signingConfigs.release
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
