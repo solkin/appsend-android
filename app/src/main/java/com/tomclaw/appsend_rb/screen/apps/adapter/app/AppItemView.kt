@@ -9,10 +9,7 @@ import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.util.bind
 import com.tomclaw.appsend_rb.util.hide
 import com.tomclaw.appsend_rb.util.show
-import com.tomclaw.imageloader.util.centerCrop
-import com.tomclaw.imageloader.util.fetch
-import com.tomclaw.imageloader.util.placeholder
-import com.tomclaw.imageloader.util.error
+import com.tomclaw.imageloader.util.*
 
 interface AppItemView : ItemView {
 
