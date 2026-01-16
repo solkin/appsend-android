@@ -14,12 +14,12 @@ android {
             if (project.hasProperty("keyPassword")) keyPassword project.keyPassword
         }
     }
-    compileSdk = 34
+    compileSdk = 35
     namespace = "com.tomclaw.appsend_rb"
     defaultConfig {
         applicationId "com.tomclaw.appsend_rb"
         minSdkVersion 21
-        targetSdkVersion 34
+        targetSdkVersion 35
         versionCode = project.hasProperty("versionCode") ? Integer.parseInt(project.versionCode) : 83
         versionName = "3.7"
        // multiDexEnabled true
