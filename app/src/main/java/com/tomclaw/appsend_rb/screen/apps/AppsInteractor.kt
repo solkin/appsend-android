@@ -77,8 +77,8 @@ class AppsInteractorImpl(
             try {
                 val packageInfo = packageManager.getPackageInfo(info.packageName, GET_PERMISSIONS)
                 createAppEntity(packageInfo)?.let { entity ->
-                    val isUserApp = info.flags and FLAG_SYSTEM != FLAG_SYSTEM &&
-                            info.flags and FLAG_UPDATED_SYSTEM_APP != FLAG_UPDATED_SYSTEM_APP
+                    val isUserApp = (info.flags and FLAG_SYSTEM) != FLAG_SYSTEM &&
+                            (info.flags and FLAG_UPDATED_SYSTEM_APP) != FLAG_UPDATED_SYSTEM_APP
                     if (isUserApp || systemApps) {
                         val launchIntent =
                             packageManager.getLaunchIntentForPackage(info.packageName)
@@ -88,59 +88,49 @@ class AppsInteractorImpl(
                     }
                 }
             } catch (ignored: Throwable) {
-                // Bad package.
+                // Bad package, ignore
             }
         }
         when (sortOrder) {
-            NAME_ASCENDING -> entities.sortWith { lhs: AppEntity, rhs: AppEntity ->
-                lhs.label.uppercase(
-                    locale
-                ).compareTo(rhs.label.uppercase(locale))
+            NAME_ASCENDING -> entities.sortWith { lhs, rhs ->
+                lhs.label.uppercase(locale).compareTo(rhs.label.uppercase(locale))
             }
 
-            NAME_DESCENDING -> entities.sortWith { lhs: AppEntity, rhs: AppEntity ->
-                rhs.label.uppercase(
-                    locale
-                ).compareTo(lhs.label.uppercase(locale))
+            NAME_DESCENDING -> entities.sortWith { lhs, rhs ->
+                rhs.label.uppercase(locale).compareTo(lhs.label.uppercase(locale))
             }
 
-            APP_SIZE -> entities.sortWith { lhs: AppEntity, rhs: AppEntity -> rhs.size.compareTo(lhs.size) }
-            INSTALL_TIME -> entities.sortWith { lhs: AppEntity, rhs: AppEntity ->
-                rhs.firstInstallTime.compareTo(
-                    lhs.firstInstallTime
-                )
-            }
-
-            UPDATE_TIME -> entities.sortWith { lhs: AppEntity, rhs: AppEntity ->
-                rhs.lastUpdateTime.compareTo(
-                    lhs.lastUpdateTime
-                )
-            }
+            APP_SIZE -> entities.sortWith { lhs, rhs -> rhs.size.compareTo(lhs.size) }
+            INSTALL_TIME -> entities.sortWith { lhs, rhs -> rhs.firstInstallTime.compareTo(lhs.firstInstallTime) }
+            UPDATE_TIME -> entities.sortWith { lhs, rhs -> rhs.lastUpdateTime.compareTo(lhs.lastUpdateTime) }
         }
 
         return entities
     }
 
     private fun createAppEntity(packageInfo: PackageInfo): AppEntity? {
-        val file = File(packageInfo.applicationInfo.publicSourceDir)
-        if (file.exists()) {
-            val versionCode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                packageInfo.longVersionCode
-            } else {
-                @Suppress("DEPRECATION")
-                packageInfo.versionCode.toLong()
+        val sourceDir = packageInfo.applicationInfo?.publicSourceDir
+        if (sourceDir != null) {
+            val file = File(sourceDir)
+            if (file.exists()) {
+                val versionCode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    packageInfo.longVersionCode
+                } else {
+                    @Suppress("DEPRECATION")
+                    packageInfo.versionCode.toLong()
+                }
+                return AppEntity(
+                    label = packageManager.getApplicationLabel(packageInfo.applicationInfo),
+                    packageName = packageInfo.packageName,
+                    versionName = packageInfo.versionName ?: "",
+                    versionCode = versionCode,
+                    requestedPermissions = packageInfo.requestedPermissions?.asList() ?: emptyList(),
+                    path = file.path,
+                    size = file.length(),
+                    firstInstallTime = packageInfo.firstInstallTime,
+                    lastUpdateTime = packageInfo.lastUpdateTime
+                )
             }
-            return AppEntity(
-                label = packageManager.getApplicationLabel(packageInfo.applicationInfo),
-                packageName = packageInfo.packageName,
-                versionName = packageInfo.versionName,
-                versionCode = versionCode,
-                requestedPermissions = packageInfo.requestedPermissions.asList(),
-                path = file.path,
-                size = file.length(),
-                firstInstallTime = packageInfo.firstInstallTime,
-                lastUpdateTime = packageInfo.lastUpdateTime
-            )
         }
         return null
     }
@@ -176,7 +166,6 @@ class AppsInteractorImpl(
             .toObservable()
             .subscribeOn(schedulers.io())
     }
-
 }
 
 const val NAME_ASCENDING = 1
