@@ -22,7 +22,7 @@ android {
         targetSdkVersion 35
         versionCode = project.hasProperty("versionCode") ? Integer.parseInt(project.versionCode) : 83
         versionName = "3.7"
-       // multiDexEnabled true
+        multiDexEnabled true
         manifestPlaceholders = [
                 APPCENTER_APP_ID: "b23ac4e6-fe78-43b4-9ec1-a61c7ed7d495"
         ]
