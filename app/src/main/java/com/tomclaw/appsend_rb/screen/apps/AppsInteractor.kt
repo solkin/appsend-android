@@ -109,7 +109,8 @@ class AppsInteractorImpl(
     }
 
     private fun createAppEntity(packageInfo: PackageInfo): AppEntity? {
-        val sourceDir = packageInfo.applicationInfo?.publicSourceDir
+        val appInfo = packageInfo.applicationInfo  // локальная val для избежания smart cast ошибки
+        val sourceDir = appInfo?.publicSourceDir
         if (sourceDir != null) {
             val file = File(sourceDir)
             if (file.exists()) {
@@ -120,7 +121,7 @@ class AppsInteractorImpl(
                     packageInfo.versionCode.toLong()
                 }
                 return AppEntity(
-                    label = packageManager.getApplicationLabel(packageInfo.applicationInfo),
+                    label = packageManager.getApplicationLabel(appInfo),
                     packageName = packageInfo.packageName,
                     versionName = packageInfo.versionName ?: "",
                     versionCode = versionCode,
