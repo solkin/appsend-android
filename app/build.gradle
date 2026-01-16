@@ -69,7 +69,7 @@ dependencies {
     implementation 'com.github.FarshadTahmasbi:EzPermission:0.1.4'
     implementation 'com.microsoft.appcenter:appcenter-analytics:5.0.6'
     implementation 'com.microsoft.appcenter:appcenter-crashes:5.0.6'
-    implementation 'com.anjlab.android.iab.v3:library:1.0.44'
+    implementation 'com.anjlab.android.iab.v3:library:2.2.0'
     implementation 'com.github.shts:TriangleLabelView:1.1.2'
     implementation 'com.github.solkin:simple-image-loader:v0.9.6'
     implementation 'com.github.solkin:disk-lru-cache:1.5'
