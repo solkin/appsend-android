@@ -8,8 +8,7 @@
         android:maxSdkVersion="32"
         tools:ignore="ScopedStorage" />
     <uses-permission
-        android:name="android.permission.REQUEST_DELETE_PACKAGES"
-        tools:remove="android:maxSdkVersion" />
+        android:name="android.permission.REQUEST_DELETE_PACKAGES" />
     <uses-permission
         android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />

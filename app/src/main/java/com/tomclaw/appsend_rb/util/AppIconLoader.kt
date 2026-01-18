@@ -15,15 +15,17 @@ class AppIconLoader(private val packageManager: PackageManager) : Loader {
         try {
             val packageName = parseUri(uriString)
             val packageInfo = packageManager.getPackageInfo(packageName, 0)
-            val data = getPackageIconPng(
-                packageInfo.applicationInfo, packageManager
-            )
-            FileOutputStream(file).use { output ->
-                output.write(data)
-                output.flush()
+            val appInfo = packageInfo.applicationInfo
+            if (appInfo != null) {
+                val data = getPackageIconPng(appInfo, packageManager)
+                FileOutputStream(file).use { output ->
+                    output.write(data)
+                    output.flush()
+                }
+                return true
             }
-            return true
         } catch (ignored: Throwable) {
+            // Игнорируем ошибки загрузки и возвращаем false
         }
         return false
     }

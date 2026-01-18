@@ -1,6 +1,5 @@
 package com.tomclaw.appsend_rb.screen.apps.adapter.app
 
-import android.content.Context
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -10,9 +9,7 @@ import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.util.bind
 import com.tomclaw.appsend_rb.util.hide
 import com.tomclaw.appsend_rb.util.show
-import com.tomclaw.imageloader.util.centerCrop
-import com.tomclaw.imageloader.util.fetch
-import com.tomclaw.imageloader.util.withPlaceholder
+import com.tomclaw.imageloader.util.*
 
 interface AppItemView : ItemView {
 
@@ -48,15 +45,11 @@ class AppItemViewHolder(view: View) : BaseViewHolder(view), AppItemView {
     }
 
     override fun setIcon(url: String?) {
+        icon.scaleType = ImageView.ScaleType.CENTER_CROP
         icon.fetch(url.orEmpty()) {
             centerCrop()
-            withPlaceholder(R.drawable.app_placeholder)
-            placeholder = {
-                with(it.get()) {
-                    scaleType = android.widget.ImageView.ScaleType.CENTER_CROP
-                    setImageResource(R.drawable.app_placeholder)
-                }
-            }
+            placeholder(R.drawable.app_placeholder)
+            error(R.drawable.app_placeholder)
         }
     }
 
