@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Snälla, vänta...</string>
+    <string name="app_extract_success">Extraherad till katalogen &lt;b&gt;Nedladdningar&lt;/b&gt;</string>
+    <string name="app_extract_failed">Exporten misslyckades :(</string>
+    <string name="refresh">Uppdatera</string>
+    <string name="tomclaw_software">TomClaw programvara</string>
+    <string name="app_version">Version %1$s (%2$d)</string>
+    <string name="info">Info</string>
+    <string name="rate_app">Betygsätt denna applikation</string>
+    <string name="all_apps">Författarens ansökningar</string>
+    <string name="pref_base_title">Basinställningar</string>
+    <string name="pref_summary_show_system">Visa systemapplikationer i listan</string>
+    <string name="pref_summary_runnable">Visa endast körbara paket</string>
+    <string name="pref_title_show_system">Systemappar</string>
+    <string name="pref_title_runnable">Körbara paket</string>
+    <string name="got_it">Jag förstår!</string>
+    <string name="system_apps_warning_title">Varning!</string>
+    <string name="system_apps_warning_message">Systemappar är inte vanliga appar och det finns ingen garanti för det
+        lyckad export!</string>
+    <string name="settings">Inställningar</string>
+    <string name="send_to">Dela med</string>
+    <string name="pref_title_sort_order">Sorteringsordning</string>
+    <string name="sort_order_ascending">A - Ö</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Efter appstorlek</string>
+    <string name="sort_order_install_time">Efter installationstid</string>
+    <string name="sort_order_update_time">Efter uppdateringstid</string>
+    <string name="pref_summary_sort_order">Appar lista sorteringsordning varianter</string>
+    <string name="extract_apk">Extrahera apk till nedladdningar</string>
+    <string name="share_apk">Dela apk via appar</string>
+    <string name="find_on_gp">Hitta i Google Play</string>
+    <string name="pref_title_clear_cache">Rensa cache</string>
+    <string name="pref_summary_clear_cache">Ta bort alla tidigare extraherade APK-filer i nedladdningskatalogen</string>
+    <string name="cache_cleared_successfully">Cacheminnet rensades</string>
+    <string name="cache_clearing_failed">Cache-rensning misslyckades</string>
+    <string name="write_permission_extract">För att spara applikationsfilen måste du ge lagringstillstånd</string>
+    <string name="menu_search">Söka</string>
+    <string name="run_app">Kör programmet</string>
+    <string name="non_launchable_package">Det här paketet är inte körbart.</string>
+    <string name="app_details">Visa detaljer</string>
+    <string name="pref_title_dark_theme">Mörkt tema</string>
+    <string name="pref_dark_theme_system">Mörka färger i appliceringens utseende</string>
+    <string name="remove">Ta bort</string>
+    <string name="unknown_permission_description">Okänd behörighet</string>
+    <string name="required_permissions">Nödvändiga behörigheter</string>
+    <string name="unable_to_get_permissions">Det gick inte att få listan eller appens nödvändiga behörigheter</string>
+    <string name="no_requested_permissions">Appen har inga begärda behörigheter.</string>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d ب</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f جي بي</string>
+    <string name="please_wait">مهرباني وکړئ انتظار وکړئ ...</string>
+    <string name="app_extract_success">په بریالیتوب سره د &lt;b&gt;ډاونلوډ&lt;/b&gt; لارښود ته استخراج شو</string>
+    <string name="app_extract_failed">صادرول ناکام شول :(</string>
+    <string name="refresh">تازه کړئ</string>
+    <string name="tomclaw_software">TomClaw سافټویر</string>
+    <string name="app_version">نسخه %1$s (%2$d)</string>
+    <string name="info">معلومات</string>
+    <string name="rate_app">د دې غوښتنلیک درجه بندي کړئ</string>
+    <string name="all_apps">د لیکوال غوښتنلیکونه</string>
+    <string name="pref_base_title">د بنسټ ترتیبات</string>
+    <string name="pref_summary_show_system">په لیست کې د سیسټم غوښتنلیکونه وښایاست</string>
+    <string name="pref_summary_runnable">یوازې د چلولو وړ کڅوړې وښایاست</string>
+    <string name="pref_title_show_system">د سیسټم ایپس</string>
+    <string name="pref_title_runnable">د چلولو وړ کڅوړې</string>
+    <string name="got_it">پوه شو!</string>
+    <string name="system_apps_warning_title">خبرتیا!</string>
+    <string name="system_apps_warning_message">د سیسټم ایپس معمول ایپس ندي او د هغې هیڅ تضمین شتون نلري
+        بریالي صادرات!</string>
+    <string name="settings">ترتیبات</string>
+    <string name="send_to">سره شریک کړئ</string>
+    <string name="pref_title_sort_order">د ترتیب ترتیب</string>
+    <string name="sort_order_ascending">الف – ز</string>
+    <string name="sort_order_descending">ز - الف</string>
+    <string name="sort_order_app_size">د اپلیکیشن اندازې له مخې</string>
+    <string name="sort_order_install_time">د نصب کولو وخت سره</string>
+    <string name="sort_order_update_time">د تازه کولو وخت سره</string>
+    <string name="pref_summary_sort_order">د ایپس لیست ترتیب ترتیب ډولونه</string>
+    <string name="extract_apk">apk په ډاونلوډونو کې استخراج کړئ</string>
+    <string name="share_apk">د ایپس له لارې apk شریک کړئ</string>
+    <string name="find_on_gp">په ګوګل پلی کې ومومئ</string>
+    <string name="pref_title_clear_cache">کیچ پاک کړئ</string>
+    <string name="pref_summary_clear_cache">د ډاونلوډ ډایرکټر کې ټول دمخه ایستل شوي APK فایلونه لرې کړئ</string>
+    <string name="cache_cleared_successfully">زیرمه په بریالیتوب سره پاکه شوه</string>
+    <string name="cache_clearing_failed">د کیچ پاکول ناکام شول</string>
+    <string name="write_permission_extract">د غوښتنلیک فایل خوندي کولو لپاره تاسو اړتیا لرئ د ذخیره کولو اجازه ورکړئ</string>
+    <string name="menu_search">لټون</string>
+    <string name="run_app">غوښتنلیک چلول</string>
+    <string name="non_launchable_package">دا بسته د چلولو وړ نه ده.</string>
+    <string name="app_details">توضیحات ښکاره کړئ</string>
+    <string name="pref_title_dark_theme">تیاره موضوع</string>
+    <string name="pref_dark_theme_system">د غوښتنلیک په بڼه کې تیاره رنګونه</string>
+    <string name="remove">لرې کړئ</string>
+    <string name="unknown_permission_description">نامعلومه اجازه</string>
+    <string name="required_permissions">د اړتیا وړ اجازې</string>
+    <string name="unable_to_get_permissions">د لیست یا ایپ د اړتیا وړ اجازې ترلاسه کولو توان نلري</string>
+    <string name="no_requested_permissions">اپلیکیشن د اجازې غوښتنه نه کوي.</string>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d Б</string>
+    <string name="kibibytes">%.1f КБ</string>
+    <string name="mibibytes">%.1f МБ</string>
+    <string name="gigibytes">%.1f ГБ</string>
+    <string name="please_wait">Хүлээгээрэй...</string>
+    <string name="app_extract_success">&lt;b&gt;Татаж авах&lt;/b&gt; лавлах руу амжилттай задлав</string>
+    <string name="app_extract_failed">Экспорт хийж чадсангүй :(</string>
+    <string name="refresh">Сэргээх</string>
+    <string name="tomclaw_software">TomClaw програм хангамж</string>
+    <string name="app_version">Хувилбар %1$s (%2$d)</string>
+    <string name="info">Мэдээлэл</string>
+    <string name="rate_app">Энэ програмыг үнэлнэ үү</string>
+    <string name="all_apps">Зохиогчийн програмууд</string>
+    <string name="pref_base_title">Үндсэн тохиргоо</string>
+    <string name="pref_summary_show_system">Жагсаалтад системийн програмуудыг харуулах</string>
+    <string name="pref_summary_runnable">Зөвхөн ажиллах боломжтой багцуудыг харуулах</string>
+    <string name="pref_title_show_system">Системийн програмууд</string>
+    <string name="pref_title_runnable">Ажиллуулах боломжтой багцууд</string>
+    <string name="got_it">Ойлголоо!</string>
+    <string name="system_apps_warning_title">Анхааруулга!</string>
+    <string name="system_apps_warning_message">Системийн програмууд нь ердийн програмууд биш бөгөөд үүнд ямар ч баталгаа байхгүй
+        амжилттай экспорт!</string>
+    <string name="settings">Тохиргоо</string>
+    <string name="send_to">-тай хуваалцах</string>
+    <string name="pref_title_sort_order">Эрэмбэлэх дараалал</string>
+    <string name="sort_order_ascending">А-З</string>
+    <string name="sort_order_descending">З - А</string>
+    <string name="sort_order_app_size">Програмын хэмжээгээр</string>
+    <string name="sort_order_install_time">Суулгах хугацаанд</string>
+    <string name="sort_order_update_time">Шинэчлэх хугацаанд</string>
+    <string name="pref_summary_sort_order">Апп нь эрэмбэлэх дарааллын хувилбаруудыг жагсаадаг</string>
+    <string name="extract_apk">Татаж авсан файлд apk-г задлах</string>
+    <string name="share_apk">Аппликешнээр дамжуулан apk-г хуваалцаарай</string>
+    <string name="find_on_gp">Google Play дээрээс олоорой</string>
+    <string name="pref_title_clear_cache">Кэшийг цэвэрлэх</string>
+    <string name="pref_summary_clear_cache">Татаж авсан лавлахаас өмнө нь задалсан бүх APK файлуудыг устгана уу</string>
+    <string name="cache_cleared_successfully">Кэшийг амжилттай арилгалаа</string>
+    <string name="cache_clearing_failed">Кэшийг цэвэрлэж чадсангүй</string>
+    <string name="write_permission_extract">Програмын файлыг хадгалахын тулд та хадгалах зөвшөөрөл олгох шаардлагатай</string>
+    <string name="menu_search">Хайх</string>
+    <string name="run_app">Програмыг ажиллуул</string>
+    <string name="non_launchable_package">Энэ багцыг ажиллуулах боломжгүй.</string>
+    <string name="app_details">Дэлгэрэнгүйг харуулах</string>
+    <string name="pref_title_dark_theme">Харанхуй сэдэв</string>
+    <string name="pref_dark_theme_system">Хэрэглээний харагдах байдал дахь бараан өнгө</string>
+    <string name="remove">Устгах</string>
+    <string name="unknown_permission_description">Тодорхойгүй зөвшөөрөл</string>
+    <string name="required_permissions">Шаардлагатай зөвшөөрөл</string>
+    <string name="unable_to_get_permissions">Жагсаалт эсвэл програмын шаардлагатай зөвшөөрлийг авах боломжгүй</string>
+    <string name="no_requested_permissions">Апп нь хүссэн зөвшөөрөлгүй байна.</string>
+</resources>

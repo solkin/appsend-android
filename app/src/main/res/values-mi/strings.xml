@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Tena, tatari…</string>
+    <string name="app_extract_success">I momoho te tango ki te whaiaronga &lt;b&gt;Downloads&lt;/b&gt;</string>
+    <string name="app_extract_failed">I rahua te kaweake :(</string>
+    <string name="refresh">Tāmata</string>
+    <string name="tomclaw_software">Pūmanawa TomClaw</string>
+    <string name="app_version">Putanga %1$s (%2$d)</string>
+    <string name="info">Nga korero</string>
+    <string name="rate_app">Whakatauria tenei tono</string>
+    <string name="all_apps">Nga tono a te Kaituhi</string>
+    <string name="pref_base_title">Tautuhinga turanga</string>
+    <string name="pref_summary_show_system">Whakaatuhia nga tono punaha ki te raarangi</string>
+    <string name="pref_summary_runnable">Whakaatuhia nga kohinga ka taea te whakahaere anake</string>
+    <string name="pref_title_show_system">Nga tono punaha</string>
+    <string name="pref_title_runnable">Nga putea ka taea te whakahaere</string>
+    <string name="got_it">Kua whiwhi!</string>
+    <string name="system_apps_warning_title">Whakatupato!</string>
+    <string name="system_apps_warning_message">Ko nga taupānga punaha ehara i nga tono o mua, kaore he whakamanatanga
+        kaweake angitu!</string>
+    <string name="settings">Tautuhinga</string>
+    <string name="send_to">Tiri ki</string>
+    <string name="pref_title_sort_order">Kōmaka raupapa</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Ma te rahi o te taupānga</string>
+    <string name="sort_order_install_time">Ma te wa whakauru</string>
+    <string name="sort_order_update_time">Ma te wa whakahou</string>
+    <string name="pref_summary_sort_order">Whakarārangihia nga momo raupapa raupapa tono</string>
+    <string name="extract_apk">Unuhia te apk ki nga Tikiake</string>
+    <string name="share_apk">Tirihia te apk ma nga taupānga</string>
+    <string name="find_on_gp">Kimihia i roto i te Google Play</string>
+    <string name="pref_title_clear_cache">Ūkui keteroki</string>
+    <string name="pref_summary_clear_cache">Tango i nga konae APK katoa i tangohia i mua i te raarangi tango</string>
+    <string name="cache_cleared_successfully">I tutuki pai te keteroki</string>
+    <string name="cache_clearing_failed">I rahua te whakakore keteroki</string>
+    <string name="write_permission_extract">Hei tiaki i te konae tono me tuku whakaaetanga rokiroki</string>
+    <string name="menu_search">Rapu</string>
+    <string name="run_app">Whakahaere tono</string>
+    <string name="non_launchable_package">Ko tenei kete kaore e taea te whakahaere.</string>
+    <string name="app_details">Whakaatuhia nga taipitopito</string>
+    <string name="pref_title_dark_theme">Kaupapa pouri</string>
+    <string name="pref_dark_theme_system">Nga tae pouri i te ahua tono</string>
+    <string name="remove">Tango</string>
+    <string name="unknown_permission_description">Whakaaetanga kore mohio</string>
+    <string name="required_permissions">Nga whakaaetanga e hiahiatia ana</string>
+    <string name="unable_to_get_permissions">Kāore i taea te whiwhi rārangi, taupānga rānei ngā whakaaetanga e hiahiatia ana</string>
+    <string name="no_requested_permissions">Karekau he whakaaetanga tono tono.</string>
+</resources>

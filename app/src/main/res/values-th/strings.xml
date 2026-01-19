@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d บี</string>
+    <string name="kibibytes">%.1f กิโลไบต์</string>
+    <string name="mibibytes">%.1f เมกะไบต์</string>
+    <string name="gigibytes">%.1f กิกะไบต์</string>
+    <string name="please_wait">โปรดรอ…</string>
+    <string name="app_extract_success">แยกไปยังไดเร็กทอรี &lt;b&gt;ดาวน์โหลด&lt;/b&gt; สำเร็จแล้ว</string>
+    <string name="app_extract_failed">การส่งออกล้มเหลว :(</string>
+    <string name="refresh">รีเฟรช</string>
+    <string name="tomclaw_software">ซอฟต์แวร์ TomClaw</string>
+    <string name="app_version">เวอร์ชัน %1$s (%2$d)</string>
+    <string name="info">ข้อมูล</string>
+    <string name="rate_app">ให้คะแนนแอปพลิเคชันนี้</string>
+    <string name="all_apps">ใบสมัครของผู้เขียน</string>
+    <string name="pref_base_title">การตั้งค่าฐาน</string>
+    <string name="pref_summary_show_system">แสดงแอปพลิเคชันระบบในรายการ</string>
+    <string name="pref_summary_runnable">แสดงแพ็คเกจที่รันได้เท่านั้น</string>
+    <string name="pref_title_show_system">แอพระบบ</string>
+    <string name="pref_title_runnable">แพ็คเกจที่รันได้</string>
+    <string name="got_it">เข้าใจแล้ว!</string>
+    <string name="system_apps_warning_title">คำเตือน!</string>
+    <string name="system_apps_warning_message">แอประบบไม่ใช่แอปทั่วไปและไม่มีการรับประกัน
+        ส่งออกสำเร็จ!</string>
+    <string name="settings">การตั้งค่า</string>
+    <string name="send_to">แบ่งปันด้วย</string>
+    <string name="pref_title_sort_order">เรียงลำดับ</string>
+    <string name="sort_order_ascending">เอ - ซี</string>
+    <string name="sort_order_descending">ซี - เอ</string>
+    <string name="sort_order_app_size">ตามขนาดแอป</string>
+    <string name="sort_order_install_time">ตามเวลาการติดตั้ง</string>
+    <string name="sort_order_update_time">โดยเวลาอัพเดต</string>
+    <string name="pref_summary_sort_order">ตัวแปรการเรียงลำดับรายการแอป</string>
+    <string name="extract_apk">แยก apk ลงในการดาวน์โหลด</string>
+    <string name="share_apk">แชร์ apk ผ่านแอพ</string>
+    <string name="find_on_gp">ค้นหาใน Google Play</string>
+    <string name="pref_title_clear_cache">ล้างแคช</string>
+    <string name="pref_summary_clear_cache">ลบไฟล์ APK ที่แยกออกมาก่อนหน้านี้ทั้งหมดในไดเร็กทอรี Downloads</string>
+    <string name="cache_cleared_successfully">ล้างแคชเรียบร้อยแล้ว</string>
+    <string name="cache_clearing_failed">การล้างแคชล้มเหลว</string>
+    <string name="write_permission_extract">ในการบันทึกไฟล์แอปพลิเคชัน คุณจะต้องให้สิทธิ์ในการจัดเก็บข้อมูล</string>
+    <string name="menu_search">ค้นหา</string>
+    <string name="run_app">เรียกใช้แอปพลิเคชัน</string>
+    <string name="non_launchable_package">แพ็คเกจนี้ไม่สามารถรันได้</string>
+    <string name="app_details">แสดงรายละเอียด</string>
+    <string name="pref_title_dark_theme">ธีมสีเข้ม</string>
+    <string name="pref_dark_theme_system">สีเข้มในลักษณะการใช้งาน</string>
+    <string name="remove">ลบ</string>
+    <string name="unknown_permission_description">การอนุญาตที่ไม่รู้จัก</string>
+    <string name="required_permissions">สิทธิ์ที่จำเป็น</string>
+    <string name="unable_to_get_permissions">ไม่สามารถรับรายการหรือสิทธิ์ที่จำเป็นของแอปได้</string>
+    <string name="no_requested_permissions">แอปไม่ได้ขอสิทธิ์</string>
+</resources>

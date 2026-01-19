@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Bitte warten…</string>
+    <string name="app_extract_success">Erfolgreich in das Verzeichnis &lt;b&gt;Downloads&lt;/b&gt; extrahiert</string>
+    <string name="app_extract_failed">Exportieren fehlgeschlagen :(</string>
+    <string name="refresh">Aktualisieren</string>
+    <string name="tomclaw_software">TomClaw-Software</string>
+    <string name="app_version">Version %1$s (%2$d)</string>
+    <string name="info">Info</string>
+    <string name="rate_app">Bewerten Sie diese Anwendung</string>
+    <string name="all_apps">Bewerbungen des Autors</string>
+    <string name="pref_base_title">Grundeinstellungen</string>
+    <string name="pref_summary_show_system">Systemanwendungen in der Liste anzeigen</string>
+    <string name="pref_summary_runnable">Nur ausführbare Pakete anzeigen</string>
+    <string name="pref_title_show_system">System-Apps</string>
+    <string name="pref_title_runnable">Ausführbare Pakete</string>
+    <string name="got_it">Habe es!</string>
+    <string name="system_apps_warning_title">Warnung!</string>
+    <string name="system_apps_warning_message">System-Apps sind keine gewöhnlichen Apps und es gibt keine Garantie dafür
+        gelungener Export!</string>
+    <string name="settings">Einstellungen</string>
+    <string name="send_to">Teilen mit</string>
+    <string name="pref_title_sort_order">Sortierreihenfolge</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Nach App-Größe</string>
+    <string name="sort_order_install_time">Nach Installationszeit</string>
+    <string name="sort_order_update_time">Nach Aktualisierungszeit</string>
+    <string name="pref_summary_sort_order">Apps listen Sortierreihenfolgevarianten auf</string>
+    <string name="extract_apk">Extrahieren Sie die APK in „Downloads“.</string>
+    <string name="share_apk">APK über Apps teilen</string>
+    <string name="find_on_gp">Finden Sie in Google Play</string>
+    <string name="pref_title_clear_cache">Cache leeren</string>
+    <string name="pref_summary_clear_cache">Entfernen Sie alle zuvor extrahierten APK-Dateien im Download-Verzeichnis</string>
+    <string name="cache_cleared_successfully">Cache erfolgreich geleert</string>
+    <string name="cache_clearing_failed">Das Löschen des Caches ist fehlgeschlagen</string>
+    <string name="write_permission_extract">Um die Bewerbungsdatei zu speichern, müssen Sie eine Speichererlaubnis erteilen</string>
+    <string name="menu_search">Suchen</string>
+    <string name="run_app">Anwendung ausführen</string>
+    <string name="non_launchable_package">Dieses Paket ist nicht ausführbar.</string>
+    <string name="app_details">Details anzeigen</string>
+    <string name="pref_title_dark_theme">Dunkles Thema</string>
+    <string name="pref_dark_theme_system">Dunkle Farben im Anwendungsbild</string>
+    <string name="remove">Entfernen</string>
+    <string name="unknown_permission_description">Unbekannte Erlaubnis</string>
+    <string name="required_permissions">Erforderliche Berechtigungen</string>
+    <string name="unable_to_get_permissions">Die erforderlichen Berechtigungen für die Liste oder App können nicht abgerufen werden</string>
+    <string name="no_requested_permissions">Die App verfügt nicht über die angeforderten Berechtigungen.</string>
+</resources>

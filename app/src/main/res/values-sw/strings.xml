@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">KB %.1f</string>
+    <string name="mibibytes">MB %.1f</string>
+    <string name="gigibytes">GB %.1f</string>
+    <string name="please_wait">Tafadhali, subiri...</string>
+    <string name="app_extract_success">Imetolewa kwa saraka ya &lt;b&gt;Vipakuliwa&lt;/b&gt;</string>
+    <string name="app_extract_failed">Imeshindwa kuhamisha :(</string>
+    <string name="refresh">Onyesha upya</string>
+    <string name="tomclaw_software">Programu ya TomClaw</string>
+    <string name="app_version">Toleo la %1$s (%2$d)</string>
+    <string name="info">Habari</string>
+    <string name="rate_app">Kadiria programu hii</string>
+    <string name="all_apps">Maombi ya mwandishi</string>
+    <string name="pref_base_title">Mipangilio ya msingi</string>
+    <string name="pref_summary_show_system">Onyesha programu za mfumo kwenye orodha</string>
+    <string name="pref_summary_runnable">Onyesha vifurushi vinavyoweza kutumika pekee</string>
+    <string name="pref_title_show_system">Programu za mfumo</string>
+    <string name="pref_title_runnable">Vifurushi vinavyoweza kutumika</string>
+    <string name="got_it">Nimeelewa!</string>
+    <string name="system_apps_warning_title">Onyo!</string>
+    <string name="system_apps_warning_message">Programu za mfumo sio programu za kawaida na hakuna dhamana yake
+        usafirishaji umefanikiwa!</string>
+    <string name="settings">Mipangilio</string>
+    <string name="send_to">Shiriki na</string>
+    <string name="pref_title_sort_order">Panga mpangilio</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Kwa ukubwa wa programu</string>
+    <string name="sort_order_install_time">Kwa muda wa kusakinisha</string>
+    <string name="sort_order_update_time">Kwa wakati wa sasisho</string>
+    <string name="pref_summary_sort_order">Vibadala vya kupanga orodha ya programu</string>
+    <string name="extract_apk">Chapa apk kwenye Vipakuliwa</string>
+    <string name="share_apk">Shiriki apk kupitia programu</string>
+    <string name="find_on_gp">Tafuta kwenye Google Play</string>
+    <string name="pref_title_clear_cache">Futa akiba</string>
+    <string name="pref_summary_clear_cache">Ondoa faili zote za APK zilizotolewa katika saraka ya Vipakuliwa</string>
+    <string name="cache_cleared_successfully">Akiba imefutwa</string>
+    <string name="cache_clearing_failed">Imeshindwa kufuta akiba</string>
+    <string name="write_permission_extract">Ili kuhifadhi faili ya programu utahitaji kutoa ruhusa ya kuhifadhi</string>
+    <string name="menu_search">Tafuta</string>
+    <string name="run_app">Endesha programu</string>
+    <string name="non_launchable_package">Kifurushi hiki hakiwezi kuendeshwa.</string>
+    <string name="app_details">Onyesha maelezo</string>
+    <string name="pref_title_dark_theme">Mandhari meusi</string>
+    <string name="pref_dark_theme_system">Rangi nyeusi katika kuonekana kwa programu</string>
+    <string name="remove">Ondoa</string>
+    <string name="unknown_permission_description">Ruhusa isiyojulikana</string>
+    <string name="required_permissions">Ruhusa zinazohitajika</string>
+    <string name="unable_to_get_permissions">Imeshindwa kupata orodha au ruhusa zinazohitajika za programu</string>
+    <string name="no_requested_permissions">Programu haina ruhusa zilizoombwa.</string>
+</resources>

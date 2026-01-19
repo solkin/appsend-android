@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Feuch, fuirich…</string>
+    <string name="app_extract_success">Chaidh a tharraing gu soirbheachail dhan eòlaire &lt;b&gt;Luchdaich a-nuas&lt;/b&gt;</string>
+    <string name="app_extract_failed">Dh\'fhàillig às-mhalairt :(</string>
+    <string name="refresh">Ùraich</string>
+    <string name="tomclaw_software">Bathar-bog TomClaw</string>
+    <string name="app_version">Tionndadh %1$s (%2$d)</string>
+    <string name="info">Fiosrachadh</string>
+    <string name="rate_app">Dèan measadh air an tagradh seo</string>
+    <string name="all_apps">Tagraidhean an ùghdair</string>
+    <string name="pref_base_title">Suidheachaidhean bunaiteach</string>
+    <string name="pref_summary_show_system">Seall aplacaidean siostam ann an liosta</string>
+    <string name="pref_summary_runnable">Seall pacaidean a ghabhas ruith a-mhàin</string>
+    <string name="pref_title_show_system">Aplacaidean siostam</string>
+    <string name="pref_title_runnable">Pacaidean a ghabhas ruith</string>
+    <string name="got_it">Fhuair mi e!</string>
+    <string name="system_apps_warning_title">Rabhadh!</string>
+    <string name="system_apps_warning_message">Chan e aplacaidean àbhaisteach a th’ ann an aplacaidean siostam agus chan eil barantas sam bith ann
+        às-mhalairt soirbheachail!</string>
+    <string name="settings">Suidhichidhean</string>
+    <string name="send_to">Roinn le</string>
+    <string name="pref_title_sort_order">Dèan òrdugh</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">A rèir meud app</string>
+    <string name="sort_order_install_time">Le ùine stàlaidh</string>
+    <string name="sort_order_update_time">Le ùine ùrachadh</string>
+    <string name="pref_summary_sort_order">Bidh aplacaidean a ’liostadh caochlaidhean òrdugh seòrsachaidh</string>
+    <string name="extract_apk">Thoir a-mach apk ann an luchdachadh sìos</string>
+    <string name="share_apk">Roinn apk tro aplacaidean</string>
+    <string name="find_on_gp">Lorg ann an Google Play</string>
+    <string name="pref_title_clear_cache">Glan an tasgadan</string>
+    <string name="pref_summary_clear_cache">Thoir air falbh a h-uile faidhle APK a chaidh a thoirt a-mach roimhe seo anns an eòlaire Luchdaich sìos</string>
+    <string name="cache_cleared_successfully">Chaidh an tasgadan a ghlanadh gu soirbheachail</string>
+    <string name="cache_clearing_failed">Dh\'fhàillig glanadh an tasgadan</string>
+    <string name="write_permission_extract">Gus am faidhle tagraidh a shàbhaladh feumaidh tu cead stòraidh a thoirt seachad</string>
+    <string name="menu_search">Rannsaich</string>
+    <string name="run_app">Ruith an tagradh</string>
+    <string name="non_launchable_package">Chan eil am pasgan seo ri ruith.</string>
+    <string name="app_details">Seall mion-fhiosrachadh</string>
+    <string name="pref_title_dark_theme">Cuspair dorcha</string>
+    <string name="pref_dark_theme_system">Dathan dorcha ann an coltas tagradh</string>
+    <string name="remove">Thoir air falbh</string>
+    <string name="unknown_permission_description">Cead neo-aithnichte</string>
+    <string name="required_permissions">Ceadan riatanach</string>
+    <string name="unable_to_get_permissions">Cha b\' urrainn dhuinn na ceadan liosta no aplacaid fhaighinn</string>
+    <string name="no_requested_permissions">Chan eil an aplacaid air cead iarraidh.</string>
+</resources>

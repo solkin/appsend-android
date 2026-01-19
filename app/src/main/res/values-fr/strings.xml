@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f Ko</string>
+    <string name="mibibytes">%.1f Mo</string>
+    <string name="gigibytes">%.1f Go</string>
+    <string name="please_wait">S\'il vous plaît, attendez…</string>
+    <string name="app_extract_success">Extraction réussie dans le répertoire &lt;b&gt;Téléchargements&lt;/b&gt;</string>
+    <string name="app_extract_failed">L\'exportation a échoué :(</string>
+    <string name="refresh">Rafraîchir</string>
+    <string name="tomclaw_software">Logiciel TomClaw</string>
+    <string name="app_version">Version %1$s (%2$d)</string>
+    <string name="info">Informations</string>
+    <string name="rate_app">Notez cette application</string>
+    <string name="all_apps">Candidatures de l\'auteur</string>
+    <string name="pref_base_title">Paramètres de base</string>
+    <string name="pref_summary_show_system">Afficher les applications système dans la liste</string>
+    <string name="pref_summary_runnable">Afficher uniquement les packages exécutables</string>
+    <string name="pref_title_show_system">Applications système</string>
+    <string name="pref_title_runnable">Packages exécutables</string>
+    <string name="got_it">J\'ai compris!</string>
+    <string name="system_apps_warning_title">Avertissement!</string>
+    <string name="system_apps_warning_message">Les applications système ne sont pas des applications habituelles et il n\'y a aucune garantie quant à leur fonctionnement.
+        exportation réussie !</string>
+    <string name="settings">Paramètres</string>
+    <string name="send_to">Partager avec</string>
+    <string name="pref_title_sort_order">Ordre de tri</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z-A</string>
+    <string name="sort_order_app_size">Par taille d\'application</string>
+    <string name="sort_order_install_time">Par heure d\'installation</string>
+    <string name="sort_order_update_time">Par heure de mise à jour</string>
+    <string name="pref_summary_sort_order">Variantes de l\'ordre de tri de la liste d\'applications</string>
+    <string name="extract_apk">Extraire l\'apk dans les téléchargements</string>
+    <string name="share_apk">Partager l\'apk via des applications</string>
+    <string name="find_on_gp">Rechercher dans Google Play</string>
+    <string name="pref_title_clear_cache">Vider le cache</string>
+    <string name="pref_summary_clear_cache">Supprimez tous les fichiers APK précédemment extraits dans le répertoire Téléchargements</string>
+    <string name="cache_cleared_successfully">Cache vidé avec succès</string>
+    <string name="cache_clearing_failed">Échec de la suppression du cache</string>
+    <string name="write_permission_extract">Afin de sauvegarder le fichier de candidature, vous devrez accorder une autorisation de stockage</string>
+    <string name="menu_search">Recherche</string>
+    <string name="run_app">Exécuter l\'application</string>
+    <string name="non_launchable_package">Ce package n\'est pas exécutable.</string>
+    <string name="app_details">Afficher les détails</string>
+    <string name="pref_title_dark_theme">Thème sombre</string>
+    <string name="pref_dark_theme_system">Couleurs sombres dans l\'apparence de l\'application</string>
+    <string name="remove">Retirer</string>
+    <string name="unknown_permission_description">Autorisation inconnue</string>
+    <string name="required_permissions">Autorisations requises</string>
+    <string name="unable_to_get_permissions">Impossible d\'obtenir les autorisations requises par la liste ou l\'application</string>
+    <string name="no_requested_permissions">L\'application n\'a pas demandé les autorisations.</string>
+</resources>

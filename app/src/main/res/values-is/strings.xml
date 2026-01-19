@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Vinsamlegast bíddu…</string>
+    <string name="app_extract_success">Tókst útdráttur í &lt;b&gt;niðurhal&lt;/b&gt; möppu</string>
+    <string name="app_extract_failed">Útflutningur mistókst :(</string>
+    <string name="refresh">Endurnýja</string>
+    <string name="tomclaw_software">TomClaw hugbúnaður</string>
+    <string name="app_version">Útgáfa %1$s (%2$d)</string>
+    <string name="info">Upplýsingar</string>
+    <string name="rate_app">Gefðu þessu forriti einkunn</string>
+    <string name="all_apps">Umsóknir höfundar</string>
+    <string name="pref_base_title">Grunnstillingar</string>
+    <string name="pref_summary_show_system">Sýna kerfisforrit á lista</string>
+    <string name="pref_summary_runnable">Sýna aðeins keyranlega pakka</string>
+    <string name="pref_title_show_system">Kerfisforrit</string>
+    <string name="pref_title_runnable">Keyranlegir pakkar</string>
+    <string name="got_it">Skil!</string>
+    <string name="system_apps_warning_title">Viðvörun!</string>
+    <string name="system_apps_warning_message">Kerfisöpp eru ekki venjuleg öpp og það er engin ábyrgð á því
+        vel heppnaður útflutningur!</string>
+    <string name="settings">Stillingar</string>
+    <string name="send_to">Deila með</string>
+    <string name="pref_title_sort_order">Röð röð</string>
+    <string name="sort_order_ascending">A - Ö</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Eftir app stærð</string>
+    <string name="sort_order_install_time">Eftir uppsetningartíma</string>
+    <string name="sort_order_update_time">Eftir uppfærslutíma</string>
+    <string name="pref_summary_sort_order">Afbrigði af flokkunarröð forritalista</string>
+    <string name="extract_apk">Dragðu apk út í niðurhal</string>
+    <string name="share_apk">Deildu apk í gegnum forrit</string>
+    <string name="find_on_gp">Finndu í Google Play</string>
+    <string name="pref_title_clear_cache">Hreinsaðu skyndiminni</string>
+    <string name="pref_summary_clear_cache">Fjarlægðu allar áður útdrættar APK-skrár í niðurhalsskránni</string>
+    <string name="cache_cleared_successfully">Skyndiminni var hreinsað</string>
+    <string name="cache_clearing_failed">Mistókst að hreinsa skyndiminni</string>
+    <string name="write_permission_extract">Til að vista umsóknarskrá þarftu að veita geymsluleyfi</string>
+    <string name="menu_search">Leita</string>
+    <string name="run_app">Keyra forrit</string>
+    <string name="non_launchable_package">Ekki er hægt að keyra þennan pakka.</string>
+    <string name="app_details">Sýna upplýsingar</string>
+    <string name="pref_title_dark_theme">Dökkt þema</string>
+    <string name="pref_dark_theme_system">Dökkir litir í útliti umsóknar</string>
+    <string name="remove">Fjarlægja</string>
+    <string name="unknown_permission_description">Óþekkt leyfi</string>
+    <string name="required_permissions">Nauðsynlegar heimildir</string>
+    <string name="unable_to_get_permissions">Ekki er hægt að fá nauðsynlegar heimildir fyrir lista eða forrit</string>
+    <string name="no_requested_permissions">App hefur ekki beðið um heimildir.</string>
+</resources>
