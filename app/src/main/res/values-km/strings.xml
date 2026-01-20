@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d ខ</string>
+    <string name="kibibytes">%1f KB</string>
+    <string name="mibibytes">%1f MB</string>
+    <string name="gigibytes">%1f ជីកាបៃ</string>
+    <string name="please_wait">សូមរង់ចាំ…</string>
+    <string name="app_extract_success">ស្រង់ចេញដោយជោគជ័យទៅកាន់ថត &lt;b&gt;ទាញយក&lt;/b&gt;</string>
+    <string name="app_extract_failed">ការនាំចេញបរាជ័យ :(</string>
+    <string name="refresh">ធ្វើឱ្យស្រស់</string>
+    <string name="tomclaw_software">កម្មវិធី TomClaw</string>
+    <string name="app_version">កំណែ %1$s (%2$d)</string>
+    <string name="info">ព័ត៌មាន</string>
+    <string name="rate_app">វាយតម្លៃកម្មវិធីនេះ</string>
+    <string name="all_apps">កម្មវិធីរបស់អ្នកនិពន្ធ</string>
+    <string name="pref_base_title">ការកំណត់មូលដ្ឋាន</string>
+    <string name="pref_summary_show_system">បង្ហាញកម្មវិធីប្រព័ន្ធក្នុងបញ្ជី</string>
+    <string name="pref_summary_runnable">បង្ហាញតែកញ្ចប់ដែលអាចដំណើរការបាន។</string>
+    <string name="pref_title_show_system">កម្មវិធីប្រព័ន្ធ</string>
+    <string name="pref_title_runnable">កញ្ចប់ដែលអាចដំណើរការបាន។</string>
+    <string name="got_it">យល់ហើយ!</string>
+    <string name="system_apps_warning_title">ព្រមាន!</string>
+    <string name="system_apps_warning_message">កម្មវិធីប្រព័ន្ធមិនមែនជាកម្មវិធីធម្មតាទេ ហើយមិនមានការធានារបស់វាទេ។
+        ការនាំចេញជោគជ័យ!</string>
+    <string name="settings">ការកំណត់</string>
+    <string name="send_to">ចែករំលែកជាមួយ</string>
+    <string name="pref_title_sort_order">តម្រៀបតាមលំដាប់</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - អេ</string>
+    <string name="sort_order_app_size">តាមទំហំកម្មវិធី</string>
+    <string name="sort_order_install_time">តាមពេលវេលាដំឡើង</string>
+    <string name="sort_order_update_time">តាមពេលវេលាធ្វើបច្ចុប្បន្នភាព</string>
+    <string name="pref_summary_sort_order">បញ្ជីកម្មវិធីតម្រៀបបំរែបំរួលលំដាប់</string>
+    <string name="extract_apk">ស្រង់ apk ចូលទៅក្នុងការទាញយក</string>
+    <string name="share_apk">ចែករំលែក apk តាមរយៈកម្មវិធី</string>
+    <string name="find_on_gp">ស្វែងរកនៅក្នុង Google Play</string>
+    <string name="pref_title_clear_cache">ជម្រះឃ្លាំងសម្ងាត់</string>
+    <string name="pref_summary_clear_cache">លុបឯកសារ APK ដែលបានស្រង់ពីមុនទាំងអស់នៅក្នុងថតឯកសារទាញយក</string>
+    <string name="cache_cleared_successfully">ឃ្លាំងសម្ងាត់ត្រូវបានសម្អាតដោយជោគជ័យ</string>
+    <string name="cache_clearing_failed">ការសម្អាតឃ្លាំងសម្ងាត់បានបរាជ័យ</string>
+    <string name="write_permission_extract">ដើម្បីរក្សាទុកឯកសារកម្មវិធី អ្នកនឹងត្រូវផ្តល់ការអនុញ្ញាតឱ្យផ្ទុក</string>
+    <string name="menu_search">ស្វែងរក</string>
+    <string name="run_app">ដំណើរការកម្មវិធី</string>
+    <string name="non_launchable_package">កញ្ចប់នេះមិនអាចដំណើរការបានទេ។</string>
+    <string name="app_details">បង្ហាញព័ត៌មានលម្អិត</string>
+    <string name="pref_title_dark_theme">ប្រធានបទងងឹត</string>
+    <string name="pref_dark_theme_system">ពណ៌ងងឹតនៅក្នុងរូបរាងកម្មវិធី</string>
+    <string name="remove">ដកចេញ</string>
+    <string name="unknown_permission_description">មិនស្គាល់ការអនុញ្ញាត</string>
+    <string name="required_permissions">ការអនុញ្ញាតដែលត្រូវការ</string>
+    <string name="unable_to_get_permissions">មិន​អាច​ទទួល​បាន​បញ្ជី​ឬ​ការ​អនុញ្ញាត​ដែល​ទាមទារ​របស់​កម្មវិធី</string>
+    <string name="no_requested_permissions">កម្មវិធីមិនបានស្នើសុំការអនុញ្ញាតទេ។</string>
+</resources>

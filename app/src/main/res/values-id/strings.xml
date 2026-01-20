@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%dB</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1fMB</string>
+    <string name="gigibytes">%.1fGB</string>
+    <string name="please_wait">Harap tunggu…</string>
+    <string name="app_extract_success">Berhasil diekstraksi ke direktori &lt;b&gt;Unduhan&lt;/b&gt;</string>
+    <string name="app_extract_failed">Gagal mengekspor :(</string>
+    <string name="refresh">Menyegarkan</string>
+    <string name="tomclaw_software">Perangkat Lunak TomClaw</string>
+    <string name="app_version">Versi %1$s (%2$d)</string>
+    <string name="info">Informasi</string>
+    <string name="rate_app">Nilai aplikasi ini</string>
+    <string name="all_apps">Aplikasi penulis</string>
+    <string name="pref_base_title">Pengaturan dasar</string>
+    <string name="pref_summary_show_system">Tampilkan aplikasi sistem dalam daftar</string>
+    <string name="pref_summary_runnable">Tampilkan paket yang dapat dijalankan saja</string>
+    <string name="pref_title_show_system">Aplikasi sistem</string>
+    <string name="pref_title_runnable">Paket yang dapat dijalankan</string>
+    <string name="got_it">Mengerti!</string>
+    <string name="system_apps_warning_title">Peringatan!</string>
+    <string name="system_apps_warning_message">Aplikasi sistem bukanlah aplikasi biasa dan tidak ada jaminannya
+        ekspor sukses!</string>
+    <string name="settings">Pengaturan</string>
+    <string name="send_to">Bagikan dengan</string>
+    <string name="pref_title_sort_order">Urutkan pesanan</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z-A</string>
+    <string name="sort_order_app_size">Berdasarkan ukuran aplikasi</string>
+    <string name="sort_order_install_time">Berdasarkan waktu pemasangan</string>
+    <string name="sort_order_update_time">Berdasarkan waktu pembaruan</string>
+    <string name="pref_summary_sort_order">Varian urutan pengurutan daftar aplikasi</string>
+    <string name="extract_apk">Ekstrak apk ke dalam Unduhan</string>
+    <string name="share_apk">Bagikan apk melalui aplikasi</string>
+    <string name="find_on_gp">Temukan di Google Play</string>
+    <string name="pref_title_clear_cache">Hapus cache</string>
+    <string name="pref_summary_clear_cache">Hapus semua file APK yang diekstraksi sebelumnya di direktori Unduhan</string>
+    <string name="cache_cleared_successfully">Cache berhasil dibersihkan</string>
+    <string name="cache_clearing_failed">Pembersihan cache gagal</string>
+    <string name="write_permission_extract">Untuk menyimpan file aplikasi, Anda perlu memberikan izin penyimpanan</string>
+    <string name="menu_search">Mencari</string>
+    <string name="run_app">Jalankan aplikasi</string>
+    <string name="non_launchable_package">Paket ini tidak dapat dijalankan.</string>
+    <string name="app_details">Tampilkan detailnya</string>
+    <string name="pref_title_dark_theme">Tema gelap</string>
+    <string name="pref_dark_theme_system">Warna gelap pada tampilan aplikasi</string>
+    <string name="remove">Menghapus</string>
+    <string name="unknown_permission_description">Izin tidak diketahui</string>
+    <string name="required_permissions">Izin yang diperlukan</string>
+    <string name="unable_to_get_permissions">Tidak bisa mendapatkan izin yang diperlukan daftar atau aplikasi</string>
+    <string name="no_requested_permissions">Aplikasi tidak meminta izin.</string>
+</resources>

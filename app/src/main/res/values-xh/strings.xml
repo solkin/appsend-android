@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%1f KB</string>
+    <string name="mibibytes">%1f MB</string>
+    <string name="gigibytes">%1f GB</string>
+    <string name="please_wait">Nceda linda…</string>
+    <string name="app_extract_success">Ikhutshelwe ngempumelelo &lt;b&gt;kuKhuphela&lt;/b&gt; ulawulo</string>
+    <string name="app_extract_failed">Ukuthunyelwa ngaphandle akuphumelelanga :(</string>
+    <string name="refresh">Hlaziya</string>
+    <string name="tomclaw_software">TomClaw Software</string>
+    <string name="app_version">Inguqulelo %1$s (%2$d)</string>
+    <string name="info">Ulwazi</string>
+    <string name="rate_app">Thelekelela esi sicelo</string>
+    <string name="all_apps">izicelo zombhali</string>
+    <string name="pref_base_title">Iisetingi ezisisiseko</string>
+    <string name="pref_summary_show_system">Bonisa usetyenziso lwesixokelelwano kuluhlu</string>
+    <string name="pref_summary_runnable">Bonisa iipakethe ezinokubaleka kuphela</string>
+    <string name="pref_title_show_system">Usetyenziso lwenkqubo</string>
+    <string name="pref_title_runnable">Iipakethe ezinokubaleka</string>
+    <string name="got_it">Ndiyifumene!</string>
+    <string name="system_apps_warning_title">Isilumkiso!</string>
+    <string name="system_apps_warning_message">Usetyenziso lwenkqubo ayizizo ii-apps eziqhelekileyo kwaye akukho siqinisekiso sayo
+        ngaphandle ngempumelelo!</string>
+    <string name="settings">Iisetingi</string>
+    <string name="send_to">Yabelana no</string>
+    <string name="pref_title_sort_order">Hlela ulandelelwano</string>
+    <string name="sort_order_ascending">A-Z</string>
+    <string name="sort_order_descending">Z-A</string>
+    <string name="sort_order_app_size">Ngobungakanani beapp</string>
+    <string name="sort_order_install_time">Ngexesha lokufakela</string>
+    <string name="sort_order_update_time">Ngexesha lokuhlaziya</string>
+    <string name="pref_summary_sort_order">Uluhlu lwee-Apps zohlobo lolungelelwaniso lolungelelwaniso</string>
+    <string name="extract_apk">Khupha i-apk kuKhuphelo</string>
+    <string name="share_apk">Yabelana nge-apk usebenzisa usetyenziso</string>
+    <string name="find_on_gp">Fumana kuDlalo lukaGoogle</string>
+    <string name="pref_title_clear_cache">Cima i-cache</string>
+    <string name="pref_summary_clear_cache">Susa zonke iifayile ze-APK ezikhutshiweyo kulawulo lokukhuphela</string>
+    <string name="cache_cleared_successfully">I-Cache isuswe ngempumelelo</string>
+    <string name="cache_clearing_failed">Ukucima i-Cache akuphumelelanga</string>
+    <string name="write_permission_extract">Ukuze ugcine ifayile yesicelo kuya kufuneka unikeze imvume yokugcina</string>
+    <string name="menu_search">Khangela</string>
+    <string name="run_app">Qhuba usetyenziso</string>
+    <string name="non_launchable_package">Le phakheji ayisebenzi.</string>
+    <string name="app_details">Bonisa iinkcukacha</string>
+    <string name="pref_title_dark_theme">Umxholo omnyama</string>
+    <string name="pref_dark_theme_system">Imibala emnyama kwimbonakalo yesicelo</string>
+    <string name="remove">Susa</string>
+    <string name="unknown_permission_description">Imvume engaziwayo</string>
+    <string name="required_permissions">Iimvume ezifunekayo</string>
+    <string name="unable_to_get_permissions">Ayikwazanga kufumana uluhlu okanye iimvume zokusebenza ezifunekayo</string>
+    <string name="no_requested_permissions">Usetyenziso alunamvumelwano luceliweyo.</string>
+</resources>

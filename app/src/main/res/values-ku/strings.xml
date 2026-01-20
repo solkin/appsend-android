@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%1f KB</string>
+    <string name="mibibytes">%1f MB</string>
+    <string name="gigibytes">%1f GB</string>
+    <string name="please_wait">Ji kerema xwe, bisekinin…</string>
+    <string name="app_extract_success">Bi serkeftin ji pelrêça &lt;b&gt;Daxistin&lt;/b&gt; hat derxistin</string>
+    <string name="app_extract_failed">Hinardekirin têk çû :(</string>
+    <string name="refresh">Hênikkirin</string>
+    <string name="tomclaw_software">TomClaw Software</string>
+    <string name="app_version">Guhertoya %1$s (%2$d)</string>
+    <string name="info">Info</string>
+    <string name="rate_app">Vê serîlêdanê binirxînin</string>
+    <string name="all_apps">Serlêdanên Nivîskar</string>
+    <string name="pref_base_title">Mîhengên bingehîn</string>
+    <string name="pref_summary_show_system">Serlêdanên pergalê di navnîşê de nîşan bide</string>
+    <string name="pref_summary_runnable">Tenê pakêtên karbidest nîşan bidin</string>
+    <string name="pref_title_show_system">Sepanên pergalê</string>
+    <string name="pref_title_runnable">pakêtên Runnable</string>
+    <string name="got_it">Min girt!</string>
+    <string name="system_apps_warning_title">Gazî!</string>
+    <string name="system_apps_warning_message">Serlêdanên pergalê ne serîlêdanên asayî ne û garantiya wê tune
+        îxracata serketî!</string>
+    <string name="settings">Settings</string>
+    <string name="send_to">Parve dikin li gel</string>
+    <string name="pref_title_sort_order">Rêza sortkirinê</string>
+    <string name="sort_order_ascending">A-Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Li gorî mezinahiya sepanê</string>
+    <string name="sort_order_install_time">Bi dema sazkirinê</string>
+    <string name="sort_order_update_time">Bi dema nûvekirinê</string>
+    <string name="pref_summary_sort_order">Lîsteya sepanan guhertoyên rêzkirina rêzê</string>
+    <string name="extract_apk">apk-ê li Dakêşan derxînin</string>
+    <string name="share_apk">apk bi serîlêdanan re parve bikin</string>
+    <string name="find_on_gp">Di Google Play de bibînin</string>
+    <string name="pref_title_clear_cache">Cache paqij bike</string>
+    <string name="pref_summary_clear_cache">Hemî pelên APK-ê yên ku berê hatine derxistin di pelrêça Dakêşan de rakin</string>
+    <string name="cache_cleared_successfully">Cache bi serkeftî hate paqij kirin</string>
+    <string name="cache_clearing_failed">Paqijkirina cache têk çû</string>
+    <string name="write_permission_extract">Ji bo ku hûn pelê serîlêdanê hilînin hûn hewce ne ku destûra hilanînê bidin</string>
+    <string name="menu_search">Gerr</string>
+    <string name="run_app">Serlêdanê bixebitin</string>
+    <string name="non_launchable_package">Ev pakêt nayê xebitandin.</string>
+    <string name="app_details">Hûrguliyan nîşan bide</string>
+    <string name="pref_title_dark_theme">Mijara tarî</string>
+    <string name="pref_dark_theme_system">Di xuyangiya serîlêdanê de rengên tarî</string>
+    <string name="remove">Dûrxistin</string>
+    <string name="unknown_permission_description">Destûra nenas</string>
+    <string name="required_permissions">Destûrên pêwîst</string>
+    <string name="unable_to_get_permissions">Nikarin destûrnameyên pêwîst ên navnîş an sepanê bistînin</string>
+    <string name="no_requested_permissions">App destûrên daxwazkirî tune.</string>
+</resources>

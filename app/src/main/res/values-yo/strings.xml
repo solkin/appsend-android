@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%1f KB</string>
+    <string name="mibibytes">%1f MB</string>
+    <string name="gigibytes">%1f GB</string>
+    <string name="please_wait">Jọwọ duro…</string>
+    <string name="app_extract_success">Ti yọ jade ni aṣeyọri si &lt;b&gt;Awọn igbasilẹ&lt;/b&gt; ilana</string>
+    <string name="app_extract_failed">Gbigbe okeere kuna :(</string>
+    <string name="refresh">Tuntun</string>
+    <string name="tomclaw_software">TomClaw Software</string>
+    <string name="app_version">Ẹya %1$s (%2$d)</string>
+    <string name="info">Alaye</string>
+    <string name="rate_app">Oṣuwọn ohun elo yii</string>
+    <string name="all_apps">Awọn ohun elo onkọwe</string>
+    <string name="pref_base_title">Awọn eto ipilẹ</string>
+    <string name="pref_summary_show_system">Ṣe afihan awọn ohun elo eto ni atokọ</string>
+    <string name="pref_summary_runnable">Ṣe afihan awọn akojọpọ ṣiṣe nikan</string>
+    <string name="pref_title_show_system">Awọn ohun elo eto</string>
+    <string name="pref_title_runnable">Runnable jo</string>
+    <string name="got_it">Ṣe o ri!</string>
+    <string name="system_apps_warning_title">Ikilọ!</string>
+    <string name="system_apps_warning_message">Awọn ohun elo eto kii ṣe awọn ohun elo deede ati pe ko si atilẹyin ọja rẹ
+        okeere aseyori!</string>
+    <string name="settings">Eto</string>
+    <string name="send_to">Pin pẹlu</string>
+    <string name="pref_title_sort_order">Ilana lẹsẹsẹ</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z-A</string>
+    <string name="sort_order_app_size">Nipa iwọn app</string>
+    <string name="sort_order_install_time">Nipa akoko fifi sori ẹrọ</string>
+    <string name="sort_order_update_time">Nipa akoko imudojuiwọn</string>
+    <string name="pref_summary_sort_order">Awọn ohun elo atokọ lẹsẹsẹ awọn iyatọ aṣẹ</string>
+    <string name="extract_apk">Jade apk sinu Awọn igbasilẹ</string>
+    <string name="share_apk">Pin apk nipasẹ awọn ohun elo</string>
+    <string name="find_on_gp">Wa ninu Google Play</string>
+    <string name="pref_title_clear_cache">Ko kaṣe kuro</string>
+    <string name="pref_summary_clear_cache">Yọ gbogbo awọn faili apk ti a yọ jade tẹlẹ ninu ilana Awọn igbasilẹ</string>
+    <string name="cache_cleared_successfully">Kaṣe nu daradara</string>
+    <string name="cache_clearing_failed">Pipade kaṣe kuna</string>
+    <string name="write_permission_extract">Lati le fipamọ faili ohun elo iwọ yoo nilo lati fun igbanilaaye ibi ipamọ</string>
+    <string name="menu_search">Wa</string>
+    <string name="run_app">Ṣiṣe ohun elo</string>
+    <string name="non_launchable_package">Apo yii ko le ṣiṣẹ.</string>
+    <string name="app_details">Ṣe afihan awọn alaye</string>
+    <string name="pref_title_dark_theme">Akori dudu</string>
+    <string name="pref_dark_theme_system">Awọn awọ dudu ni irisi ohun elo</string>
+    <string name="remove">Yọ kuro</string>
+    <string name="unknown_permission_description">Aimọ igbanilaaye</string>
+    <string name="required_permissions">Awọn igbanilaaye ti a beere</string>
+    <string name="unable_to_get_permissions">Ko le gba atokọ tabi awọn igbanilaaye app ti a beere</string>
+    <string name="no_requested_permissions">App ko ni awọn igbanilaaye ti o beere.</string>
+</resources>

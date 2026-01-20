@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">٪ d b</string>
+    <string name="kibibytes">٪ .1F KB</string>
+    <string name="mibibytes">٪ .1F MB</string>
+    <string name="gigibytes">٪ .1F جی بی</string>
+    <string name="please_wait">براہ کرم ، انتظار کریں…</string>
+    <string name="app_extract_success">&lt;b&gt; ڈاؤن لوڈ &lt;/b&gt; ڈائرکٹری کو کامیابی کے ساتھ نکالا گیا</string>
+    <string name="app_extract_failed">برآمد کرنا ناکام :(</string>
+    <string name="refresh">ریفریش</string>
+    <string name="tomclaw_software">ٹاملا سافٹ ویئر</string>
+    <string name="app_version">ورژن ٪ 1 $ s (٪ 2 $ d)</string>
+    <string name="info">معلومات</string>
+    <string name="rate_app">اس درخواست کی درجہ بندی کریں</string>
+    <string name="all_apps">مصنف کی درخواستیں</string>
+    <string name="pref_base_title">بیس کی ترتیبات</string>
+    <string name="pref_summary_show_system">فہرست میں سسٹم کی ایپلی کیشنز دکھائیں</string>
+    <string name="pref_summary_runnable">صرف رنبل پیکیج دکھائیں</string>
+    <string name="pref_title_show_system">سسٹم ایپس</string>
+    <string name="pref_title_runnable">چلانے کے قابل پیکیجز</string>
+    <string name="got_it">مل گیا!</string>
+    <string name="system_apps_warning_title">انتباہ!</string>
+    <string name="system_apps_warning_message">سسٹم ایپس معمول کے ایپس نہیں ہیں اور اس کی کوئی ضمانت نہیں ہے
+        کامیاب برآمد!</string>
+    <string name="settings">ترتیبات</string>
+    <string name="send_to">کے ساتھ اشتراک</string>
+    <string name="pref_title_sort_order">ترتیب ترتیب دیں</string>
+    <string name="sort_order_ascending">a - z</string>
+    <string name="sort_order_descending">z - a</string>
+    <string name="sort_order_app_size">ایپ سائز کے ذریعہ</string>
+    <string name="sort_order_install_time">انسٹال وقت کے ذریعہ</string>
+    <string name="sort_order_update_time">اپ ڈیٹ کے وقت کے ذریعہ</string>
+    <string name="pref_summary_sort_order">ایپس کی فہرست ترتیب ترتیب کی مختلف حالتوں میں</string>
+    <string name="extract_apk">ڈاؤن لوڈ میں APK نکالیں</string>
+    <string name="share_apk">ایپس کے ذریعے اے پی کے کا اشتراک کریں</string>
+    <string name="find_on_gp">گوگل پلے میں تلاش کریں</string>
+    <string name="pref_title_clear_cache">صاف کیشے</string>
+    <string name="pref_summary_clear_cache">ڈاؤن لوڈ ڈائرکٹری میں پہلے سے نکالے گئے تمام APK فائلوں کو ہٹا دیں</string>
+    <string name="cache_cleared_successfully">کیشے نے کامیابی کے ساتھ صاف کیا</string>
+    <string name="cache_clearing_failed">کیشے کلیئرنگ ناکام ہوگئی</string>
+    <string name="write_permission_extract">درخواست فائل کو بچانے کے ل you آپ کو اسٹوریج کی اجازت دینے کی ضرورت ہوگی</string>
+    <string name="menu_search">تلاش</string>
+    <string name="run_app">درخواست چلائیں</string>
+    <string name="non_launchable_package">یہ پیکیج چلنے کے قابل نہیں ہے۔</string>
+    <string name="app_details">تفصیلات دکھائیں</string>
+    <string name="pref_title_dark_theme">تاریک تھیم</string>
+    <string name="pref_dark_theme_system">اطلاق کی ظاہری شکل میں گہرے رنگ</string>
+    <string name="remove">ہٹا دیں</string>
+    <string name="unknown_permission_description">نامعلوم اجازت</string>
+    <string name="required_permissions">مطلوبہ اجازتیں</string>
+    <string name="unable_to_get_permissions">لسٹ یا ایپ کی مطلوبہ اجازتیں حاصل کرنے سے قاصر ہے</string>
+    <string name="no_requested_permissions">ایپ نے اجازت کی درخواست نہیں کی ہے۔</string>
+</resources>

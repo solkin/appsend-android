@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B.</string>
+    <string name="kibibytes">%.1f KB .</string>
+    <string name="mibibytes">%.1f MB .</string>
+    <string name="gigibytes">%.1f GB .</string>
+    <string name="please_wait">Ama hina kaspa, suyay...</string>
+    <string name="app_extract_success">Allinta hurqusqa &lt;b&gt;Urquykuna&lt;/b&gt; willañiqiman .</string>
+    <string name="app_extract_failed">Mana atisqa hawaman apachiy :(.</string>
+    <string name="refresh">Musuqyachiy .</string>
+    <string name="tomclaw_software">Tomclaw software .</string>
+    <string name="app_version">Versión %1$s (%2$d) .</string>
+    <string name="info">Info .</string>
+    <string name="rate_app">Kay mañakuyta chaninchana .</string>
+    <string name="all_apps">Qillqaqpa llamk\'ayninkuna .</string>
+    <string name="pref_base_title">Base Ajustes .</string>
+    <string name="pref_summary_show_system">Listapi sistema ruwanakunata rikuchiy .</string>
+    <string name="pref_summary_runnable">Show Paquetes Runnable solamente .</string>
+    <string name="pref_title_show_system">Sistema nisqa apps nisqakuna .</string>
+    <string name="pref_title_runnable">Paquetes Runnables .</string>
+    <string name="got_it">Hamutanim!</string>
+    <string name="system_apps_warning_title">Manchachiy!</string>
+    <string name="system_apps_warning_message">Sistema apps mana costumbre appschu kanku chaymanta mana garantia kanchu chaymanta .
+        Exportación exitosa!</string>
+    <string name="settings">Ajustes .</string>
+    <string name="send_to">Compartir con .</string>
+    <string name="pref_title_sort_order">Ordenar orden .</string>
+    <string name="sort_order_ascending">A - Z .</string>
+    <string name="sort_order_descending">z - A .</string>
+    <string name="sort_order_app_size">por App Tamaño .</string>
+    <string name="sort_order_install_time">Instalacion pachawan .</string>
+    <string name="sort_order_update_time">Kunanchay pachawan .</string>
+    <string name="pref_summary_sort_order">Apps Lista Orden Orden variantes .</string>
+    <string name="extract_apk">extracto APK en descargas .</string>
+    <string name="share_apk">Compartir APK vía apps .</string>
+    <string name="find_on_gp">Google Play nisqapi tariy .</string>
+    <string name="pref_title_clear_cache">Clear caché .</string>
+    <string name="pref_summary_clear_cache">Llapan ñawpaq hurqusqa APK willañiqikunata uraykachinakuna qillqana mayt\'upi hurquy .</string>
+    <string name="cache_cleared_successfully">Cache allinta chuyanchasqa .</string>
+    <string name="cache_clearing_failed">Caché ch\'uyanchasqa mana atisqachu .</string>
+    <string name="write_permission_extract">Waqaychasqa willañiqita waqaychaypaq waqaychay atiyta qunayki tiyan .</string>
+    <string name="menu_search">Maskay</string>
+    <string name="run_app">Run Aplicación .</string>
+    <string name="non_launchable_package">Kay paqueteqa manam kallpanapaq hinachu.</string>
+    <string name="app_details">Detalles nisqakunata qhaway .</string>
+    <string name="pref_title_dark_theme">Tuta Tema .</string>
+    <string name="pref_dark_theme_system">Tuta llimp\'ikuna Aplicación rikch\'aypi .</string>
+    <string name="remove">Qichuy</string>
+    <string name="unknown_permission_description">Mana riqsisqa permiso .</string>
+    <string name="required_permissions">Munasqa Permisokuna .</string>
+    <string name="unable_to_get_permissions">Mana atispa lista utaq app\'s munasqa permisokuna .</string>
+    <string name="no_requested_permissions">App mana permisokunata mañasqachu.</string>
+</resources>

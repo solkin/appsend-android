@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Tolong, tunggu…</string>
+    <string name="app_extract_success">Berjaya diekstrak ke direktori &lt;b&gt;Muat Turun&lt;/b&gt;</string>
+    <string name="app_extract_failed">Pengeksportan gagal :(</string>
+    <string name="refresh">Segarkan semula</string>
+    <string name="tomclaw_software">Perisian TomClaw</string>
+    <string name="app_version">Versi %1$s (%2$d)</string>
+    <string name="info">info</string>
+    <string name="rate_app">Nilaikan aplikasi ini</string>
+    <string name="all_apps">Aplikasi pengarang</string>
+    <string name="pref_base_title">Tetapan asas</string>
+    <string name="pref_summary_show_system">Tunjukkan aplikasi sistem dalam senarai</string>
+    <string name="pref_summary_runnable">Tunjukkan pakej boleh jalan sahaja</string>
+    <string name="pref_title_show_system">Apl sistem</string>
+    <string name="pref_title_runnable">Pakej yang boleh dijalankan</string>
+    <string name="got_it">faham!</string>
+    <string name="system_apps_warning_title">Amaran!</string>
+    <string name="system_apps_warning_message">Apl sistem bukan apl biasa dan tiada jaminan untuknya
+        eksport berjaya!</string>
+    <string name="settings">tetapan</string>
+    <string name="send_to">Kongsi dengan</string>
+    <string name="pref_title_sort_order">Susun urutan</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Mengikut saiz apl</string>
+    <string name="sort_order_install_time">Mengikut masa pemasangan</string>
+    <string name="sort_order_update_time">Mengikut masa kemas kini</string>
+    <string name="pref_summary_sort_order">Apl senarai jenis susunan susunan</string>
+    <string name="extract_apk">Ekstrak apk ke dalam Muat Turun</string>
+    <string name="share_apk">Kongsi apk melalui aplikasi</string>
+    <string name="find_on_gp">Cari dalam Google Play</string>
+    <string name="pref_title_clear_cache">Kosongkan cache</string>
+    <string name="pref_summary_clear_cache">Alih keluar semua fail APK yang diekstrak sebelum ini dalam direktori Muat Turun</string>
+    <string name="cache_cleared_successfully">Cache berjaya dibersihkan</string>
+    <string name="cache_clearing_failed">Pembersihan cache gagal</string>
+    <string name="write_permission_extract">Untuk menyimpan fail aplikasi, anda perlu memberikan kebenaran storan</string>
+    <string name="menu_search">Cari</string>
+    <string name="run_app">Jalankan aplikasi</string>
+    <string name="non_launchable_package">Pakej ini tidak boleh dijalankan.</string>
+    <string name="app_details">Tunjukkan butiran</string>
+    <string name="pref_title_dark_theme">Tema gelap</string>
+    <string name="pref_dark_theme_system">Warna gelap dalam penampilan aplikasi</string>
+    <string name="remove">Alih keluar</string>
+    <string name="unknown_permission_description">Keizinan tidak diketahui</string>
+    <string name="required_permissions">Keizinan yang diperlukan</string>
+    <string name="unable_to_get_permissions">Tidak dapat mendapatkan senarai atau kebenaran yang diperlukan apl</string>
+    <string name="no_requested_permissions">Apl tidak mempunyai kebenaran yang diminta.</string>
+</resources>

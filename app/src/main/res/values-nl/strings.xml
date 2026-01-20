@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f kB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%,1f GB</string>
+    <string name="please_wait">Alsjeblieft, wacht...</string>
+    <string name="app_extract_success">Succesvol uitgepakt naar de map &lt;b&gt;Downloads&lt;/b&gt;</string>
+    <string name="app_extract_failed">Exporteren mislukt :(</string>
+    <string name="refresh">Vernieuwen</string>
+    <string name="tomclaw_software">TomClaw-software</string>
+    <string name="app_version">Versie %1$s (%2$d)</string>
+    <string name="info">Info</string>
+    <string name="rate_app">Beoordeel deze applicatie</string>
+    <string name="all_apps">Auteursapplicaties</string>
+    <string name="pref_base_title">Basisinstellingen</string>
+    <string name="pref_summary_show_system">Systeemapplicaties in lijst weergeven</string>
+    <string name="pref_summary_runnable">Alleen uitvoerbare pakketten weergeven</string>
+    <string name="pref_title_show_system">Systeem-apps</string>
+    <string name="pref_title_runnable">Uitvoerbare pakketten</string>
+    <string name="got_it">Begrepen!</string>
+    <string name="system_apps_warning_title">Waarschuwing!</string>
+    <string name="system_apps_warning_message">Systeemapps zijn geen gebruikelijke apps en er bestaat geen garantie op
+        succesvolle export!</string>
+    <string name="settings">Instellingen</string>
+    <string name="send_to">Deel met</string>
+    <string name="pref_title_sort_order">Sorteervolgorde</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Op app-grootte</string>
+    <string name="sort_order_install_time">Op installatietijd</string>
+    <string name="sort_order_update_time">Op updatetijd</string>
+    <string name="pref_summary_sort_order">Apps vermelden sorteervolgordevarianten</string>
+    <string name="extract_apk">Pak de APK uit in Downloads</string>
+    <string name="share_apk">Deel apk via apps</string>
+    <string name="find_on_gp">Zoek in Google Play</string>
+    <string name="pref_title_clear_cache">Cache wissen</string>
+    <string name="pref_summary_clear_cache">Verwijder alle eerder uitgepakte APK-bestanden in de map Downloads</string>
+    <string name="cache_cleared_successfully">Cache is succesvol gewist</string>
+    <string name="cache_clearing_failed">Het wissen van de cache is mislukt</string>
+    <string name="write_permission_extract">Om het applicatiebestand op te slaan, moet u opslagtoestemming verlenen</string>
+    <string name="menu_search">Zoekopdracht</string>
+    <string name="run_app">Toepassing uitvoeren</string>
+    <string name="non_launchable_package">Dit pakket kan niet worden uitgevoerd.</string>
+    <string name="app_details">Details tonen</string>
+    <string name="pref_title_dark_theme">Donker thema</string>
+    <string name="pref_dark_theme_system">Donkere kleuren in applicatie-uiterlijk</string>
+    <string name="remove">Verwijderen</string>
+    <string name="unknown_permission_description">Onbekende toestemming</string>
+    <string name="required_permissions">Vereiste machtigingen</string>
+    <string name="unable_to_get_permissions">Kan de vereiste rechten voor de lijst of app niet verkrijgen</string>
+    <string name="no_requested_permissions">App heeft geen gevraagde machtigingen.</string>
+</resources>

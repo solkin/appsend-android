@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%д Б</string>
+    <string name="kibibytes">%.1f КБ</string>
+    <string name="mibibytes">%.1f МБ</string>
+    <string name="gigibytes">%.1ф ГБ</string>
+    <string name="please_wait">Илтимос истед…</string>
+    <string name="app_extract_success">Бомуваффақият ба феҳристи &lt;b&gt;Downloads&lt;/b&gt; истихроҷ карда шуд</string>
+    <string name="app_extract_failed">Содирот ноком шуд :(</string>
+    <string name="refresh">Навсозӣ</string>
+    <string name="tomclaw_software">Нармафзори TomClaw</string>
+    <string name="app_version">Версияи %1$s (%2$d)</string>
+    <string name="info">Маълумот</string>
+    <string name="rate_app">Ба ин барнома баҳо диҳед</string>
+    <string name="all_apps">Аризаҳои муаллифӣ</string>
+    <string name="pref_base_title">Танзимоти асосӣ</string>
+    <string name="pref_summary_show_system">Барномаҳои системаро дар рӯйхат нишон диҳед</string>
+    <string name="pref_summary_runnable">Танҳо бастаҳои иҷрошавандаро нишон диҳед</string>
+    <string name="pref_title_show_system">Барномаҳои системавӣ</string>
+    <string name="pref_title_runnable">Бастаҳои иҷрошаванда</string>
+    <string name="got_it">Гир онро!</string>
+    <string name="system_apps_warning_title">Огоҳӣ!</string>
+    <string name="system_apps_warning_message">Барномаҳои системавӣ барномаҳои муқаррарӣ нестанд ва ҳеҷ гуна кафолати он вуҷуд надорад
+        содироти муваффақ!</string>
+    <string name="settings">Танзимотҳо</string>
+    <string name="send_to">Мубодила бо</string>
+    <string name="pref_title_sort_order">Тартиби ҷудокунӣ</string>
+    <string name="sort_order_ascending">А - З</string>
+    <string name="sort_order_descending">З - А</string>
+    <string name="sort_order_app_size">Аз рӯи андозаи барнома</string>
+    <string name="sort_order_install_time">Бо вақти насб</string>
+    <string name="sort_order_update_time">Бо вақти навсозӣ</string>
+    <string name="pref_summary_sort_order">Барномаҳо вариантҳои тартиби ҷудокуниро номбар мекунанд</string>
+    <string name="extract_apk">APK-ро ба зеркашиҳо бароред</string>
+    <string name="share_apk">Мубодилаи apk тавассути барномаҳо</string>
+    <string name="find_on_gp">Дар Google Play пайдо кунед</string>
+    <string name="pref_title_clear_cache">Тоза кардани кэш</string>
+    <string name="pref_summary_clear_cache">Ҳама файлҳои APK-и қаблан истихроҷшударо дар феҳристи Боргириҳо нест кунед</string>
+    <string name="cache_cleared_successfully">Кэш бомуваффақият тоза карда шуд</string>
+    <string name="cache_clearing_failed">Тозакунии кэш ноком шуд</string>
+    <string name="write_permission_extract">Барои захира кардани файли барнома ба шумо лозим меояд, ки иҷозати нигоҳдорӣ диҳед</string>
+    <string name="menu_search">Ҷустуҷӯ</string>
+    <string name="run_app">Барномаро иҷро кунед</string>
+    <string name="non_launchable_package">Ин баста иҷрошаванда нест.</string>
+    <string name="app_details">Тафсилотро нишон диҳед</string>
+    <string name="pref_title_dark_theme">Мавзӯи торик</string>
+    <string name="pref_dark_theme_system">Рангҳои торик дар намуди барнома</string>
+    <string name="remove">Хориҷ кунед</string>
+    <string name="unknown_permission_description">Иҷозати номаълум</string>
+    <string name="required_permissions">Иҷозатҳои зарурӣ</string>
+    <string name="unable_to_get_permissions">Рӯйхат ё иҷозатҳои лозимии барномаро гирифтан ғайриимкон аст</string>
+    <string name="no_requested_permissions">Барнома иҷозатҳои дархостшударо надорад.</string>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d බී</string>
+    <string name="kibibytes">%.1f කි.බ</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">කරුණාකර රැඳී සිටින්න…</string>
+    <string name="app_extract_success">&lt;b&gt;බාගැනීම්&lt;/b&gt; නාමාවලිය වෙත සාර්ථකව උපුටා ගන්නා ලදී</string>
+    <string name="app_extract_failed">අපනයනය අසාර්ථකයි :(</string>
+    <string name="refresh">නැවුම් කරන්න</string>
+    <string name="tomclaw_software">TomClaw මෘදුකාංගය</string>
+    <string name="app_version">අනුවාදය %1$s (%2$d)</string>
+    <string name="info">තොරතුරු</string>
+    <string name="rate_app">මෙම යෙදුම ශ්‍රේණිගත කරන්න</string>
+    <string name="all_apps">කර්තෘගේ යෙදුම්</string>
+    <string name="pref_base_title">මූලික සැකසුම්</string>
+    <string name="pref_summary_show_system">ලැයිස්තුවේ පද්ධති යෙදුම් පෙන්වන්න</string>
+    <string name="pref_summary_runnable">ධාවනය කළ හැකි පැකේජ පමණක් පෙන්වන්න</string>
+    <string name="pref_title_show_system">පද්ධති යෙදුම්</string>
+    <string name="pref_title_runnable">ධාවනය කළ හැකි පැකේජ</string>
+    <string name="got_it">තේරුම් ගත්තා ද!</string>
+    <string name="system_apps_warning_title">අවවාදයයි!</string>
+    <string name="system_apps_warning_message">පද්ධති යෙදුම් සාමාන්‍ය යෙදුම් නොවන අතර එහි වගකීමක් නොමැත
+        සාර්ථක අපනයනය!</string>
+    <string name="settings">සැකසීම්</string>
+    <string name="send_to">සමඟ බෙදාගන්න</string>
+    <string name="pref_title_sort_order">පිළිවෙලට අනුපිළිවෙල</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">යෙදුම් ප්රමාණය අනුව</string>
+    <string name="sort_order_install_time">ස්ථාපන කාලය අනුව</string>
+    <string name="sort_order_update_time">යාවත්කාලීන කාලය අනුව</string>
+    <string name="pref_summary_sort_order">යෙදුම් ලැයිස්තුගත අනුපිළිවෙල ප්‍රභේද</string>
+    <string name="extract_apk">බාගැනීම් වලට apk උපුටා ගන්න</string>
+    <string name="share_apk">යෙදුම් හරහා apk බෙදා ගන්න</string>
+    <string name="find_on_gp">Google Play හි සොයන්න</string>
+    <string name="pref_title_clear_cache">හැඹිලිය හිස් කරන්න</string>
+    <string name="pref_summary_clear_cache">බාගැනීම් නාමාවලියෙහි කලින් උපුටා ගත් සියලුම APK ගොනු ඉවත් කරන්න</string>
+    <string name="cache_cleared_successfully">හැඹිලිය සාර්ථකව හිස් කරන ලදී</string>
+    <string name="cache_clearing_failed">හැඹිලි ඉවත් කිරීම අසාර්ථක විය</string>
+    <string name="write_permission_extract">යෙදුම් ගොනුව සුරැකීමට ඔබ ගබඩා අවසරය ලබා දිය යුතුය</string>
+    <string name="menu_search">සොයන්න</string>
+    <string name="run_app">යෙදුම ධාවනය කරන්න</string>
+    <string name="non_launchable_package">මෙම පැකේජය ධාවනය කළ නොහැක.</string>
+    <string name="app_details">විස්තර පෙන්වන්න</string>
+    <string name="pref_title_dark_theme">අඳුරු තේමාව</string>
+    <string name="pref_dark_theme_system">යෙදුම් පෙනුමේ අඳුරු වර්ණ</string>
+    <string name="remove">ඉවත් කරන්න</string>
+    <string name="unknown_permission_description">නොදන්නා අවසරය</string>
+    <string name="required_permissions">අවශ්ය අවසර</string>
+    <string name="unable_to_get_permissions">ලැයිස්තුව හෝ යෙදුමට අවශ්‍ය අවසර ලබා ගැනීමට නොහැක</string>
+    <string name="no_requested_permissions">යෙදුමට ඉල්ලූ අවසර නොමැත.</string>
+</resources>

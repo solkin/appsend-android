@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">ກະລຸນາລໍຖ້າ...</string>
+    <string name="app_extract_success">ແຍກອອກໄປຫາໄດເຣັກທໍຣີ &lt;b&gt;ດາວໂຫຼດ&lt;/b&gt; ສຳເລັດແລ້ວ</string>
+    <string name="app_extract_failed">ການສົ່ງອອກລົ້ມເຫລວ :(</string>
+    <string name="refresh">ໂຫຼດຂໍ້ມູນຄືນໃໝ່</string>
+    <string name="tomclaw_software">ຊອບ​ແວ TomClaw​</string>
+    <string name="app_version">ລຸ້ນ %1$s (%2$d)</string>
+    <string name="info">ຂໍ້ມູນ</string>
+    <string name="rate_app">ໃຫ້ຄະແນນແອັບພລິເຄຊັນນີ້</string>
+    <string name="all_apps">ຄໍາຮ້ອງສະຫມັກຂອງຜູ້ຂຽນ</string>
+    <string name="pref_base_title">ການຕັ້ງຄ່າພື້ນຖານ</string>
+    <string name="pref_summary_show_system">ສະແດງແອັບພລິເຄຊັນລະບົບໃນລາຍຊື່</string>
+    <string name="pref_summary_runnable">ສະແດງແພັກເກັດທີ່ສາມາດແລ່ນໄດ້ເທົ່ານັ້ນ</string>
+    <string name="pref_title_show_system">ແອັບລະບົບ</string>
+    <string name="pref_title_runnable">ແພັກເກັດທີ່ສາມາດແລ່ນໄດ້</string>
+    <string name="got_it">ໄດ້ແລ້ວ!</string>
+    <string name="system_apps_warning_title">ເຕືອນໄພ!</string>
+    <string name="system_apps_warning_message">ແອັບລະບົບບໍ່ແມ່ນແອັບປົກກະຕິ ແລະບໍ່ມີການຮັບປະກັນຂອງມັນ
+        ສຳເລັດການສົ່ງອອກ!</string>
+    <string name="settings">ການຕັ້ງຄ່າ</string>
+    <string name="send_to">ແບ່ງປັນກັບ</string>
+    <string name="pref_title_sort_order">ຮຽງລຳດັບ</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">ໂດຍ​ຂະ​ຫນາດ app​</string>
+    <string name="sort_order_install_time">ຕາມເວລາຕິດຕັ້ງ</string>
+    <string name="sort_order_update_time">ຕາມເວລາອັບເດດ</string>
+    <string name="pref_summary_sort_order">ລາຍການແອັບຈັດຮຽງລຳດັບຕົວແປ</string>
+    <string name="extract_apk">ສະກັດ apk ເຂົ້າໄປໃນການດາວໂຫຼດ</string>
+    <string name="share_apk">ແບ່ງປັນ apk ຜ່ານແອັບ</string>
+    <string name="find_on_gp">ຊອກຫາໃນ Google Play</string>
+    <string name="pref_title_clear_cache">ລຶບລ້າງແຄດ</string>
+    <string name="pref_summary_clear_cache">ເອົາໄຟລ໌ APK ທັງໝົດທີ່ສະກັດອອກມາກ່ອນໜ້ານີ້ຢູ່ໃນລາຍການດາວໂຫຼດ</string>
+    <string name="cache_cleared_successfully">ລ້າງແຄດສຳເລັດແລ້ວ</string>
+    <string name="cache_clearing_failed">ການລຶບລ້າງແຄດລົ້ມເຫລວ</string>
+    <string name="write_permission_extract">ເພື່ອບັນທຶກໄຟລ໌ແອັບພລິເຄຊັນ, ທ່ານຈະຕ້ອງໃຫ້ການອະນຸຍາດບ່ອນເກັບຂໍ້ມູນ</string>
+    <string name="menu_search">ຊອກຫາ</string>
+    <string name="run_app">ດໍາເນີນການຄໍາຮ້ອງສະຫມັກ</string>
+    <string name="non_launchable_package">ແພັກເກດນີ້ບໍ່ສາມາດແລ່ນໄດ້.</string>
+    <string name="app_details">ສະແດງລາຍລະອຽດ</string>
+    <string name="pref_title_dark_theme">ຮູບແບບສີສັນມືດ</string>
+    <string name="pref_dark_theme_system">ສີຊ້ໍາໃນລັກສະນະຄໍາຮ້ອງສະຫມັກ</string>
+    <string name="remove">ເອົາອອກ</string>
+    <string name="unknown_permission_description">ການອະນຸຍາດທີ່ບໍ່ຮູ້ຈັກ</string>
+    <string name="required_permissions">ການ​ອະ​ນຸ​ຍາດ​ທີ່​ຈໍາ​ເປັນ​</string>
+    <string name="unable_to_get_permissions">ບໍ່​ສາ​ມາດ​ໄດ້​ຮັບ​ການ​ອະ​ນຸ​ຍາດ​ທີ່​ຕ້ອງ​ການ​ຂອງ​ລາຍ​ການ​ຫຼື app ໄດ້​</string>
+    <string name="no_requested_permissions">ແອັບບໍ່ໄດ້ຮ້ອງຂໍການອະນຸຍາດ.</string>
+</resources>

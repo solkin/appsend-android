@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Mangga, ngenteni…</string>
+    <string name="app_extract_success">Kasil diekstrak menyang direktori &lt;b&gt;Undhuhan&lt;/b&gt;</string>
+    <string name="app_extract_failed">Gagal ngekspor :(</string>
+    <string name="refresh">Refresh</string>
+    <string name="tomclaw_software">Piranti Lunak TomClaw</string>
+    <string name="app_version">Versi %1$s (%2$d)</string>
+    <string name="info">Info</string>
+    <string name="rate_app">Rate aplikasi iki</string>
+    <string name="all_apps">Aplikasi penulis</string>
+    <string name="pref_base_title">Setelan dhasar</string>
+    <string name="pref_summary_show_system">Tampilake aplikasi sistem ing dhaptar</string>
+    <string name="pref_summary_runnable">Tampilake paket runnable mung</string>
+    <string name="pref_title_show_system">Aplikasi sistem</string>
+    <string name="pref_title_runnable">Paket Runnable</string>
+    <string name="got_it">Ngerti!</string>
+    <string name="system_apps_warning_title">Pènget!</string>
+    <string name="system_apps_warning_message">Aplikasi sistem dudu aplikasi biasa lan ora ana garansi
+        ekspor sukses!</string>
+    <string name="settings">Setelan</string>
+    <string name="send_to">Nuduhake karo</string>
+    <string name="pref_title_sort_order">Urut urutan</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Miturut ukuran app</string>
+    <string name="sort_order_install_time">Miturut wektu nginstal</string>
+    <string name="sort_order_update_time">Miturut wektu nganyari</string>
+    <string name="pref_summary_sort_order">Varian urutan urutan dhaptar aplikasi</string>
+    <string name="extract_apk">Extract apk menyang Downloads</string>
+    <string name="share_apk">Nuduhake apk liwat aplikasi</string>
+    <string name="find_on_gp">Temokake ing Google Play</string>
+    <string name="pref_title_clear_cache">Mbusak cache</string>
+    <string name="pref_summary_clear_cache">Mbusak kabeh file APK sing diekstrak sadurunge ing direktori Downloads</string>
+    <string name="cache_cleared_successfully">Cache kasil dibusak</string>
+    <string name="cache_clearing_failed">Mbusak cache gagal</string>
+    <string name="write_permission_extract">Kanggo nyimpen file aplikasi sampeyan kudu menehi ijin panyimpenan</string>
+    <string name="menu_search">Nggoleki</string>
+    <string name="run_app">Run aplikasi</string>
+    <string name="non_launchable_package">Paket iki ora bisa digunakake.</string>
+    <string name="app_details">Nuduhake rincian</string>
+    <string name="pref_title_dark_theme">Tema peteng</string>
+    <string name="pref_dark_theme_system">Werna peteng ing tampilan aplikasi</string>
+    <string name="remove">Mbusak</string>
+    <string name="unknown_permission_description">Ijin ora dingerteni</string>
+    <string name="required_permissions">Ijin sing dibutuhake</string>
+    <string name="unable_to_get_permissions">Ora bisa entuk idin dhaptar utawa app sing dibutuhake</string>
+    <string name="no_requested_permissions">App ora njaluk ijin.</string>
+</resources>

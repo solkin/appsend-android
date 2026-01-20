@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%D B .</string>
+    <string name="kibibytes">%.1F KB</string>
+    <string name="mibibytes">%.1F MB</string>
+    <string name="gigibytes">%.1F GB</string>
+    <string name="please_wait">Svp, zela...</string>
+    <string name="app_extract_success">Elongaki kobimisama na &lt;b&gt;Downloads&lt;/b&gt; répertoire .</string>
+    <string name="app_extract_failed">Exportation elongi te :(</string>
+    <string name="refresh">Kozongisa sika .</string>
+    <string name="tomclaw_software">Logiciel ya TomClaw .</string>
+    <string name="app_version">Version %1$s (%2$d)</string>
+    <string name="info">Info .</string>
+    <string name="rate_app">Bopesa motuya ya bosengi oyo .</string>
+    <string name="all_apps">Ba applications ya mokomi\ .</string>
+    <string name="pref_base_title">Ba paramètres ya base .</string>
+    <string name="pref_summary_show_system">Lakisa ba applications ya système na liste .</string>
+    <string name="pref_summary_runnable">Lakisa ba forfaits ya runnable kaka .</string>
+    <string name="pref_title_show_system">Ba apps ya système .</string>
+    <string name="pref_title_runnable">Ba paquets ya runnable .</string>
+    <string name="got_it">Nazwi yango!</string>
+    <string name="system_apps_warning_title">Likebisi!</string>
+    <string name="system_apps_warning_message">Ba apps ya système ezali ba apps ya momesano te mpe garantie ya yango ezali te .
+        Exportation ya succès!</string>
+    <string name="settings">Paramètres .</string>
+    <string name="send_to">Bokabola na .</string>
+    <string name="pref_title_sort_order">Bobongisa komande .</string>
+    <string name="sort_order_ascending">A - Z .</string>
+    <string name="sort_order_descending">Z - A .</string>
+    <string name="sort_order_app_size">Na APP Taille .</string>
+    <string name="sort_order_install_time">Na ntango ya kotya ngonga .</string>
+    <string name="sort_order_update_time">na ngonga ya kosala mise à jour .</string>
+    <string name="pref_summary_sort_order">Liste ya ba apps Liste ya ba variantes ya commande .</string>
+    <string name="extract_apk">Extrait APK na ba téléchargements .</string>
+    <string name="share_apk">Bokabola APK na nzela ya ba apps .</string>
+    <string name="find_on_gp">Boluka na Google Play .</string>
+    <string name="pref_title_clear_cache">Cache ya polele .</string>
+    <string name="pref_summary_clear_cache">Longola ba fichiers APK nionso oyo ezuami liboso na répertoire ya ba téléchargements .</string>
+    <string name="cache_cleared_successfully">Cache elongolami malamu .</string>
+    <string name="cache_clearing_failed">Kolongola cache elongi te .</string>
+    <string name="write_permission_extract">Mpo na kobomba fisyé ya bosengi ekosenga opesa ndingisa ya kobomba .</string>
+    <string name="menu_search">Koluka</string>
+    <string name="run_app">Bosala application .</string>
+    <string name="non_launchable_package">Forfait oyo eza runnable te.</string>
+    <string name="app_details">Lakisa makambo ya mikemike .</string>
+    <string name="pref_title_dark_theme">Motó ya likambo ya molili .</string>
+    <string name="pref_dark_theme_system">Ba couleurs ya molili na apparence ya application .</string>
+    <string name="remove">Kolongola</string>
+    <string name="unknown_permission_description">Ndingisa eyebani te .</string>
+    <string name="required_permissions">Ndingisa oyo esengeli .</string>
+    <string name="unable_to_get_permissions">Ekoki te kozwa liste to ndingisa ya App \'s oyo esengeli .</string>
+    <string name="no_requested_permissions">App ezali na ba permissions oyo esengami te.</string>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d Β</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Παρακαλώ περιμένετε…</string>
+    <string name="app_extract_success">Έγινε επιτυχής εξαγωγή στον κατάλογο &lt;b&gt;Λήψεις&lt;/b&gt;</string>
+    <string name="app_extract_failed">Η εξαγωγή απέτυχε :(</string>
+    <string name="refresh">Φρεσκάρω</string>
+    <string name="tomclaw_software">Λογισμικό TomClaw</string>
+    <string name="app_version">Έκδοση %1$s (%2$d)</string>
+    <string name="info">Πληροφορίες</string>
+    <string name="rate_app">Βαθμολογήστε αυτήν την εφαρμογή</string>
+    <string name="all_apps">Εφαρμογές του συγγραφέα</string>
+    <string name="pref_base_title">Ρυθμίσεις βάσης</string>
+    <string name="pref_summary_show_system">Εμφάνιση εφαρμογών συστήματος στη λίστα</string>
+    <string name="pref_summary_runnable">Εμφάνιση μόνο πακέτων με δυνατότητα εκτέλεσης</string>
+    <string name="pref_title_show_system">Εφαρμογές συστήματος</string>
+    <string name="pref_title_runnable">Πακέτα με δυνατότητα εκτέλεσης</string>
+    <string name="got_it">Κατάλαβα!</string>
+    <string name="system_apps_warning_title">Προειδοποίηση!</string>
+    <string name="system_apps_warning_message">Οι εφαρμογές συστήματος δεν είναι συνηθισμένες εφαρμογές και δεν υπάρχει καμία εγγύηση
+        επιτυχημένη εξαγωγή!</string>
+    <string name="settings">Ρυθμίσεις</string>
+    <string name="send_to">Κοινή χρήση με</string>
+    <string name="pref_title_sort_order">Σειρά ταξινόμησης</string>
+    <string name="sort_order_ascending">Α - Ζ</string>
+    <string name="sort_order_descending">Ζ - Α</string>
+    <string name="sort_order_app_size">Ανά μέγεθος εφαρμογής</string>
+    <string name="sort_order_install_time">Με τον χρόνο εγκατάστασης</string>
+    <string name="sort_order_update_time">Με τον χρόνο ενημέρωσης</string>
+    <string name="pref_summary_sort_order">Παραλλαγές σειράς ταξινόμησης λίστας εφαρμογών</string>
+    <string name="extract_apk">Εξαγωγή apk στις Λήψεις</string>
+    <string name="share_apk">Κοινή χρήση apk μέσω εφαρμογών</string>
+    <string name="find_on_gp">Βρείτε στο Google Play</string>
+    <string name="pref_title_clear_cache">Εκκαθάριση προσωρινής μνήμης</string>
+    <string name="pref_summary_clear_cache">Καταργήστε όλα τα αρχεία APK που έχουν εξαχθεί προηγουμένως στον κατάλογο Λήψεις</string>
+    <string name="cache_cleared_successfully">Η προσωρινή μνήμη διαγράφηκε με επιτυχία</string>
+    <string name="cache_clearing_failed">Η εκκαθάριση της προσωρινής μνήμης απέτυχε</string>
+    <string name="write_permission_extract">Για να αποθηκεύσετε το αρχείο της εφαρμογής, θα πρέπει να εκχωρήσετε άδεια αποθήκευσης</string>
+    <string name="menu_search">Ερευνα</string>
+    <string name="run_app">Εκτελέστε την εφαρμογή</string>
+    <string name="non_launchable_package">Αυτό το πακέτο δεν μπορεί να τρέξει.</string>
+    <string name="app_details">Εμφάνιση λεπτομερειών</string>
+    <string name="pref_title_dark_theme">Σκοτεινό θέμα</string>
+    <string name="pref_dark_theme_system">Σκούρα χρώματα στην εμφάνιση εφαρμογής</string>
+    <string name="remove">Αφαιρώ</string>
+    <string name="unknown_permission_description">Άγνωστη άδεια</string>
+    <string name="required_permissions">Απαιτούμενα δικαιώματα</string>
+    <string name="unable_to_get_permissions">Δεν είναι δυνατή η λήψη των απαιτούμενων αδειών της λίστας ή της εφαρμογής</string>
+    <string name="no_requested_permissions">Η εφαρμογή δεν έχει ζητούμενα δικαιώματα.</string>
+</resources>

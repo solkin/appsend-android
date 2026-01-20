@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d b .</string>
+    <string name="kibibytes">%.1f KB .</string>
+    <string name="mibibytes">%.1F MB .</string>
+    <string name="gigibytes">%.1f GB .</string>
+    <string name="please_wait">Nsaba, linda...</string>
+    <string name="app_extract_success">Yaggyibwamu bulungi okutuuka ku &lt;b&gt;Downloads&lt;/b&gt; Directory .</string>
+    <string name="app_extract_failed">Okutunda ebweru w\'eggwanga kulemereddwa :(</string>
+    <string name="refresh">Okuzza obuggya .</string>
+    <string name="tomclaw_software">Sofutiweya wa Tomclaw .</string>
+    <string name="app_version">Enkyusa %1$s (%2$d) .</string>
+    <string name="info">info .</string>
+    <string name="rate_app">Kuuma okusaba kuno .</string>
+    <string name="all_apps">Okusaba kw\'omuwandiisi .</string>
+    <string name="pref_base_title">Ensengeka z’omusingi .</string>
+    <string name="pref_summary_show_system">Laga enkola z\'enkola mu lukalala .</string>
+    <string name="pref_summary_runnable">Laga obupapula obusobola okuddukanyizibwa bwokka .</string>
+    <string name="pref_title_show_system">Apps z\'enkola .</string>
+    <string name="pref_title_runnable">Ebipapula ebiddukanyizibwa .</string>
+    <string name="got_it">Okukifuna!</string>
+    <string name="system_apps_warning_title">Okulabula!</string>
+    <string name="system_apps_warning_message">System apps si apps eza bulijjo era tewali ggaranti yaakyo .
+        Okutunda ebweru w’eggwanga okuwangula!</string>
+    <string name="settings">Enteekateeka .</string>
+    <string name="send_to">Gabanako ne .</string>
+    <string name="pref_title_sort_order">Okusengeka Okusengeka .</string>
+    <string name="sort_order_ascending">A - z .</string>
+    <string name="sort_order_descending">z - a .</string>
+    <string name="sort_order_app_size">By App Size .</string>
+    <string name="sort_order_install_time">Nga oteeka obudde .</string>
+    <string name="sort_order_update_time">Nga kizzeemu okutereeza obudde .</string>
+    <string name="pref_summary_sort_order">Apps List Sort Order Enjawulo .</string>
+    <string name="extract_apk">Ggyayo apk mu downloads .</string>
+    <string name="share_apk">Gabanako APK ng\'oyita ku Apps .</string>
+    <string name="find_on_gp">Funa mu Google Play .</string>
+    <string name="pref_title_clear_cache">Clear Cache .</string>
+    <string name="pref_summary_clear_cache">Ggyawo fayiro za APK zonna ezaali ziggyiddwa emabegako mu downloads directory .</string>
+    <string name="cache_cleared_successfully">Cache cleared bulungi .</string>
+    <string name="cache_clearing_failed">Cache clearing eremereddwa .</string>
+    <string name="write_permission_extract">Okusobola okutereka fayiro y\'okusaba ojja kwetaaga okuwa olukusa okutereka .</string>
+    <string name="menu_search">Okunoonya</string>
+    <string name="run_app">Okuddukanya Okusaba .</string>
+    <string name="non_launchable_package">Package eno tesobola kudduka.</string>
+    <string name="app_details">Laga ebisingawo</string>
+    <string name="pref_title_dark_theme">Omulamwa gw\'ekizikiza .</string>
+    <string name="pref_dark_theme_system">Langi Enzirugavu mu Kusiiga Endabika .</string>
+    <string name="remove">Okujjamu</string>
+    <string name="unknown_permission_description">Olukusa olutamanyiddwa .</string>
+    <string name="required_permissions">Olukusa olwetaagisa .</string>
+    <string name="unable_to_get_permissions">Tekisoboka kufuna lukusa lwa list oba app\'s .</string>
+    <string name="no_requested_permissions">App tesaba lukusa.</string>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%д Б</string>
+    <string name="kibibytes">%.1ф КБ</string>
+    <string name="mibibytes">%.1ф МБ</string>
+    <string name="gigibytes">%.1ф ГБ</string>
+    <string name="please_wait">Молим вас, сачекајте…</string>
+    <string name="app_extract_success">Успешно распакован у директоријум &lt;б&gt;Преузимања&lt;/б&gt;</string>
+    <string name="app_extract_failed">Извоз није успео :(</string>
+    <string name="refresh">Освежи</string>
+    <string name="tomclaw_software">ТомЦлав Софтваре</string>
+    <string name="app_version">Верзија %1$с (%2$д)</string>
+    <string name="info">Инфо</string>
+    <string name="rate_app">Оцените ову апликацију</string>
+    <string name="all_apps">Пријаве аутора</string>
+    <string name="pref_base_title">Подешавања базе</string>
+    <string name="pref_summary_show_system">Прикажи системске апликације на листи</string>
+    <string name="pref_summary_runnable">Прикажи само пакете који се могу покренути</string>
+    <string name="pref_title_show_system">Системске апликације</string>
+    <string name="pref_title_runnable">Руннабле пацкагес</string>
+    <string name="got_it">Схватио сам!</string>
+    <string name="system_apps_warning_title">Упозорење!</string>
+    <string name="system_apps_warning_message">Системске апликације нису уобичајене апликације и за то не постоји гаранција
+        успешан извоз!</string>
+    <string name="settings">Подешавања</string>
+    <string name="send_to">Делите са</string>
+    <string name="pref_title_sort_order">Редослед сортирања</string>
+    <string name="sort_order_ascending">А - З</string>
+    <string name="sort_order_descending">З - А</string>
+    <string name="sort_order_app_size">По величини апликације</string>
+    <string name="sort_order_install_time">По времену инсталације</string>
+    <string name="sort_order_update_time">По времену ажурирања</string>
+    <string name="pref_summary_sort_order">Варијанте редоследа сортирања листе апликација</string>
+    <string name="extract_apk">Извуците апк у Преузимања</string>
+    <string name="share_apk">Делите апк путем апликација</string>
+    <string name="find_on_gp">Пронађите у Гоогле Плаи-у</string>
+    <string name="pref_title_clear_cache">Обриши кеш меморију</string>
+    <string name="pref_summary_clear_cache">Уклоните све претходно екстраховане АПК датотеке у директоријуму Преузимања</string>
+    <string name="cache_cleared_successfully">Кеш је успешно обрисан</string>
+    <string name="cache_clearing_failed">Брисање кеша није успело</string>
+    <string name="write_permission_extract">Да бисте сачували датотеку апликације, мораћете да доделите дозволу за складиштење</string>
+    <string name="menu_search">Тражи</string>
+    <string name="run_app">Покрените апликацију</string>
+    <string name="non_launchable_package">Овај пакет није могуће покренути.</string>
+    <string name="app_details">Прикажи детаље</string>
+    <string name="pref_title_dark_theme">Тамна тема</string>
+    <string name="pref_dark_theme_system">Тамне боје у изгледу апликације</string>
+    <string name="remove">Уклони</string>
+    <string name="unknown_permission_description">Непозната дозвола</string>
+    <string name="required_permissions">Потребне дозволе</string>
+    <string name="unable_to_get_permissions">Није могуће добити потребне дозволе за листу или апликацију</string>
+    <string name="no_requested_permissions">Апликација нема тражене дозволе.</string>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d ബി</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">കാത്തിരിക്കൂ…</string>
+    <string name="app_extract_success">&lt;b&gt;ഡൗൺലോഡുകൾ&lt;/b&gt; ഡയറക്‌ടറിയിലേക്ക് എക്‌സ്‌ട്രാക്‌റ്റുചെയ്‌തു</string>
+    <string name="app_extract_failed">കയറ്റുമതി പരാജയപ്പെട്ടു :(</string>
+    <string name="refresh">പുതുക്കുക</string>
+    <string name="tomclaw_software">ടോംക്ലാവ് സോഫ്റ്റ്വെയർ</string>
+    <string name="app_version">പതിപ്പ് %1$s (%2$d)</string>
+    <string name="info">വിവരം</string>
+    <string name="rate_app">ഈ ആപ്ലിക്കേഷൻ റേറ്റ് ചെയ്യുക</string>
+    <string name="all_apps">രചയിതാവിൻ്റെ അപേക്ഷകൾ</string>
+    <string name="pref_base_title">അടിസ്ഥാന ക്രമീകരണങ്ങൾ</string>
+    <string name="pref_summary_show_system">ലിസ്റ്റിൽ സിസ്റ്റം ആപ്ലിക്കേഷനുകൾ കാണിക്കുക</string>
+    <string name="pref_summary_runnable">പ്രവർത്തിപ്പിക്കാവുന്ന പാക്കേജുകൾ മാത്രം കാണിക്കുക</string>
+    <string name="pref_title_show_system">സിസ്റ്റം ആപ്പുകൾ</string>
+    <string name="pref_title_runnable">പ്രവർത്തിപ്പിക്കാവുന്ന പാക്കേജുകൾ</string>
+    <string name="got_it">മനസ്സിലായി!</string>
+    <string name="system_apps_warning_title">മുന്നറിയിപ്പ്!</string>
+    <string name="system_apps_warning_message">സിസ്റ്റം ആപ്പുകൾ സാധാരണ ആപ്പുകളല്ല, അതിന് വാറൻ്റി ഇല്ല
+        വിജയകരമായ കയറ്റുമതി!</string>
+    <string name="settings">ക്രമീകരണങ്ങൾ</string>
+    <string name="send_to">എന്നിവരുമായി പങ്കിടുക</string>
+    <string name="pref_title_sort_order">ക്രമം ക്രമീകരിക്കുക</string>
+    <string name="sort_order_ascending">എ - ഇസഡ്</string>
+    <string name="sort_order_descending">ഇസഡ് - എ</string>
+    <string name="sort_order_app_size">ആപ്പ് വലുപ്പം അനുസരിച്ച്</string>
+    <string name="sort_order_install_time">ഇൻസ്റ്റാളേഷൻ സമയം അനുസരിച്ച്</string>
+    <string name="sort_order_update_time">അപ്ഡേറ്റ് സമയം പ്രകാരം</string>
+    <string name="pref_summary_sort_order">ആപ്‌സ് ലിസ്‌റ്റ് സോർട്ട് ഓർഡർ വേരിയൻ്റുകൾ</string>
+    <string name="extract_apk">ഡൗൺലോഡുകളിലേക്ക് apk എക്‌സ്‌ട്രാക്‌റ്റ് ചെയ്യുക</string>
+    <string name="share_apk">ആപ്പുകൾ വഴി apk പങ്കിടുക</string>
+    <string name="find_on_gp">Google Play-യിൽ കണ്ടെത്തുക</string>
+    <string name="pref_title_clear_cache">കാഷെ മായ്‌ക്കുക</string>
+    <string name="pref_summary_clear_cache">ഡൗൺലോഡ് ഡയറക്‌ടറിയിൽ മുമ്പ് എക്‌സ്‌ട്രാക്‌റ്റുചെയ്‌ത എല്ലാ APK ഫയലുകളും നീക്കം ചെയ്യുക</string>
+    <string name="cache_cleared_successfully">കാഷെ വിജയകരമായി മായ്ച്ചു</string>
+    <string name="cache_clearing_failed">കാഷെ ക്ലിയറിംഗ് പരാജയപ്പെട്ടു</string>
+    <string name="write_permission_extract">ആപ്ലിക്കേഷൻ ഫയൽ സേവ് ചെയ്യുന്നതിന് നിങ്ങൾ സ്റ്റോറേജ് അനുമതി നൽകേണ്ടതുണ്ട്</string>
+    <string name="menu_search">തിരയുക</string>
+    <string name="run_app">ആപ്ലിക്കേഷൻ പ്രവർത്തിപ്പിക്കുക</string>
+    <string name="non_launchable_package">ഈ പാക്കേജ് പ്രവർത്തിപ്പിക്കാനാകില്ല.</string>
+    <string name="app_details">വിശദാംശങ്ങൾ കാണിക്കുക</string>
+    <string name="pref_title_dark_theme">ഇരുണ്ട തീം</string>
+    <string name="pref_dark_theme_system">ആപ്ലിക്കേഷൻ രൂപത്തിൽ ഇരുണ്ട നിറങ്ങൾ</string>
+    <string name="remove">നീക്കം ചെയ്യുക</string>
+    <string name="unknown_permission_description">അജ്ഞാത അനുമതി</string>
+    <string name="required_permissions">ആവശ്യമായ അനുമതികൾ</string>
+    <string name="unable_to_get_permissions">ലിസ്‌റ്റോ ആപ്പിൻ്റെ ആവശ്യമായ അനുമതികളോ നേടാനായില്ല</string>
+    <string name="no_requested_permissions">ആപ്പിന് അഭ്യർത്ഥിച്ച അനുമതികളില്ല.</string>
+</resources>

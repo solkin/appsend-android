@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Please, wachtsje ...</string>
+    <string name="app_extract_success">Sukses útpakt nei de map &lt;b&gt;Downloads&lt;/b&gt;</string>
+    <string name="app_extract_failed">Eksportearje mislearre :(</string>
+    <string name="refresh">Ferfarskje</string>
+    <string name="tomclaw_software">TomClaw Software</string>
+    <string name="app_version">Ferzje %1$s (%2$d)</string>
+    <string name="info">Info</string>
+    <string name="rate_app">Beoardielje dizze applikaasje</string>
+    <string name="all_apps">Applikaasjes fan auteurs</string>
+    <string name="pref_base_title">Basis ynstellings</string>
+    <string name="pref_summary_show_system">Lit systeemapplikaasjes sjen yn \'e list</string>
+    <string name="pref_summary_runnable">Lit allinich runbare pakketten sjen</string>
+    <string name="pref_title_show_system">Systeem apps</string>
+    <string name="pref_title_runnable">Runnable pakketten</string>
+    <string name="got_it">Befetsje ik!</string>
+    <string name="system_apps_warning_title">Warskôging!</string>
+    <string name="system_apps_warning_message">Systeemapps binne gjin gewoane apps en d\'r is gjin garânsje foar har
+        suksesfolle eksport!</string>
+    <string name="settings">Ynstellings</string>
+    <string name="send_to">Diele mei</string>
+    <string name="pref_title_sort_order">Sortearje folchoarder</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Troch app grutte</string>
+    <string name="sort_order_install_time">By ynstallaasje tiid</string>
+    <string name="sort_order_update_time">By update tiid</string>
+    <string name="pref_summary_sort_order">Apps list sortearring farianten</string>
+    <string name="extract_apk">Ekstrahearje apk yn Downloads</string>
+    <string name="share_apk">Diel apk fia apps</string>
+    <string name="find_on_gp">Fyn yn Google Play</string>
+    <string name="pref_title_clear_cache">Cache wiskje</string>
+    <string name="pref_summary_clear_cache">Fuortsmite alle earder útpakte APK-bestannen yn \'e map Downloads</string>
+    <string name="cache_cleared_successfully">Cache mei sukses wiske</string>
+    <string name="cache_clearing_failed">Cache wiskje mislearre</string>
+    <string name="write_permission_extract">Om tapassingsbestân op te slaan moatte jo opslachtastimming jaan</string>
+    <string name="menu_search">Sykje</string>
+    <string name="run_app">Applikaasje útfiere</string>
+    <string name="non_launchable_package">Dit pakket is net útfierber.</string>
+    <string name="app_details">Lit details sjen</string>
+    <string name="pref_title_dark_theme">Dark tema</string>
+    <string name="pref_dark_theme_system">Dûnkere kleuren yn applikaasje uterlik</string>
+    <string name="remove">Fuortsmite</string>
+    <string name="unknown_permission_description">Unbekende tastimming</string>
+    <string name="required_permissions">Fereaske tagongsrjochten</string>
+    <string name="unable_to_get_permissions">Kin de fereaske tagongsrjochten fan \'e list of app net krije</string>
+    <string name="no_requested_permissions">App hat gjin oanfrege tagongsrjochten.</string>
+</resources>

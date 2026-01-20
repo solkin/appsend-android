@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Prosím, počkajte…</string>
+    <string name="app_extract_success">Úspešne extrahované do adresára &lt;b&gt;Prevzaté&lt;/b&gt;</string>
+    <string name="app_extract_failed">Export zlyhal :(</string>
+    <string name="refresh">Obnoviť</string>
+    <string name="tomclaw_software">Softvér TomClaw</string>
+    <string name="app_version">Verzia %1$s (%2$d)</string>
+    <string name="info">Info</string>
+    <string name="rate_app">Ohodnoťte túto aplikáciu</string>
+    <string name="all_apps">Autorské aplikácie</string>
+    <string name="pref_base_title">Základné nastavenia</string>
+    <string name="pref_summary_show_system">Zobraziť systémové aplikácie v zozname</string>
+    <string name="pref_summary_runnable">Zobraziť iba spustiteľné balíky</string>
+    <string name="pref_title_show_system">Systémové aplikácie</string>
+    <string name="pref_title_runnable">Spustiteľné balíky</string>
+    <string name="got_it">Dobre!</string>
+    <string name="system_apps_warning_title">POZOR!</string>
+    <string name="system_apps_warning_message">Systémové aplikácie nie sú bežné aplikácie a neexistuje na ne žiadna záruka
+        úspešný export!</string>
+    <string name="settings">Nastavenia</string>
+    <string name="send_to">Zdieľať s</string>
+    <string name="pref_title_sort_order">Zoradiť poradie</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Podľa veľkosti aplikácie</string>
+    <string name="sort_order_install_time">Podľa času inštalácie</string>
+    <string name="sort_order_update_time">Podľa času aktualizácie</string>
+    <string name="pref_summary_sort_order">Aplikácie uvádzajú varianty poradia zoradenia</string>
+    <string name="extract_apk">Extrahujte apk do súborov na stiahnutie</string>
+    <string name="share_apk">Zdieľajte apk prostredníctvom aplikácií</string>
+    <string name="find_on_gp">Nájsť v Google Play</string>
+    <string name="pref_title_clear_cache">Vymazať vyrovnávaciu pamäť</string>
+    <string name="pref_summary_clear_cache">Odstráňte všetky predtým extrahované súbory APK v adresári Downloads</string>
+    <string name="cache_cleared_successfully">Vyrovnávacia pamäť bola úspešne vymazaná</string>
+    <string name="cache_clearing_failed">Vymazanie vyrovnávacej pamäte zlyhalo</string>
+    <string name="write_permission_extract">Ak chcete uložiť súbor aplikácie, budete musieť udeliť povolenie na ukladanie</string>
+    <string name="menu_search">Hľadať</string>
+    <string name="run_app">Spustite aplikáciu</string>
+    <string name="non_launchable_package">Tento balík nie je možné spustiť.</string>
+    <string name="app_details">Zobraziť podrobnosti</string>
+    <string name="pref_title_dark_theme">Tmavá téma</string>
+    <string name="pref_dark_theme_system">Tmavé farby vo vzhľade aplikácie</string>
+    <string name="remove">Odstrániť</string>
+    <string name="unknown_permission_description">Neznáme povolenie</string>
+    <string name="required_permissions">Požadované povolenia</string>
+    <string name="unable_to_get_permissions">Nie je možné získať zoznam alebo požadované povolenia aplikácie</string>
+    <string name="no_requested_permissions">Aplikácia nemá požadované povolenia.</string>
+</resources>

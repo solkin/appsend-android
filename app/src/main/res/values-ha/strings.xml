@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%1f KB</string>
+    <string name="mibibytes">%1f MB</string>
+    <string name="gigibytes">%1f GB</string>
+    <string name="please_wait">Don Allah jira…</string>
+    <string name="app_extract_success">An ciro cikin nasara zuwa kundin adireshin &lt;b&gt;Zazzagewa&lt;/b&gt;</string>
+    <string name="app_extract_failed">An kasa fitarwa :(</string>
+    <string name="refresh">Sake sabuntawa</string>
+    <string name="tomclaw_software">TomClaw Software</string>
+    <string name="app_version">Siga %1$s (%2$d)</string>
+    <string name="info">Bayani</string>
+    <string name="rate_app">Rage wannan aikace-aikacen</string>
+    <string name="all_apps">Aikace-aikacen marubucin</string>
+    <string name="pref_base_title">Saitunan tushe</string>
+    <string name="pref_summary_show_system">Nuna aikace-aikacen tsarin a cikin jeri</string>
+    <string name="pref_summary_runnable">Nuna fakitin da za a iya gudu kawai</string>
+    <string name="pref_title_show_system">Ka\'idodin tsarin</string>
+    <string name="pref_title_runnable">Fakitin da za a iya gudu</string>
+    <string name="got_it">Na samu!</string>
+    <string name="system_apps_warning_title">Gargadi!</string>
+    <string name="system_apps_warning_message">Ka\'idodin tsarin ba na yau da kullun ba ne kuma babu garantin sa
+        nasara fitarwa!</string>
+    <string name="settings">Saituna</string>
+    <string name="send_to">Raba tare da</string>
+    <string name="pref_title_sort_order">Tsara tsari</string>
+    <string name="sort_order_ascending">A-Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Ta girman app</string>
+    <string name="sort_order_install_time">By lokacin shigarwa</string>
+    <string name="sort_order_update_time">By lokacin sabuntawa</string>
+    <string name="pref_summary_sort_order">Apps jeri bambance-bambancen tsari</string>
+    <string name="extract_apk">Cire apk cikin Zazzagewa</string>
+    <string name="share_apk">Raba apk ta hanyar apps</string>
+    <string name="find_on_gp">Nemo a cikin Google Play</string>
+    <string name="pref_title_clear_cache">Share cache</string>
+    <string name="pref_summary_clear_cache">Cire duk fayilolin APK da aka fitar a baya a cikin littafin Zazzagewa</string>
+    <string name="cache_cleared_successfully">An share cache cikin nasara</string>
+    <string name="cache_clearing_failed">An kasa share cache</string>
+    <string name="write_permission_extract">Domin adana fayil ɗin aikace-aikacen kuna buƙatar ba da izinin ajiya</string>
+    <string name="menu_search">Bincika</string>
+    <string name="run_app">Run aikace-aikace</string>
+    <string name="non_launchable_package">Wannan fakitin ba zai iya gudana ba.</string>
+    <string name="app_details">Nuna cikakkun bayanai</string>
+    <string name="pref_title_dark_theme">Jigon duhu</string>
+    <string name="pref_dark_theme_system">Launuka masu duhu a cikin bayyanar aikace-aikacen</string>
+    <string name="remove">Cire</string>
+    <string name="unknown_permission_description">Izinin da ba a sani ba</string>
+    <string name="required_permissions">Izinin da ake buƙata</string>
+    <string name="unable_to_get_permissions">Ba a iya samun jeri ko izinin aikace-aikacen da ake buƙata ba</string>
+    <string name="no_requested_permissions">App ba shi da neman izini.</string>
+</resources>

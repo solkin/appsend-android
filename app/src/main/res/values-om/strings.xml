@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%D B .</string>
+    <string name="kibibytes">%.1F KB .</string>
+    <string name="mibibytes">%.1F MB .</string>
+    <string name="gigibytes">%.1f GB .</string>
+    <string name="please_wait">Maaloo, eegaa...</string>
+    <string name="app_extract_success">Milkaa\'inaan gara galmee &lt;b&gt;Downloads&lt;/b&gt;tti baafame .</string>
+    <string name="app_extract_failed">Al-ergiin hin milkoofne :(</string>
+    <string name="refresh">Haaromsa .</string>
+    <string name="tomclaw_software">Software Tomclaw .</string>
+    <string name="app_version">Version %1$s (%2$d) .</string>
+    <string name="info">Odeeffannoo .</string>
+    <string name="rate_app">Iyyannoo kanaaf madaalaa .</string>
+    <string name="all_apps">Iyyannoo barreessaa .</string>
+    <string name="pref_base_title">Sajoo bu\'uuraa .</string>
+    <string name="pref_summary_show_system">Tarree keessatti aplikeeshiniiwwan sirnaa agarsiisi .</string>
+    <string name="pref_summary_runnable">Paakeejiiwwan fiigichaan guutaman qofa agarsiisi .</string>
+    <string name="pref_title_show_system">Apps sirnaa .</string>
+    <string name="pref_title_runnable">Paakeejiiwwan Runnable .</string>
+    <string name="got_it">Naaf galeera!</string>
+    <string name="system_apps_warning_title">Akeekkachiisa!</string>
+    <string name="system_apps_warning_message">Apps system apps barame mitii fi wabii isaa hin jiru .
+        Al-ergii milkaa\'aa!</string>
+    <string name="settings">Sajoo .</string>
+    <string name="send_to">Qoodaa waliin</string>
+    <string name="pref_title_sort_order">Tartiiba sassaabuu .</string>
+    <string name="sort_order_ascending">a - z .</string>
+    <string name="sort_order_descending">Z - A .</string>
+    <string name="sort_order_app_size">App size tiin .</string>
+    <string name="sort_order_install_time">Yeroo fe\'uudhaan .</string>
+    <string name="sort_order_update_time">Yeroo update ta\'een .</string>
+    <string name="pref_summary_sort_order">Apps Tarreeffama Tartiiba Saaguu Garaagarummaa .</string>
+    <string name="extract_apk">APK gara buufannaatti baasuu .</string>
+    <string name="share_apk">APK karaa apps share godhaa .</string>
+    <string name="find_on_gp">Google Play keessatti barbaadi .</string>
+    <string name="pref_title_clear_cache">Kaachee qulqullaa\'aa .</string>
+    <string name="pref_summary_clear_cache">Faayilota APK duraan baafaman hunda galmee Downloads keessatti haqi .</string>
+    <string name="cache_cleared_successfully">Cache milkaa\'inaan qulqullaa\'e .</string>
+    <string name="cache_clearing_failed">Cache qulqulleessuun fashalaa\'e .</string>
+    <string name="write_permission_extract">Faayilii iyyannoo qusachuuf hayyama kuusaa kennuu qabda .</string>
+    <string name="menu_search">Barbaaduu</string>
+    <string name="run_app">Appilikeeshinii fiigi .</string>
+    <string name="non_launchable_package">Paakeejiin kun kan gaggeeffamu miti.</string>
+    <string name="app_details">Bal\'ina agarsiisi .</string>
+    <string name="pref_title_dark_theme">Mata duree dukkanaa\'aa .</string>
+    <string name="pref_dark_theme_system">Halluu dukkanaa\'aa bifa aplikeeshinii keessatti .</string>
+    <string name="remove">Irraa kaasuu</string>
+    <string name="unknown_permission_description">Hayyama hin beekamne .</string>
+    <string name="required_permissions">Hayyama barbaachisu .</string>
+    <string name="unable_to_get_permissions">Tarree ykn hayyama appii barbaachisu argachuu hin dandeenye .</string>
+    <string name="no_requested_permissions">Appiin hayyama hin gaafanne.</string>
+</resources>

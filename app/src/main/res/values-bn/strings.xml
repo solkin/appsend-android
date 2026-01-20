@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d বি</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">অনুগ্রহ করে অপেক্ষা করুন...</string>
+    <string name="app_extract_success">&lt;b&gt;ডাউনলোড&lt;/b&gt; ডিরেক্টরিতে সফলভাবে বের করা হয়েছে</string>
+    <string name="app_extract_failed">রপ্তানি ব্যর্থ হয়েছে :(</string>
+    <string name="refresh">রিফ্রেশ</string>
+    <string name="tomclaw_software">টমক্ল সফটওয়্যার</string>
+    <string name="app_version">সংস্করণ %1$s (%2$d)</string>
+    <string name="info">তথ্য</string>
+    <string name="rate_app">এই অ্যাপ্লিকেশন রেট</string>
+    <string name="all_apps">লেখকের অ্যাপ্লিকেশন</string>
+    <string name="pref_base_title">বেস সেটিংস</string>
+    <string name="pref_summary_show_system">তালিকায় সিস্টেম অ্যাপ্লিকেশন দেখান</string>
+    <string name="pref_summary_runnable">শুধুমাত্র রানযোগ্য প্যাকেজ দেখান</string>
+    <string name="pref_title_show_system">সিস্টেম অ্যাপস</string>
+    <string name="pref_title_runnable">চলমান প্যাকেজ</string>
+    <string name="got_it">বুঝেছি!</string>
+    <string name="system_apps_warning_title">সতর্কতা !</string>
+    <string name="system_apps_warning_message">সিস্টেম অ্যাপগুলি সাধারণ অ্যাপ নয় এবং এর কোনও ওয়ারেন্টি নেই
+        সফল রপ্তানি!</string>
+    <string name="settings">সেটিংস</string>
+    <string name="send_to">সাথে শেয়ার করুন</string>
+    <string name="pref_title_sort_order">সাজানোর ক্রম</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">জেড - এ</string>
+    <string name="sort_order_app_size">অ্যাপের আকার অনুসারে</string>
+    <string name="sort_order_install_time">ইনস্টল করার সময় দ্বারা</string>
+    <string name="sort_order_update_time">আপডেট সময় দ্বারা</string>
+    <string name="pref_summary_sort_order">অ্যাপ্লিকেশন তালিকা বাছাই অর্ডার বৈকল্পিক</string>
+    <string name="extract_apk">ডাউনলোড এ apk এক্সট্র্যাক্ট করুন</string>
+    <string name="share_apk">অ্যাপের মাধ্যমে apk শেয়ার করুন</string>
+    <string name="find_on_gp">Google Play-এ খুঁজুন</string>
+    <string name="pref_title_clear_cache">ক্যাশে সাফ করুন</string>
+    <string name="pref_summary_clear_cache">ডাউনলোড ডিরেক্টরিতে পূর্বে নিষ্কাশিত সমস্ত APK ফাইলগুলি সরান৷</string>
+    <string name="cache_cleared_successfully">ক্যাশে সফলভাবে সাফ করা হয়েছে৷</string>
+    <string name="cache_clearing_failed">ক্যাশে সাফ করা ব্যর্থ হয়েছে৷</string>
+    <string name="write_permission_extract">অ্যাপ্লিকেশন ফাইল সংরক্ষণ করার জন্য আপনাকে স্টোরেজ অনুমতি দিতে হবে</string>
+    <string name="menu_search">অনুসন্ধান করুন</string>
+    <string name="run_app">অ্যাপ্লিকেশন চালান</string>
+    <string name="non_launchable_package">এই প্যাকেজটি চালানোর যোগ্য নয়।</string>
+    <string name="app_details">বিস্তারিত দেখান</string>
+    <string name="pref_title_dark_theme">গাঢ় থিম</string>
+    <string name="pref_dark_theme_system">অ্যাপ্লিকেশন চেহারা মধ্যে গাঢ় রং</string>
+    <string name="remove">সরান</string>
+    <string name="unknown_permission_description">অজানা অনুমতি</string>
+    <string name="required_permissions">প্রয়োজনীয় অনুমতি</string>
+    <string name="unable_to_get_permissions">তালিকা বা অ্যাপের প্রয়োজনীয় অনুমতি পেতে অক্ষম</string>
+    <string name="no_requested_permissions">অ্যাপের কাছে অনুমতির অনুরোধ নেই।</string>
+</resources>

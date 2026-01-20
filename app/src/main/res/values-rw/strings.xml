@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">% d B.</string>
+    <string name="kibibytes">% .1f KB</string>
+    <string name="mibibytes">% .1f MB</string>
+    <string name="gigibytes">% .1f GB</string>
+    <string name="please_wait">Nyamuneka, tegereza…</string>
+    <string name="app_extract_success">Byakuwe neza kuri &lt;b&gt; Gukuramo &lt;/b&gt; ububiko</string>
+    <string name="app_extract_failed">Kohereza ibicuruzwa hanze byarananiranye :(</string>
+    <string name="refresh">Ongera</string>
+    <string name="tomclaw_software">Porogaramu ya TomClaw</string>
+    <string name="app_version">Inyandiko% 1 $ s (% 2 $ d)</string>
+    <string name="info">Amakuru</string>
+    <string name="rate_app">Gereranya iyi porogaramu</string>
+    <string name="all_apps">Porogaramu Umwanditsi</string>
+    <string name="pref_base_title">Igenamiterere shingiro</string>
+    <string name="pref_summary_show_system">Erekana sisitemu ya porogaramu kurutonde</string>
+    <string name="pref_summary_runnable">Erekana ibipapuro bikoreshwa gusa</string>
+    <string name="pref_title_show_system">Porogaramu ya sisitemu</string>
+    <string name="pref_title_runnable">Ibikoresho bishobora gukoreshwa</string>
+    <string name="got_it">Kubona!</string>
+    <string name="system_apps_warning_title">Iburira!</string>
+    <string name="system_apps_warning_message">Porogaramu za sisitemu ntabwo ari porogaramu zisanzwe kandi nta garanti yacyo
+        kohereza ibicuruzwa hanze!</string>
+    <string name="settings">Igenamiterere</string>
+    <string name="send_to">Sangira na</string>
+    <string name="pref_title_sort_order">Itondekanya</string>
+    <string name="sort_order_ascending">A - Z.</string>
+    <string name="sort_order_descending">Z - A.</string>
+    <string name="sort_order_app_size">Ingano ya porogaramu</string>
+    <string name="sort_order_install_time">Mugihe cyo kwishyiriraho</string>
+    <string name="sort_order_update_time">Mugihe cyo kuvugurura</string>
+    <string name="pref_summary_sort_order">Urutonde rwa porogaramu itondekanya ibintu bitandukanye</string>
+    <string name="extract_apk">Kuramo apk mukuramo</string>
+    <string name="share_apk">Sangira apk ukoresheje porogaramu</string>
+    <string name="find_on_gp">Shakisha muri Google Play</string>
+    <string name="pref_title_clear_cache">Kuraho cache</string>
+    <string name="pref_summary_clear_cache">Kuraho amadosiye yose yakuwe mbere mububiko bwo gukuramo</string>
+    <string name="cache_cleared_successfully">Ubwihisho bwakuweho neza</string>
+    <string name="cache_clearing_failed">Gukuraho Cache byarananiranye</string>
+    <string name="write_permission_extract">Kugirango ubike dosiye isaba uzakenera gutanga uruhushya rwo kubika</string>
+    <string name="menu_search">Shakisha</string>
+    <string name="run_app">Koresha porogaramu</string>
+    <string name="non_launchable_package">Iyi paki ntishobora gukoreshwa.</string>
+    <string name="app_details">Erekana ibisobanuro</string>
+    <string name="pref_title_dark_theme">Insanganyamatsiko yijimye</string>
+    <string name="pref_dark_theme_system">Amabara yijimye muburyo bugaragara</string>
+    <string name="remove">Kuraho</string>
+    <string name="unknown_permission_description">Uruhushya rutazwi</string>
+    <string name="required_permissions">Uruhushya rusabwa</string>
+    <string name="unable_to_get_permissions">Ntushobora kubona urutonde cyangwa porogaramu zisabwa</string>
+    <string name="no_requested_permissions">Porogaramu ntabwo yasabye uruhushya.</string>
+</resources>

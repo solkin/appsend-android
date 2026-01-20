@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">W.e.g. waart...</string>
+    <string name="app_extract_success">Erfollegräich extrahéiert an &lt;b&gt;Downloads&lt;/b&gt; Verzeechnes</string>
+    <string name="app_extract_failed">Export ass gescheitert :(</string>
+    <string name="refresh">Erfrëschen</string>
+    <string name="tomclaw_software">TomClaw Software</string>
+    <string name="app_version">Versioun %1$s (%2$d)</string>
+    <string name="info">Info</string>
+    <string name="rate_app">Bewäert dës Applikatioun</string>
+    <string name="all_apps">Auteur\'s Uwendungen</string>
+    <string name="pref_base_title">Basis Astellunge</string>
+    <string name="pref_summary_show_system">Show System Uwendungen an der Lëscht</string>
+    <string name="pref_summary_runnable">Show nëmme lafend Packagen</string>
+    <string name="pref_title_show_system">System Apps</string>
+    <string name="pref_title_runnable">Runnable Packagen</string>
+    <string name="got_it">Huet et!</string>
+    <string name="system_apps_warning_title">Opgepasst!</string>
+    <string name="system_apps_warning_message">System Apps sinn net üblech Apps an et gëtt keng Garantie vun hirem
+        erfollegräich exportéieren!</string>
+    <string name="settings">Astellungen</string>
+    <string name="send_to">Deelen mat</string>
+    <string name="pref_title_sort_order">Zortéieren Uerdnung</string>
+    <string name="sort_order_ascending">A-Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Duerch App Gréisst</string>
+    <string name="sort_order_install_time">No Installatioun Zäit</string>
+    <string name="sort_order_update_time">Duerch Update Zäit</string>
+    <string name="pref_summary_sort_order">Apps Lëscht Zort Uerdnung Varianten</string>
+    <string name="extract_apk">Extrait apk an Downloads</string>
+    <string name="share_apk">Deelt apk iwwer Apps</string>
+    <string name="find_on_gp">Fannt op Google Play</string>
+    <string name="pref_title_clear_cache">Cache läschen</string>
+    <string name="pref_summary_clear_cache">Ewechzehuelen all virdrun extrahéiert APK Fichieren am Downloads Verzeechnes</string>
+    <string name="cache_cleared_successfully">Cache erfollegräich geläscht</string>
+    <string name="cache_clearing_failed">Cache Läschen ass gescheitert</string>
+    <string name="write_permission_extract">Fir d\'Applikatiounsdatei ze späicheren, musst Dir d\'Späichererlaabnis ginn</string>
+    <string name="menu_search">Sichen</string>
+    <string name="run_app">Run Applikatioun</string>
+    <string name="non_launchable_package">Dëse Package ass net lafen.</string>
+    <string name="app_details">Show Detailer</string>
+    <string name="pref_title_dark_theme">Däischter Thema</string>
+    <string name="pref_dark_theme_system">Däischter Faarwen an der Applikatioun Erscheinung</string>
+    <string name="remove">Ewechzehuelen</string>
+    <string name="unknown_permission_description">Onbekannt Erlaabnis</string>
+    <string name="required_permissions">Néideg Permissiounen</string>
+    <string name="unable_to_get_permissions">Kann d\'Lëscht oder d\'App erfuerderlech Permissiounen net kréien</string>
+    <string name="no_requested_permissions">App huet keng ugefrote Permissiounen.</string>
+</resources>

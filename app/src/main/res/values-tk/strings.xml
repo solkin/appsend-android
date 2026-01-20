@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">% d B.</string>
+    <string name="kibibytes">% .1f KB</string>
+    <string name="mibibytes">% .1f MB</string>
+    <string name="gigibytes">% .1f GB</string>
+    <string name="please_wait">Haýyş edýärin, garaşyň ...</string>
+    <string name="app_extract_success">&lt;b&gt; süklemeler &lt;/b&gt; katalogyna üstünlikli çykaryldy</string>
+    <string name="app_extract_failed">Eksport şowsuz boldy :(</string>
+    <string name="refresh">Täzele</string>
+    <string name="tomclaw_software">TomClaw programma üpjünçiligi</string>
+    <string name="app_version">Wersiýa% 1 $ s (% 2 $ d)</string>
+    <string name="info">Maglumat</string>
+    <string name="rate_app">Bu goýmany baha beriň</string>
+    <string name="all_apps">Awtoryň programmalary</string>
+    <string name="pref_base_title">Esasy sazlamalar</string>
+    <string name="pref_summary_show_system">Ulgam programmalaryny sanawda görkeziň</string>
+    <string name="pref_summary_runnable">Diňe işledip bolýan paketleri görkeziň</string>
+    <string name="pref_title_show_system">Ulgam programmalary</string>
+    <string name="pref_title_runnable">Işläp bolýan paketler</string>
+    <string name="got_it">Düşündim!</string>
+    <string name="system_apps_warning_title">Duýduryş!</string>
+    <string name="system_apps_warning_message">Ulgam programmalary adaty programmalar däl we kepillik ýok
+        üstünlikli eksport!</string>
+    <string name="settings">Sazlamalar</string>
+    <string name="send_to">Paýlaş</string>
+    <string name="pref_title_sort_order">Sargyt tertibi</string>
+    <string name="sort_order_ascending">A - Z.</string>
+    <string name="sort_order_descending">Z - A.</string>
+    <string name="sort_order_app_size">Programmanyň ululygy boýunça</string>
+    <string name="sort_order_install_time">Gurmak wagty bilen</string>
+    <string name="sort_order_update_time">Täzelenme wagty bilen</string>
+    <string name="pref_summary_sort_order">Programmalar sanaw tertibiniň görnüşleri</string>
+    <string name="extract_apk">Apk göçürip alyň</string>
+    <string name="share_apk">Apk programmalar arkaly paýlaşyň</string>
+    <string name="find_on_gp">Google Play-de tapyň</string>
+    <string name="pref_title_clear_cache">Keş arassalaň</string>
+    <string name="pref_summary_clear_cache">Öň çykarylan APK faýllarynyň hemmesini süklemeler katalogynda aýyryň</string>
+    <string name="cache_cleared_successfully">Keş üstünlikli arassalandy</string>
+    <string name="cache_clearing_failed">Keş arassalamak başa barmady</string>
+    <string name="write_permission_extract">Programma faýlyny ýatda saklamak üçin saklamaga rugsat bermeli bolarsyňyz</string>
+    <string name="menu_search">Gözlemek</string>
+    <string name="run_app">Programmany işlediň</string>
+    <string name="non_launchable_package">Bu paket işlemeýär.</string>
+    <string name="app_details">Jikme-jiklikleri görkez</string>
+    <string name="pref_title_dark_theme">Garaňky tema</string>
+    <string name="pref_dark_theme_system">Programma görnüşinde goýy reňkler</string>
+    <string name="remove">Aýyr</string>
+    <string name="unknown_permission_description">Näbelli rugsat</string>
+    <string name="required_permissions">Gerekli rugsatlar</string>
+    <string name="unable_to_get_permissions">Sanawy ýa-da programmanyň zerur rugsatlaryny alyp bolmaýar</string>
+    <string name="no_requested_permissions">Programma rugsat soramaýar.</string>
+</resources>

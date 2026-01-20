@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">મહેરબાની કરીને રાહ જુઓ...</string>
+    <string name="app_extract_success">&lt;b&gt;ડાઉનલોડ્સ&lt;/b&gt; ડિરેક્ટરીમાં સફળતાપૂર્વક એક્સટ્રેક્ટ કરવામાં આવ્યું</string>
+    <string name="app_extract_failed">નિકાસ નિષ્ફળ :(</string>
+    <string name="refresh">તાજું કરો</string>
+    <string name="tomclaw_software">TomClaw સોફ્ટવેર</string>
+    <string name="app_version">સંસ્કરણ %1$s (%2$d)</string>
+    <string name="info">માહિતી</string>
+    <string name="rate_app">આ એપ્લિકેશનને રેટ કરો</string>
+    <string name="all_apps">લેખકની અરજીઓ</string>
+    <string name="pref_base_title">આધાર સેટિંગ્સ</string>
+    <string name="pref_summary_show_system">સૂચિમાં સિસ્ટમ એપ્લિકેશનો બતાવો</string>
+    <string name="pref_summary_runnable">ફક્ત ચલાવી શકાય તેવા પેકેજો બતાવો</string>
+    <string name="pref_title_show_system">સિસ્ટમ એપ્લિકેશન્સ</string>
+    <string name="pref_title_runnable">ચલાવી શકાય તેવા પેકેજો</string>
+    <string name="got_it">સમજાયું!</string>
+    <string name="system_apps_warning_title">ચેતવણી!</string>
+    <string name="system_apps_warning_message">સિસ્ટમ એપ્લિકેશન્સ સામાન્ય એપ્લિકેશનો નથી અને તેની કોઈ વોરંટી નથી
+        સફળ નિકાસ!</string>
+    <string name="settings">સેટિંગ્સ</string>
+    <string name="send_to">સાથે શેર કરો</string>
+    <string name="pref_title_sort_order">સૉર્ટ ઓર્ડર</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">એપ્લિકેશન કદ દ્વારા</string>
+    <string name="sort_order_install_time">ઇન્સ્ટોલ સમય દ્વારા</string>
+    <string name="sort_order_update_time">અપડેટ સમય દ્વારા</string>
+    <string name="pref_summary_sort_order">એપ્લિકેશનોની સૂચિ સૉર્ટ ઓર્ડર વેરિઅન્ટ્સ</string>
+    <string name="extract_apk">ડાઉનલોડ્સમાં apk કાઢો</string>
+    <string name="share_apk">એપ્સ દ્વારા apk શેર કરો</string>
+    <string name="find_on_gp">Google Play માં શોધો</string>
+    <string name="pref_title_clear_cache">કેશ સાફ કરો</string>
+    <string name="pref_summary_clear_cache">ડાઉનલોડ ડિરેક્ટરીમાં અગાઉ એક્સટ્રેક્ટ કરેલી બધી APK ફાઇલોને દૂર કરો</string>
+    <string name="cache_cleared_successfully">કેશ સફળતાપૂર્વક સાફ કરી</string>
+    <string name="cache_clearing_failed">કેશ ક્લિયરિંગ નિષ્ફળ થયું</string>
+    <string name="write_permission_extract">એપ્લિકેશન ફાઇલને સાચવવા માટે તમારે સ્ટોરેજની પરવાનગી આપવી પડશે</string>
+    <string name="menu_search">શોધો</string>
+    <string name="run_app">એપ્લિકેશન ચલાવો</string>
+    <string name="non_launchable_package">આ પેકેજ ચલાવવા યોગ્ય નથી.</string>
+    <string name="app_details">વિગતો બતાવો</string>
+    <string name="pref_title_dark_theme">ડાર્ક થીમ</string>
+    <string name="pref_dark_theme_system">એપ્લિકેશન દેખાવમાં ઘાટા રંગો</string>
+    <string name="remove">દૂર કરો</string>
+    <string name="unknown_permission_description">અજાણી પરવાનગી</string>
+    <string name="required_permissions">જરૂરી પરવાનગીઓ</string>
+    <string name="unable_to_get_permissions">સૂચિ અથવા એપ્લિકેશનની આવશ્યક પરવાનગીઓ મેળવવામાં અસમર્થ</string>
+    <string name="no_requested_permissions">એપ્લિકેશનને વિનંતી કરેલ પરવાનગીઓ નથી.</string>
+</resources>

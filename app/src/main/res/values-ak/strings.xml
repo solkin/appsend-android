@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%D B .</string>
+    <string name="kibibytes">%.1F KB .</string>
+    <string name="mibibytes">%.1f MB .</string>
+    <string name="gigibytes">%.1f gb .</string>
+    <string name="please_wait">Mesrɛ wo, twɛn...</string>
+    <string name="app_extract_success">Wɔayi no yiye akɔ &lt;b&gt;Downloads&lt;/b&gt; directory mu .</string>
+    <string name="app_extract_failed">Nneɛma a wɔde kɔ amannɔne no adi nkogu :( .</string>
+    <string name="refresh">Refresh .</string>
+    <string name="tomclaw_software">Tomclaw softwea .</string>
+    <string name="app_version">Nkyekyɛmu %1$s (%2$d) .</string>
+    <string name="info">Info .</string>
+    <string name="rate_app">Fa akwammisa krataa yi kyerɛ .</string>
+    <string name="all_apps">Author\'s Applications .</string>
+    <string name="pref_base_title">Base nhyehyɛe .</string>
+    <string name="pref_summary_show_system">Kyerɛ system applications wɔ list mu .</string>
+    <string name="pref_summary_runnable">Kyerɛ runnable packages nkutoo .</string>
+    <string name="pref_title_show_system">System Apps .</string>
+    <string name="pref_title_runnable">Runnable packages .</string>
+    <string name="got_it">Ate aseɛ!</string>
+    <string name="system_apps_warning_title">Kɔkɔbɔ!</string>
+    <string name="system_apps_warning_message">System apps nyɛ apps a wɔtaa yɛ na ɛwɔ hɔ a ɛkyerɛ sɛ .
+        Nneɛma a wɔde kɔ amannɔne a edi mu!</string>
+    <string name="settings">Nsiesiei .</string>
+    <string name="send_to">Share ne .</string>
+    <string name="pref_title_sort_order">Hyehyɛ nhyehyɛe .</string>
+    <string name="sort_order_ascending">A - z .</string>
+    <string name="sort_order_descending">z - a .</string>
+    <string name="sort_order_app_size">denam app kɛse so .</string>
+    <string name="sort_order_install_time">Ɛdenam bere a wode bɛhyɛ mu so .</string>
+    <string name="sort_order_update_time">denam bere a wɔde yɛ update so .</string>
+    <string name="pref_summary_sort_order">Apps list sort order variants .</string>
+    <string name="extract_apk">Yi APK mu downloads .</string>
+    <string name="share_apk">Fa Apps kyɛ APK .</string>
+    <string name="find_on_gp">Hwehwɛ mu wɔ Google Play mu.</string>
+    <string name="pref_title_clear_cache">Cache a emu da hɔ .</string>
+    <string name="pref_summary_clear_cache">Yi APK fael ahorow a wɔadi kan ayi afi mu nyinaa wɔ Downloads directory mu .</string>
+    <string name="cache_cleared_successfully">Cache no yii no fii hɔ yiye .</string>
+    <string name="cache_clearing_failed">Cache clearing no adi nkogu .</string>
+    <string name="write_permission_extract">Sɛnea ɛbɛyɛ a wobɛkora application fael no so no ɛho behia sɛ woma storage ho kwan .</string>
+    <string name="menu_search">Hwehwɛ</string>
+    <string name="run_app">Run application no so .</string>
+    <string name="non_launchable_package">Saa package yi nyɛ runnable.</string>
+    <string name="app_details">Kyerɛ nsɛm no mu nsɛm .</string>
+    <string name="pref_title_dark_theme">Asɛmti a ɛyɛ sum .</string>
+    <string name="pref_dark_theme_system">Kɔla a ɛyɛ tumm wɔ dwumadie mu .</string>
+    <string name="remove">Yi</string>
+    <string name="unknown_permission_description">kwan a wonnim .</string>
+    <string name="required_permissions">Tumi krataa a wɔhwehwɛ .</string>
+    <string name="unable_to_get_permissions">Entumi nnya list anaa app\'s tumi krataa a wɔhwehwɛ .</string>
+    <string name="no_requested_permissions">App nni tumi krataa a wɔabisa.</string>
+</resources>

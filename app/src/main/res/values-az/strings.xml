@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Zəhmət olmasa gözləyin...</string>
+    <string name="app_extract_success">&lt;b&gt;Yükləmələr&lt;/b&gt; qovluğuna uğurla çıxarıldı</string>
+    <string name="app_extract_failed">Eksport uğursuz oldu :(</string>
+    <string name="refresh">Yeniləyin</string>
+    <string name="tomclaw_software">TomClaw Proqramı</string>
+    <string name="app_version">Versiya %1$s (%2$d)</string>
+    <string name="info">Məlumat</string>
+    <string name="rate_app">Bu tətbiqi qiymətləndirin</string>
+    <string name="all_apps">Müəllif proqramları</string>
+    <string name="pref_base_title">Əsas parametrlər</string>
+    <string name="pref_summary_show_system">Siyahıda sistem tətbiqlərini göstərin</string>
+    <string name="pref_summary_runnable">Yalnız işlək paketləri göstərin</string>
+    <string name="pref_title_show_system">Sistem proqramları</string>
+    <string name="pref_title_runnable">İşlənə bilən paketlər</string>
+    <string name="got_it">Anladım!</string>
+    <string name="system_apps_warning_title">Xəbərdarlıq!</string>
+    <string name="system_apps_warning_message">Sistem proqramları adi proqramlar deyil və onların heç bir zəmanəti yoxdur
+        uğurlu ixrac!</string>
+    <string name="settings">Parametrlər</string>
+    <string name="send_to">ilə paylaşın</string>
+    <string name="pref_title_sort_order">Sırala</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Proqram ölçüsünə görə</string>
+    <string name="sort_order_install_time">Quraşdırma vaxtı ilə</string>
+    <string name="sort_order_update_time">Yeniləmə vaxtı ilə</string>
+    <string name="pref_summary_sort_order">Proqramlar çeşidləmə sırası variantlarını sıralayır</string>
+    <string name="extract_apk">APK faylını Yükləmələr bölməsinə çıxarın</string>
+    <string name="share_apk">Proqramlar vasitəsilə apk paylaşın</string>
+    <string name="find_on_gp">Google Play-də tapın</string>
+    <string name="pref_title_clear_cache">Keşi təmizləyin</string>
+    <string name="pref_summary_clear_cache">Yükləmələr qovluğunda əvvəllər çıxarılan bütün APK fayllarını silin</string>
+    <string name="cache_cleared_successfully">Keş uğurla təmizləndi</string>
+    <string name="cache_clearing_failed">Keşi təmizləmək alınmadı</string>
+    <string name="write_permission_extract">Tətbiq faylını saxlamaq üçün saxlama icazəsi verməli olacaqsınız</string>
+    <string name="menu_search">Axtar</string>
+    <string name="run_app">Proqramı işə salın</string>
+    <string name="non_launchable_package">Bu paket işlək deyil.</string>
+    <string name="app_details">Detalları göstərin</string>
+    <string name="pref_title_dark_theme">Qaranlıq mövzu</string>
+    <string name="pref_dark_theme_system">Tətbiq görünüşündə tünd rənglər</string>
+    <string name="remove">Sil</string>
+    <string name="unknown_permission_description">Naməlum icazə</string>
+    <string name="required_permissions">Tələb olunan icazələr</string>
+    <string name="unable_to_get_permissions">Siyahı və ya tətbiqin tələb olunan icazələrini əldə etmək mümkün deyil</string>
+    <string name="no_requested_permissions">Tətbiqin tələb olunan icazələri yoxdur.</string>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f КБ</string>
+    <string name="mibibytes">%.1f МБ</string>
+    <string name="gigibytes">%.1f ГБ</string>
+    <string name="please_wait">Өтінемін, күте тұрыңыз…</string>
+    <string name="app_extract_success">&lt;b&gt;Жүктеулер&lt;/b&gt; каталогына сәтті шығарылды</string>
+    <string name="app_extract_failed">Экспорттау сәтсіз аяқталды :(</string>
+    <string name="refresh">Жаңарту</string>
+    <string name="tomclaw_software">TomClaw бағдарламалық құралы</string>
+    <string name="app_version">%1$s нұсқасы (%2$d)</string>
+    <string name="info">Ақпарат</string>
+    <string name="rate_app">Осы қолданбаны бағалаңыз</string>
+    <string name="all_apps">Авторлық қосымшалар</string>
+    <string name="pref_base_title">Негізгі параметрлер</string>
+    <string name="pref_summary_show_system">Жүйелік қолданбаларды тізімде көрсету</string>
+    <string name="pref_summary_runnable">Тек іске қосылатын бумаларды көрсетіңіз</string>
+    <string name="pref_title_show_system">Жүйелік қолданбалар</string>
+    <string name="pref_title_runnable">Орындалатын пакеттер</string>
+    <string name="got_it">Түсіндім!</string>
+    <string name="system_apps_warning_title">Ескерту!</string>
+    <string name="system_apps_warning_message">Жүйелік қолданбалар әдеттегі қолданбалар емес және оларға кепілдік берілмейді
+        сәтті экспорт!</string>
+    <string name="settings">Параметрлер</string>
+    <string name="send_to">Бөлісу</string>
+    <string name="pref_title_sort_order">Сұрыптау реті</string>
+    <string name="sort_order_ascending">А - З</string>
+    <string name="sort_order_descending">З - А</string>
+    <string name="sort_order_app_size">Қолданба өлшемі бойынша</string>
+    <string name="sort_order_install_time">Орнату уақыты бойынша</string>
+    <string name="sort_order_update_time">Жаңарту уақыты бойынша</string>
+    <string name="pref_summary_sort_order">Қолданбалар сұрыптау ретінің нұсқаларын тізімдейді</string>
+    <string name="extract_apk">APK файлын Жүктеулер ішіне шығарып алыңыз</string>
+    <string name="share_apk">apk файлын қолданбалар арқылы бөлісіңіз</string>
+    <string name="find_on_gp">Google Play ішінен табыңыз</string>
+    <string name="pref_title_clear_cache">Кэшті тазалау</string>
+    <string name="pref_summary_clear_cache">Жүктеулер каталогындағы барлық бұрын шығарылған APK файлдарын жойыңыз</string>
+    <string name="cache_cleared_successfully">Кэш сәтті тазаланды</string>
+    <string name="cache_clearing_failed">Кэшті тазалау сәтсіз аяқталды</string>
+    <string name="write_permission_extract">Қолданба файлын сақтау үшін сізге сақтау рұқсатын беру қажет</string>
+    <string name="menu_search">Іздеу</string>
+    <string name="run_app">Қолданбаны іске қосыңыз</string>
+    <string name="non_launchable_package">Бұл пакет іске қосылмайды.</string>
+    <string name="app_details">Мәліметтерді көрсету</string>
+    <string name="pref_title_dark_theme">Қараңғы тақырып</string>
+    <string name="pref_dark_theme_system">Қолданба көрінісіндегі қою түстер</string>
+    <string name="remove">Жою</string>
+    <string name="unknown_permission_description">Белгісіз рұқсат</string>
+    <string name="required_permissions">Қажетті рұқсаттар</string>
+    <string name="unable_to_get_permissions">Тізімді немесе қолданбаның қажетті рұқсаттарын алу мүмкін емес</string>
+    <string name="no_requested_permissions">Қолданбада сұралған рұқсаттар жоқ.</string>
+</resources>

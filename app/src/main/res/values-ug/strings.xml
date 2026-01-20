@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">% d B.</string>
+    <string name="kibibytes">% .1f KB</string>
+    <string name="mibibytes">% .1f MB</string>
+    <string name="gigibytes">% .1f GB</string>
+    <string name="please_wait">كەچۈرۈڭ ، ساقلاپ تۇرۇڭ…</string>
+    <string name="app_extract_success">&lt;b&gt; چۈشۈرۈش &lt;/ b&gt; مۇندەرىجىسىگە مۇۋەپپەقىيەتلىك چىقىرىلدى</string>
+    <string name="app_extract_failed">ئېكسپورت مەغلۇب بولدى :(</string>
+    <string name="refresh">يېڭىلاش</string>
+    <string name="tomclaw_software">TomClaw يۇمشاق دېتالى</string>
+    <string name="app_version">نەشرى% 1 $ s (% 2 $ d)</string>
+    <string name="info">ئۇچۇر</string>
+    <string name="rate_app">بۇ پروگراممىغا باھا بېرىڭ</string>
+    <string name="all_apps">ئاپتورنىڭ قوللىنىشچان پروگراممىلىرى</string>
+    <string name="pref_base_title">ئاساسى تەڭشەكلەر</string>
+    <string name="pref_summary_show_system">سىستېمىدا قوللىنىشچان پروگراممىلارنى كۆرسىتىڭ</string>
+    <string name="pref_summary_runnable">ئىجرا بولىدىغان بوغچىلارنىلا كۆرسەت</string>
+    <string name="pref_title_show_system">سىستېما ئەپلىرى</string>
+    <string name="pref_title_runnable">ئىجرا بولىدىغان ئورالمىلار</string>
+    <string name="got_it">بولدى!</string>
+    <string name="system_apps_warning_title">ئاگاھلاندۇرۇش!</string>
+    <string name="system_apps_warning_message">سىستېما ئەپلىرى ئادەتتىكى ئەپ ئەمەس ، ئۇنىڭ كاپالىتى يوق
+        مۇۋەپپەقىيەتلىك ئېكسپورت!</string>
+    <string name="settings">تەڭشەك</string>
+    <string name="send_to">بىلەن ئورتاقلىشىش</string>
+    <string name="pref_title_sort_order">تەرتىپلەش</string>
+    <string name="sort_order_ascending">A - Z.</string>
+    <string name="sort_order_descending">Z - A.</string>
+    <string name="sort_order_app_size">ئەپ چوڭلۇقى بويىچە</string>
+    <string name="sort_order_install_time">قاچىلاش ۋاقتى ئارقىلىق</string>
+    <string name="sort_order_update_time">يېڭىلاش ۋاقتى بىلەن</string>
+    <string name="pref_summary_sort_order">قوللىنىشچان پروگراممىلارنىڭ رەت تەرتىپى</string>
+    <string name="extract_apk">چۈشۈرۈشكە apk نى چىقىرىڭ</string>
+    <string name="share_apk">ئەپلەر ئارقىلىق apk نى ھەمبەھىرلەڭ</string>
+    <string name="find_on_gp">Google Play دىن ئىزدەڭ</string>
+    <string name="pref_title_clear_cache">غەملەكنى تازىلاڭ</string>
+    <string name="pref_summary_clear_cache">چۈشۈرۈش مۇندەرىجىسىدىكى ئىلگىرى چىقىرىلغان APK ھۆججەتلىرىنىڭ ھەممىسىنى ئۆچۈرۈڭ</string>
+    <string name="cache_cleared_successfully">غەملەك مۇۋەپپەقىيەتلىك تازىلاندى</string>
+    <string name="cache_clearing_failed">غەملەك تازىلاش مەغلۇب بولدى</string>
+    <string name="write_permission_extract">ئىلتىماس ھۆججىتىنى ساقلاش ئۈچۈن ساقلاش ئىجازەتنامىسى ئېلىشىڭىز كېرەك</string>
+    <string name="menu_search">ئىزدەش</string>
+    <string name="run_app">پروگراممىنى ئىجرا قىلىڭ</string>
+    <string name="non_launchable_package">بۇ بولاقنى ئىجرا قىلغىلى بولمايدۇ.</string>
+    <string name="app_details">تەپسىلاتلارنى كۆرسەت</string>
+    <string name="pref_title_dark_theme">قاراڭغۇ تېما</string>
+    <string name="pref_dark_theme_system">قوللىنىشچان كۆرۈنۈشتىكى قېنىق رەڭلەر</string>
+    <string name="remove">ئۆچۈرۈڭ</string>
+    <string name="unknown_permission_description">نامەلۇم ئىجازەت</string>
+    <string name="required_permissions">تەلەپ قىلىنغان ئىجازەتلەر</string>
+    <string name="unable_to_get_permissions">تىزىملىك ​​ياكى ئەپنىڭ لازىملىق ئىجازەتلىرىنى ئالالمىدى</string>
+    <string name="no_requested_permissions">ئەپ رۇخسەت تەلەپ قىلمايدۇ.</string>
+</resources>

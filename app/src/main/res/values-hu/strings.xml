@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Kérem, várjon…</string>
+    <string name="app_extract_success">Sikeresen kicsomagolva a &lt;b&gt;Letöltések&lt;/b&gt; könyvtárba</string>
+    <string name="app_extract_failed">Nem sikerült az exportálás :(</string>
+    <string name="refresh">Frissítés</string>
+    <string name="tomclaw_software">TomClaw szoftver</string>
+    <string name="app_version">Verzió %1$s (%2$d)</string>
+    <string name="info">Info</string>
+    <string name="rate_app">Értékelje ezt az alkalmazást</string>
+    <string name="all_apps">A szerző pályázatai</string>
+    <string name="pref_base_title">Alapbeállítások</string>
+    <string name="pref_summary_show_system">Rendszeralkalmazások megjelenítése a listában</string>
+    <string name="pref_summary_runnable">Csak a futtatható csomagok megjelenítése</string>
+    <string name="pref_title_show_system">Rendszeralkalmazások</string>
+    <string name="pref_title_runnable">Futtatható csomagok</string>
+    <string name="got_it">Megvan!</string>
+    <string name="system_apps_warning_title">Figyelmeztetés!</string>
+    <string name="system_apps_warning_message">A rendszeralkalmazások nem szokásos alkalmazások, és nincs rájuk garancia
+        sikeres export!</string>
+    <string name="settings">Beállítások elemre</string>
+    <string name="send_to">Megosztás vele</string>
+    <string name="pref_title_sort_order">Rendezési sorrend</string>
+    <string name="sort_order_ascending">A-Z</string>
+    <string name="sort_order_descending">Z-A</string>
+    <string name="sort_order_app_size">Az alkalmazás mérete szerint</string>
+    <string name="sort_order_install_time">Telepítési idő szerint</string>
+    <string name="sort_order_update_time">Frissítési idő szerint</string>
+    <string name="pref_summary_sort_order">Az alkalmazások listája rendezési sorrendváltozatok</string>
+    <string name="extract_apk">Bontsa ki az apk-t a Letöltések közé</string>
+    <string name="share_apk">Ossza meg az apk-t alkalmazásokon keresztül</string>
+    <string name="find_on_gp">Keresse meg a Google Playen</string>
+    <string name="pref_title_clear_cache">Gyorsítótár törlése</string>
+    <string name="pref_summary_clear_cache">Távolítsa el az összes korábban kicsomagolt APK-fájlt a Letöltések könyvtárból</string>
+    <string name="cache_cleared_successfully">A gyorsítótár sikeresen törölve</string>
+    <string name="cache_clearing_failed">A gyorsítótár törlése nem sikerült</string>
+    <string name="write_permission_extract">Az alkalmazásfájl mentéséhez tárolási engedélyt kell adnia</string>
+    <string name="menu_search">Keresés</string>
+    <string name="run_app">Futtassa az alkalmazást</string>
+    <string name="non_launchable_package">Ez a csomag nem futtatható.</string>
+    <string name="app_details">Részletek megjelenítése</string>
+    <string name="pref_title_dark_theme">Sötét téma</string>
+    <string name="pref_dark_theme_system">Sötét színek az alkalmazás megjelenésében</string>
+    <string name="remove">Távolítsa el</string>
+    <string name="unknown_permission_description">Ismeretlen engedély</string>
+    <string name="required_permissions">Szükséges engedélyek</string>
+    <string name="unable_to_get_permissions">Nem sikerült megszerezni a lista vagy az alkalmazás szükséges engedélyeit</string>
+    <string name="no_requested_permissions">Az alkalmazás nem rendelkezik a kért engedélyekkel.</string>
+</resources>

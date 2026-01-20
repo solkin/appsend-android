@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%1f KB</string>
+    <string name="mibibytes">%1f MB</string>
+    <string name="gigibytes">%1f GB</string>
+    <string name="please_wait">Biko chere…</string>
+    <string name="app_extract_success">Ewepụtara nke ọma na ndekọ &lt;b&gt;Downloads&lt;/b&gt;</string>
+    <string name="app_extract_failed">Mbupu agakwaghị :(</string>
+    <string name="refresh">Weghachite ume</string>
+    <string name="tomclaw_software">TomClaw Software</string>
+    <string name="app_version">Ụdị %1$s (%2$d)</string>
+    <string name="info">Ozi</string>
+    <string name="rate_app">Họrọ ngwa a</string>
+    <string name="all_apps">Ngwa odee</string>
+    <string name="pref_base_title">Ntọala ntọala</string>
+    <string name="pref_summary_show_system">Gosi ngwa sistemụ na ndepụta</string>
+    <string name="pref_summary_runnable">Gosi ngwungwu enwere ike ịgba ọsọ</string>
+    <string name="pref_title_show_system">Ngwa sistemụ</string>
+    <string name="pref_title_runnable">Ngwugwu enwere ike ịgba ọsọ</string>
+    <string name="got_it">Nwetara ya!</string>
+    <string name="system_apps_warning_title">Ịdọ aka ná ntị!</string>
+    <string name="system_apps_warning_message">Ngwa sistemụ abụghị ngwa na-adịbu ma ọ nweghị akwụkwọ ikike maka ya
+        mbupụ na-aga nke ọma!</string>
+    <string name="settings">Ntọala</string>
+    <string name="send_to">Kekọrịta ya</string>
+    <string name="pref_title_sort_order">Hazie usoro</string>
+    <string name="sort_order_ascending">A-Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Site nha ngwa</string>
+    <string name="sort_order_install_time">Site na oge ntinye</string>
+    <string name="sort_order_update_time">Site na oge mmelite</string>
+    <string name="pref_summary_sort_order">Ngwa na-edepụta ụdị usoro dị iche iche</string>
+    <string name="extract_apk">Wepụta ngwa n\'ime nbudata</string>
+    <string name="share_apk">Kekọrịta ngwa site na ngwa</string>
+    <string name="find_on_gp">Chọta na Google Play</string>
+    <string name="pref_title_clear_cache">Kpochapụ cache</string>
+    <string name="pref_summary_clear_cache">Wepu faịlụ APK niile ewepụtara na mbụ na ndekọ nbudata</string>
+    <string name="cache_cleared_successfully">A kpochapụrụ cache nke ọma</string>
+    <string name="cache_clearing_failed">Ikpochapụ cache adaghị</string>
+    <string name="write_permission_extract">Iji chekwaa faịlụ ngwa ị ga-achọ ịnye ikike nchekwa</string>
+    <string name="menu_search">Chọọ</string>
+    <string name="run_app">Gbaa ngwa</string>
+    <string name="non_launchable_package">Enweghị ike ịme ngwugwu a.</string>
+    <string name="app_details">Gosi nkọwa</string>
+    <string name="pref_title_dark_theme">Isiokwu gbara ọchịchịrị</string>
+    <string name="pref_dark_theme_system">Agba gbara ọchịchịrị n\'ọdịdị ngwa</string>
+    <string name="remove">Wepu</string>
+    <string name="unknown_permission_description">Ikike amaghị</string>
+    <string name="required_permissions">Ikikere achọrọ</string>
+    <string name="unable_to_get_permissions">Enweghị ike ịnweta ndepụta ma ọ bụ ikikere ngwa achọrọ</string>
+    <string name="no_requested_permissions">Ngwa enwebeghị ikikere.</string>
+</resources>

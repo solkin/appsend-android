@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Os gwelwch yn dda, arhoswch…</string>
+    <string name="app_extract_success">Llwyddwyd i gael ei echdynnu i gyfeiriadur &lt;b&gt;Lawrlwythiadau&lt;/b&gt;</string>
+    <string name="app_extract_failed">Wedi methu allforio :(</string>
+    <string name="refresh">Adnewyddu</string>
+    <string name="tomclaw_software">Meddalwedd TomClaw</string>
+    <string name="app_version">Fersiwn %1$s (%2$d)</string>
+    <string name="info">Gwybodaeth</string>
+    <string name="rate_app">Graddiwch y cais hwn</string>
+    <string name="all_apps">Ceisiadau awdur</string>
+    <string name="pref_base_title">Gosodiadau sylfaen</string>
+    <string name="pref_summary_show_system">Dangos cymwysiadau system yn y rhestr</string>
+    <string name="pref_summary_runnable">Dangos pecynnau rhedadwy yn unig</string>
+    <string name="pref_title_show_system">Apiau system</string>
+    <string name="pref_title_runnable">Pecynnau rhedadwy</string>
+    <string name="got_it">Wedi ei gael!</string>
+    <string name="system_apps_warning_title">Rhybudd!</string>
+    <string name="system_apps_warning_message">Nid yw apps system yn apps arferol ac nid oes unrhyw warant o\'i
+        allforio llwyddiannus!</string>
+    <string name="settings">Gosodiadau</string>
+    <string name="send_to">Rhannwch gyda</string>
+    <string name="pref_title_sort_order">Trefnu trefn</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Yn ôl maint app</string>
+    <string name="sort_order_install_time">Erbyn gosod amser</string>
+    <string name="sort_order_update_time">Erbyn amser diweddaru</string>
+    <string name="pref_summary_sort_order">Mae apps yn rhestru amrywiadau trefn didoli</string>
+    <string name="extract_apk">Echdynnu apk yn Lawrlwythiadau</string>
+    <string name="share_apk">Rhannwch apk trwy apiau</string>
+    <string name="find_on_gp">Darganfyddwch yn Google Play</string>
+    <string name="pref_title_clear_cache">Clirio\'r storfa</string>
+    <string name="pref_summary_clear_cache">Tynnwch yr holl ffeiliau APK a dynnwyd yn flaenorol yn y cyfeiriadur Lawrlwythiadau</string>
+    <string name="cache_cleared_successfully">Clirio\'r storfa yn llwyddiannus</string>
+    <string name="cache_clearing_failed">Methodd clirio\'r storfa</string>
+    <string name="write_permission_extract">Er mwyn cadw ffeil y cais bydd angen i chi roi caniatâd storio</string>
+    <string name="menu_search">Chwiliwch</string>
+    <string name="run_app">Rhedeg cais</string>
+    <string name="non_launchable_package">Nid yw\'r pecyn hwn yn rhedegadwy.</string>
+    <string name="app_details">Dangos manylion</string>
+    <string name="pref_title_dark_theme">Thema dywyll</string>
+    <string name="pref_dark_theme_system">Lliwiau tywyll yn ymddangosiad y cais</string>
+    <string name="remove">Dileu</string>
+    <string name="unknown_permission_description">Caniatâd anhysbys</string>
+    <string name="required_permissions">Caniatâd gofynnol</string>
+    <string name="unable_to_get_permissions">Methu cael caniatadau gofynnol rhestr neu ap</string>
+    <string name="no_requested_permissions">Nid yw\'r ap wedi gofyn am ganiatâd.</string>
+</resources>

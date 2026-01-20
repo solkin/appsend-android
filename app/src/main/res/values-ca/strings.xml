@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Si us plau, espera...</string>
+    <string name="app_extract_success">S\'ha extret correctament al directori &lt;b&gt;Baixades&lt;/b&gt;</string>
+    <string name="app_extract_failed">S\'ha produït un error en exportar :(</string>
+    <string name="refresh">Actualitzar</string>
+    <string name="tomclaw_software">Programari TomClaw</string>
+    <string name="app_version">Versió %1$s (%2$d)</string>
+    <string name="info">Informació</string>
+    <string name="rate_app">Valoreu aquesta aplicació</string>
+    <string name="all_apps">Aplicacions de l\'autor</string>
+    <string name="pref_base_title">Configuració base</string>
+    <string name="pref_summary_show_system">Mostra les aplicacions del sistema a la llista</string>
+    <string name="pref_summary_runnable">Mostra només paquets executables</string>
+    <string name="pref_title_show_system">Aplicacions del sistema</string>
+    <string name="pref_title_runnable">Paquets executables</string>
+    <string name="got_it">Ho entenc!</string>
+    <string name="system_apps_warning_title">Avís!</string>
+    <string name="system_apps_warning_message">Les aplicacions del sistema no són aplicacions habituals i no hi ha cap garantia
+        exportació reeixida!</string>
+    <string name="settings">Configuració</string>
+    <string name="send_to">Comparteix amb</string>
+    <string name="pref_title_sort_order">Ordre d\'ordenació</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Per mida de l\'aplicació</string>
+    <string name="sort_order_install_time">Per temps d\'instal·lació</string>
+    <string name="sort_order_update_time">Per hora d\'actualització</string>
+    <string name="pref_summary_sort_order">Les aplicacions llisten variants d\'ordre d\'ordenació</string>
+    <string name="extract_apk">Extreu l\'apk a Descàrregues</string>
+    <string name="share_apk">Comparteix l\'apk mitjançant aplicacions</string>
+    <string name="find_on_gp">Troba a Google Play</string>
+    <string name="pref_title_clear_cache">Esborra la memòria cau</string>
+    <string name="pref_summary_clear_cache">Elimineu tots els fitxers APK extrets anteriorment al directori Baixades</string>
+    <string name="cache_cleared_successfully">La memòria cau s\'ha esborrat correctament</string>
+    <string name="cache_clearing_failed">No s\'ha pogut esborrar la memòria cau</string>
+    <string name="write_permission_extract">Per desar el fitxer de l\'aplicació, haureu de concedir permís d\'emmagatzematge</string>
+    <string name="menu_search">Cerca</string>
+    <string name="run_app">Executar l\'aplicació</string>
+    <string name="non_launchable_package">Aquest paquet no es pot executar.</string>
+    <string name="app_details">Mostra els detalls</string>
+    <string name="pref_title_dark_theme">Tema fosc</string>
+    <string name="pref_dark_theme_system">Colors foscos en aspecte de l\'aplicació</string>
+    <string name="remove">Eliminar</string>
+    <string name="unknown_permission_description">Permís desconegut</string>
+    <string name="required_permissions">Permisos necessaris</string>
+    <string name="unable_to_get_permissions">No es poden obtenir els permisos necessaris per a la llista o l\'aplicació</string>
+    <string name="no_requested_permissions">L\'aplicació no té els permisos sol·licitats.</string>
+</resources>

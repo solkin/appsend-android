@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d Б</string>
+    <string name="kibibytes">%.1f КБ</string>
+    <string name="mibibytes">%.1f МБ</string>
+    <string name="gigibytes">%.1f ГБ</string>
+    <string name="please_wait">Калі ласка, пачакайце...</string>
+    <string name="app_extract_success">Паспяхова распакавана ў каталог &lt;b&gt;Спампоўкі&lt;/b&gt;</string>
+    <string name="app_extract_failed">Не атрымалася экспартаваць :(</string>
+    <string name="refresh">Абнавіць</string>
+    <string name="tomclaw_software">Праграмнае забеспячэнне tomclaw</string>
+    <string name="app_version">Версія %1$s (%2$d)</string>
+    <string name="info">Інфармацыя</string>
+    <string name="rate_app">Ацаніце гэта дадатак</string>
+    <string name="all_apps">Аўтарскія заяўкі</string>
+    <string name="pref_base_title">Базавыя налады</string>
+    <string name="pref_summary_show_system">Паказаць сістэмныя праграмы ў спісе</string>
+    <string name="pref_summary_runnable">Паказваць толькі запускаемыя пакеты</string>
+    <string name="pref_title_show_system">Сістэмныя праграмы</string>
+    <string name="pref_title_runnable">Працуючыя пакеты</string>
+    <string name="got_it">Зразумеў!</string>
+    <string name="system_apps_warning_title">Папярэджанне!</string>
+    <string name="system_apps_warning_message">Сістэмныя праграмы не з\'яўляюцца звычайнымі праграмамі, і на іх няма гарантыі
+        паспяховага экспарту!</string>
+    <string name="settings">Налады</string>
+    <string name="send_to">Падзяліцеся з</string>
+    <string name="pref_title_sort_order">Парадак сартавання</string>
+    <string name="sort_order_ascending">А - Я</string>
+    <string name="sort_order_descending">Я - А</string>
+    <string name="sort_order_app_size">Па памеры прыкладання</string>
+    <string name="sort_order_install_time">Па часе ўстаноўкі</string>
+    <string name="sort_order_update_time">Па часе абнаўлення</string>
+    <string name="pref_summary_sort_order">Праграмы пералічваюць варыянты парадку сартавання</string>
+    <string name="extract_apk">Распакуйце apk у загрузкі</string>
+    <string name="share_apk">Падзяліцеся apk праз праграмы</string>
+    <string name="find_on_gp">Знайсці ў Google Play</string>
+    <string name="pref_title_clear_cache">Ачысціць кэш</string>
+    <string name="pref_summary_clear_cache">Выдаліце ​​ўсе раней распакаваныя файлы APK у каталогу загрузак</string>
+    <string name="cache_cleared_successfully">Кэш паспяхова ачышчаны</string>
+    <string name="cache_clearing_failed">Не атрымалася ачысціць кэш</string>
+    <string name="write_permission_extract">Каб захаваць файл прыкладання, вам трэба будзе даць дазвол на захоўванне</string>
+    <string name="menu_search">Пошук</string>
+    <string name="run_app">Запусціць прыкладанне</string>
+    <string name="non_launchable_package">Гэты пакет не працуе.</string>
+    <string name="app_details">Паказаць дэталі</string>
+    <string name="pref_title_dark_theme">Цёмная тэма</string>
+    <string name="pref_dark_theme_system">Цёмныя колеры ў вонкавым выглядзе прыкладання</string>
+    <string name="remove">Выдаліць</string>
+    <string name="unknown_permission_description">Невядомы дазвол</string>
+    <string name="required_permissions">Неабходныя дазволы</string>
+    <string name="unable_to_get_permissions">Немагчыма атрымаць неабходныя дазволы для спіса або праграмы</string>
+    <string name="no_requested_permissions">Праграма не мае запытаных дазволаў.</string>
+</resources>

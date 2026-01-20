@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Lūdzu, uzgaidiet…</string>
+    <string name="app_extract_success">Veiksmīgi izvilkts direktorijā &lt;b&gt;Lejupielādes&lt;/b&gt;</string>
+    <string name="app_extract_failed">Eksportēšana neizdevās :(</string>
+    <string name="refresh">Atsvaidzināt</string>
+    <string name="tomclaw_software">TomClaw programmatūra</string>
+    <string name="app_version">Versija %1$s (%2$d)</string>
+    <string name="info">Informācija</string>
+    <string name="rate_app">Novērtējiet šo pieteikumu</string>
+    <string name="all_apps">Autora pieteikumi</string>
+    <string name="pref_base_title">Pamata iestatījumi</string>
+    <string name="pref_summary_show_system">Rādīt sistēmas lietojumprogrammas sarakstā</string>
+    <string name="pref_summary_runnable">Rādīt tikai izpildāmās pakotnes</string>
+    <string name="pref_title_show_system">Sistēmas lietotnes</string>
+    <string name="pref_title_runnable">Darbināmas pakotnes</string>
+    <string name="got_it">Sapratu!</string>
+    <string name="system_apps_warning_title">Brīdinājums!</string>
+    <string name="system_apps_warning_message">Sistēmas lietotnes nav parastas lietotnes, un tām nav garantijas
+        veiksmīgu eksportu!</string>
+    <string name="settings">Iestatījumi</string>
+    <string name="send_to">Kopīgot ar</string>
+    <string name="pref_title_sort_order">Kārtošanas secība</string>
+    <string name="sort_order_ascending">A–Z</string>
+    <string name="sort_order_descending">Z-A</string>
+    <string name="sort_order_app_size">Pēc lietotnes izmēra</string>
+    <string name="sort_order_install_time">Pēc instalēšanas laika</string>
+    <string name="sort_order_update_time">Pēc atjaunināšanas laika</string>
+    <string name="pref_summary_sort_order">Lietotņu saraksta kārtošanas secības varianti</string>
+    <string name="extract_apk">Izvelciet APK mapē Lejupielādes</string>
+    <string name="share_apk">Kopīgojiet APK, izmantojot lietotnes</string>
+    <string name="find_on_gp">Atrodiet pakalpojumā Google Play</string>
+    <string name="pref_title_clear_cache">Notīrīt kešatmiņu</string>
+    <string name="pref_summary_clear_cache">Noņemiet visus iepriekš izvilktos APK failus direktorijā Lejupielādes</string>
+    <string name="cache_cleared_successfully">Kešatmiņa ir veiksmīgi notīrīta</string>
+    <string name="cache_clearing_failed">Kešatmiņas notīrīšana neizdevās</string>
+    <string name="write_permission_extract">Lai saglabātu lietojumprogrammas failu, jums būs jāpiešķir uzglabāšanas atļauja</string>
+    <string name="menu_search">Meklēt</string>
+    <string name="run_app">Palaidiet lietojumprogrammu</string>
+    <string name="non_launchable_package">Šo pakotni nevar palaist.</string>
+    <string name="app_details">Rādīt detaļas</string>
+    <string name="pref_title_dark_theme">Tumša tēma</string>
+    <string name="pref_dark_theme_system">Lietojumprogrammas izskatā tumšas krāsas</string>
+    <string name="remove">Noņemt</string>
+    <string name="unknown_permission_description">Nezināma atļauja</string>
+    <string name="required_permissions">Nepieciešamās atļaujas</string>
+    <string name="unable_to_get_permissions">Nevar iegūt sarakstam vai lietotnei nepieciešamās atļaujas</string>
+    <string name="no_requested_permissions">Lietojumprogrammai nav pieprasīto atļauju.</string>
+</resources>

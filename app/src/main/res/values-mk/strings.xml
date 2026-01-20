@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d Б</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Ве молам, почекајте…</string>
+    <string name="app_extract_success">Успешно извлечено во директориумот &lt;b&gt;Преземања&lt;/b&gt;</string>
+    <string name="app_extract_failed">Извозот не успеа :(</string>
+    <string name="refresh">Освежи</string>
+    <string name="tomclaw_software">Софтвер TomClaw</string>
+    <string name="app_version">Верзија %1$s (%2$d)</string>
+    <string name="info">Инфо</string>
+    <string name="rate_app">Оцени ја оваа апликација</string>
+    <string name="all_apps">Апликации на авторот</string>
+    <string name="pref_base_title">Основни поставки</string>
+    <string name="pref_summary_show_system">Прикажи ги системските апликации во списокот</string>
+    <string name="pref_summary_runnable">Прикажи само оперативни пакети</string>
+    <string name="pref_title_show_system">Системски апликации</string>
+    <string name="pref_title_runnable">Работни пакети</string>
+    <string name="got_it">Сфатив!</string>
+    <string name="system_apps_warning_title">Предупредување!</string>
+    <string name="system_apps_warning_message">Системските апликации не се вообичаени апликации и нема гаранција за тоа
+        успешен извоз!</string>
+    <string name="settings">Поставки</string>
+    <string name="send_to">Споделете со</string>
+    <string name="pref_title_sort_order">Редоследот на сортирање</string>
+    <string name="sort_order_ascending">А - З</string>
+    <string name="sort_order_descending">З - А</string>
+    <string name="sort_order_app_size">Според големината на апликацијата</string>
+    <string name="sort_order_install_time">До времето на инсталирање</string>
+    <string name="sort_order_update_time">Со време на ажурирање</string>
+    <string name="pref_summary_sort_order">Варијанти на редослед на сортирање листа на апликации</string>
+    <string name="extract_apk">Екстрактирајте apk во преземања</string>
+    <string name="share_apk">Споделете apk преку апликации</string>
+    <string name="find_on_gp">Најдете во Google Play</string>
+    <string name="pref_title_clear_cache">Исчистете го кешот</string>
+    <string name="pref_summary_clear_cache">Отстранете ги сите претходно извлечени APK-датотеки во директориумот Преземања</string>
+    <string name="cache_cleared_successfully">Кешот е успешно исчистен</string>
+    <string name="cache_clearing_failed">Чистењето на кешот не успеа</string>
+    <string name="write_permission_extract">За да ја зачувате датотеката со апликацијата, ќе треба да дадете дозвола за складирање</string>
+    <string name="menu_search">Пребарување</string>
+    <string name="run_app">Стартувај апликација</string>
+    <string name="non_launchable_package">Овој пакет не може да се извршува.</string>
+    <string name="app_details">Прикажи детали</string>
+    <string name="pref_title_dark_theme">Темна тема</string>
+    <string name="pref_dark_theme_system">Темни бои во изгледот на апликацијата</string>
+    <string name="remove">Отстрани</string>
+    <string name="unknown_permission_description">Непозната дозвола</string>
+    <string name="required_permissions">Потребни дозволи</string>
+    <string name="unable_to_get_permissions">Не може да се добијат потребните дозволи на списокот или апликацијата</string>
+    <string name="no_requested_permissions">Апликацијата нема барани дозволи.</string>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Ndapota, mirira…</string>
+    <string name="app_extract_success">Yabuditswa ku &lt;b&gt;Dhorobha&lt;/b&gt; dhairekitori</string>
+    <string name="app_extract_failed">Kuburitsa kunze kwakundikana :(</string>
+    <string name="refresh">Refresh</string>
+    <string name="tomclaw_software">TomClaw Software</string>
+    <string name="app_version">Shanduro %1$s (%2$d)</string>
+    <string name="info">Info</string>
+    <string name="rate_app">Ratidza chikumbiro ichi</string>
+    <string name="all_apps">Mashandisirwo emunyori</string>
+    <string name="pref_base_title">Base settings</string>
+    <string name="pref_summary_show_system">Ratidza masisitimu maapplication ari murunyorwa</string>
+    <string name="pref_summary_runnable">Ratidza mapegi anobatika chete</string>
+    <string name="pref_title_show_system">Mapurogiramu ehurongwa</string>
+    <string name="pref_title_runnable">Runnable packages</string>
+    <string name="got_it">Ndazviwana!</string>
+    <string name="system_apps_warning_title">Yambiro!</string>
+    <string name="system_apps_warning_message">Mapurogiramu eSistimu haasi akajairwa mapurogiramu uye hapana waranti yayo
+        kubudirira kunze kwenyika!</string>
+    <string name="settings">Settings</string>
+    <string name="send_to">Share with</string>
+    <string name="pref_title_sort_order">Ronga kurongeka</string>
+    <string name="sort_order_ascending">A-Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Nehukuru hweapp</string>
+    <string name="sort_order_install_time">Nenguva yekuisa</string>
+    <string name="sort_order_update_time">Nenguva yekuvandudza</string>
+    <string name="pref_summary_sort_order">Runyoro rwemaapuro marongedzerwa akasiyana</string>
+    <string name="extract_apk">Bvisa apk muKurodha</string>
+    <string name="share_apk">Govera apk kuburikidza nemaapuro</string>
+    <string name="find_on_gp">Tsvaga muGoogle Play</string>
+    <string name="pref_title_clear_cache">Bvisa cache</string>
+    <string name="pref_summary_clear_cache">Bvisa mafaera ese akatorwa APK mudhairekitori reKurodha</string>
+    <string name="cache_cleared_successfully">Cache yakapedzwa zvakanaka</string>
+    <string name="cache_clearing_failed">Kubvisa pachezvakonewa</string>
+    <string name="write_permission_extract">Kuti uchengetedze faira rekushandisa unozofanirwa kupa mvumo yekuchengetedza</string>
+    <string name="menu_search">Search</string>
+    <string name="run_app">Run application</string>
+    <string name="non_launchable_package">Pasuru iyi haibatike.</string>
+    <string name="app_details">Ratidza tsanangudzo</string>
+    <string name="pref_title_dark_theme">Dingindira rakasviba</string>
+    <string name="pref_dark_theme_system">Mavara akasviba mukuonekwa kwekushandisa</string>
+    <string name="remove">Bvisa</string>
+    <string name="unknown_permission_description">Mvumo isingazivikanwe</string>
+    <string name="required_permissions">Mvumo inodiwa</string>
+    <string name="unable_to_get_permissions">Hatina kuwana rondedzero kana mvumo inodiwa yeapp</string>
+    <string name="no_requested_permissions">App haina kukumbira mvumo.</string>
+</resources>

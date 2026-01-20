@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f kb</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">অনুগ্ৰহ কৰি, অপেক্ষা কৰক...</string>
+    <string name="app_extract_success">সফলতাৰে &lt;b&gt;ডাউনলোড&lt;/b&gt; ডাইৰেকটৰিলৈ নিষ্কাষিত কৰা হৈছে</string>
+    <string name="app_extract_failed">ৰপ্তানি ব্যৰ্থ :(</string>
+    <string name="refresh">সতেজ কৰক</string>
+    <string name="tomclaw_software">Tomclaw সফ্টওয়্যার</string>
+    <string name="app_version">সংস্কৰণ %1$s (%2$d)</string>
+    <string name="info">তথ্য</string>
+    <string name="rate_app">এই আবেদন মূল্য</string>
+    <string name="all_apps">লেখকৰ আবেদন</string>
+    <string name="pref_base_title">ভিত্তি সংহতিসমূহ</string>
+    <string name="pref_summary_show_system">তালিকাত চিস্টেম এপ্লিকেচনসমূহ দেখুৱাওক</string>
+    <string name="pref_summary_runnable">কেৱল Runnable পেকেজসমূহ দেখুৱাওক</string>
+    <string name="pref_title_show_system">চিস্টেম এপ্প্ সমূহ</string>
+    <string name="pref_title_runnable">Runnable পেকেইজসমূহ</string>
+    <string name="got_it">এইটো পাইছো!</string>
+    <string name="system_apps_warning_title">সতৰ্কবাণী!</string>
+    <string name="system_apps_warning_message">চিস্টেম এপসমূহ সাধাৰণ এপসমূহ নহয় আৰু ইয়াৰ কোনো ৱাৰেণ্টী নাই
+        সফল ৰপ্তানি!</string>
+    <string name="settings">সংহতিসমূহ</string>
+    <string name="send_to">শ্বেয়াৰ কৰক</string>
+    <string name="pref_title_sort_order">ক্ৰম সজাওক</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">এপৰ আকাৰ অনুসৰি</string>
+    <string name="sort_order_install_time">সংস্থাপনৰ সময় অনুসৰি</string>
+    <string name="sort_order_update_time">আপডেট সময় অনুসৰি</string>
+    <string name="pref_summary_sort_order">Apps তালিকা সজাই order variants</string>
+    <string name="extract_apk">ডাউনলোডসমূহলৈ APK এক্সট্ৰেক্ট কৰক</string>
+    <string name="share_apk">Apps ৰ যোগেদি APK শ্বেয়াৰ কৰক</string>
+    <string name="find_on_gp">Google Play ত বিচাৰি পাওক</string>
+    <string name="pref_title_clear_cache">ক্লিয়াৰ কেশ্ব</string>
+    <string name="pref_summary_clear_cache">ডাউনলোডসমূহ ডাইৰেকটৰীত পূৰ্বতে নিষ্কাষিত APK ফাইলসমূহ আঁতৰাওক</string>
+    <string name="cache_cleared_successfully">কেচ সফলতাৰে পৰিষ্কাৰ কৰা হৈছে</string>
+    <string name="cache_clearing_failed">কেচ ক্লিয়াৰিং ব্যৰ্থ</string>
+    <string name="write_permission_extract">এপ্লিকেচন ফাইল সংৰক্ষণ কৰিবলৈ আপুনি সংৰক্ষণ অনুমতি প্ৰদান কৰিব লাগিব</string>
+    <string name="menu_search">সন্ধান</string>
+    <string name="run_app">আবেদন চলাওক</string>
+    <string name="non_launchable_package">এই পেকেজটো ৰানেবল নহয়।</string>
+    <string name="app_details">বিৱৰণ দেখুৱাওক</string>
+    <string name="pref_title_dark_theme">ডাৰ্ক থিম</string>
+    <string name="pref_dark_theme_system">প্ৰয়োগৰ ৰূপত গাঢ় ৰং</string>
+    <string name="remove">আঁতৰোৱা</string>
+    <string name="unknown_permission_description">অজ্ঞাত অনুমতি</string>
+    <string name="required_permissions">প্ৰয়োজনীয় অনুমতিসমূহ</string>
+    <string name="unable_to_get_permissions">তালিকা বা app\ ৰ প্ৰয়োজনীয় অনুমতিসমূহ পাবলৈ অক্ষম</string>
+    <string name="no_requested_permissions">এপৰ বাবে অনুমতি বিচাৰি পোৱা নাই।</string>
+</resources>

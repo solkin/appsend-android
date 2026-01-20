@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Prosim, počakajte ...</string>
+    <string name="app_extract_success">Uspešno ekstrahirano v imenik &lt;b&gt;Prenosi&lt;/b&gt;</string>
+    <string name="app_extract_failed">Izvoz ni uspel :(</string>
+    <string name="refresh">Osveži</string>
+    <string name="tomclaw_software">Programska oprema TomClaw</string>
+    <string name="app_version">Različica %1$s (%2$d)</string>
+    <string name="info">Informacije</string>
+    <string name="rate_app">Ocenite to aplikacijo</string>
+    <string name="all_apps">Avtorske prijave</string>
+    <string name="pref_base_title">Osnovne nastavitve</string>
+    <string name="pref_summary_show_system">Prikaži sistemske aplikacije na seznamu</string>
+    <string name="pref_summary_runnable">Pokaži samo zagonske pakete</string>
+    <string name="pref_title_show_system">Sistemske aplikacije</string>
+    <string name="pref_title_runnable">Izvedljivi paketi</string>
+    <string name="got_it">Razumem!</string>
+    <string name="system_apps_warning_title">Opozorilo!</string>
+    <string name="system_apps_warning_message">Sistemske aplikacije niso običajne aplikacije in zanje ni nobenega jamstva
+        uspešen izvoz!</string>
+    <string name="settings">nastavitve</string>
+    <string name="send_to">Delite z</string>
+    <string name="pref_title_sort_order">Vrstni red</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Glede na velikost aplikacije</string>
+    <string name="sort_order_install_time">Po času namestitve</string>
+    <string name="sort_order_update_time">Po času posodobitve</string>
+    <string name="pref_summary_sort_order">Aplikacije navajajo različice vrstnega reda razvrščanja</string>
+    <string name="extract_apk">Ekstrahirajte apk v Prenosi</string>
+    <string name="share_apk">Delite apk prek aplikacij</string>
+    <string name="find_on_gp">Poišči v Google Play</string>
+    <string name="pref_title_clear_cache">Počisti predpomnilnik</string>
+    <string name="pref_summary_clear_cache">Odstranite vse predhodno ekstrahirane datoteke APK v imeniku Prenosi</string>
+    <string name="cache_cleared_successfully">Predpomnilnik je uspešno počiščen</string>
+    <string name="cache_clearing_failed">Čiščenje predpomnilnika ni uspelo</string>
+    <string name="write_permission_extract">Če želite shraniti datoteko aplikacije, morate odobriti dovoljenje za shranjevanje</string>
+    <string name="menu_search">Iskanje</string>
+    <string name="run_app">Zaženi aplikacijo</string>
+    <string name="non_launchable_package">Tega paketa ni mogoče izvajati.</string>
+    <string name="app_details">Pokaži podrobnosti</string>
+    <string name="pref_title_dark_theme">Temna tema</string>
+    <string name="pref_dark_theme_system">Temne barve v videzu aplikacije</string>
+    <string name="remove">Odstrani</string>
+    <string name="unknown_permission_description">Neznano dovoljenje</string>
+    <string name="required_permissions">Zahtevana dovoljenja</string>
+    <string name="unable_to_get_permissions">Ni mogoče pridobiti potrebnih dovoljenj za seznam ali aplikacijo</string>
+    <string name="no_requested_permissions">Aplikacija nima zahtevanih dovoljenj.</string>
+</resources>
