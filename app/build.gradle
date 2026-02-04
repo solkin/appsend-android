@@ -82,8 +82,8 @@ dependencies {
     implementation 'io.reactivex.rxjava3:rxkotlin:3.0.1'
     implementation 'com.jakewharton.rxrelay3:rxrelay:3.0.1'
     implementation 'com.github.avito-tech:Konveyor:0.42.2'
-    implementation 'com.google.dagger:dagger:2.58'
-    kapt 'com.google.dagger:dagger-compiler:2.58'
+    implementation 'com.google.dagger:dagger:2.59.1'
+    kapt 'com.google.dagger:dagger-compiler:2.59.1'
     kapt 'org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.9.0'
 }
 repositories {
