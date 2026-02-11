@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">% d B</string>
+    <string name="kibibytes">% .1f KB</string>
+    <string name="mibibytes">% .1f MB</string>
+    <string name="gigibytes">% .1f GB</string>
+    <string name="please_wait">ଦୟାକରି, ଅପେକ୍ଷା କରନ୍ତୁ…</string>
+    <string name="app_extract_success">&lt;b&gt; ଡାଉନଲୋଡ୍ &lt;/ b&gt; ଡିରେକ୍ଟୋରୀକୁ ସଫଳତାର ସହିତ ବାହାର କରାଯାଇଛି |</string>
+    <string name="app_extract_failed">ରପ୍ତାନି ବିଫଳ ହେଲା :(</string>
+    <string name="refresh">ସତେଜ କରନ୍ତୁ |</string>
+    <string name="tomclaw_software">ଟମକ୍ଲା ସଫ୍ଟୱେର୍ |</string>
+    <string name="app_version">ସଂସ୍କରଣ% 1 $ s (% 2 $ d)</string>
+    <string name="info">ସୂଚନା</string>
+    <string name="rate_app">ଏହି ଅନୁପ୍ରୟୋଗକୁ ମୂଲ୍ୟାଙ୍କନ କରନ୍ତୁ |</string>
+    <string name="all_apps">ଲେଖକଙ୍କ ପ୍ରୟୋଗଗୁଡ଼ିକ |</string>
+    <string name="pref_base_title">ଆଧାର ସେଟିଂସମୂହ</string>
+    <string name="pref_summary_show_system">ତାଲିକାରେ ସିଷ୍ଟମ୍ ପ୍ରୟୋଗଗୁଡିକ ଦେଖାନ୍ତୁ |</string>
+    <string name="pref_summary_runnable">କେବଳ ଚାଲୁଥିବା ପ୍ୟାକେଜ୍ ଦେଖାନ୍ତୁ |</string>
+    <string name="pref_title_show_system">ସିଷ୍ଟମ୍ ଆପ୍ସ |</string>
+    <string name="pref_title_runnable">ଚାଲୁଥିବା ପ୍ୟାକେଜଗୁଡ଼ିକ |</string>
+    <string name="got_it">ପାଇଛି!</string>
+    <string name="system_apps_warning_title">ଚେତାବନୀ!</string>
+    <string name="system_apps_warning_message">ସିଷ୍ଟମ୍ ଆପ୍ ସାଧାରଣ ଆପ୍ ନୁହେଁ ଏବଂ ଏହାର କ war ଣସି ୱାରେଣ୍ଟି ନାହିଁ |
+        ସଫଳ ରପ୍ତାନି!</string>
+    <string name="settings">ସେଟିଂସମୂହ</string>
+    <string name="send_to">ସହିତ ଅଂଶୀଦାର କରନ୍ତୁ |</string>
+    <string name="pref_title_sort_order">କ୍ରମ ସର୍ଟ କରନ୍ତୁ |</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A।</string>
+    <string name="sort_order_app_size">ଆପ୍ ଆକାର ଅନୁଯାୟୀ |</string>
+    <string name="sort_order_install_time">ସମୟ ସଂସ୍ଥାପନ କରି |</string>
+    <string name="sort_order_update_time">ଅଦ୍ୟତନ ସମୟ ଦ୍ୱାରା |</string>
+    <string name="pref_summary_sort_order">ଆପ୍ସ ତାଲିକା ସର୍ଟ କ୍ରମ ପ୍ରକାରଗୁଡିକ |</string>
+    <string name="extract_apk">ଡାଉନଲୋଡ୍ ରେ apk ବାହାର କରନ୍ତୁ |</string>
+    <string name="share_apk">ଆପ୍ ମାଧ୍ୟମରେ apk ଅଂଶୀଦାର କରନ୍ତୁ |</string>
+    <string name="find_on_gp">ଗୁଗୁଲ୍ ପ୍ଲେରେ ଖୋଜ |</string>
+    <string name="pref_title_clear_cache">କ୍ୟାଚ୍ ସଫା କରନ୍ତୁ |</string>
+    <string name="pref_summary_clear_cache">ଡାଉନଲୋଡ୍ ଡିରେକ୍ଟୋରୀରେ ପୂର୍ବରୁ ବାହାର କରାଯାଇଥିବା APK ଫାଇଲଗୁଡ଼ିକୁ ଅପସାରଣ କରନ୍ତୁ |</string>
+    <string name="cache_cleared_successfully">କ୍ୟାଚ୍ ସଫଳତାର ସହିତ ସଫା ହେଲା |</string>
+    <string name="cache_clearing_failed">କ୍ୟାଚ୍ କ୍ଲିଅର୍ ବିଫଳ ହେଲା |</string>
+    <string name="write_permission_extract">ଆବେଦନ ଫାଇଲ୍ ସେଭ୍ କରିବାକୁ ଆପଣଙ୍କୁ ଷ୍ଟୋରେଜ୍ ଅନୁମତି ଦେବାକୁ ପଡିବ |</string>
+    <string name="menu_search">ସନ୍ଧାନ କର |</string>
+    <string name="run_app">ପ୍ରୟୋଗ ଚଲାନ୍ତୁ |</string>
+    <string name="non_launchable_package">ଏହି ପ୍ୟାକେଜ୍ ଚଲାଯାଇପାରିବ ନାହିଁ |</string>
+    <string name="app_details">ବିବରଣୀ ଦେଖାନ୍ତୁ |</string>
+    <string name="pref_title_dark_theme">ଗା ark ଥିମ୍ |</string>
+    <string name="pref_dark_theme_system">ପ୍ରୟୋଗ ରୂପରେ ଗା ark ରଙ୍ଗ |</string>
+    <string name="remove">ଅପସାରଣ କରନ୍ତୁ |</string>
+    <string name="unknown_permission_description">ଅଜ୍ଞାତ ଅନୁମତି |</string>
+    <string name="required_permissions">ଆବଶ୍ୟକ ଅନୁମତି |</string>
+    <string name="unable_to_get_permissions">ତାଲିକା କିମ୍ବା ଆପ୍ ର ଆବଶ୍ୟକୀୟ ଅନୁମତି ପାଇବାରେ ଅସମର୍ଥ |</string>
+    <string name="no_requested_permissions">ଆପ୍ ଅନୁମତି ମାଗି ନାହିଁ |</string>
+</resources>

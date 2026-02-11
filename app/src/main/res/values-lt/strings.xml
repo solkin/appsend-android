@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Prašome palaukti…</string>
+    <string name="app_extract_success">Sėkmingai išskleisti į &lt;b&gt;Atsisiuntimų&lt;/b&gt; katalogą</string>
+    <string name="app_extract_failed">Nepavyko eksportuoti :(</string>
+    <string name="refresh">Atnaujinti</string>
+    <string name="tomclaw_software">TomClaw programinė įranga</string>
+    <string name="app_version">Versija %1$s (%2$d)</string>
+    <string name="info">Informacija</string>
+    <string name="rate_app">Įvertinkite šią programą</string>
+    <string name="all_apps">Autoriaus paraiškos</string>
+    <string name="pref_base_title">Baziniai nustatymai</string>
+    <string name="pref_summary_show_system">Rodyti sistemos programas sąraše</string>
+    <string name="pref_summary_runnable">Rodyti tik paleidžiamus paketus</string>
+    <string name="pref_title_show_system">Sistemos programos</string>
+    <string name="pref_title_runnable">Paleidžiami paketai</string>
+    <string name="got_it">Supratau!</string>
+    <string name="system_apps_warning_title">Įspėjimas!</string>
+    <string name="system_apps_warning_message">Sistemos programos nėra įprastos programos ir joms netaikoma jokia garantija
+        sėkmingas eksportas!</string>
+    <string name="settings">Nustatymai</string>
+    <string name="send_to">Bendrinti su</string>
+    <string name="pref_title_sort_order">Rūšiavimo tvarka</string>
+    <string name="sort_order_ascending">A-Z</string>
+    <string name="sort_order_descending">Z-A</string>
+    <string name="sort_order_app_size">Pagal programos dydį</string>
+    <string name="sort_order_install_time">Pagal diegimo laiką</string>
+    <string name="sort_order_update_time">Pagal atnaujinimo laiką</string>
+    <string name="pref_summary_sort_order">Programų sąrašo rūšiavimo tvarkos variantai</string>
+    <string name="extract_apk">Ištraukite apk į atsisiuntimus</string>
+    <string name="share_apk">Bendrinkite apk per programas</string>
+    <string name="find_on_gp">Raskite „Google Play“.</string>
+    <string name="pref_title_clear_cache">Išvalyti talpyklą</string>
+    <string name="pref_summary_clear_cache">Pašalinkite visus anksčiau ištrauktus APK failus iš atsisiuntimų katalogo</string>
+    <string name="cache_cleared_successfully">Talpykla sėkmingai išvalyta</string>
+    <string name="cache_clearing_failed">Nepavyko išvalyti talpyklos</string>
+    <string name="write_permission_extract">Norėdami išsaugoti programos failą, turėsite suteikti saugyklos leidimą</string>
+    <string name="menu_search">Ieškoti</string>
+    <string name="run_app">Paleiskite programą</string>
+    <string name="non_launchable_package">Šis paketas neveikia.</string>
+    <string name="app_details">Rodyti išsamią informaciją</string>
+    <string name="pref_title_dark_theme">Tamsi tema</string>
+    <string name="pref_dark_theme_system">Tamsios aplikacijos spalvos</string>
+    <string name="remove">Pašalinti</string>
+    <string name="unknown_permission_description">Nežinomas leidimas</string>
+    <string name="required_permissions">Reikalingi leidimai</string>
+    <string name="unable_to_get_permissions">Nepavyko gauti sąrašo arba programos reikalingų leidimų</string>
+    <string name="no_requested_permissions">Programa neturi prašomų leidimų.</string>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d ಬಿ</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">ದಯವಿಟ್ಟು ನಿರೀಕ್ಷಿಸಿ...</string>
+    <string name="app_extract_success">&lt;b&gt;ಡೌನ್‌ಲೋಡ್‌ಗಳು&lt;/b&gt; ಡೈರೆಕ್ಟರಿಗೆ ಯಶಸ್ವಿಯಾಗಿ ಹೊರತೆಗೆಯಲಾಗಿದೆ</string>
+    <string name="app_extract_failed">ರಫ್ತು ವಿಫಲವಾಗಿದೆ :(</string>
+    <string name="refresh">ರಿಫ್ರೆಶ್ ಮಾಡಿ</string>
+    <string name="tomclaw_software">ಟಾಮ್‌ಕ್ಲಾ ಸಾಫ್ಟ್‌ವೇರ್</string>
+    <string name="app_version">ಆವೃತ್ತಿ %1$s (%2$d)</string>
+    <string name="info">ಮಾಹಿತಿ</string>
+    <string name="rate_app">ಈ ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ರೇಟ್ ಮಾಡಿ</string>
+    <string name="all_apps">ಲೇಖಕರ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು</string>
+    <string name="pref_base_title">ಮೂಲ ಸೆಟ್ಟಿಂಗ್ಗಳು</string>
+    <string name="pref_summary_show_system">ಪಟ್ಟಿಯಲ್ಲಿ ಸಿಸ್ಟಮ್ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ತೋರಿಸಿ</string>
+    <string name="pref_summary_runnable">ರನ್ ಮಾಡಬಹುದಾದ ಪ್ಯಾಕೇಜ್‌ಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ</string>
+    <string name="pref_title_show_system">ಸಿಸ್ಟಮ್ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು</string>
+    <string name="pref_title_runnable">ರನ್ ಮಾಡಬಹುದಾದ ಪ್ಯಾಕೇಜುಗಳು</string>
+    <string name="got_it">ಅರ್ಥವಾಯಿತು!</string>
+    <string name="system_apps_warning_title">ಎಚ್ಚರಿಕೆ!</string>
+    <string name="system_apps_warning_message">ಸಿಸ್ಟಮ್ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ಸಾಮಾನ್ಯ ಅಪ್ಲಿಕೇಶನ್‌ಗಳಲ್ಲ ಮತ್ತು ಅದರ ಯಾವುದೇ ಖಾತರಿ ಇಲ್ಲ
+        ಯಶಸ್ವಿ ರಫ್ತು!</string>
+    <string name="settings">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
+    <string name="send_to">ಇವರೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಿ</string>
+    <string name="pref_title_sort_order">ಕ್ರಮವನ್ನು ವಿಂಗಡಿಸಿ</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">ಅಪ್ಲಿಕೇಶನ್ ಗಾತ್ರದ ಮೂಲಕ</string>
+    <string name="sort_order_install_time">ಅನುಸ್ಥಾಪನೆಯ ಸಮಯದ ಮೂಲಕ</string>
+    <string name="sort_order_update_time">ನವೀಕರಣ ಸಮಯದ ಮೂಲಕ</string>
+    <string name="pref_summary_sort_order">ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಪಟ್ಟಿ ವಿಂಗಡಣೆಯ ಕ್ರಮದ ರೂಪಾಂತರಗಳು</string>
+    <string name="extract_apk">ಡೌನ್‌ಲೋಡ್‌ಗಳಲ್ಲಿ apk ಅನ್ನು ಹೊರತೆಗೆಯಿರಿ</string>
+    <string name="share_apk">ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಮೂಲಕ apk ಅನ್ನು ಹಂಚಿಕೊಳ್ಳಿ</string>
+    <string name="find_on_gp">Google Play ನಲ್ಲಿ ಹುಡುಕಿ</string>
+    <string name="pref_title_clear_cache">ಸಂಗ್ರಹವನ್ನು ತೆರವುಗೊಳಿಸಿ</string>
+    <string name="pref_summary_clear_cache">ಡೌನ್‌ಲೋಡ್‌ಗಳ ಡೈರೆಕ್ಟರಿಯಲ್ಲಿ ಹಿಂದೆ ಬೇರ್ಪಡಿಸಿದ ಎಲ್ಲಾ APK ಫೈಲ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಿ</string>
+    <string name="cache_cleared_successfully">ಸಂಗ್ರಹವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ತೆರವುಗೊಳಿಸಲಾಗಿದೆ</string>
+    <string name="cache_clearing_failed">ಸಂಗ್ರಹ ತೆರವುಗೊಳಿಸುವಿಕೆ ವಿಫಲವಾಗಿದೆ</string>
+    <string name="write_permission_extract">ಅಪ್ಲಿಕೇಶನ್ ಫೈಲ್ ಅನ್ನು ಉಳಿಸಲು ನೀವು ಶೇಖರಣಾ ಅನುಮತಿಯನ್ನು ನೀಡಬೇಕಾಗುತ್ತದೆ</string>
+    <string name="menu_search">ಹುಡುಕು</string>
+    <string name="run_app">ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ರನ್ ಮಾಡಿ</string>
+    <string name="non_launchable_package">ಈ ಪ್ಯಾಕೇಜ್ ಅನ್ನು ಚಲಾಯಿಸಲಾಗುವುದಿಲ್ಲ.</string>
+    <string name="app_details">ವಿವರಗಳನ್ನು ತೋರಿಸಿ</string>
+    <string name="pref_title_dark_theme">ಡಾರ್ಕ್ ಥೀಮ್</string>
+    <string name="pref_dark_theme_system">ಅಪ್ಲಿಕೇಶನ್ ನೋಟದಲ್ಲಿ ಗಾಢ ಬಣ್ಣಗಳು</string>
+    <string name="remove">ತೆಗೆದುಹಾಕಿ</string>
+    <string name="unknown_permission_description">ಅಜ್ಞಾತ ಅನುಮತಿ</string>
+    <string name="required_permissions">ಅಗತ್ಯವಿರುವ ಅನುಮತಿಗಳು</string>
+    <string name="unable_to_get_permissions">ಪಟ್ಟಿ ಅಥವಾ ಅಪ್ಲಿಕೇಶನ್‌ನ ಅಗತ್ಯವಿರುವ ಅನುಮತಿಗಳನ್ನು ಪಡೆಯಲು ಸಾಧ್ಯವಾಗುತ್ತಿಲ್ಲ</string>
+    <string name="no_requested_permissions">ಅಪ್ಲಿಕೇಶನ್ ವಿನಂತಿಸಿದ ಅನುಮತಿಗಳನ್ನು ಹೊಂದಿಲ್ಲ.</string>
+</resources>

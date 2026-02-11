@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%1f ኪ.ባ</string>
+    <string name="mibibytes">%1f ሜባ</string>
+    <string name="gigibytes">%1f ጂቢ</string>
+    <string name="please_wait">እባክህ ጠብቅ…</string>
+    <string name="app_extract_success">በተሳካ ሁኔታ ወደ &lt;b&gt;ማውረዶች&lt;/b&gt; ማውጫ ወጥቷል።</string>
+    <string name="app_extract_failed">ወደ ውጭ መላክ አልተሳካም :(</string>
+    <string name="refresh">አድስ</string>
+    <string name="tomclaw_software">TomClaw ሶፍትዌር</string>
+    <string name="app_version">ስሪት %1$s (%2$d)</string>
+    <string name="info">መረጃ</string>
+    <string name="rate_app">ለዚህ መተግበሪያ ደረጃ ይስጡት።</string>
+    <string name="all_apps">የደራሲ መተግበሪያዎች</string>
+    <string name="pref_base_title">የመሠረት ቅንብሮች</string>
+    <string name="pref_summary_show_system">የስርዓት መተግበሪያዎችን ዝርዝር ውስጥ አሳይ</string>
+    <string name="pref_summary_runnable">ሊሄዱ የሚችሉ ጥቅሎችን ብቻ አሳይ</string>
+    <string name="pref_title_show_system">የስርዓት መተግበሪያዎች</string>
+    <string name="pref_title_runnable">ሊሰሩ የሚችሉ ጥቅሎች</string>
+    <string name="got_it">ገባኝ!</string>
+    <string name="system_apps_warning_title">ማስጠንቀቂያ!</string>
+    <string name="system_apps_warning_message">የስርዓት መተግበሪያዎች የተለመዱ መተግበሪያዎች አይደሉም እና ለእሱ ምንም ዋስትና የለም።
+        የተሳካ ወደ ውጭ መላክ!</string>
+    <string name="settings">ቅንብሮች</string>
+    <string name="send_to">ሼር በማድረግ ያካፍሉ።</string>
+    <string name="pref_title_sort_order">ቅደም ተከተል ደርድር</string>
+    <string name="sort_order_ascending">አ - ዜ</string>
+    <string name="sort_order_descending">ዜድ - ኤ</string>
+    <string name="sort_order_app_size">በመተግበሪያ መጠን</string>
+    <string name="sort_order_install_time">በመጫኛ ጊዜ</string>
+    <string name="sort_order_update_time">በዝማኔ ጊዜ</string>
+    <string name="pref_summary_sort_order">መተግበሪያዎች የዝርዝር ቅደም ተከተል ልዩነቶችን ይዘረዝራሉ</string>
+    <string name="extract_apk">ኤፒኬን ወደ ውርዶች ያውጡ</string>
+    <string name="share_apk">በመተግበሪያዎች በኩል ኤፒኬን ያጋሩ</string>
+    <string name="find_on_gp">በ Google Play ውስጥ ያግኙ</string>
+    <string name="pref_title_clear_cache">መሸጎጫ አጽዳ</string>
+    <string name="pref_summary_clear_cache">ከዚህ ቀደም የተወጡትን ሁሉንም የኤፒኬ ፋይሎች በውርዶች ማውጫ ውስጥ ያስወግዱ</string>
+    <string name="cache_cleared_successfully">መሸጎጫ በተሳካ ሁኔታ ጸድቷል።</string>
+    <string name="cache_clearing_failed">መሸጎጫ ማጽዳት አልተሳካም።</string>
+    <string name="write_permission_extract">የመተግበሪያ ፋይልን ለማስቀመጥ የማከማቻ ፈቃድ መስጠት ያስፈልግዎታል</string>
+    <string name="menu_search">ፈልግ</string>
+    <string name="run_app">መተግበሪያን አሂድ</string>
+    <string name="non_launchable_package">ይህ ጥቅል ሊሰራ አይችልም።</string>
+    <string name="app_details">ዝርዝሮችን አሳይ</string>
+    <string name="pref_title_dark_theme">ጨለማ ጭብጥ</string>
+    <string name="pref_dark_theme_system">ጥቁር ቀለሞች በመተግበሪያ መልክ</string>
+    <string name="remove">አስወግድ</string>
+    <string name="unknown_permission_description">ያልታወቀ ፍቃድ</string>
+    <string name="required_permissions">የሚፈለጉ ፈቃዶች</string>
+    <string name="unable_to_get_permissions">ዝርዝር ወይም መተግበሪያ የሚፈለጉትን ፈቃዶች ማግኘት አልተቻለም</string>
+    <string name="no_requested_permissions">መተግበሪያ ፈቃዶችን አልጠየቀም።</string>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d பி</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f ஜிபி</string>
+    <string name="please_wait">தயவுசெய்து, காத்திருங்கள்…</string>
+    <string name="app_extract_success">&lt;b&gt;பதிவிறக்கங்கள்&lt;/b&gt; கோப்பகத்தில் வெற்றிகரமாகப் பிரித்தெடுக்கப்பட்டது</string>
+    <string name="app_extract_failed">ஏற்றுமதி செய்ய முடியவில்லை :(</string>
+    <string name="refresh">புதுப்பிக்கவும்</string>
+    <string name="tomclaw_software">TomClaw மென்பொருள்</string>
+    <string name="app_version">பதிப்பு %1$s (%2$d)</string>
+    <string name="info">தகவல்</string>
+    <string name="rate_app">இந்த பயன்பாட்டை மதிப்பிடவும்</string>
+    <string name="all_apps">ஆசிரியரின் விண்ணப்பங்கள்</string>
+    <string name="pref_base_title">அடிப்படை அமைப்புகள்</string>
+    <string name="pref_summary_show_system">பட்டியலில் கணினி பயன்பாடுகளைக் காட்டு</string>
+    <string name="pref_summary_runnable">இயங்கக்கூடிய தொகுப்புகளை மட்டும் காட்டு</string>
+    <string name="pref_title_show_system">கணினி பயன்பாடுகள்</string>
+    <string name="pref_title_runnable">இயங்கக்கூடிய தொகுப்புகள்</string>
+    <string name="got_it">புரிந்தது!</string>
+    <string name="system_apps_warning_title">எச்சரிக்கை!</string>
+    <string name="system_apps_warning_message">சிஸ்டம் பயன்பாடுகள் வழக்கமான பயன்பாடுகள் அல்ல, அதன் உத்தரவாதமும் இல்லை
+        வெற்றிகரமான ஏற்றுமதி!</string>
+    <string name="settings">அமைப்புகள்</string>
+    <string name="send_to">உடன் பகிரவும்</string>
+    <string name="pref_title_sort_order">வரிசை வரிசை</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">இசட் - ஏ</string>
+    <string name="sort_order_app_size">பயன்பாட்டின் அளவு மூலம்</string>
+    <string name="sort_order_install_time">நிறுவல் நேரம் மூலம்</string>
+    <string name="sort_order_update_time">புதுப்பிப்பு நேரத்தின்படி</string>
+    <string name="pref_summary_sort_order">ஆப்ஸ் பட்டியல் வரிசை வரிசை மாறுபாடுகள்</string>
+    <string name="extract_apk">apk ஐ பதிவிறக்கங்களில் பிரித்தெடுக்கவும்</string>
+    <string name="share_apk">பயன்பாடுகள் மூலம் apk ஐப் பகிரவும்</string>
+    <string name="find_on_gp">Google Play இல் கண்டறியவும்</string>
+    <string name="pref_title_clear_cache">தேக்ககத்தை அழிக்கவும்</string>
+    <string name="pref_summary_clear_cache">பதிவிறக்கங்கள் கோப்பகத்தில் முன்பு பிரித்தெடுக்கப்பட்ட அனைத்து APK கோப்புகளையும் அகற்றவும்</string>
+    <string name="cache_cleared_successfully">தற்காலிக சேமிப்பு வெற்றிகரமாக அழிக்கப்பட்டது</string>
+    <string name="cache_clearing_failed">தற்காலிக சேமிப்பை அழிக்க முடியவில்லை</string>
+    <string name="write_permission_extract">விண்ணப்பக் கோப்பைச் சேமிக்க, நீங்கள் சேமிப்பக அனுமதியை வழங்க வேண்டும்</string>
+    <string name="menu_search">தேடு</string>
+    <string name="run_app">பயன்பாட்டை இயக்கவும்</string>
+    <string name="non_launchable_package">இந்த தொகுப்பை இயக்க முடியாது.</string>
+    <string name="app_details">விவரங்களைக் காட்டு</string>
+    <string name="pref_title_dark_theme">இருண்ட தீம்</string>
+    <string name="pref_dark_theme_system">பயன்பாட்டு தோற்றத்தில் இருண்ட நிறங்கள்</string>
+    <string name="remove">அகற்று</string>
+    <string name="unknown_permission_description">அறியப்படாத அனுமதி</string>
+    <string name="required_permissions">தேவையான அனுமதிகள்</string>
+    <string name="unable_to_get_permissions">பட்டியல் அல்லது ஆப்ஸின் தேவையான அனுமதிகளைப் பெற முடியவில்லை</string>
+    <string name="no_requested_permissions">பயன்பாட்டில் கோரப்பட்ட அனுமதிகள் இல்லை.</string>
+</resources>

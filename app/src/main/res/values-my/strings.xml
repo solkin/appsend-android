@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%1f KB</string>
+    <string name="mibibytes">%1f MB</string>
+    <string name="gigibytes">%1f GB</string>
+    <string name="please_wait">ကျေးဇူးပြုပြီးခဏစောင့်ပါ…</string>
+    <string name="app_extract_success">&lt;b&gt;ဒေါင်းလုဒ်များ&lt;/b&gt; လမ်းညွှန်သို့ အောင်မြင်စွာ ထုတ်ယူပြီးပါပြီ။</string>
+    <string name="app_extract_failed">ထုတ်ယူခြင်း မအောင်မြင်ပါ :(</string>
+    <string name="refresh">ပြန်လည်စတင်ပါ။</string>
+    <string name="tomclaw_software">TomClaw Software</string>
+    <string name="app_version">ဗားရှင်း %1$s (%2$d)</string>
+    <string name="info">အချက်အလက်</string>
+    <string name="rate_app">ဤအက်ပ်ကို အဆင့်သတ်မှတ်ပါ။</string>
+    <string name="all_apps">စာရေးသူ၏ လျှောက်လွှာများ</string>
+    <string name="pref_base_title">အခြေခံဆက်တင်များ</string>
+    <string name="pref_summary_show_system">စာရင်းထဲတွင် စနစ်အပလီကေးရှင်းများကို ပြပါ။</string>
+    <string name="pref_summary_runnable">လုပ်ဆောင်နိုင်သော ပက်ကေ့ဂျ်များကိုသာ ပြသပါ။</string>
+    <string name="pref_title_show_system">စနစ်အက်ပ်များ</string>
+    <string name="pref_title_runnable">လုပ်ဆောင်နိုင်သော ပက်ကေ့ခ်ျများ</string>
+    <string name="got_it">နားလည်ပြီ!</string>
+    <string name="system_apps_warning_title">သတိပေးချက်</string>
+    <string name="system_apps_warning_message">စနစ်အက်ပ်များသည် ပုံမှန်အက်ပ်များမဟုတ်သော်လည်း ၎င်း၏အာမခံချက်မရှိပါ။
+        အောင်မြင်သောတင်ပို့မှု။</string>
+    <string name="settings">ဆက်တင်များ</string>
+    <string name="send_to">မျှဝေပါ။</string>
+    <string name="pref_title_sort_order">စီရန်</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">အက်ပ်အရွယ်အစားအားဖြင့်</string>
+    <string name="sort_order_install_time">တပ်ဆင်ချိန်အားဖြင့်</string>
+    <string name="sort_order_update_time">အပ်ဒိတ်အချိန်အားဖြင့်</string>
+    <string name="pref_summary_sort_order">အပလီကေးရှင်းများစာရင်း အမှာစာမျိုးကွဲများကိုစီပါ။</string>
+    <string name="extract_apk">apk ကို ဒေါင်းလုဒ်များထဲသို့ ဖြည်ပါ။</string>
+    <string name="share_apk">apk ကို အက်ပ်များမှတစ်ဆင့် မျှဝေပါ။</string>
+    <string name="find_on_gp">Google Play တွင် ရှာပါ။</string>
+    <string name="pref_title_clear_cache">ကက်ရှ်ကို ရှင်းလင်းပါ။</string>
+    <string name="pref_summary_clear_cache">ဒေါင်းလုဒ်များလမ်းညွှန်တွင် ယခင်ထုတ်ထားသော APK ဖိုင်အားလုံးကို ဖယ်ရှားပါ။</string>
+    <string name="cache_cleared_successfully">Cache ကို အောင်မြင်စွာ ရှင်းလင်းပြီးပါပြီ။</string>
+    <string name="cache_clearing_failed">ကက်ရှ်ရှင်းလင်းခြင်း မအောင်မြင်ပါ။</string>
+    <string name="write_permission_extract">အပလီကေးရှင်းဖိုင်ကို သိမ်းဆည်းရန်အတွက် သိုလှောင်မှုခွင့်ပြုချက်ပေးရန် လိုအပ်ပါသည်။</string>
+    <string name="menu_search">ရှာရန်</string>
+    <string name="run_app">လျှောက်လွှာကိုဖွင့်ပါ။</string>
+    <string name="non_launchable_package">ဤပက်ကေ့ဂျ်သည် အသုံးမပြုနိုင်ပါ။</string>
+    <string name="app_details">အသေးစိတ်ကိုပြပါ။</string>
+    <string name="pref_title_dark_theme">အမှောင် အပြင်အဆင်</string>
+    <string name="pref_dark_theme_system">အက်ပလီကေးရှင်းအသွင်အပြင်တွင် အနက်ရောင်အရောင်များ</string>
+    <string name="remove">ဖယ်ရှားပါ။</string>
+    <string name="unknown_permission_description">အမည်မသိခွင့်ပြုချက်</string>
+    <string name="required_permissions">လိုအပ်သောခွင့်ပြုချက်များ</string>
+    <string name="unable_to_get_permissions">စာရင်း သို့မဟုတ် အက်ပ်၏ လိုအပ်သော ခွင့်ပြုချက်များကို ရယူ၍မရပါ။</string>
+    <string name="no_requested_permissions">အက်ပ်တွင် တောင်းဆိုထားသော ခွင့်ပြုချက်များ မရှိပါ။</string>
+</resources>

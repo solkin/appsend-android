@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d ბ</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f მბაიტი</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">გთხოვთ, დაელოდეთ…</string>
+    <string name="app_extract_success">წარმატებით იქნა ამოღებული &lt;b&gt;ჩამოტვირთვების&lt;/b&gt; დირექტორიაში</string>
+    <string name="app_extract_failed">ექსპორტი ვერ მოხერხდა :(</string>
+    <string name="refresh">განაახლეთ</string>
+    <string name="tomclaw_software">TomClaw პროგრამული უზრუნველყოფა</string>
+    <string name="app_version">ვერსია %1$s (%2$d)</string>
+    <string name="info">ინფორმაცია</string>
+    <string name="rate_app">შეაფასეთ ეს აპლიკაცია</string>
+    <string name="all_apps">ავტორის აპლიკაციები</string>
+    <string name="pref_base_title">ბაზის პარამეტრები</string>
+    <string name="pref_summary_show_system">სისტემური აპლიკაციების ჩვენება სიაში</string>
+    <string name="pref_summary_runnable">მხოლოდ გაშვებადი პაკეტების ჩვენება</string>
+    <string name="pref_title_show_system">სისტემის აპლიკაციები</string>
+    <string name="pref_title_runnable">გაშვებადი პაკეტები</string>
+    <string name="got_it">გავიგე!</string>
+    <string name="system_apps_warning_title">გაფრთხილება!</string>
+    <string name="system_apps_warning_message">სისტემური აპლიკაციები არ არის ჩვეულებრივი აპლიკაციები და არ არსებობს მისი გარანტია
+        წარმატებული ექსპორტი!</string>
+    <string name="settings">პარამეტრები</string>
+    <string name="send_to">გააზიარეთ</string>
+    <string name="pref_title_sort_order">დალაგება თანმიმდევრობით</string>
+    <string name="sort_order_ascending">ა - ზ</string>
+    <string name="sort_order_descending">ზ - ა</string>
+    <string name="sort_order_app_size">აპლიკაციის ზომის მიხედვით</string>
+    <string name="sort_order_install_time">ინსტალაციის დროით</string>
+    <string name="sort_order_update_time">განახლების დროით</string>
+    <string name="pref_summary_sort_order">აპების სიაში დალაგების რიგის ვარიანტები</string>
+    <string name="extract_apk">ამოიღეთ apk ჩამოტვირთვებში</string>
+    <string name="share_apk">გააზიარეთ apk აპების საშუალებით</string>
+    <string name="find_on_gp">იპოვეთ Google Play-ში</string>
+    <string name="pref_title_clear_cache">ქეშის გასუფთავება</string>
+    <string name="pref_summary_clear_cache">წაშალეთ ყველა ადრე ამოღებული APK ფაილი ჩამოტვირთვების დირექტორიაში</string>
+    <string name="cache_cleared_successfully">ქეში წარმატებით გაიწმინდა</string>
+    <string name="cache_clearing_failed">ქეშის გასუფთავება ვერ მოხერხდა</string>
+    <string name="write_permission_extract">აპლიკაციის ფაილის შესანახად დაგჭირდებათ შენახვის ნებართვის მინიჭება</string>
+    <string name="menu_search">ძიება</string>
+    <string name="run_app">აპლიკაციის გაშვება</string>
+    <string name="non_launchable_package">ეს პაკეტი არ არის გაშვებული.</string>
+    <string name="app_details">დეტალების ჩვენება</string>
+    <string name="pref_title_dark_theme">მუქი თემა</string>
+    <string name="pref_dark_theme_system">მუქი ფერები განაცხადის გარეგნობაში</string>
+    <string name="remove">ამოღება</string>
+    <string name="unknown_permission_description">უცნობი ნებართვა</string>
+    <string name="required_permissions">საჭირო ნებართვები</string>
+    <string name="unable_to_get_permissions">სიის ან აპის საჭირო ნებართვების მიღება შეუძლებელია</string>
+    <string name="no_requested_permissions">აპს არ აქვს მოთხოვნილი ნებართვები.</string>
+</resources>

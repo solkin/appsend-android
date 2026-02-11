@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B .</string>
+    <string name="kibibytes">%.1F KB</string>
+    <string name="mibibytes">%.1F MB</string>
+    <string name="gigibytes">%.1f ጂቢ</string>
+    <string name="please_wait">በጃኻ ተጸበዩ...</string>
+    <string name="app_extract_success">ብዓወት ናብ &lt;b&gt;downloads&lt;/b&gt; ማህደር ዝተቐድሐ</string>
+    <string name="app_extract_failed">ሰደድ ምፍሻል :(</string>
+    <string name="refresh">ሪፍረሽ</string>
+    <string name="tomclaw_software">ቶምክላው ሶፍትዌር</string>
+    <string name="app_version">ስሪት %1$s (%2$D)</string>
+    <string name="info">info</string>
+    <string name="rate_app">ነዚ መተግበሪ ደረጃ ምሃብ</string>
+    <string name="all_apps">ናይ ደራሲ\'s መተግበሪታት</string>
+    <string name="pref_base_title">መሰረታዊ ቅጥዕታት .</string>
+    <string name="pref_summary_show_system">ናይ ስርዓት መተግበሪታት ኣብ ዝርዝር ኣርእዩ</string>
+    <string name="pref_summary_runnable">show runnanable packages only</string>
+    <string name="pref_title_show_system">ናይ ስርዓት መተግበሪታት</string>
+    <string name="pref_title_runnable">ዝጎየዩ ፓኬጃት</string>
+    <string name="got_it">ተረዲእኒ!</string>
+    <string name="system_apps_warning_title">ምኸዳን!</string>
+    <string name="system_apps_warning_message">ናይ ስርዓት ኣፕስ ልሙድ ኣፕስ ኣይኮነን ናቱ ዋሕስ የለን።
+        ዕዉት ሰደድ!</string>
+    <string name="settings">ቅጥዕታት</string>
+    <string name="send_to">Share with .</string>
+    <string name="pref_title_sort_order">ስርዓት ምድላው</string>
+    <string name="sort_order_ascending">A - Z .</string>
+    <string name="sort_order_descending">Z - A .</string>
+    <string name="sort_order_app_size">ብ App Size .</string>
+    <string name="sort_order_install_time">ብናይ ምትካል ግዜ</string>
+    <string name="sort_order_update_time">ብናይ ምዕባለ ግዜ</string>
+    <string name="pref_summary_sort_order">Apps List Sort Order ፍልልያት</string>
+    <string name="extract_apk">APK ናብ ምውራድ ምውጻእ</string>
+    <string name="share_apk">APK ብመንገዲ ኣፕስ ኣካፍል</string>
+    <string name="find_on_gp">ኣብ Google Play ርኸብ</string>
+    <string name="pref_title_clear_cache">ንጹር መኽዘን .</string>
+    <string name="pref_summary_clear_cache">ኩሎም ቅድሚ ሕጂ ዝተቐድሑ APK ፋይላት ኣብ Downloads Directory ኣውጽኡ</string>
+    <string name="cache_cleared_successfully">ካቺ ብዓወት ተጸሪጉ</string>
+    <string name="cache_clearing_failed">Cache clearing failed</string>
+    <string name="write_permission_extract">ናይ መመልከቲ ፋይል ንምዕቃብ ፍቓድ መኽዘን ክትህብ ከድልየካ እዩ</string>
+    <string name="menu_search">ምድላይ</string>
+    <string name="run_app">መተግበሪ የካይድ</string>
+    <string name="non_launchable_package">እዚ ፓኬጅ እዚ ዝጎዪ ኣይኮነን።</string>
+    <string name="app_details">ዝርዝር ኣርእዩ</string>
+    <string name="pref_title_dark_theme">ጸሊም ቴማ</string>
+    <string name="pref_dark_theme_system">ጸሊም ሕብሪ ኣብ መተግበሪ መልክዕ</string>
+    <string name="remove">ኣወግድ</string>
+    <string name="unknown_permission_description">ዘይተፈልጠ ፍቓድ</string>
+    <string name="required_permissions">ዘድሊ ፍቓድ</string>
+    <string name="unable_to_get_permissions">ዝርዝር ወይ App\ ዝጠልቦ ፍቓድ ክትረክብ ዘይምኽኣል</string>
+    <string name="no_requested_permissions">App ፍቓድ ኣይሓትትን እዩ።</string>
+</resources>

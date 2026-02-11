@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d బి</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">దయచేసి, వేచి ఉండండి…</string>
+    <string name="app_extract_success">&lt;b&gt;డౌన్‌లోడ్‌లు&lt;/b&gt; డైరెక్టరీకి విజయవంతంగా సంగ్రహించబడింది</string>
+    <string name="app_extract_failed">ఎగుమతి చేయడం విఫలమైంది :(</string>
+    <string name="refresh">రిఫ్రెష్ చేయండి</string>
+    <string name="tomclaw_software">టామ్‌క్లా సాఫ్ట్‌వేర్</string>
+    <string name="app_version">వెర్షన్ %1$s (%2$d)</string>
+    <string name="info">సమాచారం</string>
+    <string name="rate_app">ఈ అప్లికేషన్‌ను రేట్ చేయండి</string>
+    <string name="all_apps">రచయిత యొక్క అప్లికేషన్లు</string>
+    <string name="pref_base_title">బేస్ సెట్టింగులు</string>
+    <string name="pref_summary_show_system">జాబితాలో సిస్టమ్ అప్లికేషన్‌లను చూపించు</string>
+    <string name="pref_summary_runnable">అమలు చేయగల ప్యాకేజీలను మాత్రమే చూపు</string>
+    <string name="pref_title_show_system">సిస్టమ్ యాప్‌లు</string>
+    <string name="pref_title_runnable">అమలు చేయగల ప్యాకేజీలు</string>
+    <string name="got_it">అర్థమైంది!</string>
+    <string name="system_apps_warning_title">హెచ్చరిక!</string>
+    <string name="system_apps_warning_message">సిస్టమ్ యాప్‌లు సాధారణ యాప్‌లు కావు మరియు వాటికి ఎలాంటి వారంటీ లేదు
+        విజయవంతమైన ఎగుమతి!</string>
+    <string name="settings">సెట్టింగ్‌లు</string>
+    <string name="send_to">వీరితో పంచుకోండి</string>
+    <string name="pref_title_sort_order">క్రమం</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">యాప్ పరిమాణం ద్వారా</string>
+    <string name="sort_order_install_time">ఇన్‌స్టాల్ సమయం ద్వారా</string>
+    <string name="sort_order_update_time">నవీకరణ సమయం ద్వారా</string>
+    <string name="pref_summary_sort_order">యాప్‌ల జాబితా క్రమబద్ధీకరణ వేరియంట్‌లు</string>
+    <string name="extract_apk">డౌన్‌లోడ్‌లలోకి apkని సంగ్రహించండి</string>
+    <string name="share_apk">యాప్‌ల ద్వారా apkని షేర్ చేయండి</string>
+    <string name="find_on_gp">Google Playలో కనుగొనండి</string>
+    <string name="pref_title_clear_cache">కాష్‌ని క్లియర్ చేయండి</string>
+    <string name="pref_summary_clear_cache">డౌన్‌లోడ్‌ల డైరెక్టరీలో గతంలో సంగ్రహించిన అన్ని APK ఫైల్‌లను తీసివేయండి</string>
+    <string name="cache_cleared_successfully">కాష్ విజయవంతంగా క్లియర్ చేయబడింది</string>
+    <string name="cache_clearing_failed">కాష్ క్లియరింగ్ విఫలమైంది</string>
+    <string name="write_permission_extract">అప్లికేషన్ ఫైల్‌ను సేవ్ చేయడానికి మీరు నిల్వ అనుమతిని మంజూరు చేయాలి</string>
+    <string name="menu_search">శోధించండి</string>
+    <string name="run_app">అప్లికేషన్‌ను అమలు చేయండి</string>
+    <string name="non_launchable_package">ఈ ప్యాకేజీ అమలు చేయబడదు.</string>
+    <string name="app_details">వివరాలను చూపు</string>
+    <string name="pref_title_dark_theme">చీకటి థీమ్</string>
+    <string name="pref_dark_theme_system">అప్లికేషన్ రూపంలో ముదురు రంగులు</string>
+    <string name="remove">తొలగించు</string>
+    <string name="unknown_permission_description">తెలియని అనుమతి</string>
+    <string name="required_permissions">అవసరమైన అనుమతులు</string>
+    <string name="unable_to_get_permissions">జాబితా లేదా యాప్‌కి అవసరమైన అనుమతులను పొందడం సాధ్యం కాలేదు</string>
+    <string name="no_requested_permissions">యాప్‌కి అభ్యర్థించిన అనుమతులు లేవు.</string>
+</resources>

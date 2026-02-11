@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">कृपया, प्रतीक्षा करा...</string>
+    <string name="app_extract_success">&lt;b&gt;डाउनलोड&lt;/b&gt; निर्देशिकेत यशस्वीरित्या काढले</string>
+    <string name="app_extract_failed">निर्यात अयशस्वी :(</string>
+    <string name="refresh">रिफ्रेश करा</string>
+    <string name="tomclaw_software">टॉमक्लॉ सॉफ्टवेअर</string>
+    <string name="app_version">आवृत्ती %1$s (%2$d)</string>
+    <string name="info">माहिती</string>
+    <string name="rate_app">या अनुप्रयोगास रेट करा</string>
+    <string name="all_apps">लेखकाचे अर्ज</string>
+    <string name="pref_base_title">बेस सेटिंग्ज</string>
+    <string name="pref_summary_show_system">सूचीमध्ये सिस्टम अनुप्रयोग दर्शवा</string>
+    <string name="pref_summary_runnable">फक्त रन करण्यायोग्य पॅकेजेस दाखवा</string>
+    <string name="pref_title_show_system">सिस्टम ॲप्स</string>
+    <string name="pref_title_runnable">चालविण्यायोग्य पॅकेजेस</string>
+    <string name="got_it">समजले!</string>
+    <string name="system_apps_warning_title">चेतावणी!</string>
+    <string name="system_apps_warning_message">सिस्टम ॲप्स नेहमीची ॲप्स नाहीत आणि त्याची कोणतीही हमी नाही
+        यशस्वी निर्यात!</string>
+    <string name="settings">सेटिंग्ज</string>
+    <string name="send_to">सोबत शेअर करा</string>
+    <string name="pref_title_sort_order">क्रमवारी लावा</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - ए</string>
+    <string name="sort_order_app_size">ॲप आकारानुसार</string>
+    <string name="sort_order_install_time">स्थापित वेळेनुसार</string>
+    <string name="sort_order_update_time">अपडेट वेळेनुसार</string>
+    <string name="pref_summary_sort_order">ॲप्स सूची क्रमवारीचे प्रकार</string>
+    <string name="extract_apk">डाउनलोड मध्ये apk काढा</string>
+    <string name="share_apk">ॲप्सद्वारे apk शेअर करा</string>
+    <string name="find_on_gp">Google Play मध्ये शोधा</string>
+    <string name="pref_title_clear_cache">कॅशे साफ करा</string>
+    <string name="pref_summary_clear_cache">डाउनलोड निर्देशिकेत पूर्वी काढलेल्या सर्व APK फायली काढा</string>
+    <string name="cache_cleared_successfully">कॅशे यशस्वीरित्या साफ केले</string>
+    <string name="cache_clearing_failed">कॅशे साफ करणे अयशस्वी</string>
+    <string name="write_permission_extract">ॲप्लिकेशन फाइल सेव्ह करण्यासाठी तुम्हाला स्टोरेजची परवानगी द्यावी लागेल</string>
+    <string name="menu_search">शोधा</string>
+    <string name="run_app">अनुप्रयोग चालवा</string>
+    <string name="non_launchable_package">हे पॅकेज रन करण्यायोग्य नाही.</string>
+    <string name="app_details">तपशील दाखवा</string>
+    <string name="pref_title_dark_theme">गडद थीम</string>
+    <string name="pref_dark_theme_system">अनुप्रयोग देखावा मध्ये गडद रंग</string>
+    <string name="remove">काढा</string>
+    <string name="unknown_permission_description">अज्ञात परवानगी</string>
+    <string name="required_permissions">आवश्यक परवानग्या</string>
+    <string name="unable_to_get_permissions">सूची किंवा ॲपच्या आवश्यक परवानग्या मिळवण्यात अक्षम</string>
+    <string name="no_requested_permissions">ॲपला विनंती केलेल्या परवानग्या नाहीत.</string>
+</resources>

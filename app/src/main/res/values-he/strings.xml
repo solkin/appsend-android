@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d ב</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">בבקשה, המתן…</string>
+    <string name="app_extract_success">חולץ בהצלחה לספריית &lt;b&gt;הורדות&lt;/b&gt;</string>
+    <string name="app_extract_failed">הייצוא נכשל :(</string>
+    <string name="refresh">לְרַעֲנֵן</string>
+    <string name="tomclaw_software">תוכנת TomClaw</string>
+    <string name="app_version">גרסה %1$s (%2$d)</string>
+    <string name="info">מידע</string>
+    <string name="rate_app">דרג את האפליקציה הזו</string>
+    <string name="all_apps">יישומי המחבר</string>
+    <string name="pref_base_title">הגדרות בסיס</string>
+    <string name="pref_summary_show_system">הצג יישומי מערכת ברשימה</string>
+    <string name="pref_summary_runnable">הצג חבילות הניתנות להרצה בלבד</string>
+    <string name="pref_title_show_system">אפליקציות מערכת</string>
+    <string name="pref_title_runnable">חבילות הניתנות להרצה</string>
+    <string name="got_it">הבנתי!</string>
+    <string name="system_apps_warning_title">אַזהָרָה!</string>
+    <string name="system_apps_warning_message">אפליקציות מערכת אינן אפליקציות רגילות ואין עליהן אחריות
+        ייצוא מוצלח!</string>
+    <string name="settings">הגדרות</string>
+    <string name="send_to">שתף עם</string>
+    <string name="pref_title_sort_order">סדר מיון</string>
+    <string name="sort_order_ascending">א\' - ת\'</string>
+    <string name="sort_order_descending">ז - א</string>
+    <string name="sort_order_app_size">לפי גודל האפליקציה</string>
+    <string name="sort_order_install_time">לפי זמן ההתקנה</string>
+    <string name="sort_order_update_time">לפי זמן עדכון</string>
+    <string name="pref_summary_sort_order">גרסאות סדר המיון של רשימת אפליקציות</string>
+    <string name="extract_apk">חלץ apk להורדות</string>
+    <string name="share_apk">שתף apk דרך אפליקציות</string>
+    <string name="find_on_gp">מצא ב-Google Play</string>
+    <string name="pref_title_clear_cache">נקה את המטמון</string>
+    <string name="pref_summary_clear_cache">הסר את כל קבצי ה-APK שחולצו בעבר בספריית ההורדות</string>
+    <string name="cache_cleared_successfully">המטמון נוקה בהצלחה</string>
+    <string name="cache_clearing_failed">ניקוי המטמון נכשל</string>
+    <string name="write_permission_extract">על מנת לשמור את קובץ האפליקציה תצטרך להעניק הרשאת אחסון</string>
+    <string name="menu_search">לְחַפֵּשׂ</string>
+    <string name="run_app">הפעל יישום</string>
+    <string name="non_launchable_package">חבילה זו אינה ניתנת להרצה.</string>
+    <string name="app_details">הצג פרטים</string>
+    <string name="pref_title_dark_theme">נושא אפל</string>
+    <string name="pref_dark_theme_system">צבעים כהים במראה היישום</string>
+    <string name="remove">לְהַסִיר</string>
+    <string name="unknown_permission_description">הרשאה לא ידועה</string>
+    <string name="required_permissions">הרשאות נדרשות</string>
+    <string name="unable_to_get_permissions">לא ניתן לקבל את ההרשאות הנדרשות לרשימה או לאפליקציה</string>
+    <string name="no_requested_permissions">לאפליקציה אין הרשאות מבוקשות.</string>
+</resources>

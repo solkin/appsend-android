@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d بي</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f جي بي</string>
+    <string name="please_wait">مهرباني ڪري انتظار ڪريو...</string>
+    <string name="app_extract_success">&lt;b&gt;ڊائون لوڊ&lt;/b&gt; ڊاريڪٽري ۾ ڪاميابيءَ سان ڪڍيو ويو</string>
+    <string name="app_extract_failed">برآمد ڪرڻ ۾ ناڪام ٿيو :(</string>
+    <string name="refresh">تازو ڪريو</string>
+    <string name="tomclaw_software">TomClaw سافٽ ويئر</string>
+    <string name="app_version">نسخو %1$s (%2$d)</string>
+    <string name="info">ڄاڻ</string>
+    <string name="rate_app">هن اپليڪيشن جي درجه بندي ڪريو</string>
+    <string name="all_apps">ليکڪ جون ايپليڪيشنون</string>
+    <string name="pref_base_title">بنيادي سيٽنگون</string>
+    <string name="pref_summary_show_system">لسٽ ۾ سسٽم ايپليڪيشنون ڏيکاريو</string>
+    <string name="pref_summary_runnable">صرف هلائيندڙ پيڪيجز ڏيکاريو</string>
+    <string name="pref_title_show_system">سسٽم ايپس</string>
+    <string name="pref_title_runnable">هلندڙ پيڪيجز</string>
+    <string name="got_it">سمجهي ويس!</string>
+    <string name="system_apps_warning_title">خبردار!</string>
+    <string name="system_apps_warning_message">سسٽم ايپس عام ائپس نه آهن ۽ ان جي ڪا به وارنٽي ناهي
+        ڪامياب برآمد!</string>
+    <string name="settings">سيٽنگون</string>
+    <string name="send_to">سان حصيداري ڪريو</string>
+    <string name="pref_title_sort_order">ترتيب ترتيب</string>
+    <string name="sort_order_ascending">الف - زي</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">ايپ جي ماپ طرفان</string>
+    <string name="sort_order_install_time">انسٽاليشن وقت سان</string>
+    <string name="sort_order_update_time">تازه ڪاري وقت سان</string>
+    <string name="pref_summary_sort_order">ائپس لسٽ ترتيب ترتيب وار مختلف</string>
+    <string name="extract_apk">ڊائون لوڊ ۾ apk ڪڍو</string>
+    <string name="share_apk">ايپس ذريعي apk حصيداري ڪريو</string>
+    <string name="find_on_gp">Google Play ۾ ڳولھيو</string>
+    <string name="pref_title_clear_cache">ڪيش صاف ڪريو</string>
+    <string name="pref_summary_clear_cache">ڊائون لوڊ ڊاريڪٽري ۾ سڀ کان پهريان ڪڍيل APK فائلن کي هٽايو</string>
+    <string name="cache_cleared_successfully">ڪيش ڪاميابي سان صاف ڪيو ويو</string>
+    <string name="cache_clearing_failed">ڪيش صاف ڪرڻ ناڪام</string>
+    <string name="write_permission_extract">ايپليڪيشن فائل کي محفوظ ڪرڻ لاء توهان کي اسٽوريج جي اجازت ڏيڻ جي ضرورت پوندي</string>
+    <string name="menu_search">ڳولا</string>
+    <string name="run_app">ايپليڪيشن هلائڻ</string>
+    <string name="non_launchable_package">هي پيڪيج هلائڻ لائق ناهي.</string>
+    <string name="app_details">تفصيل ڏيکاريو</string>
+    <string name="pref_title_dark_theme">ڳاڙهو موضوع</string>
+    <string name="pref_dark_theme_system">ايپليڪيشن جي ظاهر ۾ ڪارو رنگ</string>
+    <string name="remove">هٽايو</string>
+    <string name="unknown_permission_description">اڻڄاتل اجازت</string>
+    <string name="required_permissions">گهربل اجازتون</string>
+    <string name="unable_to_get_permissions">لسٽ يا ايپ جي گهربل اجازتون حاصل ڪرڻ ۾ ناڪام</string>
+    <string name="no_requested_permissions">ايپ کي اجازت جي درخواست نه ڪئي وئي آهي.</string>
+</resources>

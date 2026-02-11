@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">% 1f KB</string>
+    <string name="mibibytes">% 1f MB</string>
+    <string name="gigibytes">% 1f GB</string>
+    <string name="please_wait">Le do thoil, fan…</string>
+    <string name="app_extract_success">Baineadh amach go rathúil go dtí an eolaire &lt;b&gt;Íoslódálacha&lt;/b&gt;</string>
+    <string name="app_extract_failed">Theip ar easpórtáil :(</string>
+    <string name="refresh">Athnuaigh</string>
+    <string name="tomclaw_software">Bogearraí TomClaw</string>
+    <string name="app_version">Leagan %1$s (%2$d)</string>
+    <string name="info">Eolas</string>
+    <string name="rate_app">Déan rátáil ar an iarratas seo</string>
+    <string name="all_apps">Feidhmchláir an údair</string>
+    <string name="pref_base_title">Socruithe bonn</string>
+    <string name="pref_summary_show_system">Taispeáin feidhmchláir chórais sa liosta</string>
+    <string name="pref_summary_runnable">Taispeáin pacáistí inrite amháin</string>
+    <string name="pref_title_show_system">Feidhmchláir chórais</string>
+    <string name="pref_title_runnable">Pacáistí inrite</string>
+    <string name="got_it">Fuair ​​​​sé!</string>
+    <string name="system_apps_warning_title">Rabhadh!</string>
+    <string name="system_apps_warning_message">Ní gnáth-apps iad aipeanna córais agus níl aon bharántas dá chuid
+        onnmhairiú rathúil!</string>
+    <string name="settings">Socruithe</string>
+    <string name="send_to">Roinn le</string>
+    <string name="pref_title_sort_order">Ordú sórtála</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">De réir méid app</string>
+    <string name="sort_order_install_time">Trí am a shuiteáil</string>
+    <string name="sort_order_update_time">Faoin am nuashonraithe</string>
+    <string name="pref_summary_sort_order">Liostaíonn feidhmchláir leaganacha ord sórtála</string>
+    <string name="extract_apk">Sliocht apk i Íoslódálacha</string>
+    <string name="share_apk">Comhroinn apk trí apps</string>
+    <string name="find_on_gp">Faigh i Google Play</string>
+    <string name="pref_title_clear_cache">Glan taisce</string>
+    <string name="pref_summary_clear_cache">Bain gach comhad APK a baineadh roimhe seo san eolaire Íoslódálacha</string>
+    <string name="cache_cleared_successfully">Glanadh an taisce go rathúil</string>
+    <string name="cache_clearing_failed">Theip ar imréiteach taisce</string>
+    <string name="write_permission_extract">Chun an comhad iarratais a shábháil beidh ort cead stórála a dheonú</string>
+    <string name="menu_search">Cuardach</string>
+    <string name="run_app">Rith iarratas</string>
+    <string name="non_launchable_package">Ní féidir an pacáiste seo a rith.</string>
+    <string name="app_details">Taispeáin sonraí</string>
+    <string name="pref_title_dark_theme">Téama dorcha</string>
+    <string name="pref_dark_theme_system">Dathanna dorcha i gcuma iarratais</string>
+    <string name="remove">Bain</string>
+    <string name="unknown_permission_description">Cead anaithnid</string>
+    <string name="required_permissions">Ceadanna riachtanacha</string>
+    <string name="unable_to_get_permissions">Ní féidir ceadanna riachtanacha an liosta nó na haipe a fháil</string>
+    <string name="no_requested_permissions">Níl cead iarrtha ag aip.</string>
+</resources>

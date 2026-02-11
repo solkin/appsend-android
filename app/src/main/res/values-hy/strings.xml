@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d Բ</string>
+    <string name="kibibytes">%.1f ԿԲ</string>
+    <string name="mibibytes">%.1f ՄԲ</string>
+    <string name="gigibytes">%.1f ԳԲ</string>
+    <string name="please_wait">Խնդրում եմ սպասեք…</string>
+    <string name="app_extract_success">Հաջողությամբ դուրս բերվեց &lt;b&gt;Ներբեռնումներ&lt;/b&gt; գրացուցակ</string>
+    <string name="app_extract_failed">Չհաջողվեց արտահանել :(</string>
+    <string name="refresh">Թարմացնել</string>
+    <string name="tomclaw_software">TomClaw Software</string>
+    <string name="app_version">Տարբերակ %1$s (%2$d)</string>
+    <string name="info">Ինֆո</string>
+    <string name="rate_app">Գնահատեք այս հավելվածը</string>
+    <string name="all_apps">Հեղինակի դիմումները</string>
+    <string name="pref_base_title">Բազային կարգավորումներ</string>
+    <string name="pref_summary_show_system">Ցուցադրել համակարգի հավելվածները ցանկում</string>
+    <string name="pref_summary_runnable">Ցույց տալ միայն գործարկվող փաթեթները</string>
+    <string name="pref_title_show_system">Համակարգային հավելվածներ</string>
+    <string name="pref_title_runnable">Գործող փաթեթներ</string>
+    <string name="got_it">Հասկացա:</string>
+    <string name="system_apps_warning_title">Զգուշացում.</string>
+    <string name="system_apps_warning_message">Համակարգային հավելվածները սովորական հավելվածներ չեն և դրա երաշխիքը չկա
+        հաջող արտահանում!</string>
+    <string name="settings">Կարգավորումներ</string>
+    <string name="send_to">Կիսվել հետ</string>
+    <string name="pref_title_sort_order">Տեսակավորելու կարգը</string>
+    <string name="sort_order_ascending">Ա - Զ</string>
+    <string name="sort_order_descending">Զ - Ա</string>
+    <string name="sort_order_app_size">Ըստ հավելվածի չափի</string>
+    <string name="sort_order_install_time">Տեղադրման ժամանակով</string>
+    <string name="sort_order_update_time">Ըստ թարմացման ժամանակի</string>
+    <string name="pref_summary_sort_order">Հավելվածների ցանկի տեսակավորման կարգի տարբերակները</string>
+    <string name="extract_apk">Քաղեք apk-ը ներբեռնումների մեջ</string>
+    <string name="share_apk">Համօգտագործեք apk հավելվածների միջոցով</string>
+    <string name="find_on_gp">Գտեք Google Play-ում</string>
+    <string name="pref_title_clear_cache">Մաքրել քեշը</string>
+    <string name="pref_summary_clear_cache">Հեռացրեք բոլոր նախկինում արդյունահանված APK ֆայլերը Ներբեռնումների գրացուցակից</string>
+    <string name="cache_cleared_successfully">Քեշը հաջողությամբ մաքրվեց</string>
+    <string name="cache_clearing_failed">Քեշի մաքրումը ձախողվեց</string>
+    <string name="write_permission_extract">Հավելվածի ֆայլը պահպանելու համար ձեզ հարկավոր է պահեստավորման թույլտվություն տրամադրել</string>
+    <string name="menu_search">Որոնում</string>
+    <string name="run_app">Գործարկել հավելվածը</string>
+    <string name="non_launchable_package">Այս փաթեթը գործարկելի չէ:</string>
+    <string name="app_details">Ցույց տալ մանրամասները</string>
+    <string name="pref_title_dark_theme">Մութ թեմա</string>
+    <string name="pref_dark_theme_system">Մուգ գույները կիրառման տեսքով</string>
+    <string name="remove">Հեռացնել</string>
+    <string name="unknown_permission_description">Անհայտ թույլտվություն</string>
+    <string name="required_permissions">Պահանջվող թույլտվություններ</string>
+    <string name="unable_to_get_permissions">Հնարավոր չէ ստանալ ցանկի կամ հավելվածի պահանջվող թույլտվությունները</string>
+    <string name="no_requested_permissions">Հավելվածը պահանջված թույլտվություններ չունի:</string>
+</resources>

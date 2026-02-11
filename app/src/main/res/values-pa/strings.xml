@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d ਬੀ</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">ਕ੍ਰਿਪਾ ਕਰਕੇ ਉਡੀਕ ਕਰੋ…</string>
+    <string name="app_extract_success">&lt;b&gt;ਡਾਊਨਲੋਡ&lt;/b&gt; ਡਾਇਰੈਕਟਰੀ ਵਿੱਚ ਸਫਲਤਾਪੂਰਵਕ ਐਕਸਟਰੈਕਟ ਕੀਤਾ ਗਿਆ</string>
+    <string name="app_extract_failed">ਨਿਰਯਾਤ ਕਰਨਾ ਅਸਫਲ ਰਿਹਾ :(</string>
+    <string name="refresh">ਤਾਜ਼ਾ ਕਰੋ</string>
+    <string name="tomclaw_software">TomClaw ਸਾਫਟਵੇਅਰ</string>
+    <string name="app_version">ਸੰਸਕਰਣ %1$s (%2$d)</string>
+    <string name="info">ਜਾਣਕਾਰੀ</string>
+    <string name="rate_app">ਇਸ ਐਪਲੀਕੇਸ਼ਨ ਨੂੰ ਦਰਜਾ ਦਿਓ</string>
+    <string name="all_apps">ਲੇਖਕ ਦੀਆਂ ਅਰਜ਼ੀਆਂ</string>
+    <string name="pref_base_title">ਅਧਾਰ ਸੈਟਿੰਗਾਂ</string>
+    <string name="pref_summary_show_system">ਸੂਚੀ ਵਿੱਚ ਸਿਸਟਮ ਐਪਲੀਕੇਸ਼ਨ ਦਿਖਾਓ</string>
+    <string name="pref_summary_runnable">ਸਿਰਫ਼ ਚੱਲਣਯੋਗ ਪੈਕੇਜ ਦਿਖਾਓ</string>
+    <string name="pref_title_show_system">ਸਿਸਟਮ ਐਪਸ</string>
+    <string name="pref_title_runnable">ਚੱਲਣਯੋਗ ਪੈਕੇਜ</string>
+    <string name="got_it">ਮਿਲ ਗਿਆ!</string>
+    <string name="system_apps_warning_title">ਚੇਤਾਵਨੀ!</string>
+    <string name="system_apps_warning_message">ਸਿਸਟਮ ਐਪਸ ਆਮ ਐਪਸ ਨਹੀਂ ਹਨ ਅਤੇ ਇਸਦੀ ਕੋਈ ਵਾਰੰਟੀ ਨਹੀਂ ਹੈ
+        ਸਫਲ ਨਿਰਯਾਤ!</string>
+    <string name="settings">ਸੈਟਿੰਗਾਂ</string>
+    <string name="send_to">ਨਾਲ ਸਾਂਝਾ ਕਰੋ</string>
+    <string name="pref_title_sort_order">ਕ੍ਰਮਬੱਧ ਕ੍ਰਮ</string>
+    <string name="sort_order_ascending">ਏ - ਜ਼ੈੱਡ</string>
+    <string name="sort_order_descending">ਜ਼ੈੱਡ - ਏ</string>
+    <string name="sort_order_app_size">ਐਪ ਦੇ ਆਕਾਰ ਦੁਆਰਾ</string>
+    <string name="sort_order_install_time">ਇੰਸਟੌਲ ਸਮੇਂ ਦੁਆਰਾ</string>
+    <string name="sort_order_update_time">ਅਪਡੇਟ ਸਮੇਂ ਦੁਆਰਾ</string>
+    <string name="pref_summary_sort_order">ਐਪਾਂ ਦੀ ਸੂਚੀ ਕ੍ਰਮਬੱਧ ਰੂਪਾਂਤਰ</string>
+    <string name="extract_apk">apk ਨੂੰ ਡਾਊਨਲੋਡ ਵਿੱਚ ਐਕਸਟਰੈਕਟ ਕਰੋ</string>
+    <string name="share_apk">ਐਪਸ ਦੁਆਰਾ ਏਪੀਕੇ ਨੂੰ ਸਾਂਝਾ ਕਰੋ</string>
+    <string name="find_on_gp">Google Play ਵਿੱਚ ਲੱਭੋ</string>
+    <string name="pref_title_clear_cache">ਕੈਸ਼ ਸਾਫ਼ ਕਰੋ</string>
+    <string name="pref_summary_clear_cache">ਡਾਊਨਲੋਡ ਡਾਇਰੈਕਟਰੀ ਵਿੱਚ ਪਹਿਲਾਂ ਤੋਂ ਐਕਸਟਰੈਕਟ ਕੀਤੀਆਂ ਸਾਰੀਆਂ ਏਪੀਕੇ ਫਾਈਲਾਂ ਨੂੰ ਹਟਾਓ</string>
+    <string name="cache_cleared_successfully">ਕੈਸ਼ ਸਫਲਤਾਪੂਰਵਕ ਕਲੀਅਰ ਕੀਤਾ ਗਿਆ</string>
+    <string name="cache_clearing_failed">ਕੈਸ਼ ਕਲੀਅਰਿੰਗ ਅਸਫਲ ਰਹੀ</string>
+    <string name="write_permission_extract">ਐਪਲੀਕੇਸ਼ਨ ਫਾਈਲ ਨੂੰ ਸੁਰੱਖਿਅਤ ਕਰਨ ਲਈ ਤੁਹਾਨੂੰ ਸਟੋਰੇਜ ਦੀ ਇਜਾਜ਼ਤ ਦੇਣ ਦੀ ਲੋੜ ਹੋਵੇਗੀ</string>
+    <string name="menu_search">ਖੋਜ</string>
+    <string name="run_app">ਐਪਲੀਕੇਸ਼ਨ ਚਲਾਓ</string>
+    <string name="non_launchable_package">ਇਹ ਪੈਕੇਜ ਚਲਾਉਣਯੋਗ ਨਹੀਂ ਹੈ।</string>
+    <string name="app_details">ਵੇਰਵੇ ਦਿਖਾਓ</string>
+    <string name="pref_title_dark_theme">ਗੂੜ੍ਹਾ ਥੀਮ</string>
+    <string name="pref_dark_theme_system">ਐਪਲੀਕੇਸ਼ਨ ਦੀ ਦਿੱਖ ਵਿੱਚ ਗੂੜ੍ਹੇ ਰੰਗ</string>
+    <string name="remove">ਹਟਾਓ</string>
+    <string name="unknown_permission_description">ਅਗਿਆਤ ਇਜਾਜ਼ਤ</string>
+    <string name="required_permissions">ਲੋੜੀਂਦੀਆਂ ਇਜਾਜ਼ਤਾਂ</string>
+    <string name="unable_to_get_permissions">ਸੂਚੀ ਜਾਂ ਐਪ ਦੀਆਂ ਲੋੜੀਂਦੀਆਂ ਇਜਾਜ਼ਤਾਂ ਪ੍ਰਾਪਤ ਕਰਨ ਵਿੱਚ ਅਸਮਰੱਥ</string>
+    <string name="no_requested_permissions">ਐਪ ਕੋਲ ਅਨੁਮਤੀ ਦੀ ਬੇਨਤੀ ਨਹੀਂ ਹੈ।</string>
+</resources>

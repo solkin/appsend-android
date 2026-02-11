@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d ב</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">ביטע, וואַרטן ...</string>
+    <string name="app_extract_success">הצלחה עקסטראַקטעד צו &lt;b&gt;Downloads&lt;/b&gt; וועגווייַזער</string>
+    <string name="app_extract_failed">עקספּאָרטינג ניט אַנדערש :(</string>
+    <string name="refresh">דערפרישן</string>
+    <string name="tomclaw_software">TomClaw ווייכווארג</string>
+    <string name="app_version">ווערסיע %1$s (%2$d)</string>
+    <string name="info">אינפֿאָרמאַציע</string>
+    <string name="rate_app">אָפּשאַצן דעם אַפּלאַקיישאַן</string>
+    <string name="all_apps">מחבר ס אַפּלאַקיישאַנז</string>
+    <string name="pref_base_title">באַזע סעטטינגס</string>
+    <string name="pref_summary_show_system">ווייַזן סיסטעם אַפּלאַקיישאַנז אין דער רשימה</string>
+    <string name="pref_summary_runnable">ווייַזן בלויז ראַנאַבאַל פּאַקאַדזשאַז</string>
+    <string name="pref_title_show_system">סיסטעם אַפּפּס</string>
+    <string name="pref_title_runnable">פליסנדיק פּאַקאַדזשאַז</string>
+    <string name="got_it">גוט!</string>
+    <string name="system_apps_warning_title">ווארענונג!</string>
+    <string name="system_apps_warning_message">סיסטעם אַפּפּס זענען נישט געוויינטלעך אַפּפּס און עס איז קיין וואָראַנטי פון זייַן
+        מצליח אַרויספירן!</string>
+    <string name="settings">סעטטינגס</string>
+    <string name="send_to">ייַנטיילן מיט</string>
+    <string name="pref_title_sort_order">סאָרט סדר</string>
+    <string name="sort_order_ascending">א — ז</string>
+    <string name="sort_order_descending">ז — א</string>
+    <string name="sort_order_app_size">לויט אַפּ גרייס</string>
+    <string name="sort_order_install_time">דורך ינסטאַלירונג צייט</string>
+    <string name="sort_order_update_time">דורך דערהייַנטיקן צייט</string>
+    <string name="pref_summary_sort_order">אַפּפּס רשימה סאָרט סדר וועריאַנץ</string>
+    <string name="extract_apk">עקסטראַקט אַפּק אין דאַונלאָודז</string>
+    <string name="share_apk">ייַנטיילן אַפּק דורך אַפּפּס</string>
+    <string name="find_on_gp">געפֿינען אין Google פּלייַ</string>
+    <string name="pref_title_clear_cache">ויסמעקן קאַש</string>
+    <string name="pref_summary_clear_cache">אַראָפּנעמען אַלע פריער יקסטראַקטיד אַפּק טעקעס אין דאַונלאָודז וועגווייַזער</string>
+    <string name="cache_cleared_successfully">קאַש קלירד הצלחה</string>
+    <string name="cache_clearing_failed">קאַש קלירינג ניט אַנדערש</string>
+    <string name="write_permission_extract">אין סדר צו ראַטעווען אַפּלאַקיישאַן טעקע איר דאַרפֿן צו געבן סטאָרידזש דערלויבעניש</string>
+    <string name="menu_search">זוכן</string>
+    <string name="run_app">לויפן אַפּלאַקיישאַן</string>
+    <string name="non_launchable_package">דער פּעקל איז נישט פליסנדיק.</string>
+    <string name="app_details">ווייַזן דעטאַילס</string>
+    <string name="pref_title_dark_theme">טונקל טעמע</string>
+    <string name="pref_dark_theme_system">טונקל פארבן אין אַפּלאַקיישאַן אויסזען</string>
+    <string name="remove">אַראָפּנעמען</string>
+    <string name="unknown_permission_description">אומבאַקאַנט דערלויבעניש</string>
+    <string name="required_permissions">פארלאנגט פּערמישאַנז</string>
+    <string name="unable_to_get_permissions">ניט געקענט באַקומען רשימה אָדער אַפּ ס פארלאנגט פּערמישאַנז</string>
+    <string name="no_requested_permissions">אַפּ האט נישט געבעטן פּערמישאַנז.</string>
+</resources>

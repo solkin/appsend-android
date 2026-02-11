@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Jekk jogħġbok, stenna...</string>
+    <string name="app_extract_success">Estratt b\'suċċess fid-direttorju ta\' &lt;b&gt;Downloads&lt;/b&gt;</string>
+    <string name="app_extract_failed">L-esportazzjoni falliet :(</string>
+    <string name="refresh">Aġġorna</string>
+    <string name="tomclaw_software">Software TomClaw</string>
+    <string name="app_version">Verżjoni %1$s (%2$d)</string>
+    <string name="info">Info</string>
+    <string name="rate_app">Rata din l-applikazzjoni</string>
+    <string name="all_apps">Applikazzjonijiet tal-awtur</string>
+    <string name="pref_base_title">Settings bażi</string>
+    <string name="pref_summary_show_system">Uri l-applikazzjonijiet tas-sistema fil-lista</string>
+    <string name="pref_summary_runnable">Uri pakketti li jistgħu jitħaddmu biss</string>
+    <string name="pref_title_show_system">Apps tas-sistema</string>
+    <string name="pref_title_runnable">Pakketti li jistgħu jitħaddmu</string>
+    <string name="got_it">Ghandek!</string>
+    <string name="system_apps_warning_title">Twissija!</string>
+    <string name="system_apps_warning_message">Apps tas-sistema mhumiex apps tas-soltu u m\'hemm l-ebda garanzija tagħha
+        esportazzjoni b\'suċċess!</string>
+    <string name="settings">Settings</string>
+    <string name="send_to">Aqsam ma\'</string>
+    <string name="pref_title_sort_order">Sort order</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Skont id-daqs tal-app</string>
+    <string name="sort_order_install_time">Saż-żmien tal-installazzjoni</string>
+    <string name="sort_order_update_time">Permezz tal-ħin tal-aġġornament</string>
+    <string name="pref_summary_sort_order">Apps lista varjanti ta \'ordni ta\' sort</string>
+    <string name="extract_apk">Estratt apk f\'Downloads</string>
+    <string name="share_apk">Aqsam l-apk permezz ta\' apps</string>
+    <string name="find_on_gp">Sib fil-Google Play</string>
+    <string name="pref_title_clear_cache">Ċar il-cache</string>
+    <string name="pref_summary_clear_cache">Neħħi l-fajls APK kollha estratti qabel fid-direttorju tat-Tniżżil</string>
+    <string name="cache_cleared_successfully">Il-cache tnaddaf b\'suċċess</string>
+    <string name="cache_clearing_failed">L-ikklerjar tal-cache falla</string>
+    <string name="write_permission_extract">Sabiex issalva l-fajl tal-applikazzjoni ser ikollok bżonn tagħti permess għall-ħażna</string>
+    <string name="menu_search">Fittex</string>
+    <string name="run_app">Mexxi l-applikazzjoni</string>
+    <string name="non_launchable_package">Dan il-pakkett ma jistax jitħaddem.</string>
+    <string name="app_details">Uri d-dettalji</string>
+    <string name="pref_title_dark_theme">Tema skura</string>
+    <string name="pref_dark_theme_system">Kuluri skuri fid-dehra tal-applikazzjoni</string>
+    <string name="remove">Neħħi</string>
+    <string name="unknown_permission_description">Permess mhux magħruf</string>
+    <string name="required_permissions">Permessi meħtieġa</string>
+    <string name="unable_to_get_permissions">Ma tistax tikseb il-permessi meħtieġa tal-lista jew tal-app</string>
+    <string name="no_requested_permissions">App m\'għandhiex permessi mitluba.</string>
+</resources>

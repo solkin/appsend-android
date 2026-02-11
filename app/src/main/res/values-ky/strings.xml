@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d Б</string>
+    <string name="kibibytes">%.1f КБ</string>
+    <string name="mibibytes">%.1f МБ</string>
+    <string name="gigibytes">%.1f ГБ</string>
+    <string name="please_wait">Сураныч, күтө туруңуз…</string>
+    <string name="app_extract_success">&lt;b&gt;Жүктөлүүлөр&lt;/b&gt; каталогуна ийгиликтүү чыгарылды</string>
+    <string name="app_extract_failed">Экспорттолбой калды :(</string>
+    <string name="refresh">Жаңылоо</string>
+    <string name="tomclaw_software">TomClaw Программасы</string>
+    <string name="app_version">Версия %1$s (%2$d)</string>
+    <string name="info">Маалымат</string>
+    <string name="rate_app">Бул колдонмону баалаңыз</string>
+    <string name="all_apps">Автордук өтүнмөлөр</string>
+    <string name="pref_base_title">Негизги орнотуулар</string>
+    <string name="pref_summary_show_system">Системалык колдонмолорду тизмеде көрсөтүү</string>
+    <string name="pref_summary_runnable">Иштетүү пакеттерин гана көрсөтүү</string>
+    <string name="pref_title_show_system">Системалык колдонмолор</string>
+    <string name="pref_title_runnable">Иштетүү пакеттери</string>
+    <string name="got_it">Түшүндүм!</string>
+    <string name="system_apps_warning_title">Эскертүү!</string>
+    <string name="system_apps_warning_message">Тутум колдонмолору кадимки колдонмолор эмес жана ага кепилдик жок
+        ийгиликтүү экспорт!</string>
+    <string name="settings">Орнотуулар</string>
+    <string name="send_to">менен бөлүшүү</string>
+    <string name="pref_title_sort_order">Сорттоо тартиби</string>
+    <string name="sort_order_ascending">А - З</string>
+    <string name="sort_order_descending">З - А</string>
+    <string name="sort_order_app_size">Колдонмонун өлчөмү боюнча</string>
+    <string name="sort_order_install_time">Орнотуу убактысы боюнча</string>
+    <string name="sort_order_update_time">Жаңыртуу убактысы боюнча</string>
+    <string name="pref_summary_sort_order">Колдонмолор иреттөө иретинин варианттарын тизмелейт</string>
+    <string name="extract_apk">APK\'ди Жүктөлүп алынгандарга чыгарып алыңыз</string>
+    <string name="share_apk">Колдонмолор аркылуу APK бөлүшүңүз</string>
+    <string name="find_on_gp">Google Play\'ден табыңыз</string>
+    <string name="pref_title_clear_cache">Кэшти тазалоо</string>
+    <string name="pref_summary_clear_cache">Жүктөлүп алынгандар каталогунан мурда алынган бардык APK файлдарын алып салыңыз</string>
+    <string name="cache_cleared_successfully">Кэш ийгиликтүү тазаланды</string>
+    <string name="cache_clearing_failed">Кэш тазаланган жок</string>
+    <string name="write_permission_extract">Колдонмонун файлын сактоо үчүн сактоого уруксат беришиңиз керек</string>
+    <string name="menu_search">Издөө</string>
+    <string name="run_app">Колдонмону иштетүү</string>
+    <string name="non_launchable_package">Бул пакет иштетилбейт.</string>
+    <string name="app_details">Деталдарды көрсөтүү</string>
+    <string name="pref_title_dark_theme">Караңгы тема</string>
+    <string name="pref_dark_theme_system">Колдонмонун көрүнүшүндө кара түстөр</string>
+    <string name="remove">Алып салуу</string>
+    <string name="unknown_permission_description">Белгисиз уруксат</string>
+    <string name="required_permissions">Талап кылынган уруксаттар</string>
+    <string name="unable_to_get_permissions">Тизмени же колдонмонун талап кылынган уруксаттарын алуу мүмкүн эмес</string>
+    <string name="no_requested_permissions">Колдонмонун суралган уруксаттары жок.</string>
+</resources>

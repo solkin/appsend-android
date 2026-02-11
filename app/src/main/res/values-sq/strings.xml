@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">AppSend</string>
+    <string name="bytes">%d B</string>
+    <string name="kibibytes">%.1f KB</string>
+    <string name="mibibytes">%.1f MB</string>
+    <string name="gigibytes">%.1f GB</string>
+    <string name="please_wait">Ju lutem prisni…</string>
+    <string name="app_extract_success">U nxirr me sukses në drejtorinë &lt;b&gt;Shkarkime&lt;/b&gt;</string>
+    <string name="app_extract_failed">Eksportimi dështoi :(</string>
+    <string name="refresh">Rifresko</string>
+    <string name="tomclaw_software">Softueri TomClaw</string>
+    <string name="app_version">Versioni %1$s (%2$d)</string>
+    <string name="info">Informacion</string>
+    <string name="rate_app">Vlerësoni këtë aplikacion</string>
+    <string name="all_apps">Aplikacionet e autorit</string>
+    <string name="pref_base_title">Cilësimet bazë</string>
+    <string name="pref_summary_show_system">Shfaq aplikacionet e sistemit në listë</string>
+    <string name="pref_summary_runnable">Shfaq vetëm paketat e ekzekutueshme</string>
+    <string name="pref_title_show_system">Aplikacionet e sistemit</string>
+    <string name="pref_title_runnable">Paketat e ekzekutueshme</string>
+    <string name="got_it">E kuptova!</string>
+    <string name="system_apps_warning_title">Paralajmërim!</string>
+    <string name="system_apps_warning_message">Aplikacionet e sistemit nuk janë aplikacione të zakonshme dhe nuk ka asnjë garanci për të
+        eksport i suksesshëm!</string>
+    <string name="settings">Cilësimet</string>
+    <string name="send_to">Ndaje me</string>
+    <string name="pref_title_sort_order">Renditja e renditjes</string>
+    <string name="sort_order_ascending">A - Z</string>
+    <string name="sort_order_descending">Z - A</string>
+    <string name="sort_order_app_size">Sipas madhësisë së aplikacionit</string>
+    <string name="sort_order_install_time">Sipas kohës së instalimit</string>
+    <string name="sort_order_update_time">Me kohën e përditësimit</string>
+    <string name="pref_summary_sort_order">Variantet e renditjes së listës së aplikacioneve</string>
+    <string name="extract_apk">Ekstraktoni apk në Shkarkime</string>
+    <string name="share_apk">Ndani apk përmes aplikacioneve</string>
+    <string name="find_on_gp">Gjeni në Google Play</string>
+    <string name="pref_title_clear_cache">Pastro cache</string>
+    <string name="pref_summary_clear_cache">Hiq të gjithë skedarët APK të nxjerrë më parë në direktorinë e Shkarkimeve</string>
+    <string name="cache_cleared_successfully">Cache u pastrua me sukses</string>
+    <string name="cache_clearing_failed">Pastrimi i cache-it dështoi</string>
+    <string name="write_permission_extract">Për të ruajtur skedarin e aplikacionit, do t\'ju duhet të jepni lejen e ruajtjes</string>
+    <string name="menu_search">Kërko</string>
+    <string name="run_app">Ekzekutoni aplikacionin</string>
+    <string name="non_launchable_package">Kjo paketë nuk mund të ekzekutohet.</string>
+    <string name="app_details">Trego detajet</string>
+    <string name="pref_title_dark_theme">Tema e errët</string>
+    <string name="pref_dark_theme_system">Ngjyra të errëta në pamjen e aplikimit</string>
+    <string name="remove">Hiq</string>
+    <string name="unknown_permission_description">Leje e panjohur</string>
+    <string name="required_permissions">Lejet e kërkuara</string>
+    <string name="unable_to_get_permissions">Nuk mund të merren lejet e kërkuara të listës ose aplikacionit</string>
+    <string name="no_requested_permissions">Aplikacioni nuk ka leje të kërkuara.</string>
+</resources>
