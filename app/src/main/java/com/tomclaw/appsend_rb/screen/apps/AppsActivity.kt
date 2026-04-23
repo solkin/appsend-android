@@ -174,7 +174,7 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         val intent = Intent().apply {
             action = ACTION_SEND
             putExtra(EXTRA_STREAM, uri)
-            type = "application/zip"
+            type = APK_MIME_TYPE
         }
         grantProviderUriPermission(this, uri, intent)
         startActivity(createChooser(intent, resources.getText(R.string.send_to)))

@@ -144,7 +144,7 @@ class AppsInteractorImpl(
                 var outputStream: OutputStream? = null
                 val uri = outputWrapper.getOutputUri(
                     getApkName(entity),
-                    "application/vnd.android.package-archive"
+                    APK_MIME_TYPE
                 )
                 val file = File(entity.path)
                 try {

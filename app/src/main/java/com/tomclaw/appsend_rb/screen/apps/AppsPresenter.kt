@@ -162,7 +162,9 @@ class AppsPresenterImpl(
             .doAfterTerminate { view?.showContent() }
             .subscribe({ entities ->
                 applyAppEntities(entities)
-            }, {})
+            }, {
+                view?.showAppsLoadingError()
+            })
     }
 
     private fun filterApps(query: String) {

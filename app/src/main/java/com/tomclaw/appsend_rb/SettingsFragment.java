@@ -1,7 +1,5 @@
 package com.tomclaw.appsend_rb;
 
-import static com.tomclaw.appsend_rb.util.FilesKt.getExternalDirectory;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -10,8 +8,7 @@ import android.widget.Toast;
 import com.github.machinarius.preferencefragment.PreferenceFragment;
 import com.tomclaw.appsend_rb.core.PleaseWaitTask;
 import com.tomclaw.appsend_rb.core.TaskExecutor;
-
-import java.io.File;
+import com.tomclaw.appsend_rb.screen.apps.OutputWrapperImpl;
 
 /**
  * Created by Solkin on 12.01.2015.
@@ -23,16 +20,18 @@ public class SettingsFragment extends PreferenceFragment {
         addPreferencesFromResource(R.xml.preferences);
         Preference myPref = findPreference(getString(R.string.pref_clear_cache));
         myPref.setOnPreferenceClickListener(preference -> {
-            TaskExecutor.getInstance().execute(new PleaseWaitTask(getActivity()) {
+            Context context = getActivity();
+            if (context == null) {
+                return true;
+            }
+            OutputWrapperImpl outputWrapper = new OutputWrapperImpl(
+                    context.getApplicationContext(),
+                    context.getContentResolver()
+            );
+            TaskExecutor.getInstance().execute(new PleaseWaitTask(context) {
                 @Override
                 public void executeBackground() {
-                    File directory = getExternalDirectory();
-                    File[] files = directory.listFiles(pathname -> pathname.getName().endsWith(".apk"));
-                    if (files != null) {
-                        for (File file : files) {
-                            file.delete();
-                        }
-                    }
+                    outputWrapper.clearExports();
                 }
 
                 @Override
