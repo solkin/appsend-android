@@ -6,7 +6,7 @@
     <string name="mibibytes">%.1f MB</string>
     <string name="gigibytes">%.1f GB</string>
     <string name="please_wait">お待ちください…</string>
-    <string name="app_extract_success">&Lt;b>ダウンロード&lt;/b>ディレクトリに正常に解凍されました</string>
+    <string name="app_extract_success">&lt;b>ダウンロード&lt;/b>ディレクトリに正常に解凍されました</string>
     <string name="app_extract_failed">アプリの解凍に失敗しました :(</string>
     <string name="refresh">アップデート</string>
     <string name="tomclaw_software">TomClaw Software</string>

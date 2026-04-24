@@ -6,7 +6,7 @@
     <string name="mibibytes">%.1F M</string>
     <string name="gigibytes">%.1GB m</string>
     <string name="please_wait">Xin vui lòng chờ đợi.…</string>
-    <string name="app_extract_success">Trích xuất thành công vào thư mục <B>Tải xuống</b></string>
+    <string name="app_extract_success">Trích xuất thành công vào thư mục &lt;b>Tải xuống&lt;/b></string>
     <string name="app_extract_failed">Không thể trích xuất ứng dụng: (</string>
     <string name="refresh">Cập nhật</string>
     <string name="tomclaw_software">Phần Mềm TomClaw</string>

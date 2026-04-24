@@ -1,6 +1,6 @@
 name: AppSend Build
 permissions:
-  contents: write
+  contents: read
 on:
   pull_request:
     branches:
@@ -10,10 +10,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        build_type: [debug]
 
     steps:
       - name: Checkout repository
@@ -28,11 +24,17 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
+      - name: Run unit tests
+        run: ./gradlew testDebugUnitTest
+
+      - name: Run lint
+        run: ./gradlew lintDebug
+
       - name: Build APK
-        run: ./gradlew assemble${{ matrix.build_type }} -PstoreFile=${{ secrets.STORE_FILE }} -PstorePassword=${{ secrets.STORE_PASSWORD }} -PkeyAlias=${{ secrets.KEY_ALIAS }} -PkeyPassword=${{ secrets.KEY_PASSWORD }}
+        run: ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v6
         with:
-          name: appsend-apk-${{ matrix.build_type }}-${{ github.run_id }}
-          path: app/build/outputs/apk/${{ matrix.build_type }}/app-${{ matrix.build_type }}.apk
+          name: appsend-apk-debug-${{ github.run_id }}
+          path: app/build/outputs/apk/debug/app-debug.apk

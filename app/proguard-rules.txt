@@ -1,0 +1,5 @@
+# Project-specific R8 rules.
+#
+# Most dependencies used by the app ship their own consumer rules. Keep this
+# file referenced from app/build.gradle so release builds have a single place
+# for future app-specific rules.
