@@ -169,9 +169,14 @@ class AppsPresenterImpl(
 
     private fun filterApps(query: String) {
         entities.takeIf { it != null }
-            ?.filter { it.label.contains(query, true) }
+            ?.filter { it.matchesSearchQuery(query) }
             ?.run { bindAppEntities(this) }
             ?: loadAppItems()
+    }
+
+    private fun AppEntity.matchesSearchQuery(query: String): Boolean {
+        return label.contains(query, ignoreCase = true) ||
+                packageName.contains(query, ignoreCase = true)
     }
 
     private fun applyAppEntities(entities: List<AppEntity>) {
