@@ -46,7 +46,7 @@ interface AppsPresenter : ItemClickListener {
 
         fun showRequestedPermissions(permissions: List<String>)
 
-        fun showAppDetails(packageName: String)
+        fun showAppDetails(entity: AppEntity)
 
         fun runAppUninstall(packageName: String)
 
@@ -124,8 +124,7 @@ class AppsPresenterImpl(
             )
             ACTION_SHOW_PERMISSIONS -> showPermissions(item)
             ACTION_SHOW_DETAILS -> {
-                packageMayBeDeleted = item.packageName
-                router?.showAppDetails(item.packageName)
+                showAppDetails(item)
             }
             ACTION_REMOVE_APP -> {
                 packageMayBeDeleted = item.packageName
@@ -229,6 +228,11 @@ class AppsPresenterImpl(
             }, {
                 view?.showUnableToGetPermissionsError()
             })
+    }
+
+    private fun showAppDetails(item: AppItem) {
+        entities?.find { it.packageName == item.packageName }
+            ?.let { router?.showAppDetails(it) }
     }
 
     override fun saveState() = Bundle().apply {

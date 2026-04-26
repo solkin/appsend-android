@@ -50,6 +50,9 @@
             android:name=".screen.permissions.PermissionsActivity"
             android:label="@string/required_permissions" />
         <activity
+            android:name=".screen.details.AppDetailsActivity"
+            android:label="@string/app_details" />
+        <activity
             android:name="com.tomclaw.appsend_rb.SettingsActivity"
             android:label="@string/settings" />
     </application>

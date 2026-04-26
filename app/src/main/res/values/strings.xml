@@ -53,4 +53,27 @@
     <string name="required_permissions">Required permissions</string>
     <string name="unable_to_get_permissions">Unable to get list or app\'s required permissions</string>
     <string name="no_requested_permissions">App does not have requested permissions.</string>
+    <string name="app_details_copy_package">Copy package name</string>
+    <string name="app_details_package_copied">Package name copied</string>
+    <string name="app_details_package">Package name</string>
+    <string name="app_details_version">Version</string>
+    <string name="app_details_version_value">%1$s (%2$d)</string>
+    <string name="app_details_unknown_value">Unknown</string>
+    <string name="app_details_installed">Installed</string>
+    <string name="app_details_updated">Updated</string>
+    <string name="app_details_size">Size</string>
+    <string name="app_details_path">Path</string>
+    <string name="app_details_permissions">Permissions</string>
+    <string name="app_details_open_permissions">Open permissions</string>
+    <string name="app_details_open_system_details">Open system details</string>
+    <string name="app_details_status">Status</string>
+    <string name="app_details_status_user">User app</string>
+    <string name="app_details_status_system">System app</string>
+    <string name="app_details_status_single">single APK</string>
+    <string name="app_details_status_split">split APK</string>
+    <string name="app_details_status_value">%1$s, %2$s</string>
+    <plurals name="app_details_permissions_count">
+        <item quantity="one">%d requested</item>
+        <item quantity="other">%d requested</item>
+    </plurals>
 </resources>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="6dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="@dimen/cardview_elevation">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:id="@+id/app_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/text_primary_color"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:text="AppSend" />
+
+                    <TextView
+                        android:id="@+id/package_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="monospace"
+                        android:textColor="?attr/text_secondary_color"
+                        android:textSize="13sp"
+                        tools:text="com.tomclaw.appsend_rb" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/copy_package"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/app_details_copy_package"
+                        app:cornerRadius="100dp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="@dimen/cardview_elevation">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_details_version"
+                        android:textColor="?attr/text_secondary_color"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/version"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:textColor="?attr/text_primary_color"
+                        android:textSize="16sp"
+                        tools:text="3.7 (83)" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_details_installed"
+                        android:textColor="?attr/text_secondary_color"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/install_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:textColor="?attr/text_primary_color"
+                        android:textSize="16sp"
+                        tools:text="25.04.26" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_details_updated"
+                        android:textColor="?attr/text_secondary_color"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/update_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:textColor="?attr/text_primary_color"
+                        android:textSize="16sp"
+                        tools:text="29.04.26" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_details_size"
+                        android:textColor="?attr/text_secondary_color"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/size"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:textColor="?attr/text_primary_color"
+                        android:textSize="16sp"
+                        tools:text="12.4 MB" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_details_status"
+                        android:textColor="?attr/text_secondary_color"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:textColor="?attr/text_primary_color"
+                        android:textSize="16sp"
+                        tools:text="User app, single APK" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_details_path"
+                        android:textColor="?attr/text_secondary_color"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/path"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="monospace"
+                        android:paddingBottom="10dp"
+                        android:textColor="?attr/text_primary_color"
+                        android:textSize="13sp"
+                        tools:text="/data/app/base.apk" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_details_permissions"
+                        android:textColor="?attr/text_secondary_color"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/permissions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/text_primary_color"
+                        android:textSize="16sp"
+                        tools:text="8 requested" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/open_permissions"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/app_details_open_permissions"
+                        app:cornerRadius="100dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/open_system_details"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/app_details_open_system_details"
+                        app:cornerRadius="100dp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <include layout="@layout/toolbar" />
+
+</FrameLayout>

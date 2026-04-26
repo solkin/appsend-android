@@ -13,5 +13,7 @@ data class AppEntity(
     val path: String,
     val size: Long,
     val firstInstallTime: Long,
-    val lastUpdateTime: Long
+    val lastUpdateTime: Long,
+    val system: Boolean,
+    val split: Boolean
 ) : Parcelable

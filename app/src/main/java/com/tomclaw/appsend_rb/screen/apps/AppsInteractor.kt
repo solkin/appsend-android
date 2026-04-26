@@ -77,8 +77,7 @@ class AppsInteractorImpl(
             try {
                 val packageInfo = packageManager.getPackageInfo(info.packageName, GET_PERMISSIONS)
                 createAppEntity(packageInfo)?.let { entity ->
-                    val isUserApp = (info.flags and FLAG_SYSTEM) != FLAG_SYSTEM &&
-                            (info.flags and FLAG_UPDATED_SYSTEM_APP) != FLAG_UPDATED_SYSTEM_APP
+                    val isUserApp = !entity.system
                     if (isUserApp || systemApps) {
                         val launchIntent =
                             packageManager.getLaunchIntentForPackage(info.packageName)
@@ -129,11 +128,18 @@ class AppsInteractorImpl(
                     path = file.path,
                     size = file.length(),
                     firstInstallTime = packageInfo.firstInstallTime,
-                    lastUpdateTime = packageInfo.lastUpdateTime
+                    lastUpdateTime = packageInfo.lastUpdateTime,
+                    system = appInfo.isSystemApp(),
+                    split = !appInfo.splitSourceDirs.isNullOrEmpty()
                 )
             }
         }
         return null
+    }
+
+    private fun android.content.pm.ApplicationInfo.isSystemApp(): Boolean {
+        return (flags and FLAG_SYSTEM) == FLAG_SYSTEM ||
+                (flags and FLAG_UPDATED_SYSTEM_APP) == FLAG_UPDATED_SYSTEM_APP
     }
 
     override fun exportApp(entity: AppEntity): Observable<Uri> {

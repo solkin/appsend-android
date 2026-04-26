@@ -5,15 +5,12 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.Intent.ACTION_SEND
 import android.content.Intent.ACTION_VIEW
-import android.content.Intent.CATEGORY_DEFAULT
 import android.content.Intent.EXTRA_STREAM
-import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION
 import android.content.Intent.createChooser
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
 import com.androidisland.ezpermission.EzPermission
 import com.avito.konveyor.ItemBinder
@@ -21,9 +18,11 @@ import com.avito.konveyor.adapter.AdapterPresenter
 import com.avito.konveyor.adapter.SimpleRecyclerAdapter
 import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.SettingsActivity
+import com.tomclaw.appsend_rb.dto.AppEntity
 import com.tomclaw.appsend_rb.getComponent
 import com.tomclaw.appsend_rb.screen.about.createAboutActivityIntent
 import com.tomclaw.appsend_rb.screen.apps.di.AppsModule
+import com.tomclaw.appsend_rb.screen.details.createAppDetailsActivityIntent
 import com.tomclaw.appsend_rb.screen.permissions.createPermissionsActivityIntent
 import com.tomclaw.appsend_rb.util.ZipParcelable
 import com.tomclaw.appsend_rb.util.grantProviderUriPermission
@@ -150,12 +149,8 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         }
     }
 
-    override fun showAppDetails(packageName: String) {
-        val intent = Intent()
-            .setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-            .addCategory(CATEGORY_DEFAULT)
-            .setData(Uri.parse("package:$packageName"))
-            .addFlags(FLAG_ACTIVITY_NEW_TASK)
+    override fun showAppDetails(entity: AppEntity) {
+        val intent = createAppDetailsActivityIntent(this, entity)
         startActivity(intent)
     }
 

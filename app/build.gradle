@@ -60,6 +60,10 @@ android {
     }
 }
 
+kotlin {
+    jvmToolchain(17)
+}
+
 dependencies {
     implementation project(path: ':preference-fragment')
     implementation project(path: ':statusbar-util')

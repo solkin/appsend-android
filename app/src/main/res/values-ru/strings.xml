@@ -57,4 +57,29 @@
     <string name="required_permissions">Требуемые разрешения</string>
     <string name="unable_to_get_permissions">Не удалось получить список требуемых разрешений приложения</string>
     <string name="no_requested_permissions">Приложение не требует специальных разрешений.</string>
+    <string name="app_details_copy_package">Скопировать имя пакета</string>
+    <string name="app_details_package_copied">Имя пакета скопировано</string>
+    <string name="app_details_package">Имя пакета</string>
+    <string name="app_details_version">Версия</string>
+    <string name="app_details_version_value">%1$s (%2$d)</string>
+    <string name="app_details_unknown_value">Неизвестно</string>
+    <string name="app_details_installed">Установлено</string>
+    <string name="app_details_updated">Обновлено</string>
+    <string name="app_details_size">Размер</string>
+    <string name="app_details_path">Путь</string>
+    <string name="app_details_permissions">Разрешения</string>
+    <string name="app_details_open_permissions">Открыть разрешения</string>
+    <string name="app_details_open_system_details">Открыть системные сведения</string>
+    <string name="app_details_status">Статус</string>
+    <string name="app_details_status_user">Пользовательское приложение</string>
+    <string name="app_details_status_system">Системное приложение</string>
+    <string name="app_details_status_single">один APK</string>
+    <string name="app_details_status_split">split APK</string>
+    <string name="app_details_status_value">%1$s, %2$s</string>
+    <plurals name="app_details_permissions_count">
+        <item quantity="one">%d разрешение</item>
+        <item quantity="few">%d разрешения</item>
+        <item quantity="many">%d разрешений</item>
+        <item quantity="other">%d разрешения</item>
+    </plurals>
 </resources>

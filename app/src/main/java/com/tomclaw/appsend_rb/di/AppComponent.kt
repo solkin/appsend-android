@@ -4,6 +4,8 @@ import com.tomclaw.appsend_rb.screen.about.di.AboutComponent
 import com.tomclaw.appsend_rb.screen.about.di.AboutModule
 import com.tomclaw.appsend_rb.screen.apps.di.AppsComponent
 import com.tomclaw.appsend_rb.screen.apps.di.AppsModule
+import com.tomclaw.appsend_rb.screen.details.di.AppDetailsComponent
+import com.tomclaw.appsend_rb.screen.details.di.AppDetailsModule
 import com.tomclaw.appsend_rb.screen.permissions.di.PermissionsComponent
 import com.tomclaw.appsend_rb.screen.permissions.di.PermissionsModule
 import dagger.Component
@@ -18,5 +20,7 @@ interface AppComponent {
     fun permissionsComponent(module: PermissionsModule): PermissionsComponent
 
     fun aboutComponent(module: AboutModule): AboutComponent
+
+    fun appDetailsComponent(module: AppDetailsModule): AppDetailsComponent
 
 }
