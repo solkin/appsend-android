@@ -37,6 +37,14 @@ interface AppsView {
 
     fun appMenuClicks(): Observable<Pair<Int, AppItem>>
 
+    fun selectionClicks(): Observable<Unit>
+
+    fun batchShareClicks(): Observable<Unit>
+
+    fun batchExtractClicks(): Observable<Unit>
+
+    fun cancelSelectionClicks(): Observable<Unit>
+
     fun searchTextChanged(): Observable<String>
 
     fun searchCloseChanged(): Observable<Unit>
@@ -57,6 +65,12 @@ interface AppsView {
 
     fun showWritePermissionsRequiredError()
 
+    fun showSelectionMode(enabled: Boolean, selectedCount: Int)
+
+    fun showNoAppsSelectedMessage()
+
+    fun showBatchExtractSuccess(count: Int)
+
 }
 
 class AppsViewImpl(
@@ -74,6 +88,10 @@ class AppsViewImpl(
     private val prefsRelay = PublishRelay.create<Unit>()
     private val infoRelay = PublishRelay.create<Unit>()
     private val appMenuRelay = PublishRelay.create<Pair<Int, AppItem>>()
+    private val selectionRelay = PublishRelay.create<Unit>()
+    private val batchShareRelay = PublishRelay.create<Unit>()
+    private val batchExtractRelay = PublishRelay.create<Unit>()
+    private val cancelSelectionRelay = PublishRelay.create<Unit>()
     private val searchTextRelay = PublishRelay.create<String>()
     private val searchCloseRelay = PublishRelay.create<Unit>()
 
@@ -83,6 +101,10 @@ class AppsViewImpl(
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.refresh -> refreshRelay.accept(Unit)
+                R.id.select_apps -> selectionRelay.accept(Unit)
+                R.id.batch_share -> batchShareRelay.accept(Unit)
+                R.id.batch_extract -> batchExtractRelay.accept(Unit)
+                R.id.cancel_selection -> cancelSelectionRelay.accept(Unit)
                 R.id.settings -> prefsRelay.accept(Unit)
                 R.id.info -> infoRelay.accept(Unit)
             }
@@ -137,6 +159,14 @@ class AppsViewImpl(
     override fun infoClicks(): Observable<Unit> = infoRelay
 
     override fun appMenuClicks(): Observable<Pair<Int, AppItem>> = appMenuRelay
+
+    override fun selectionClicks(): Observable<Unit> = selectionRelay
+
+    override fun batchShareClicks(): Observable<Unit> = batchShareRelay
+
+    override fun batchExtractClicks(): Observable<Unit> = batchExtractRelay
+
+    override fun cancelSelectionClicks(): Observable<Unit> = cancelSelectionRelay
 
     override fun searchTextChanged(): Observable<String> = searchTextRelay
 
@@ -204,6 +234,33 @@ class AppsViewImpl(
 
     override fun showWritePermissionsRequiredError() {
         Snackbar.make(recycler, R.string.write_permission_extract, Snackbar.LENGTH_LONG).show()
+    }
+
+    override fun showSelectionMode(enabled: Boolean, selectedCount: Int) {
+        toolbar.setTitle(
+            if (enabled) context.getString(R.string.selected_apps_count, selectedCount)
+            else context.getString(R.string.app_name)
+        )
+        toolbar.menu.findItem(R.id.menu_search)?.isVisible = !enabled
+        toolbar.menu.findItem(R.id.refresh)?.isVisible = !enabled
+        toolbar.menu.findItem(R.id.select_apps)?.isVisible = !enabled
+        toolbar.menu.findItem(R.id.settings)?.isVisible = !enabled
+        toolbar.menu.findItem(R.id.info)?.isVisible = !enabled
+        toolbar.menu.findItem(R.id.batch_share)?.isVisible = enabled
+        toolbar.menu.findItem(R.id.batch_extract)?.isVisible = enabled
+        toolbar.menu.findItem(R.id.cancel_selection)?.isVisible = enabled
+    }
+
+    override fun showNoAppsSelectedMessage() {
+        Snackbar.make(recycler, R.string.no_apps_selected, Snackbar.LENGTH_LONG).show()
+    }
+
+    override fun showBatchExtractSuccess(count: Int) {
+        Snackbar.make(
+            recycler,
+            context.resources.getQuantityString(R.plurals.apps_extract_success, count, count),
+            Snackbar.LENGTH_LONG
+        ).show()
     }
 
 }

@@ -15,6 +15,29 @@
         android:title="@string/refresh"
         app:showAsAction="ifRoom|withText" />
     <item
+        android:id="@+id/batch_share"
+        android:icon="@drawable/share"
+        android:title="@string/share_selected_apks"
+        android:visible="false"
+        app:iconTint="@android:color/white"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/batch_extract"
+        android:icon="@drawable/floppy"
+        android:title="@string/extract_selected_apks"
+        android:visible="false"
+        app:iconTint="@android:color/white"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/cancel_selection"
+        android:title="@string/cancel_selection"
+        android:visible="false"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/select_apps"
+        android:title="@string/select_apps"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/settings"
         android:title="@string/settings"
         app:showAsAction="never" />

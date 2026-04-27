@@ -52,6 +52,8 @@ interface AppsPresenter : ItemClickListener {
 
         fun shareApk(uri: Uri)
 
+        fun shareApks(uris: List<Uri>)
+
         fun requestPermissions(onGranted: () -> Unit, onDenied: () -> Unit)
 
     }
@@ -78,6 +80,10 @@ class AppsPresenterImpl(
     }
 
     private var packageMayBeDeleted: String? = state?.getString(KEY_PACKAGE_MAY_BE_DELETED)
+    private var selectionMode: Boolean = state?.getBoolean(KEY_SELECTION_MODE) ?: false
+    private var selectedPackages: Set<String> = state?.getStringArrayList(KEY_SELECTED_PACKAGES)
+        ?.toSet()
+        ?: emptySet()
 
     private val subscriptions = CompositeDisposable()
 
@@ -87,6 +93,10 @@ class AppsPresenterImpl(
         subscriptions += view.prefsClicks().subscribe { onPrefsClicked() }
         subscriptions += view.infoClicks().subscribe { onInfoClicked() }
         subscriptions += view.appMenuClicks().subscribe { onAppMenuClicked(it) }
+        subscriptions += view.selectionClicks().subscribe { enterSelectionMode() }
+        subscriptions += view.batchShareClicks().subscribe { onBatchShareClicked() }
+        subscriptions += view.batchExtractClicks().subscribe { onBatchExtractClicked() }
+        subscriptions += view.cancelSelectionClicks().subscribe { leaveSelectionMode() }
         subscriptions += view.searchTextChanged().subscribe { text -> filterApps(text) }
         subscriptions += view.searchCloseChanged().subscribe { filterApps("") }
 
@@ -180,15 +190,24 @@ class AppsPresenterImpl(
 
     private fun applyAppEntities(entities: List<AppEntity>) {
         this.entities = entities
+        selectedPackages = selectedPackages.intersect(entities.map { it.packageName }.toSet())
         bindAppEntities(entities)
     }
 
     private fun bindAppEntities(entities: List<AppEntity>) {
         var id: Long = 0
         val items = entities
-            .map { appEntityConverter.convert(id++, it) }
+            .map {
+                appEntityConverter.convert(
+                    id++,
+                    it,
+                    selectable = selectionMode,
+                    selected = selectedPackages.contains(it.packageName)
+                )
+            }
         val dataSource = ListDataSource(items)
         adapterPresenter.get().onDataSourceChanged(dataSource)
+        view?.showSelectionMode(selectionMode, selectedPackages.size)
         view?.contentUpdated()
     }
 
@@ -238,10 +257,16 @@ class AppsPresenterImpl(
     override fun saveState() = Bundle().apply {
         entities?.let { putParcelableArrayList(KEY_ENTITIES, ArrayList(it)) }
         packageMayBeDeleted?.let { putString(KEY_PACKAGE_MAY_BE_DELETED, packageMayBeDeleted) }
+        putBoolean(KEY_SELECTION_MODE, selectionMode)
+        putStringArrayList(KEY_SELECTED_PACKAGES, ArrayList(selectedPackages))
     }
 
     override fun onBackPressed() {
-        router?.leaveScreen()
+        if (selectionMode) {
+            leaveSelectionMode()
+        } else {
+            router?.leaveScreen()
+        }
     }
 
     override fun onResume() {
@@ -265,11 +290,114 @@ class AppsPresenterImpl(
 
     override fun onItemClick(item: Item) {
         when (item) {
-            is AppItem -> view?.showAppMenu(item)
+            is AppItem -> {
+                if (selectionMode) {
+                    toggleSelection(item.packageName)
+                } else {
+                    view?.showAppMenu(item)
+                }
+            }
         }
+    }
+
+    override fun onItemLongClick(item: Item) {
+        when (item) {
+            is AppItem -> {
+                if (!selectionMode) {
+                    selectionMode = true
+                    selectedPackages = selectedPackages + item.packageName
+                    bindCurrentEntities()
+                }
+            }
+        }
+    }
+
+    private fun enterSelectionMode() {
+        selectionMode = true
+        bindCurrentEntities()
+    }
+
+    private fun leaveSelectionMode() {
+        selectionMode = false
+        selectedPackages = emptySet()
+        bindCurrentEntities()
+    }
+
+    private fun toggleSelection(packageName: String) {
+        selectedPackages = if (selectedPackages.contains(packageName)) {
+            selectedPackages - packageName
+        } else {
+            selectedPackages + packageName
+        }
+        bindCurrentEntities()
+    }
+
+    private fun bindCurrentEntities() {
+        entities?.let { bindAppEntities(it) }
+    }
+
+    private fun getSelectedEntities(): List<AppEntity> {
+        return entities.orEmpty().filter { selectedPackages.contains(it.packageName) }
+    }
+
+    private fun onBatchShareClicked() {
+        val selectedEntities = getSelectedEntities()
+        if (selectedEntities.isEmpty()) {
+            view?.showNoAppsSelectedMessage()
+            return
+        }
+        router?.requestPermissions(
+            onGranted = { shareApps(selectedEntities) },
+            onDenied = { view?.showWritePermissionsRequiredError() }
+        )
+    }
+
+    private fun onBatchExtractClicked() {
+        val selectedEntities = getSelectedEntities()
+        if (selectedEntities.isEmpty()) {
+            view?.showNoAppsSelectedMessage()
+            return
+        }
+        router?.requestPermissions(
+            onGranted = { extractApps(selectedEntities) },
+            onDenied = { view?.showWritePermissionsRequiredError() }
+        )
+    }
+
+    private fun shareApps(entities: List<AppEntity>) {
+        subscriptions += io.reactivex.rxjava3.core.Observable.fromIterable(entities)
+            .concatMap { interactor.exportApp(it) }
+            .toList()
+            .observeOn(schedulers.mainThread())
+            .doOnSubscribe { view?.showProgress() }
+            .doAfterTerminate { view?.showContent() }
+            .subscribe({ uris ->
+                leaveSelectionMode()
+                router?.shareApks(uris)
+            }, {
+                view?.showAppExportError()
+            })
+    }
+
+    private fun extractApps(entities: List<AppEntity>) {
+        subscriptions += io.reactivex.rxjava3.core.Observable.fromIterable(entities)
+            .concatMap { interactor.exportApp(it) }
+            .toList()
+            .observeOn(schedulers.mainThread())
+            .doOnSubscribe { view?.showProgress() }
+            .doAfterTerminate { view?.showContent() }
+            .subscribe({ uris ->
+                val count = uris.size
+                leaveSelectionMode()
+                view?.showBatchExtractSuccess(count)
+            }, {
+                view?.showAppExportError()
+            })
     }
 
 }
 
 private const val KEY_ENTITIES = "entities"
 private const val KEY_PACKAGE_MAY_BE_DELETED = "package_may_be_deleted"
+private const val KEY_SELECTION_MODE = "selection_mode"
+private const val KEY_SELECTED_PACKAGES = "selected_packages"

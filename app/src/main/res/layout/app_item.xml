@@ -38,6 +38,18 @@
         android:orientation="horizontal"
         android:padding="4dp">
 
+        <CheckBox
+            android:id="@+id/app_selected"
+            android:layout_width="48dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center_vertical"
+            android:buttonTint="@color/accent_color"
+            android:clickable="false"
+            android:focusable="false"
+            android:visibility="gone"
+            tools:checked="true"
+            tools:visibility="visible" />
+
         <ImageView
             android:id="@+id/app_icon"
             android:layout_width="52dp"

@@ -4,8 +4,10 @@ import android.Manifest
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.Intent.ACTION_SEND
+import android.content.Intent.ACTION_SEND_MULTIPLE
 import android.content.Intent.ACTION_VIEW
 import android.content.Intent.EXTRA_STREAM
+import android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
 import android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION
 import android.content.Intent.createChooser
 import android.net.Uri
@@ -170,8 +172,20 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
             action = ACTION_SEND
             putExtra(EXTRA_STREAM, uri)
             type = APK_MIME_TYPE
+            addFlags(FLAG_GRANT_READ_URI_PERMISSION)
         }
         grantProviderUriPermission(this, uri, intent)
+        startActivity(createChooser(intent, resources.getText(R.string.send_to)))
+    }
+
+    override fun shareApks(uris: List<Uri>) {
+        val intent = Intent().apply {
+            action = ACTION_SEND_MULTIPLE
+            putParcelableArrayListExtra(EXTRA_STREAM, ArrayList(uris))
+            type = APK_MIME_TYPE
+            addFlags(FLAG_GRANT_READ_URI_PERMISSION)
+        }
+        uris.forEach { uri -> grantProviderUriPermission(this, uri, intent) }
         startActivity(createChooser(intent, resources.getText(R.string.send_to)))
     }
 

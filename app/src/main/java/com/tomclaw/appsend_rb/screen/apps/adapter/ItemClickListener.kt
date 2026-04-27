@@ -6,4 +6,6 @@ interface ItemClickListener {
 
     fun onItemClick(item: Item)
 
+    fun onItemLongClick(item: Item)
+
 }

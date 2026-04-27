@@ -15,5 +15,7 @@ data class AppItem(
     val lastUpdateTime: String,
     val versionName: String,
     val versionCode: Long,
-    val newApp: Boolean
+    val newApp: Boolean,
+    val selectable: Boolean,
+    val selected: Boolean
 ) : Item, Parcelable

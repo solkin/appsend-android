@@ -72,8 +72,18 @@
     <string name="app_details_status_single">single APK</string>
     <string name="app_details_status_split">split APK</string>
     <string name="app_details_status_value">%1$s, %2$s</string>
+    <string name="select_apps">Select apps</string>
+    <string name="share_selected_apks">Share</string>
+    <string name="extract_selected_apks">Extract</string>
+    <string name="cancel_selection">Cancel selection</string>
+    <string name="selected_apps_count">%d selected</string>
+    <string name="no_apps_selected">Select at least one app</string>
     <plurals name="app_details_permissions_count">
         <item quantity="one">%d requested</item>
         <item quantity="other">%d requested</item>
+    </plurals>
+    <plurals name="apps_extract_success">
+        <item quantity="one">%d app extracted to Downloads</item>
+        <item quantity="other">%d apps extracted to Downloads</item>
     </plurals>
 </resources>

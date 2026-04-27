@@ -8,13 +8,13 @@ import java.util.concurrent.TimeUnit
 
 interface AppEntityConverter {
 
-    fun convert(id: Long, entity: AppEntity): Item
+    fun convert(id: Long, entity: AppEntity, selectable: Boolean, selected: Boolean): Item
 
 }
 
 class AppEntityConverterImpl(private val resourceProvider: ResourceProvider) : AppEntityConverter {
 
-    override fun convert(id: Long, entity: AppEntity): Item = AppItem(
+    override fun convert(id: Long, entity: AppEntity, selectable: Boolean, selected: Boolean): Item = AppItem(
         id = id,
         icon = createAppIconURI(entity.packageName),
         packageName = entity.packageName,
@@ -24,7 +24,9 @@ class AppEntityConverterImpl(private val resourceProvider: ResourceProvider) : A
         lastUpdateTime = resourceProvider.formatTime(entity.lastUpdateTime),
         versionName = entity.versionName,
         versionCode = entity.versionCode,
-        newApp = entity.lastUpdateTime > System.currentTimeMillis() - TimeUnit.DAYS.toMillis(1)
+        newApp = entity.lastUpdateTime > System.currentTimeMillis() - TimeUnit.DAYS.toMillis(1),
+        selectable = selectable,
+        selected = selected
     )
 
 }

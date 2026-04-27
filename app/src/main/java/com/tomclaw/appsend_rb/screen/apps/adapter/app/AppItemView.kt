@@ -1,6 +1,7 @@
 package com.tomclaw.appsend_rb.screen.apps.adapter.app
 
 import android.view.View
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import com.avito.konveyor.adapter.BaseViewHolder
@@ -25,7 +26,13 @@ interface AppItemView : ItemView {
 
     fun setBadgeVisible(visible: Boolean)
 
+    fun setSelectionVisible(visible: Boolean)
+
+    fun setSelected(selected: Boolean)
+
     fun setOnClickListener(listener: (() -> Unit)?)
+
+    fun setOnLongClickListener(listener: (() -> Unit)?)
 
 }
 
@@ -37,11 +44,17 @@ class AppItemViewHolder(view: View) : BaseViewHolder(view), AppItemView {
     private val size: TextView = view.findViewById(R.id.app_size)
     private val time: TextView = view.findViewById(R.id.app_time)
     private val badge: View = view.findViewById(R.id.badge_new)
+    private val selected: CheckBox = view.findViewById(R.id.app_selected)
 
     private var listener: (() -> Unit)? = null
+    private var longClickListener: (() -> Unit)? = null
 
     init {
         view.setOnClickListener { listener?.invoke() }
+        view.setOnLongClickListener {
+            longClickListener?.invoke()
+            longClickListener != null
+        }
     }
 
     override fun setIcon(url: String?) {
@@ -77,12 +90,29 @@ class AppItemViewHolder(view: View) : BaseViewHolder(view), AppItemView {
         }
     }
 
+    override fun setSelectionVisible(visible: Boolean) {
+        if (visible) {
+            selected.show()
+        } else {
+            selected.hide()
+        }
+    }
+
+    override fun setSelected(selected: Boolean) {
+        this.selected.isChecked = selected
+    }
+
     override fun setOnClickListener(listener: (() -> Unit)?) {
         this.listener = listener
     }
 
+    override fun setOnLongClickListener(listener: (() -> Unit)?) {
+        this.longClickListener = listener
+    }
+
     override fun onUnbind() {
         this.listener = null
+        this.longClickListener = null
     }
 
 }

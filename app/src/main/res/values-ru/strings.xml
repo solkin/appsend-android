@@ -76,10 +76,22 @@
     <string name="app_details_status_single">один APK</string>
     <string name="app_details_status_split">split APK</string>
     <string name="app_details_status_value">%1$s, %2$s</string>
+    <string name="select_apps">Выбрать приложения</string>
+    <string name="share_selected_apks">Поделиться</string>
+    <string name="extract_selected_apks">Извлечь</string>
+    <string name="cancel_selection">Отменить выбор</string>
+    <string name="selected_apps_count">Выбрано: %d</string>
+    <string name="no_apps_selected">Выберите хотя бы одно приложение</string>
     <plurals name="app_details_permissions_count">
         <item quantity="one">%d разрешение</item>
         <item quantity="few">%d разрешения</item>
         <item quantity="many">%d разрешений</item>
         <item quantity="other">%d разрешения</item>
+    </plurals>
+    <plurals name="apps_extract_success">
+        <item quantity="one">%d приложение извлечено в Downloads</item>
+        <item quantity="few">%d приложения извлечены в Downloads</item>
+        <item quantity="many">%d приложений извлечено в Downloads</item>
+        <item quantity="other">%d приложения извлечены в Downloads</item>
     </plurals>
 </resources>

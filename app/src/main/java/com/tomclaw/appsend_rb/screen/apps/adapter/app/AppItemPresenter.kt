@@ -14,7 +14,10 @@ class AppItemPresenter(
         view.setSize(item.size)
         view.setTime(item.lastUpdateTime)
         view.setBadgeVisible(item.newApp)
+        view.setSelectionVisible(item.selectable)
+        view.setSelected(item.selected)
         view.setOnClickListener { listener.onItemClick(item) }
+        view.setOnLongClickListener { listener.onItemLongClick(item) }
     }
 
 }
