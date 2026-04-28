@@ -54,6 +54,8 @@ interface AppsPresenter : ItemClickListener {
 
         fun shareApks(uris: List<Uri>)
 
+        fun showBackupLimitationsWarning(onConfirmed: () -> Unit)
+
         fun requestPermissions(onGranted: () -> Unit, onDenied: () -> Unit)
 
     }
@@ -124,14 +126,8 @@ class AppsPresenterImpl(
                 packageMayBeDeleted = item.packageName
                 router?.openGooglePlay(item.packageName)
             }
-            ACTION_SHARE_APP -> router?.requestPermissions(
-                onGranted = { shareApp(item) },
-                onDenied = { view?.showWritePermissionsRequiredError() }
-            )
-            ACTION_EXTRACT_APP -> router?.requestPermissions(
-                onGranted = { extractApp(item) },
-                onDenied = { view?.showWritePermissionsRequiredError() }
-            )
+            ACTION_SHARE_APP -> shareApp(item)
+            ACTION_EXTRACT_APP -> extractApp(item)
             ACTION_SHOW_PERMISSIONS -> showPermissions(item)
             ACTION_SHOW_DETAILS -> {
                 showAppDetails(item)
@@ -213,6 +209,25 @@ class AppsPresenterImpl(
 
     private fun shareApp(item: AppItem) {
         val entity = entities?.find { it.packageName == item.packageName } ?: return
+        confirmBackupLimitationsIfNeeded(listOf(entity)) {
+            router?.requestPermissions(
+                onGranted = { shareApp(entity) },
+                onDenied = { view?.showWritePermissionsRequiredError() }
+            )
+        }
+    }
+
+    private fun extractApp(item: AppItem) {
+        val entity = entities?.find { it.packageName == item.packageName } ?: return
+        confirmBackupLimitationsIfNeeded(listOf(entity)) {
+            router?.requestPermissions(
+                onGranted = { extractApp(entity) },
+                onDenied = { view?.showWritePermissionsRequiredError() }
+            )
+        }
+    }
+
+    private fun shareApp(entity: AppEntity) {
         subscriptions += interactor.exportApp(entity)
             .observeOn(schedulers.mainThread())
             .doOnSubscribe { view?.showProgress() }
@@ -224,8 +239,7 @@ class AppsPresenterImpl(
             })
     }
 
-    private fun extractApp(item: AppItem) {
-        val entity = entities?.find { it.packageName == item.packageName } ?: return
+    private fun extractApp(entity: AppEntity) {
         subscriptions += interactor.exportApp(entity)
             .observeOn(schedulers.mainThread())
             .doOnSubscribe { view?.showProgress() }
@@ -346,10 +360,12 @@ class AppsPresenterImpl(
             view?.showNoAppsSelectedMessage()
             return
         }
-        router?.requestPermissions(
-            onGranted = { shareApps(selectedEntities) },
-            onDenied = { view?.showWritePermissionsRequiredError() }
-        )
+        confirmBackupLimitationsIfNeeded(selectedEntities) {
+            router?.requestPermissions(
+                onGranted = { shareApps(selectedEntities) },
+                onDenied = { view?.showWritePermissionsRequiredError() }
+            )
+        }
     }
 
     private fun onBatchExtractClicked() {
@@ -358,10 +374,27 @@ class AppsPresenterImpl(
             view?.showNoAppsSelectedMessage()
             return
         }
-        router?.requestPermissions(
-            onGranted = { extractApps(selectedEntities) },
-            onDenied = { view?.showWritePermissionsRequiredError() }
-        )
+        confirmBackupLimitationsIfNeeded(selectedEntities) {
+            router?.requestPermissions(
+                onGranted = { extractApps(selectedEntities) },
+                onDenied = { view?.showWritePermissionsRequiredError() }
+            )
+        }
+    }
+
+    private fun confirmBackupLimitationsIfNeeded(
+        entities: List<AppEntity>,
+        onConfirmed: () -> Unit
+    ) {
+        if (entities.hasBackupLimitations()) {
+            router?.showBackupLimitationsWarning(onConfirmed)
+        } else {
+            onConfirmed()
+        }
+    }
+
+    private fun List<AppEntity>.hasBackupLimitations(): Boolean {
+        return any { it.system || it.split }
     }
 
     private fun shareApps(entities: List<AppEntity>) {

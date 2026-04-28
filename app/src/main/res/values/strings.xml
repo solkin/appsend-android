@@ -78,6 +78,10 @@
     <string name="cancel_selection">Cancel selection</string>
     <string name="selected_apps_count">%d selected</string>
     <string name="no_apps_selected">Select at least one app</string>
+    <string name="backup_limitations_warning_title">Backup limitations</string>
+    <string name="backup_limitations_warning_message">System apps and split APK apps may not be restored as a complete backup. The exported file can miss required split files or depend on firmware/system privileges, so it may not install or work on another device.</string>
+    <string name="continue_anyway">Continue anyway</string>
+    <string name="cancel">Cancel</string>
     <plurals name="app_details_permissions_count">
         <item quantity="one">%d requested</item>
         <item quantity="other">%d requested</item>

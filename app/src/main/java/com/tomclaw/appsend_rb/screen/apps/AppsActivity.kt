@@ -14,6 +14,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AlertDialog
 import com.androidisland.ezpermission.EzPermission
 import com.avito.konveyor.ItemBinder
 import com.avito.konveyor.adapter.AdapterPresenter
@@ -187,6 +188,15 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         }
         uris.forEach { uri -> grantProviderUriPermission(this, uri, intent) }
         startActivity(createChooser(intent, resources.getText(R.string.send_to)))
+    }
+
+    override fun showBackupLimitationsWarning(onConfirmed: () -> Unit) {
+        AlertDialog.Builder(this)
+            .setTitle(R.string.backup_limitations_warning_title)
+            .setMessage(R.string.backup_limitations_warning_message)
+            .setPositiveButton(R.string.continue_anyway) { _, _ -> onConfirmed() }
+            .setNegativeButton(R.string.cancel, null)
+            .show()
     }
 
     override fun requestPermissions(onGranted: () -> Unit, onDenied: () -> Unit) {

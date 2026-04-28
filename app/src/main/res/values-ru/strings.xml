@@ -82,6 +82,10 @@
     <string name="cancel_selection">Отменить выбор</string>
     <string name="selected_apps_count">Выбрано: %d</string>
     <string name="no_apps_selected">Выберите хотя бы одно приложение</string>
+    <string name="backup_limitations_warning_title">Ограничения бэкапа</string>
+    <string name="backup_limitations_warning_message">Системные приложения и split APK могут не восстановиться как полноценный бэкап. Экспортированный файл может не включать нужные split-файлы или зависеть от прошивки и системных привилегий, поэтому он может не установиться или не работать на другом устройстве.</string>
+    <string name="continue_anyway">Всё равно продолжить</string>
+    <string name="cancel">Отмена</string>
     <plurals name="app_details_permissions_count">
         <item quantity="one">%d разрешение</item>
         <item quantity="few">%d разрешения</item>
