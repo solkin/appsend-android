@@ -6,9 +6,14 @@ import android.preference.Preference;
 import android.widget.Toast;
 
 import com.github.machinarius.preferencefragment.PreferenceFragment;
+import com.tomclaw.appsend.util.Analytics;
 import com.tomclaw.appsend_rb.core.PleaseWaitTask;
 import com.tomclaw.appsend_rb.core.TaskExecutor;
 import com.tomclaw.appsend_rb.screen.apps.OutputWrapperImpl;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Solkin on 12.01.2015.
@@ -24,6 +29,8 @@ public class SettingsFragment extends PreferenceFragment {
             if (context == null) {
                 return true;
             }
+            Analytics analytics = ((App) context.getApplicationContext()).getComponent().analytics();
+            analytics.trackEvent("export_cache_clear_started");
             OutputWrapperImpl outputWrapper = new OutputWrapperImpl(
                     context.getApplicationContext(),
                     context.getContentResolver()
@@ -38,6 +45,7 @@ public class SettingsFragment extends PreferenceFragment {
                 public void onSuccessMain() {
                     Context context = getWeakObject();
                     if (context != null) {
+                        analytics.trackEvent("export_cache_clear_succeeded");
                         Toast.makeText(context, R.string.cache_cleared_successfully, Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -46,11 +54,21 @@ public class SettingsFragment extends PreferenceFragment {
                 public void onFailMain(Throwable ex) {
                     Context context = getWeakObject();
                     if (context != null) {
+                        analytics.trackException(ex, tags("event", "export_cache_clear_failed"));
+                        analytics.trackEvent("export_cache_clear_failed", Collections.emptyMap(), Collections.emptyMap());
                         Toast.makeText(context, R.string.cache_clearing_failed, Toast.LENGTH_SHORT).show();
                     }
                 }
             });
             return true;
         });
+    }
+
+    private static Map<String, String> tags(String... pairs) {
+        Map<String, String> result = new HashMap<>();
+        for (int index = 0; index + 1 < pairs.length; index += 2) {
+            result.put(pairs[index], pairs[index + 1]);
+        }
+        return result;
     }
 }

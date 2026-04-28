@@ -1,5 +1,6 @@
 package com.tomclaw.appsend_rb.screen.about
 
+import com.tomclaw.appsend.util.Analytics
 import com.tomclaw.appsend_rb.util.SchedulersFactory
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.plusAssign
@@ -30,7 +31,8 @@ interface AboutPresenter {
 
 class AboutPresenterImpl(
     private val resourceProvider: AboutResourceProvider,
-    private val schedulers: SchedulersFactory
+    private val schedulers: SchedulersFactory,
+    private val analytics: Analytics
 ) : AboutPresenter {
 
     private var view: AboutView? = null
@@ -41,9 +43,19 @@ class AboutPresenterImpl(
     override fun attachView(view: AboutView) {
         this.view = view
 
-        subscriptions += view.navigationClicks().subscribe { router?.leaveScreen() }
-        subscriptions += view.rateClicks().subscribe { router?.openRate() }
-        subscriptions += view.projectsClicks().subscribe { router?.openProjects() }
+        analytics.trackEvent("screen_open", mapOf("screen" to "about"))
+        subscriptions += view.navigationClicks().subscribe {
+            analytics.trackEvent("navigation_back", mapOf("screen" to "about"))
+            router?.leaveScreen()
+        }
+        subscriptions += view.rateClicks().subscribe {
+            analytics.trackEvent("about_action_selected", mapOf("action" to "rate_app"))
+            router?.openRate()
+        }
+        subscriptions += view.projectsClicks().subscribe {
+            analytics.trackEvent("about_action_selected", mapOf("action" to "open_developer_projects"))
+            router?.openProjects()
+        }
 
         bindVersion()
     }
@@ -62,6 +74,7 @@ class AboutPresenterImpl(
     }
 
     override fun onBackPressed() {
+        analytics.trackEvent("navigation_back", mapOf("screen" to "about", "source" to "system_back"))
         router?.leaveScreen()
     }
 

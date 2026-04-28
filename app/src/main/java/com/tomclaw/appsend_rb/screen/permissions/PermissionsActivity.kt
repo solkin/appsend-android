@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.avito.konveyor.ItemBinder
 import com.avito.konveyor.adapter.AdapterPresenter
 import com.avito.konveyor.adapter.SimpleRecyclerAdapter
-import com.tomclaw.appsend.util.Analytics
 import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.getComponent
 import com.tomclaw.appsend_rb.screen.permissions.di.PermissionsModule
@@ -25,9 +24,6 @@ class PermissionsActivity : AppCompatActivity(), PermissionsPresenter.Permission
     @Inject
     lateinit var binder: ItemBinder
 
-    @Inject
-    lateinit var analytics: Analytics
-
     override fun onCreate(savedInstanceState: Bundle?) {
         val permissions = intent?.getStringArrayListExtra(EXTRA_PERMISSIONS)
             ?: throw IllegalArgumentException("Permissions list is required")
@@ -44,10 +40,6 @@ class PermissionsActivity : AppCompatActivity(), PermissionsPresenter.Permission
         val view = PermissionsViewImpl(window.decorView, adapter)
 
         presenter.attachView(view)
-
-        if (savedInstanceState == null) {
-            analytics.trackEvent("open-permissions-screen")
-        }
     }
 
     @Deprecated("Deprecated in Java")

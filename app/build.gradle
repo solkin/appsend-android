@@ -24,7 +24,8 @@ android {
         versionName = "3.7"
         multiDexEnabled true
         manifestPlaceholders = [
-                APPCENTER_APP_ID: "b23ac4e6-fe78-43b4-9ec1-a61c7ed7d495"
+                BANANALYTICS_BASE_URL: "https://bnn.citron.dev",
+                BANANALYTICS_API_KEY  : "bnn_cgQm4fq6Ze1NCBJ9ldJEUSrnO0JrujmV"
         ]
     }
 
@@ -71,8 +72,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.4.0'
     implementation 'com.google.android.material:material:1.13.0'
     implementation 'com.github.FarshadTahmasbi:EzPermission:0.1.4'
-    implementation 'com.microsoft.appcenter:appcenter-analytics:5.0.6'
-    implementation 'com.microsoft.appcenter:appcenter-crashes:5.0.6'
+    implementation 'com.github.solkin:bananalytics-android:1.0.0'
     implementation 'com.github.shts:TriangleLabelView:1.1.2'
     implementation 'com.github.solkin:simple-image-loader:v1.2.0'
     implementation 'com.github.solkin:disk-lru-cache:v1.8'

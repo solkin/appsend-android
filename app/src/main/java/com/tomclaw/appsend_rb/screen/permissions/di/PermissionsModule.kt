@@ -7,6 +7,7 @@ import com.avito.konveyor.ItemBinder
 import com.avito.konveyor.adapter.AdapterPresenter
 import com.avito.konveyor.adapter.SimpleAdapterPresenter
 import com.avito.konveyor.blueprint.ItemBlueprint
+import com.tomclaw.appsend.util.Analytics
 import com.tomclaw.appsend_rb.screen.permissions.PermissionInfoProvider
 import com.tomclaw.appsend_rb.screen.permissions.PermissionInfoProviderImpl
 import com.tomclaw.appsend_rb.screen.permissions.PermissionsConverter
@@ -39,9 +40,10 @@ class PermissionsModule(
     internal fun providePresenter(
         adapterPresenter: Lazy<AdapterPresenter>,
         converter: PermissionsConverter,
-        schedulers: SchedulersFactory
+        schedulers: SchedulersFactory,
+        analytics: Analytics
     ): PermissionsPresenter =
-        PermissionsPresenterImpl(permissions, adapterPresenter, converter, schedulers, state)
+        PermissionsPresenterImpl(permissions, adapterPresenter, converter, schedulers, analytics, state)
 
     @Provides
     @PerActivity

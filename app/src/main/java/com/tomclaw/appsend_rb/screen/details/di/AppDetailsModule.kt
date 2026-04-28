@@ -2,6 +2,7 @@ package com.tomclaw.appsend_rb.screen.details.di
 
 import android.annotation.SuppressLint
 import android.content.Context
+import com.tomclaw.appsend.util.Analytics
 import com.tomclaw.appsend_rb.dto.AppEntity
 import com.tomclaw.appsend_rb.screen.apps.PreferencesProvider
 import com.tomclaw.appsend_rb.screen.apps.PreferencesProviderImpl
@@ -24,8 +25,9 @@ class AppDetailsModule(
     @Provides
     @PerActivity
     internal fun providePresenter(
-        resourceProvider: AppDetailsResourceProvider
-    ): AppDetailsPresenter = AppDetailsPresenterImpl(entity, resourceProvider)
+        resourceProvider: AppDetailsResourceProvider,
+        analytics: Analytics
+    ): AppDetailsPresenter = AppDetailsPresenterImpl(entity, resourceProvider, analytics)
 
     @Provides
     @PerActivity

@@ -16,6 +16,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.tomclaw.appsend.util.Analytics;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created with IntelliJ IDEA.
  * User: solkin
@@ -27,6 +33,7 @@ public class SettingsActivity extends AppCompatActivity {
     public static final int RESULT_UPDATE = 5;
     private SharedPreferences preferences;
     private OnSettingsChangedListener listener;
+    private Analytics analytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +48,8 @@ public class SettingsActivity extends AppCompatActivity {
 
         listener = new OnSettingsChangedListener();
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        analytics = ((App) getApplication()).getComponent().analytics();
+        analytics.trackEvent("screen_open", tags("screen", "settings"), Collections.emptyMap());
         preferences.registerOnSharedPreferenceChangeListener(listener);
         SettingsFragment settingsFragment = new SettingsFragment();
 
@@ -76,8 +85,12 @@ public class SettingsActivity extends AppCompatActivity {
             Context context = SettingsActivity.this;
             // Checking for preference changed.
             if (TextUtils.equals(key, getString(R.string.pref_show_system))) {
-                if (sharedPreferences.getBoolean(context.getString(R.string.pref_show_system),
-                        context.getResources().getBoolean(R.bool.pref_show_system_default))) {
+                boolean enabled = sharedPreferences.getBoolean(
+                        context.getString(R.string.pref_show_system),
+                        context.getResources().getBoolean(R.bool.pref_show_system_default)
+                );
+                trackSettingChanged("show_system", Boolean.toString(enabled));
+                if (enabled) {
                     final AlertDialog alertDialog = new AlertDialog.Builder(context)
                             .setTitle(R.string.system_apps_warning_title)
                             .setMessage(R.string.system_apps_warning_message)
@@ -86,15 +99,48 @@ public class SettingsActivity extends AppCompatActivity {
                 }
                 setResult(RESULT_UPDATE);
             } else if (TextUtils.equals(key, getString(R.string.pref_dark_theme))) {
+                boolean enabled = sharedPreferences.getBoolean(
+                        context.getString(R.string.pref_dark_theme),
+                        context.getResources().getBoolean(R.bool.pref_dark_theme_default)
+                );
+                trackSettingChanged("dark_theme", Boolean.toString(enabled));
                 Intent intent = getIntent().addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 finish();
                 overridePendingTransition(0, 0);
                 startActivity(intent);
             } else if (TextUtils.equals(key, getString(R.string.pref_sort_order))) {
+                trackSettingChanged(
+                        "sort_order",
+                        sharedPreferences.getString(
+                                context.getString(R.string.pref_sort_order),
+                                context.getString(R.string.pref_sort_order_default)
+                        )
+                );
                 setResult(RESULT_UPDATE);
             } else if (TextUtils.equals(key, getString(R.string.pref_runnable))) {
+                boolean enabled = sharedPreferences.getBoolean(
+                        context.getString(R.string.pref_runnable),
+                        context.getResources().getBoolean(R.bool.pref_runnable_default)
+                );
+                trackSettingChanged("runnable_only", Boolean.toString(enabled));
                 setResult(RESULT_UPDATE);
             }
         }
+    }
+
+    private void trackSettingChanged(String setting, String value) {
+        analytics.trackEvent(
+                "settings_changed",
+                tags("setting", setting, "value", value),
+                Collections.emptyMap()
+        );
+    }
+
+    private static Map<String, String> tags(String... pairs) {
+        Map<String, String> result = new HashMap<>();
+        for (int index = 0; index + 1 < pairs.length; index += 2) {
+            result.put(pairs[index], pairs[index + 1]);
+        }
+        return result;
     }
 }

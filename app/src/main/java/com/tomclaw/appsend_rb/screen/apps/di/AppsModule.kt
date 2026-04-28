@@ -7,6 +7,7 @@ import com.avito.konveyor.ItemBinder
 import com.avito.konveyor.adapter.AdapterPresenter
 import com.avito.konveyor.adapter.SimpleAdapterPresenter
 import com.avito.konveyor.blueprint.ItemBlueprint
+import com.tomclaw.appsend.util.Analytics
 import com.tomclaw.appsend_rb.screen.apps.AppEntityConverter
 import com.tomclaw.appsend_rb.screen.apps.AppEntityConverterImpl
 import com.tomclaw.appsend_rb.screen.apps.AppsInteractor
@@ -52,13 +53,15 @@ class AppsModule(
         adapterPresenter: Lazy<AdapterPresenter>,
         appEntityConverter: AppEntityConverter,
         preferences: PreferencesProvider,
-        schedulers: SchedulersFactory
+        schedulers: SchedulersFactory,
+        analytics: Analytics
     ): AppsPresenter = AppsPresenterImpl(
         interactor,
         adapterPresenter,
         appEntityConverter,
         preferences,
         schedulers,
+        analytics,
         state
     )
 

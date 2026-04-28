@@ -1,5 +1,6 @@
 package com.tomclaw.appsend_rb.screen.details
 
+import com.tomclaw.appsend.util.Analytics
 import com.tomclaw.appsend_rb.dto.AppEntity
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.plusAssign
@@ -32,7 +33,8 @@ interface AppDetailsPresenter {
 
 class AppDetailsPresenterImpl(
     private val entity: AppEntity,
-    private val resourceProvider: AppDetailsResourceProvider
+    private val resourceProvider: AppDetailsResourceProvider,
+    private val analytics: Analytics
 ) : AppDetailsPresenter {
 
     private var view: AppDetailsView? = null
@@ -43,6 +45,7 @@ class AppDetailsPresenterImpl(
     override fun attachView(view: AppDetailsView) {
         this.view = view
 
+        analytics.trackEvent("screen_open", mapOf("screen" to "app_details") + entity.analyticsTags())
         subscriptions += view.navigationClicks().subscribe { onBackPressed() }
         subscriptions += view.copyPackageClicks().subscribe { copyPackageName() }
         subscriptions += view.permissionsClicks().subscribe { showPermissions() }
@@ -65,6 +68,7 @@ class AppDetailsPresenterImpl(
     }
 
     override fun onBackPressed() {
+        analytics.trackEvent("navigation_back", mapOf("screen" to "app_details"))
         router?.leaveScreen()
     }
 
@@ -86,17 +90,34 @@ class AppDetailsPresenterImpl(
     }
 
     private fun copyPackageName() {
+        analytics.trackEvent("app_details_action_selected", mapOf("action" to "copy_package_name") + entity.analyticsTags())
         router?.copyPackageName(entity.packageName)
         view?.showPackageNameCopied()
     }
 
     private fun showPermissions() {
         entity.requestedPermissions?.takeIf { it.isNotEmpty() }
-            ?.let { router?.showRequestedPermissions(it) }
+            ?.let {
+                analytics.trackEvent(
+                    "app_details_action_selected",
+                    mapOf("action" to "open_permissions") + entity.analyticsTags(),
+                    mapOf("permissions_count" to it.size.toDouble())
+                )
+                router?.showRequestedPermissions(it)
+            }
     }
 
     private fun showSystemDetails() {
+        analytics.trackEvent("app_details_action_selected", mapOf("action" to "open_system_details") + entity.analyticsTags())
         router?.showSystemDetails(entity.packageName)
+    }
+
+    private fun AppEntity.analyticsTags(): Map<String, String> {
+        return mapOf(
+            "system" to system.toString(),
+            "split" to split.toString(),
+            "has_permissions" to (!requestedPermissions.isNullOrEmpty()).toString()
+        )
     }
 
 }

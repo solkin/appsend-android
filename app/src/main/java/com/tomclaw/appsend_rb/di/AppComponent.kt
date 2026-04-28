@@ -1,5 +1,6 @@
 package com.tomclaw.appsend_rb.di
 
+import com.tomclaw.appsend.util.Analytics
 import com.tomclaw.appsend_rb.screen.about.di.AboutComponent
 import com.tomclaw.appsend_rb.screen.about.di.AboutModule
 import com.tomclaw.appsend_rb.screen.apps.di.AppsComponent
@@ -14,6 +15,8 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [AppModule::class])
 interface AppComponent {
+
+    fun analytics(): Analytics
 
     fun appsComponent(module: AppsModule): AppsComponent
 

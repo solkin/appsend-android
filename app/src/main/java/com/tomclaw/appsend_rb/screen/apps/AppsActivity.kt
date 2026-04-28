@@ -29,7 +29,6 @@ import com.tomclaw.appsend_rb.screen.details.createAppDetailsActivityIntent
 import com.tomclaw.appsend_rb.screen.permissions.createPermissionsActivityIntent
 import com.tomclaw.appsend_rb.util.ZipParcelable
 import com.tomclaw.appsend_rb.util.grantProviderUriPermission
-import com.tomclaw.appsend_rb.util.registerAppCenter
 import com.tomclaw.appsend_rb.util.updateStatusBar
 import com.tomclaw.appsend_rb.util.updateTheme
 import javax.inject.Inject
@@ -65,8 +64,6 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
 
         val adapter = SimpleRecyclerAdapter(adapterPresenter, binder)
         val view = AppsViewImpl(window.decorView, adapter, preferences)
-
-        registerAppCenter(application)
 
         presenter.attachView(view)
     }

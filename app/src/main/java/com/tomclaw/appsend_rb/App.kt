@@ -27,6 +27,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         component = buildComponent()
+        component.analytics().register()
         initImageLoader()
     }
 

@@ -1,6 +1,7 @@
 package com.tomclaw.appsend_rb.screen.about.di
 
 import android.content.Context
+import com.tomclaw.appsend.util.Analytics
 import com.tomclaw.appsend_rb.screen.about.AboutPresenter
 import com.tomclaw.appsend_rb.screen.about.AboutPresenterImpl
 import com.tomclaw.appsend_rb.screen.about.AboutResourceProvider
@@ -21,8 +22,9 @@ class AboutModule(
     @PerActivity
     internal fun providePresenter(
         resourceProvider: AboutResourceProvider,
-        schedulers: SchedulersFactory
-    ): AboutPresenter = AboutPresenterImpl(resourceProvider, schedulers)
+        schedulers: SchedulersFactory,
+        analytics: Analytics
+    ): AboutPresenter = AboutPresenterImpl(resourceProvider, schedulers, analytics)
 
     @Provides
     @PerActivity
