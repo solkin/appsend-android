@@ -10,6 +10,7 @@ import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.getComponent
 import com.tomclaw.appsend_rb.screen.about.di.AboutModule
 import com.tomclaw.appsend_rb.screen.apps.PreferencesProvider
+import com.tomclaw.appsend_rb.util.applySystemBarsInsets
 import com.tomclaw.appsend_rb.util.updateStatusBar
 import com.tomclaw.appsend_rb.util.updateTheme
 import javax.inject.Inject
@@ -33,6 +34,7 @@ class AboutActivity : AppCompatActivity(), AboutPresenter.AboutRouter {
         updateStatusBar()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.about_activity)
+        applySystemBarsInsets(this)
 
         val view = AboutViewImpl(window.decorView)
 

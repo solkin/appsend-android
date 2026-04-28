@@ -2,6 +2,7 @@ package com.tomclaw.appsend_rb;
 
 import static com.tomclaw.appsend_rb.util.ThemeHelperKt.updateStatusBar;
 import static com.tomclaw.appsend_rb.util.ThemeHelperKt.updateTheme;
+import static com.tomclaw.appsend_rb.util.ThemeHelperKt.applySystemBarsInsets;
 
 import android.content.Context;
 import android.content.Intent;
@@ -41,6 +42,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.settings_activity);
+        applySystemBarsInsets(this);
         updateStatusBar(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);

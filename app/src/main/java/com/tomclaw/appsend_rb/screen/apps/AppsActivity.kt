@@ -28,6 +28,7 @@ import com.tomclaw.appsend_rb.screen.apps.di.AppsModule
 import com.tomclaw.appsend_rb.screen.details.createAppDetailsActivityIntent
 import com.tomclaw.appsend_rb.screen.permissions.createPermissionsActivityIntent
 import com.tomclaw.appsend_rb.util.ZipParcelable
+import com.tomclaw.appsend_rb.util.applySystemBarsInsets
 import com.tomclaw.appsend_rb.util.grantProviderUriPermission
 import com.tomclaw.appsend_rb.util.updateStatusBar
 import com.tomclaw.appsend_rb.util.updateTheme
@@ -61,6 +62,7 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         updateStatusBar()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.apps_activity)
+        applySystemBarsInsets(this)
 
         val adapter = SimpleRecyclerAdapter(adapterPresenter, binder)
         val view = AppsViewImpl(window.decorView, adapter, preferences)

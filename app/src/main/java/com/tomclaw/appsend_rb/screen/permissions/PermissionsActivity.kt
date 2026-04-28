@@ -10,6 +10,8 @@ import com.avito.konveyor.adapter.SimpleRecyclerAdapter
 import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.getComponent
 import com.tomclaw.appsend_rb.screen.permissions.di.PermissionsModule
+import com.tomclaw.appsend_rb.util.applySystemBarsInsets
+import com.tomclaw.appsend_rb.util.updateStatusBar
 import com.tomclaw.appsend_rb.util.updateTheme
 import javax.inject.Inject
 
@@ -32,9 +34,11 @@ class PermissionsActivity : AppCompatActivity(), PermissionsPresenter.Permission
             .permissionsComponent(PermissionsModule(this, permissions, presenterState))
             .inject(activity = this)
         updateTheme(this)
+        updateStatusBar(this)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.permissions_activity)
+        applySystemBarsInsets(this)
 
         val adapter = SimpleRecyclerAdapter(adapterPresenter, binder)
         val view = PermissionsViewImpl(window.decorView, adapter)

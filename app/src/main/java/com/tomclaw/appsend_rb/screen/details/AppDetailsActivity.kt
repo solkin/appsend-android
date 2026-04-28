@@ -16,6 +16,7 @@ import com.tomclaw.appsend_rb.getComponent
 import com.tomclaw.appsend_rb.screen.details.di.AppDetailsModule
 import com.tomclaw.appsend_rb.screen.permissions.createPermissionsActivityIntent
 import com.tomclaw.appsend_rb.screen.apps.PreferencesProvider
+import com.tomclaw.appsend_rb.util.applySystemBarsInsets
 import com.tomclaw.appsend_rb.util.updateStatusBar
 import com.tomclaw.appsend_rb.util.updateTheme
 import javax.inject.Inject
@@ -39,6 +40,7 @@ class AppDetailsActivity : AppCompatActivity(), AppDetailsPresenter.AppDetailsRo
         updateStatusBar()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.app_details_activity)
+        applySystemBarsInsets(this)
 
         val view = AppDetailsViewImpl(window.decorView)
         presenter.attachView(view)
