@@ -20,8 +20,8 @@ android {
         applicationId "com.tomclaw.appsend_rb"
         minSdkVersion 21
         targetSdkVersion 36
-        versionCode = project.hasProperty("versionCode") ? Integer.parseInt(project.versionCode) : 83
-        versionName = "3.7"
+        versionCode = project.hasProperty("versionCode") ? Integer.parseInt(project.versionCode) : 92
+        versionName = "4.0"
         multiDexEnabled true
         manifestPlaceholders = [
                 BANANALYTICS_BASE_URL: "https://bnn.citron.dev",
