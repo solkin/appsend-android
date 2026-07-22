@@ -10,12 +10,14 @@ import android.content.Intent.EXTRA_STREAM
 import android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
 import android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION
 import android.content.Intent.createChooser
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.androidisland.ezpermission.EzPermission
+import androidx.core.content.ContextCompat
 import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.SettingsActivity
 import com.tomclaw.appsend_rb.dto.AppEntity
@@ -41,6 +43,24 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
     private var view: AppsViewImpl? = null
 
     private var isDarkTheme: Boolean = false
+
+    private var onPermissionGranted: (() -> Unit)? = null
+    private var onPermissionDenied: (() -> Unit)? = null
+
+    /**
+     * Registered up front, as the Activity Result API requires: a launcher has to
+     * exist before the activity reaches STARTED, so that a result still arrives
+     * when the activity is recreated while the system dialog is on screen.
+     */
+    private val requestWritePermission = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        val granted = onPermissionGranted
+        val denied = onPermissionDenied
+        onPermissionGranted = null
+        onPermissionDenied = null
+        if (isGranted) granted?.invoke() else denied?.invoke()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val compressedPresenterState: ZipParcelable? = savedInstanceState?.getParcelable(KEY_PRESENTER_STATE)
@@ -184,21 +204,25 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
     }
 
     override fun requestPermissions(onGranted: () -> Unit, onDenied: () -> Unit) {
+        // Exports go through MediaStore from Android 10 on, so the legacy write
+        // permission is neither needed nor declared there (the manifest caps it at
+        // API 28) — asking would fail outright.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             onGranted()
-        } else {
-            EzPermission.with(this)
-                .permissions(
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE
-                )
-                .request { granted, denied, permanentlyDenied ->
-                    if (granted.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                        onGranted()
-                    } else {
-                        onDenied()
-                    }
-                }
+            return
         }
+        val permission = Manifest.permission.WRITE_EXTERNAL_STORAGE
+        if (ContextCompat.checkSelfPermission(this, permission) ==
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            onGranted()
+            return
+        }
+        // The request is a direct answer to the export the user just picked, so it
+        // needs no separate rationale; a refusal is explained by the caller instead.
+        onPermissionGranted = onGranted
+        onPermissionDenied = onDenied
+        requestWritePermission.launch(permission)
     }
 
 }
