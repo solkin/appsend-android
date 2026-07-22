@@ -1,11 +1,24 @@
 package com.tomclaw.appsend_rb.screen.details
 
-import android.view.View
-import android.widget.TextView
-import androidx.appcompat.widget.Toolbar
-import com.google.android.material.snackbar.Snackbar
 import com.jakewharton.rxrelay3.PublishRelay
 import com.tomclaw.appsend_rb.R
+import com.tomclaw.knopochki.core.Box
+import com.tomclaw.knopochki.core.Column
+import com.tomclaw.knopochki.core.Insets
+import com.tomclaw.knopochki.core.KnopochkiView
+import com.tomclaw.knopochki.core.Node
+import com.tomclaw.knopochki.core.Scroll
+import com.tomclaw.knopochki.draw.Icons
+import com.tomclaw.knopochki.draw.Shape
+import com.tomclaw.knopochki.theme.Role
+import com.tomclaw.knopochki.widget.Button
+import com.tomclaw.knopochki.widget.ButtonStyle
+import com.tomclaw.knopochki.widget.Divider
+import com.tomclaw.knopochki.widget.Snackbar
+import com.tomclaw.knopochki.widget.Surface
+import com.tomclaw.knopochki.widget.Text
+import com.tomclaw.knopochki.widget.TextStyle
+import com.tomclaw.knopochki.widget.TopAppBar
 import io.reactivex.rxjava3.core.Observable
 
 interface AppDetailsView {
@@ -24,36 +37,87 @@ interface AppDetailsView {
 
 }
 
-class AppDetailsViewImpl(
-    private val view: View
-) : AppDetailsView {
+class AppDetailsViewImpl(knopochkiView: KnopochkiView) : AppDetailsView {
 
-    private val toolbar: Toolbar = view.findViewById(R.id.toolbar)
-    private val label: TextView = view.findViewById(R.id.app_label)
-    private val packageName: TextView = view.findViewById(R.id.package_name)
-    private val version: TextView = view.findViewById(R.id.version)
-    private val installTime: TextView = view.findViewById(R.id.install_time)
-    private val updateTime: TextView = view.findViewById(R.id.update_time)
-    private val size: TextView = view.findViewById(R.id.size)
-    private val path: TextView = view.findViewById(R.id.path)
-    private val permissions: TextView = view.findViewById(R.id.permissions)
-    private val status: TextView = view.findViewById(R.id.status)
-    private val copyPackage: View = view.findViewById(R.id.copy_package)
-    private val openPermissions: View = view.findViewById(R.id.open_permissions)
-    private val openSystemDetails: View = view.findViewById(R.id.open_system_details)
+    private val resources = knopochkiView.context.resources
 
     private val navigationRelay = PublishRelay.create<Unit>()
     private val copyPackageRelay = PublishRelay.create<Unit>()
     private val permissionsRelay = PublishRelay.create<Unit>()
     private val systemDetailsRelay = PublishRelay.create<Unit>()
 
+    private val label = Text("", style = TextStyle.TITLE_LARGE, role = Role.ON_SURFACE)
+    private val packageName = Text("", style = TextStyle.BODY_SMALL, role = Role.ON_SURFACE_VARIANT)
+    private val version = value()
+    private val installTime = value()
+    private val updateTime = value()
+    private val size = value()
+    private val status = value()
+    private val path = value()
+    private val permissions = value()
+
+    private val openPermissions = Button(
+        resources.getString(R.string.app_details_open_permissions),
+        ButtonStyle.OUTLINED,
+    ) { permissionsRelay.accept(Unit) }
+
+    private val snackbar = Snackbar()
+
     init {
-        toolbar.setTitle(R.string.app_details)
-        toolbar.setNavigationOnClickListener { navigationRelay.accept(Unit) }
-        copyPackage.setOnClickListener { copyPackageRelay.accept(Unit) }
-        openPermissions.setOnClickListener { permissionsRelay.accept(Unit) }
-        openSystemDetails.setOnClickListener { systemDetailsRelay.accept(Unit) }
+        val bar = TopAppBar(
+            title = resources.getString(R.string.app_details),
+            navigationIcon = Icons.ARROW_BACK,
+            onNavigationClick = { navigationRelay.accept(Unit) },
+        )
+        val card = Surface(
+            content = Column(paddingDp = 4f)
+                .add(row(R.string.app_details_version, version))
+                .add(Divider(insetStartDp = 16f))
+                .add(row(R.string.app_details_installed, installTime))
+                .add(Divider(insetStartDp = 16f))
+                .add(row(R.string.app_details_updated, updateTime))
+                .add(Divider(insetStartDp = 16f))
+                .add(row(R.string.app_details_size, size))
+                .add(Divider(insetStartDp = 16f))
+                .add(row(R.string.app_details_status, status))
+                .add(Divider(insetStartDp = 16f))
+                .add(row(R.string.app_details_path, path))
+                .add(Divider(insetStartDp = 16f))
+                .add(row(R.string.app_details_permissions, permissions)),
+            containerRole = Role.SURFACE_CONTAINER_LOW,
+            cornerToken = Shape.LARGE,
+            paddingDp = 4f,
+        )
+        val content = Column(spacingDp = 12f, paddingDp = 16f)
+            .add(label)
+            .add(packageName)
+            .add(
+                Button(
+                    resources.getString(R.string.app_details_copy_package),
+                    ButtonStyle.OUTLINED,
+                ) { copyPackageRelay.accept(Unit) }
+            )
+            .add(card)
+            .add(openPermissions)
+            .add(
+                Button(
+                    resources.getString(R.string.app_details_open_system_details),
+                    ButtonStyle.OUTLINED,
+                ) { systemDetailsRelay.accept(Unit) }
+            )
+        val scroll = Scroll(Insets(content, applyBottom = true, applySides = true))
+        scroll.onScroll = { bar.onContentScrolled(it) }
+        knopochkiView.root = Box()
+            .add(Column().add(bar).addFilling(scroll))
+            .add(Insets(snackbar, applyBottom = true, applySides = true))
     }
+
+    private fun value() = Text("", style = TextStyle.BODY_LARGE, role = Role.ON_SURFACE)
+
+    private fun row(labelRes: Int, value: Text): Node =
+        Column(spacingDp = 2f, paddingDp = 12f)
+            .add(Text(resources.getString(labelRes), style = TextStyle.BODY_SMALL, role = Role.ON_SURFACE_VARIANT))
+            .add(value)
 
     override fun navigationClicks(): Observable<Unit> = navigationRelay
 
@@ -73,15 +137,11 @@ class AppDetailsViewImpl(
         path.text = details.path
         permissions.text = details.permissions
         status.text = details.status
-        openPermissions.isEnabled = details.permissionsEnabled
-        openPermissions.alpha = if (details.permissionsEnabled) ENABLED_ALPHA else DISABLED_ALPHA
+        openPermissions.enabled = details.permissionsEnabled
     }
 
     override fun showPackageNameCopied() {
-        Snackbar.make(view, R.string.app_details_package_copied, Snackbar.LENGTH_LONG).show()
+        snackbar.show(resources.getString(R.string.app_details_package_copied))
     }
 
 }
-
-private const val ENABLED_ALPHA = 1.0f
-private const val DISABLED_ALPHA = 0.45f

@@ -1,13 +1,11 @@
 package com.tomclaw.appsend_rb.screen.apps.adapter.app
 
-import android.os.Parcelable
-import com.avito.konveyor.blueprint.Item
-import kotlinx.parcelize.Parcelize
-
-@Parcelize
+/**
+ * A single row in the apps list. Rendered by Knopochki, so it carries only
+ * display-ready strings; the icon is loaded on demand from [packageName].
+ */
 data class AppItem(
-    override val id: Long,
-    val icon: String?,
+    val id: Long,
     val packageName: String,
     val name: String,
     val size: String,
@@ -18,4 +16,4 @@ data class AppItem(
     val newApp: Boolean,
     val selectable: Boolean,
     val selected: Boolean
-) : Item, Parcelable
+)

@@ -1,11 +1,8 @@
 package com.tomclaw.appsend_rb.screen.permissions
 
 import android.os.Bundle
-import com.avito.konveyor.adapter.AdapterPresenter
-import com.avito.konveyor.data_source.ListDataSource
 import com.tomclaw.appsend.util.Analytics
 import com.tomclaw.appsend_rb.util.SchedulersFactory
-import dagger.Lazy
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.plusAssign
 
@@ -33,7 +30,6 @@ interface PermissionsPresenter {
 
 class PermissionsPresenterImpl(
     private val permissions: List<String>,
-    private val adapterPresenter: Lazy<AdapterPresenter>,
     private val converter: PermissionsConverter,
     private val schedulers: SchedulersFactory,
     private val analytics: Analytics,
@@ -73,8 +69,7 @@ class PermissionsPresenterImpl(
         this.router = null
     }
 
-    override fun saveState() = Bundle().apply {
-    }
+    override fun saveState() = Bundle()
 
     override fun onBackPressed() {
         analytics.trackEvent("navigation_back", mapOf("screen" to "permissions"))
@@ -82,10 +77,7 @@ class PermissionsPresenterImpl(
     }
 
     private fun bindPermissions() {
-        val items = permissions.map { converter.convert(it) }
-        val dataSource = ListDataSource(items)
-        adapterPresenter.get().onDataSourceChanged(dataSource)
-        view?.contentUpdated()
+        view?.setPermissions(permissions.map { converter.convert(it) })
     }
 
 }

@@ -3,28 +3,17 @@ package com.tomclaw.appsend_rb.screen.permissions
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import com.avito.konveyor.ItemBinder
-import com.avito.konveyor.adapter.AdapterPresenter
-import com.avito.konveyor.adapter.SimpleRecyclerAdapter
-import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.getComponent
 import com.tomclaw.appsend_rb.screen.permissions.di.PermissionsModule
-import com.tomclaw.appsend_rb.util.applySystemBarsInsets
-import com.tomclaw.appsend_rb.util.updateStatusBar
-import com.tomclaw.appsend_rb.util.updateTheme
+import com.tomclaw.appsend_rb.util.installKnopochki
 import javax.inject.Inject
 
 class PermissionsActivity : AppCompatActivity(), PermissionsPresenter.PermissionsRouter {
 
     @Inject
     lateinit var presenter: PermissionsPresenter
-
-    @Inject
-    lateinit var adapterPresenter: AdapterPresenter
-
-    @Inject
-    lateinit var binder: ItemBinder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val permissions = intent?.getStringArrayListExtra(EXTRA_PERMISSIONS)
@@ -33,23 +22,15 @@ class PermissionsActivity : AppCompatActivity(), PermissionsPresenter.Permission
         application.getComponent()
             .permissionsComponent(PermissionsModule(this, permissions, presenterState))
             .inject(activity = this)
-        updateTheme(this)
-        updateStatusBar(this)
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.permissions_activity)
-        applySystemBarsInsets(this)
-
-        val adapter = SimpleRecyclerAdapter(adapterPresenter, binder)
-        val view = PermissionsViewImpl(window.decorView, adapter)
-
+        val knopochkiView = installKnopochki()
+        val view = PermissionsViewImpl(knopochkiView)
         presenter.attachView(view)
-    }
 
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-        super.onBackPressed()
-        presenter.onBackPressed()
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() = presenter.onBackPressed()
+        })
     }
 
     override fun onStart() {

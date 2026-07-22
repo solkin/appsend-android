@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Launch-window background — the neutral dark surface (neutral tone 6). -->
+    <color name="window_background">#131313</color>
+</resources>

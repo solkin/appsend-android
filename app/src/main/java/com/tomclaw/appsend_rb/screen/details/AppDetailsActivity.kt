@@ -9,25 +9,20 @@ import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.dto.AppEntity
 import com.tomclaw.appsend_rb.getComponent
 import com.tomclaw.appsend_rb.screen.details.di.AppDetailsModule
 import com.tomclaw.appsend_rb.screen.permissions.createPermissionsActivityIntent
-import com.tomclaw.appsend_rb.screen.apps.PreferencesProvider
-import com.tomclaw.appsend_rb.util.applySystemBarsInsets
-import com.tomclaw.appsend_rb.util.updateStatusBar
-import com.tomclaw.appsend_rb.util.updateTheme
+import com.tomclaw.appsend_rb.util.installKnopochki
 import javax.inject.Inject
 
 class AppDetailsActivity : AppCompatActivity(), AppDetailsPresenter.AppDetailsRouter {
 
     @Inject
     lateinit var presenter: AppDetailsPresenter
-
-    @Inject
-    lateinit var preferences: PreferencesProvider
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val entity = intent.getAppEntity()
@@ -36,14 +31,14 @@ class AppDetailsActivity : AppCompatActivity(), AppDetailsPresenter.AppDetailsRo
             .appDetailsComponent(AppDetailsModule(this, entity))
             .inject(activity = this)
 
-        updateTheme(preferences)
-        updateStatusBar()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.app_details_activity)
-        applySystemBarsInsets(this)
-
-        val view = AppDetailsViewImpl(window.decorView)
+        val knopochkiView = installKnopochki()
+        val view = AppDetailsViewImpl(knopochkiView)
         presenter.attachView(view)
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() = presenter.onBackPressed()
+        })
     }
 
     override fun onStart() {
@@ -59,13 +54,6 @@ class AppDetailsActivity : AppCompatActivity(), AppDetailsPresenter.AppDetailsRo
     override fun onDestroy() {
         presenter.detachView()
         super.onDestroy()
-    }
-
-    @Deprecated("Deprecated in Java")
-    @Suppress("DEPRECATION")
-    override fun onBackPressed() {
-        super.onBackPressed()
-        presenter.onBackPressed()
     }
 
     override fun copyPackageName(packageName: String) {

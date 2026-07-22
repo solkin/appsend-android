@@ -3,15 +3,11 @@ package com.tomclaw.appsend_rb.screen.apps
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import com.avito.konveyor.adapter.AdapterPresenter
-import com.avito.konveyor.blueprint.Item
-import com.avito.konveyor.data_source.ListDataSource
 import com.tomclaw.appsend.util.Analytics
 import com.tomclaw.appsend_rb.dto.AppEntity
 import com.tomclaw.appsend_rb.screen.apps.adapter.ItemClickListener
 import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItem
 import com.tomclaw.appsend_rb.util.SchedulersFactory
-import dagger.Lazy
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.plusAssign
 
@@ -55,8 +51,6 @@ interface AppsPresenter : ItemClickListener {
 
         fun shareApks(uris: List<Uri>)
 
-        fun showBackupLimitationsWarning(onConfirmed: () -> Unit)
-
         fun requestPermissions(onGranted: () -> Unit, onDenied: () -> Unit)
 
     }
@@ -65,7 +59,6 @@ interface AppsPresenter : ItemClickListener {
 
 class AppsPresenterImpl(
     private val interactor: AppsInteractor,
-    private val adapterPresenter: Lazy<AdapterPresenter>,
     private val appEntityConverter: AppEntityConverter,
     private val preferences: PreferencesProvider,
     private val schedulers: SchedulersFactory,
@@ -91,6 +84,13 @@ class AppsPresenterImpl(
         ?.toSet()
         ?: emptySet()
 
+    // On-screen filter chips override the persisted defaults for the current session.
+    private var sortOrder: Int =
+        state?.getInt(KEY_SORT_ORDER, preferences.getSortOrder()) ?: preferences.getSortOrder()
+    private var showSystem: Boolean =
+        state?.getBoolean(KEY_SHOW_SYSTEM, preferences.isShowSystemApps())
+            ?: preferences.isShowSystemApps()
+
     private val subscriptions = CompositeDisposable()
 
     override fun attachView(view: AppsView) {
@@ -100,16 +100,36 @@ class AppsPresenterImpl(
         subscriptions += view.prefsClicks().subscribe { onPrefsClicked() }
         subscriptions += view.infoClicks().subscribe { onInfoClicked() }
         subscriptions += view.appMenuClicks().subscribe { onAppMenuClicked(it) }
+        subscriptions += view.appItemClicks().subscribe { onItemClick(it) }
+        subscriptions += view.appItemLongClicks().subscribe { onItemLongClick(it) }
         subscriptions += view.selectionClicks().subscribe { enterSelectionMode() }
         subscriptions += view.batchShareClicks().subscribe { onBatchShareClicked() }
         subscriptions += view.batchExtractClicks().subscribe { onBatchExtractClicked() }
         subscriptions += view.cancelSelectionClicks().subscribe { leaveSelectionMode("toolbar") }
         subscriptions += view.searchTextChanged().subscribe { text -> onSearchTextChanged(text) }
         subscriptions += view.searchCloseChanged().subscribe { onSearchClosed() }
+        subscriptions += view.sortSelectedClicks().subscribe { onSortSelected(it) }
+        subscriptions += view.systemToggleClicks().subscribe { onSystemToggled(it) }
+
+        view.setFilters(sortOrder, showSystem)
 
         entities.takeIf { it != null }
             ?.run { applyAppEntities(this) }
             ?: loadAppItems()
+    }
+
+    private fun onSortSelected(order: Int) {
+        if (sortOrder == order) return
+        sortOrder = order
+        analytics.trackEvent("apps_sort_changed", mapOf("sort_order" to order.analyticsValue()))
+        loadAppItems()
+    }
+
+    private fun onSystemToggled(show: Boolean) {
+        if (showSystem == show) return
+        showSystem = show
+        analytics.trackEvent("apps_filter_system", mapOf("show_system" to show.analyticsValue()))
+        loadAppItems()
     }
 
     private fun onRefreshClicked() {
@@ -281,9 +301,9 @@ class AppsPresenterImpl(
 
     private fun loadAppItems() {
         subscriptions += interactor.loadApps(
-            systemApps = preferences.isShowSystemApps(),
+            systemApps = showSystem,
             runnableOnly = preferences.isRunnableOnly(),
-            sortOrder = preferences.getSortOrder()
+            sortOrder = sortOrder
         )
             .observeOn(schedulers.mainThread())
             .doOnSubscribe { view?.showProgress() }
@@ -292,9 +312,9 @@ class AppsPresenterImpl(
                 analytics.trackEvent(
                     "apps_loaded",
                     mapOf(
-                        "show_system" to preferences.isShowSystemApps().analyticsValue(),
+                        "show_system" to showSystem.analyticsValue(),
                         "runnable_only" to preferences.isRunnableOnly().analyticsValue(),
-                        "sort_order" to preferences.getSortOrder().analyticsValue()
+                        "sort_order" to sortOrder.analyticsValue()
                     ),
                     entities.analyticsFields()
                 )
@@ -335,10 +355,8 @@ class AppsPresenterImpl(
                     selected = selectedPackages.contains(it.packageName)
                 )
             }
-        val dataSource = ListDataSource(items)
-        adapterPresenter.get().onDataSourceChanged(dataSource)
+        view?.setApps(items)
         view?.showSelectionMode(selectionMode, selectedPackages.size)
-        view?.contentUpdated()
     }
 
     private fun shareApp(item: AppItem) {
@@ -436,6 +454,8 @@ class AppsPresenterImpl(
         putBoolean(KEY_SCREEN_TRACKED, screenTracked)
         putBoolean(KEY_SEARCH_ACTIVE, searchActive)
         putStringArrayList(KEY_SELECTED_PACKAGES, ArrayList(selectedPackages))
+        putInt(KEY_SORT_ORDER, sortOrder)
+        putBoolean(KEY_SHOW_SYSTEM, showSystem)
     }
 
     override fun onBackPressed() {
@@ -466,33 +486,25 @@ class AppsPresenterImpl(
             })
     }
 
-    override fun onItemClick(item: Item) {
-        when (item) {
-            is AppItem -> {
-                if (selectionMode) {
-                    toggleSelection(item.packageName)
-                } else {
-                    analytics.trackEvent("app_menu_opened", item.analyticsTags())
-                    view?.showAppMenu(item)
-                }
-            }
+    override fun onItemClick(item: AppItem) {
+        if (selectionMode) {
+            toggleSelection(item.packageName)
+        } else {
+            analytics.trackEvent("app_menu_opened", item.analyticsTags())
+            view?.showAppMenu(item)
         }
     }
 
-    override fun onItemLongClick(item: Item) {
-        when (item) {
-            is AppItem -> {
-                if (!selectionMode) {
-                    selectionMode = true
-                    selectedPackages = selectedPackages + item.packageName
-                    analytics.trackEvent(
-                        "selection_mode_entered",
-                        mapOf("source" to "long_click"),
-                        mapOf("selected_count" to selectedPackages.size.toDouble())
-                    )
-                    bindCurrentEntities()
-                }
-            }
+    override fun onItemLongClick(item: AppItem) {
+        if (!selectionMode) {
+            selectionMode = true
+            selectedPackages = selectedPackages + item.packageName
+            analytics.trackEvent(
+                "selection_mode_entered",
+                mapOf("source" to "long_click"),
+                mapOf("selected_count" to selectedPackages.size.toDouble())
+            )
+            bindCurrentEntities()
         }
     }
 
@@ -594,7 +606,7 @@ class AppsPresenterImpl(
                 mapOf("action" to action),
                 entities.analyticsFields()
             )
-            router?.showBackupLimitationsWarning {
+            view?.showBackupLimitationsWarning {
                 analytics.trackEvent(
                     "backup_limitations_confirmed",
                     mapOf("action" to action),
@@ -666,3 +678,5 @@ private const val KEY_SELECTION_MODE = "selection_mode"
 private const val KEY_SCREEN_TRACKED = "screen_tracked"
 private const val KEY_SEARCH_ACTIVE = "search_active"
 private const val KEY_SELECTED_PACKAGES = "selected_packages"
+private const val KEY_SORT_ORDER = "sort_order"
+private const val KEY_SHOW_SYSTEM = "show_system"

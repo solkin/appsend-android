@@ -5,14 +5,12 @@ import android.content.Intent
 import android.content.Intent.ACTION_VIEW
 import android.net.Uri
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.getComponent
 import com.tomclaw.appsend_rb.screen.about.di.AboutModule
-import com.tomclaw.appsend_rb.screen.apps.PreferencesProvider
-import com.tomclaw.appsend_rb.util.applySystemBarsInsets
-import com.tomclaw.appsend_rb.util.updateStatusBar
-import com.tomclaw.appsend_rb.util.updateTheme
+import com.tomclaw.appsend_rb.util.installKnopochki
 import javax.inject.Inject
 
 class AboutActivity : AppCompatActivity(), AboutPresenter.AboutRouter {
@@ -20,30 +18,19 @@ class AboutActivity : AppCompatActivity(), AboutPresenter.AboutRouter {
     @Inject
     lateinit var presenter: AboutPresenter
 
-    @Inject
-    lateinit var preferences: PreferencesProvider
-
-    private var isDarkTheme: Boolean = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         application.getComponent()
             .aboutComponent(AboutModule(this))
             .inject(activity = this)
 
-        isDarkTheme = updateTheme(preferences)
-        updateStatusBar()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.about_activity)
-        applySystemBarsInsets(this)
-
-        val view = AboutViewImpl(window.decorView)
-
+        val knopochkiView = installKnopochki()
+        val view = AboutViewImpl(knopochkiView)
         presenter.attachView(view)
-    }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        presenter.onBackPressed()
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() = presenter.onBackPressed()
+        })
     }
 
     override fun onStart() {

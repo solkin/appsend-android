@@ -1,12 +1,15 @@
 package com.tomclaw.appsend_rb.screen.permissions
 
-import com.avito.konveyor.blueprint.Item
-import com.tomclaw.appsend_rb.screen.permissions.adapter.safe.SafePermissionItem
-import com.tomclaw.appsend_rb.screen.permissions.adapter.unsafe.UnsafePermissionItem
+/** Display model for one requested permission row. */
+data class PermissionModel(
+    val permission: String,
+    val description: String?,
+    val dangerous: Boolean
+)
 
 interface PermissionsConverter {
 
-    fun convert(permission: String): Item
+    fun convert(permission: String): PermissionModel
 
 }
 
@@ -14,23 +17,13 @@ class PermissionsConverterImpl(
     private val permissionInfoProvider: PermissionInfoProvider
 ) : PermissionsConverter {
 
-    private var id: Long = 1
-
-    override fun convert(permission: String): Item {
-        val permissionBrief = permissionInfoProvider.getPermissionBrief(permission)
-        return when (permissionBrief.dangerous) {
-            true -> UnsafePermissionItem(
-                id = id++,
-                permission = permissionBrief.permission,
-                description = permissionBrief.description
-            )
-
-            false -> SafePermissionItem(
-                id = id++,
-                permission = permissionBrief.permission,
-                description = permissionBrief.description
-            )
-        }
+    override fun convert(permission: String): PermissionModel {
+        val brief = permissionInfoProvider.getPermissionBrief(permission)
+        return PermissionModel(
+            permission = brief.permission,
+            description = brief.description,
+            dangerous = brief.dangerous
+        )
     }
 
 }

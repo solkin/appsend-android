@@ -18,7 +18,7 @@ android {
     namespace = "com.tomclaw.appsend_rb"
     defaultConfig {
         applicationId "com.tomclaw.appsend_rb"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 36
         versionCode = project.hasProperty("versionCode") ? Integer.parseInt(project.versionCode) : 92
         versionName = "4.0"
@@ -66,25 +66,17 @@ kotlin {
 }
 
 dependencies {
-    implementation project(path: ':preference-fragment')
-    implementation project(path: ':statusbar-util')
     implementation 'androidx.annotation:annotation:1.9.1'
-    implementation 'androidx.recyclerview:recyclerview:1.4.0'
-    implementation 'com.google.android.material:material:1.13.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.github.solkin:knopochki-android:0.1.0'
     implementation 'com.github.FarshadTahmasbi:EzPermission:0.1.4'
     implementation 'com.github.solkin:bananalytics-android:1.0.0'
-    implementation 'com.github.shts:TriangleLabelView:1.1.2'
-    implementation 'com.github.solkin:simple-image-loader:v1.2.0'
-    implementation 'com.github.solkin:disk-lru-cache:v1.8'
-    implementation 'com.github.b-yng:BottomSheetBuilder:1.6.1'
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.2.0'
     implementation "androidx.core:core-ktx:1.17.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
     implementation 'io.reactivex.rxjava3:rxjava:3.1.12'
     implementation 'io.reactivex.rxjava3:rxkotlin:3.0.1'
     implementation 'com.jakewharton.rxrelay3:rxrelay:3.0.1'
-    implementation 'com.github.avito-tech:Konveyor:0.42.2'
     implementation 'com.google.dagger:dagger:2.58'
     kapt 'com.google.dagger:dagger-compiler:2.58'
     kapt 'org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.9.0'

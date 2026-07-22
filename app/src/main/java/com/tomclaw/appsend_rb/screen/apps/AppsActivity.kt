@@ -13,12 +13,9 @@ import android.content.Intent.createChooser
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AlertDialog
 import com.androidisland.ezpermission.EzPermission
-import com.avito.konveyor.ItemBinder
-import com.avito.konveyor.adapter.AdapterPresenter
-import com.avito.konveyor.adapter.SimpleRecyclerAdapter
 import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.SettingsActivity
 import com.tomclaw.appsend_rb.dto.AppEntity
@@ -28,10 +25,8 @@ import com.tomclaw.appsend_rb.screen.apps.di.AppsModule
 import com.tomclaw.appsend_rb.screen.details.createAppDetailsActivityIntent
 import com.tomclaw.appsend_rb.screen.permissions.createPermissionsActivityIntent
 import com.tomclaw.appsend_rb.util.ZipParcelable
-import com.tomclaw.appsend_rb.util.applySystemBarsInsets
 import com.tomclaw.appsend_rb.util.grantProviderUriPermission
-import com.tomclaw.appsend_rb.util.updateStatusBar
-import com.tomclaw.appsend_rb.util.updateTheme
+import com.tomclaw.appsend_rb.util.installKnopochki
 import javax.inject.Inject
 
 
@@ -41,38 +36,37 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
     lateinit var presenter: AppsPresenter
 
     @Inject
-    lateinit var adapterPresenter: AdapterPresenter
-
-    @Inject
     lateinit var preferences: PreferencesProvider
 
-    @Inject
-    lateinit var binder: ItemBinder
+    private var view: AppsViewImpl? = null
 
     private var isDarkTheme: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val compressedPresenterState: ZipParcelable? = savedInstanceState?.getParcelable(KEY_PRESENTER_STATE)
         val presenterState: Bundle? = compressedPresenterState?.restore()
+        // Ensure nested app Parcelables (AppEntity) resolve against the app loader.
+        presenterState?.classLoader = classLoader
         application.getComponent()
             .appsComponent(AppsModule(this, presenterState))
             .inject(activity = this)
 
-        isDarkTheme = updateTheme(preferences)
-        updateStatusBar()
+        isDarkTheme = preferences.isDarkTheme()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.apps_activity)
-        applySystemBarsInsets(this)
-
-        val adapter = SimpleRecyclerAdapter(adapterPresenter, binder)
-        val view = AppsViewImpl(window.decorView, adapter, preferences)
-
+        val knopochkiView = installKnopochki()
+        val view = AppsViewImpl(knopochkiView)
+        this.view = view
         presenter.attachView(view)
-    }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        presenter.onBackPressed()
+        // With targetSdk 36 Back is delivered through the dispatcher and a plain
+        // onBackPressed() override is never called — which would drop overlay,
+        // search and selection-mode handling and just close the screen.
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (view.onBackPressed()) return
+                presenter.onBackPressed()
+            }
+        })
     }
 
     override fun onStart() {
@@ -187,15 +181,6 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         }
         uris.forEach { uri -> grantProviderUriPermission(this, uri, intent) }
         startActivity(createChooser(intent, resources.getText(R.string.send_to)))
-    }
-
-    override fun showBackupLimitationsWarning(onConfirmed: () -> Unit) {
-        AlertDialog.Builder(this)
-            .setTitle(R.string.backup_limitations_warning_title)
-            .setMessage(R.string.backup_limitations_warning_message)
-            .setPositiveButton(R.string.continue_anyway) { _, _ -> onConfirmed() }
-            .setNegativeButton(R.string.cancel, null)
-            .show()
     }
 
     override fun requestPermissions(onGranted: () -> Unit, onDenied: () -> Unit) {

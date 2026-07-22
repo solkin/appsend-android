@@ -1,11 +1,11 @@
 package com.tomclaw.appsend_rb.screen.apps.adapter
 
-import com.avito.konveyor.blueprint.Item
+import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItem
 
 interface ItemClickListener {
 
-    fun onItemClick(item: Item)
+    fun onItemClick(item: AppItem)
 
-    fun onItemLongClick(item: Item)
+    fun onItemLongClick(item: AppItem)
 
 }

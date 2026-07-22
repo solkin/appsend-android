@@ -1,5 +1,6 @@
 package com.tomclaw.appsend_rb.util
 
+import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
 import com.tomclaw.appsend_rb.util.Parcels.readBool
@@ -25,8 +26,18 @@ class ZipParcelable : Parcelable {
     }
 
     private fun <P : Parcelable> readNestedParcel(clazz: Class<P>, parcel: Parcel): Parcelable? {
+        // Use the app classloader, not clazz's: when the nested parcelable is a
+        // framework Bundle, clazz.classLoader is the boot loader and can't resolve
+        // the app Parcelables inside it (e.g. AppEntity) — restore then crashes with
+        // BadParcelableException. The app loader resolves both framework and app types.
+        val loader = ZipParcelable::class.java.classLoader
         @Suppress("DEPRECATION")
-        return parcel.readParcelable(clazz.classLoader)
+        val result: Parcelable? = parcel.readParcelable(loader)
+        // A restored Bundle lazily unmarshalls its contents with its OWN classloader,
+        // which readParcelable doesn't set — pin it to the app loader so nested app
+        // Parcelables (AppEntity) resolve when the presenter reads them later.
+        (result as? Bundle)?.classLoader = loader
+        return result
     }
 
     inline fun <reified T : Parcelable> restore() = restore(T::class.java) as? T

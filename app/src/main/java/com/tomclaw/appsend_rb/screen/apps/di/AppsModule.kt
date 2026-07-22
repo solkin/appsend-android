@@ -3,10 +3,6 @@ package com.tomclaw.appsend_rb.screen.apps.di
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import com.avito.konveyor.ItemBinder
-import com.avito.konveyor.adapter.AdapterPresenter
-import com.avito.konveyor.adapter.SimpleAdapterPresenter
-import com.avito.konveyor.blueprint.ItemBlueprint
 import com.tomclaw.appsend.util.Analytics
 import com.tomclaw.appsend_rb.screen.apps.AppEntityConverter
 import com.tomclaw.appsend_rb.screen.apps.AppEntityConverterImpl
@@ -22,14 +18,10 @@ import com.tomclaw.appsend_rb.screen.apps.PreferencesProvider
 import com.tomclaw.appsend_rb.screen.apps.PreferencesProviderImpl
 import com.tomclaw.appsend_rb.screen.apps.ResourceProvider
 import com.tomclaw.appsend_rb.screen.apps.ResourceProviderImpl
-import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItemBlueprint
-import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItemPresenter
 import com.tomclaw.appsend_rb.util.PerActivity
 import com.tomclaw.appsend_rb.util.SchedulersFactory
-import dagger.Lazy
 import dagger.Module
 import dagger.Provides
-import dagger.multibindings.IntoSet
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -42,22 +34,14 @@ class AppsModule(
 
     @Provides
     @PerActivity
-    internal fun provideAdapterPresenter(binder: ItemBinder): AdapterPresenter {
-        return SimpleAdapterPresenter(binder, binder)
-    }
-
-    @Provides
-    @PerActivity
     internal fun providePresenter(
         interactor: AppsInteractor,
-        adapterPresenter: Lazy<AdapterPresenter>,
         appEntityConverter: AppEntityConverter,
         preferences: PreferencesProvider,
         schedulers: SchedulersFactory,
         analytics: Analytics
     ): AppsPresenter = AppsPresenterImpl(
         interactor,
-        adapterPresenter,
         appEntityConverter,
         preferences,
         schedulers,
@@ -110,27 +94,5 @@ class AppsModule(
     internal fun provideOutputWrapper(): OutputWrapper {
         return OutputWrapperImpl(context, context.contentResolver)
     }
-
-    @Provides
-    @PerActivity
-    internal fun provideItemBinder(
-        blueprintSet: Set<@JvmSuppressWildcards ItemBlueprint<*, *>>
-    ): ItemBinder {
-        return ItemBinder.Builder().apply {
-            blueprintSet.forEach { registerItem(it) }
-        }.build()
-    }
-
-    @Provides
-    @IntoSet
-    @PerActivity
-    internal fun provideAppItemBlueprint(
-        presenter: AppItemPresenter
-    ): ItemBlueprint<*, *> = AppItemBlueprint(presenter)
-
-    @Provides
-    @PerActivity
-    internal fun provideAppItemPresenter(presenter: AppsPresenter) =
-        AppItemPresenter(presenter)
 
 }
