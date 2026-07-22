@@ -95,7 +95,13 @@ interface AppsView {
 
     fun showUnableToGetPermissionsError()
 
-    fun showWritePermissionsRequiredError()
+    /**
+     * [canOpenSettings] is true when the permission was refused for good ("don't ask
+     * again"), so the only way forward is the system settings screen.
+     */
+    fun showWritePermissionsRequiredError(canOpenSettings: Boolean)
+
+    fun appSettingsClicks(): Observable<Unit>
 
     fun showSelectionMode(enabled: Boolean, selectedCount: Int)
 
@@ -130,6 +136,7 @@ class AppsViewImpl(private val knopochkiView: KnopochkiView) : AppsView {
     private val searchCloseRelay = PublishRelay.create<Unit>()
     private val sortRelay = PublishRelay.create<Int>()
     private val systemRelay = PublishRelay.create<Boolean>()
+    private val appSettingsRelay = PublishRelay.create<Unit>()
 
     private val items = ArrayList<AppItem>()
     private val holders = IdentityHashMap<Node, RowHolder>()
@@ -502,7 +509,18 @@ class AppsViewImpl(private val knopochkiView: KnopochkiView) : AppsView {
 
     override fun showUnableToGetPermissionsError() = snack(R.string.unable_to_get_permissions)
 
-    override fun showWritePermissionsRequiredError() = snack(R.string.write_permission_extract)
+    override fun showWritePermissionsRequiredError(canOpenSettings: Boolean) {
+        val message = text(R.string.write_permission_extract)
+        if (canOpenSettings) {
+            snackbar.show(message, resources.getString(R.string.settings)) {
+                appSettingsRelay.accept(Unit)
+            }
+        } else {
+            snackbar.show(message)
+        }
+    }
+
+    override fun appSettingsClicks(): Observable<Unit> = appSettingsRelay
 
     override fun showNoAppsSelectedMessage() = snack(R.string.no_apps_selected)
 
@@ -539,11 +557,15 @@ class AppsViewImpl(private val knopochkiView: KnopochkiView) : AppsView {
     }
 
     private fun snack(res: Int) {
-        // A few strings still carry <b> markup from the old HTML-rendering snackbar;
-        // Knopochki draws plain text, so flatten it instead of printing the tags.
-        val text = HtmlCompat.fromHtml(resources.getString(res), HtmlCompat.FROM_HTML_MODE_LEGACY)
-        snackbar.show(text.toString())
+        snackbar.show(text(res))
     }
+
+    /**
+     * A few strings still carry `<b>` markup from the old HTML-rendering snackbar;
+     * Knopochki draws plain text, so flatten it instead of printing the tags.
+     */
+    private fun text(res: Int): String =
+        HtmlCompat.fromHtml(resources.getString(res), HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
 
     private companion object {
         const val TYPE_NORMAL = 0

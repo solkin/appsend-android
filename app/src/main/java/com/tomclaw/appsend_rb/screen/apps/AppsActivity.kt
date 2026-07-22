@@ -14,6 +14,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -45,7 +46,7 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
     private var isDarkTheme: Boolean = false
 
     private var onPermissionGranted: (() -> Unit)? = null
-    private var onPermissionDenied: (() -> Unit)? = null
+    private var onPermissionDenied: ((permanentlyDenied: Boolean) -> Unit)? = null
 
     /**
      * Registered up front, as the Activity Result API requires: a launcher has to
@@ -59,7 +60,16 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         val denied = onPermissionDenied
         onPermissionGranted = null
         onPermissionDenied = null
-        if (isGranted) granted?.invoke() else denied?.invoke()
+        if (isGranted) {
+            granted?.invoke()
+        } else {
+            // Android offers no explicit "don't ask again" flag: once the user has
+            // shut the request down for good, the system stops asking us to show a
+            // rationale. That is the signal, and only app settings can undo it.
+            denied?.invoke(
+                !shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            )
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -203,7 +213,10 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         startActivity(createChooser(intent, resources.getText(R.string.send_to)))
     }
 
-    override fun requestPermissions(onGranted: () -> Unit, onDenied: () -> Unit) {
+    override fun requestPermissions(
+        onGranted: () -> Unit,
+        onDenied: (permanentlyDenied: Boolean) -> Unit
+    ) {
         // Exports go through MediaStore from Android 10 on, so the legacy write
         // permission is neither needed nor declared there (the manifest caps it at
         // API 28) — asking would fail outright.
@@ -223,6 +236,15 @@ class AppsActivity : AppCompatActivity(), AppsPresenter.AppsRouter {
         onPermissionGranted = onGranted
         onPermissionDenied = onDenied
         requestWritePermission.launch(permission)
+    }
+
+    override fun openAppSettings() {
+        startActivity(
+            Intent(
+                Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                Uri.fromParts("package", packageName, null)
+            )
+        )
     }
 
 }

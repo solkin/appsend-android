@@ -51,7 +51,16 @@ interface AppsPresenter : ItemClickListener {
 
         fun shareApks(uris: List<Uri>)
 
-        fun requestPermissions(onGranted: () -> Unit, onDenied: () -> Unit)
+        /**
+         * [onDenied] reports whether the refusal is final ("don't ask again"), in
+         * which case only [openAppSettings] can still turn the permission on.
+         */
+        fun requestPermissions(
+            onGranted: () -> Unit,
+            onDenied: (permanentlyDenied: Boolean) -> Unit
+        )
+
+        fun openAppSettings()
 
     }
 
@@ -110,6 +119,7 @@ class AppsPresenterImpl(
         subscriptions += view.searchCloseChanged().subscribe { onSearchClosed() }
         subscriptions += view.sortSelectedClicks().subscribe { onSortSelected(it) }
         subscriptions += view.systemToggleClicks().subscribe { onSystemToggled(it) }
+        subscriptions += view.appSettingsClicks().subscribe { onAppSettingsClicked() }
 
         view.setFilters(sortOrder, showSystem)
 
@@ -145,6 +155,11 @@ class AppsPresenterImpl(
     private fun onInfoClicked() {
         analytics.trackEvent("navigation_opened", mapOf("screen" to "about"))
         router?.showInfoScreen()
+    }
+
+    private fun onAppSettingsClicked() {
+        analytics.trackEvent("permission_settings_opened")
+        router?.openAppSettings()
     }
 
     private fun onAppMenuClicked(pair: Pair<Int, AppItem>) {
@@ -364,9 +379,9 @@ class AppsPresenterImpl(
         confirmBackupLimitationsIfNeeded(listOf(entity), "share_apk") {
             router?.requestPermissions(
                 onGranted = { shareApp(entity) },
-                onDenied = {
+                onDenied = { permanentlyDenied ->
                     analytics.trackEvent("app_action_denied", mapOf("action" to "share_apk", "reason" to "write_permission"))
-                    view?.showWritePermissionsRequiredError()
+                    view?.showWritePermissionsRequiredError(permanentlyDenied)
                 }
             )
         }
@@ -377,9 +392,9 @@ class AppsPresenterImpl(
         confirmBackupLimitationsIfNeeded(listOf(entity), "extract_apk") {
             router?.requestPermissions(
                 onGranted = { extractApp(entity) },
-                onDenied = {
+                onDenied = { permanentlyDenied ->
                     analytics.trackEvent("app_action_denied", mapOf("action" to "extract_apk", "reason" to "write_permission"))
-                    view?.showWritePermissionsRequiredError()
+                    view?.showWritePermissionsRequiredError(permanentlyDenied)
                 }
             )
         }
@@ -561,13 +576,13 @@ class AppsPresenterImpl(
         confirmBackupLimitationsIfNeeded(selectedEntities, "share_apks") {
             router?.requestPermissions(
                 onGranted = { shareApps(selectedEntities) },
-                onDenied = {
+                onDenied = { permanentlyDenied ->
                     analytics.trackEvent(
                         "batch_action_denied",
                         mapOf("action" to "share_apks", "reason" to "write_permission"),
                         selectedEntities.analyticsFields()
                     )
-                    view?.showWritePermissionsRequiredError()
+                    view?.showWritePermissionsRequiredError(permanentlyDenied)
                 }
             )
         }
@@ -583,13 +598,13 @@ class AppsPresenterImpl(
         confirmBackupLimitationsIfNeeded(selectedEntities, "extract_apks") {
             router?.requestPermissions(
                 onGranted = { extractApps(selectedEntities) },
-                onDenied = {
+                onDenied = { permanentlyDenied ->
                     analytics.trackEvent(
                         "batch_action_denied",
                         mapOf("action" to "extract_apks", "reason" to "write_permission"),
                         selectedEntities.analyticsFields()
                     )
-                    view?.showWritePermissionsRequiredError()
+                    view?.showWritePermissionsRequiredError(permanentlyDenied)
                 }
             )
         }
