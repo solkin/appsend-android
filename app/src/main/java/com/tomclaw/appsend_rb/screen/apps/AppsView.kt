@@ -34,6 +34,7 @@ import com.tomclaw.knopochki.widget.ImageScale
 import com.tomclaw.knopochki.widget.ListItem
 import com.tomclaw.knopochki.widget.Menu
 import com.tomclaw.knopochki.widget.Progress
+import com.tomclaw.knopochki.widget.PullRefresh
 import com.tomclaw.knopochki.widget.ProgressStyle
 import com.tomclaw.knopochki.widget.SearchBar
 import com.tomclaw.knopochki.widget.Snackbar
@@ -160,6 +161,12 @@ class AppsViewImpl(private val knopochkiView: KnopochkiView) : AppsView {
     }
     private val list: LazyList = LazyColumn(adapter)
 
+    /**
+     * Wraps the list so a pull at the top starts a refresh. The toolbar action
+     * stays as well — the gesture is a shortcut, not the only way.
+     */
+    private val pullRefresh = PullRefresh(list) { refreshRelay.accept(Unit) }
+
     private val normalBar = TopAppBar(title = resources.getString(R.string.app_name)).apply {
         action(Icons.SEARCH, resources.getString(R.string.menu_search)) { openSearch() }
         action(Icons.REFRESH, resources.getString(R.string.refresh)) { refreshRelay.accept(Unit) }
@@ -246,7 +253,7 @@ class AppsViewImpl(private val knopochkiView: KnopochkiView) : AppsView {
         }
         val content = Column()
             .add(headerColumn)
-            .addFilling(Box().add(Insets(list, applyBottom = true, applySides = true)))
+            .addFilling(Box().add(Insets(pullRefresh, applyBottom = true, applySides = true)))
         knopochkiView.root = Box()
             .add(content)
             .add(popup)
@@ -271,7 +278,9 @@ class AppsViewImpl(private val knopochkiView: KnopochkiView) : AppsView {
                 headerColumn.add(chipsScroll)
             }
         }
-        if (loading) headerColumn.add(progressLine)
+        // While the pull indicator is on screen it already says "loading" —
+        // a second bar under the chips would say it twice.
+        if (loading && !pullRefresh.refreshing) headerColumn.add(progressLine)
         relayout()
     }
 
@@ -360,6 +369,7 @@ class AppsViewImpl(private val knopochkiView: KnopochkiView) : AppsView {
         listItem.headline = item.name
         listItem.supporting = metaLine(item)
         listItem.onClick = { appItemRelay.accept(item) }
+        listItem.onLongClick = { appItemLongRelay.accept(item) }
         holder.image.bitmap = AppIcons.cached(item.packageName)
         AppIcons.load(context, item.packageName, iconSizePx) { pkg, bitmap ->
             if (holder.packageName == pkg) holder.image.bitmap = bitmap
@@ -385,6 +395,7 @@ class AppsViewImpl(private val knopochkiView: KnopochkiView) : AppsView {
     }
 
     override fun showContent() {
+        pullRefresh.refreshing = false
         if (!loading) return
         loading = false
         buildHeader()
