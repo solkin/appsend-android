@@ -4,6 +4,8 @@ import android.content.Context
 import com.tomclaw.appsend_rb.R
 import com.tomclaw.appsend_rb.util.getBooleanPreference
 import com.tomclaw.appsend_rb.util.getStringPreference
+import com.tomclaw.appsend_rb.util.setBooleanPreference
+import com.tomclaw.appsend_rb.util.setStringPreference
 
 interface PreferencesProvider {
 
@@ -14,6 +16,15 @@ interface PreferencesProvider {
     fun isRunnableOnly(): Boolean
 
     fun getSortOrder(): Int
+
+    /**
+     * The filter chips on the apps screen are the only control for these two, so
+     * their choice is what gets persisted — there is no separate setting to drift
+     * out of sync with.
+     */
+    fun setShowSystemApps(value: Boolean)
+
+    fun setSortOrder(order: Int)
 
 }
 
@@ -38,6 +49,21 @@ class PreferencesProviderImpl(private val context: Context) : PreferencesProvide
             R.string.pref_runnable,
             R.bool.pref_runnable_default
         )
+    }
+
+    override fun setShowSystemApps(value: Boolean) {
+        context.setBooleanPreference(R.string.pref_show_system, value)
+    }
+
+    override fun setSortOrder(order: Int) {
+        val value = when (order) {
+            NAME_DESCENDING -> R.string.sort_order_descending_value
+            APP_SIZE -> R.string.sort_order_app_size_value
+            INSTALL_TIME -> R.string.sort_order_install_time_value
+            UPDATE_TIME -> R.string.sort_order_update_time_value
+            else -> R.string.sort_order_ascending_value
+        }
+        context.setStringPreference(R.string.pref_sort_order, context.getString(value))
     }
 
     override fun getSortOrder(): Int {

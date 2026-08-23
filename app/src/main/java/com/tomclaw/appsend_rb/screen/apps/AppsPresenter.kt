@@ -93,12 +93,22 @@ class AppsPresenterImpl(
         ?.toSet()
         ?: emptySet()
 
-    // On-screen filter chips override the persisted defaults for the current session.
+    // The chips are the only control for these two, and they persist their choice.
     private var sortOrder: Int =
         state?.getInt(KEY_SORT_ORDER, preferences.getSortOrder()) ?: preferences.getSortOrder()
     private var showSystem: Boolean =
         state?.getBoolean(KEY_SHOW_SYSTEM, preferences.isShowSystemApps())
             ?: preferences.isShowSystemApps()
+
+    init {
+        // Z-A lost its control when the sort setting was folded into the chips.
+        // Fold a value stored by an older version into A-Z, so the highlighted
+        // chip cannot disagree with the order the list is actually in.
+        if (sortOrder == NAME_DESCENDING) {
+            sortOrder = NAME_ASCENDING
+            preferences.setSortOrder(NAME_ASCENDING)
+        }
+    }
 
     private val subscriptions = CompositeDisposable()
 
@@ -131,6 +141,7 @@ class AppsPresenterImpl(
     private fun onSortSelected(order: Int) {
         if (sortOrder == order) return
         sortOrder = order
+        preferences.setSortOrder(order)
         analytics.trackEvent("apps_sort_changed", mapOf("sort_order" to order.analyticsValue()))
         loadAppItems()
     }
@@ -138,6 +149,7 @@ class AppsPresenterImpl(
     private fun onSystemToggled(show: Boolean) {
         if (showSystem == show) return
         showSystem = show
+        preferences.setShowSystemApps(show)
         analytics.trackEvent("apps_filter_system", mapOf("show_system" to show.analyticsValue()))
         loadAppItems()
     }
