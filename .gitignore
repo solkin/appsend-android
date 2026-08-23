@@ -22,3 +22,6 @@ projectFilesBackup/
 
 # Local configuration file (sdk path, etc)
 local.properties
+
+# Local release artifacts
+/app/release/

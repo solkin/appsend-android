@@ -34,7 +34,6 @@
     <string name="sort_order_app_size">By app size</string>
     <string name="sort_order_install_time">By install time</string>
     <string name="sort_order_update_time">By update time</string>
-    <string name="pref_summary_sort_order">Apps list sort order variants</string>
     <string name="filter_system">System</string>
     <string name="sort_name">Name</string>
     <string name="sort_size">Size</string>
@@ -96,4 +95,7 @@
         <item quantity="one">%d app extracted to Downloads</item>
         <item quantity="other">%d apps extracted to Downloads</item>
     </plurals>
+    <!-- Spoken by accessibility services for Knopochki's own surfaces. -->
+    <string name="a11y_bottom_sheet">Bottom sheet</string>
+    <string name="a11y_navigation_drawer">Navigation drawer</string>
 </resources>

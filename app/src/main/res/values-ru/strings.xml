@@ -98,4 +98,6 @@
         <item quantity="many">%d приложений извлечено в Downloads</item>
         <item quantity="other">%d приложения извлечены в Downloads</item>
     </plurals>
+    <string name="a11y_bottom_sheet">Нижняя панель</string>
+    <string name="a11y_navigation_drawer">Панель навигации</string>
 </resources>

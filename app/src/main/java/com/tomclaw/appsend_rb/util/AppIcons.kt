@@ -53,6 +53,15 @@ object AppIcons {
     private fun render(pm: PackageManager, packageName: String, sizePx: Int): Bitmap? = try {
         rasterize(pm.getApplicationIcon(packageName), sizePx)
     } catch (ignored: Throwable) {
+        // Some packages refuse to hand over an icon at all. A row with a blank
+        // square reads as a rendering bug, so fall back to the platform's own
+        // stand-in — the same one the launcher shows.
+        defaultIcon(pm, sizePx)
+    }
+
+    private fun defaultIcon(pm: PackageManager, sizePx: Int): Bitmap? = try {
+        rasterize(pm.defaultActivityIcon, sizePx)
+    } catch (ignored: Throwable) {
         null
     }
 
