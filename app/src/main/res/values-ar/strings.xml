@@ -9,6 +9,7 @@
     <string name="open">فتح</string>
     <string name="remove">حذف</string>
     <string name="selected">محدد</string>
+    <string name="install">تثبيت</string>
     <string name="send_to">المشاركة عبر</string>
 
     <string name="tab_apps">التطبيقات</string>
@@ -89,6 +90,7 @@
     <string name="export_template_hint">{name}، {package}، {version}، {code}</string>
     <string name="export_format_bundle">.apks\nالمجموعة الكاملة، %s</string>
     <string name="export_format_base">base.apk\nالأساسي فقط، %s</string>
+    <string name="export_notice_bundle">يستطيع AppSend تثبيت هذا الملف بنفسه. مثبّت النظام لا يفتح ملفات .apks.</string>
     <string name="export_notice_base">قد لا يُثبَّت ملف base APK وحده أو لا يعمل دون ملفات split الخاصة به.</string>
     <plurals name="export_title_apps">
         <item quantity="zero">استخراج %d تطبيق</item>
@@ -141,6 +143,7 @@
     <string name="clear_exports">حذف جميع الملفات</string>
     <string name="clear_exports_message">ستتم إزالة كل ملفات ‎.apk و‎.apks في %s، بما فيها التي لم ينشئها AppSend.</string>
     <string name="cache_clearing_failed">تعذر حذف الملف</string>
+    <string name="install_from_file">تثبيت من ملف</string>
     <string name="select_files">تحديد الملفات</string>
     <string name="no_files_selected">حدد ملفًا واحدًا على الأقل</string>
     <plurals name="delete_selected_exports">
@@ -152,6 +155,52 @@
         <item quantity="other">ستتم إزالة %d ملف.</item>
     </plurals>
 
+    <string name="install_title_new">تثبيت %s</string>
+    <string name="install_title_update">تحديث %s</string>
+    <string name="install_version">%1$s · %2$s</string>
+    <string name="install_version_change">%1$s → %2$s · %3$s</string>
+    <string name="install_versions_compare">الملف: %1$s · المثبّت: %2$s</string>
+    <string name="install_file_version">الإصدار %s</string>
+    <string name="install_check_device">الجهاز</string>
+    <string name="install_check_device_ok">مناسب لهذا الجهاز</string>
+    <string name="install_check_signature">التوقيع</string>
+    <string name="install_check_signature_ok">يطابق الإصدار المثبّت</string>
+    <string name="install_check_android">Android</string>
+    <string name="install_check_android_value">يتطلب API %d أو أحدث</string>
+    <string name="install_check_files">المحتويات</string>
+    <string name="install_check_files_base">Base APK فقط</string>
+    <plurals name="install_check_files_value">
+        <item quantity="zero">Base APK فقط</item>
+        <item quantity="one">الأساسي وملف split واحد</item>
+        <item quantity="two">الأساسي وملفا split</item>
+        <item quantity="few">الأساسي و%d ملفات split</item>
+        <item quantity="many">الأساسي و%d ملف split</item>
+        <item quantity="other">الأساسي و%d ملف split</item>
+    </plurals>
+    <string name="install_permission_notice">سيطلب Android منك مرة واحدة السماح لـ AppSend بتثبيت التطبيقات.</string>
+    <string name="install_allow_and_install">سماح وتثبيت</string>
+    <string name="install_replace">حذف وتثبيت</string>
+    <string name="install_in_progress">جارٍ تثبيت %s</string>
+    <string name="install_writing">جارٍ تمرير الملفات إلى المثبّت</string>
+    <string name="install_awaiting_confirmation">بانتظار تأكيدك</string>
+    <string name="install_done">تم تثبيت %s</string>
+    <string name="install_failed">فشل التثبيت</string>
+    <string name="install_unreadable_title">ليست حزمة تطبيق</string>
+    <string name="install_unreadable_message">تعذرت قراءة هذا الملف كحزمة .apk أو .apks.</string>
+    <string name="install_issue_signature_title">التوقيع مختلف</string>
+    <string name="install_issue_signature_message">هذا الملف موقَّع بمفتاح آخر. لن يحدّث Android التطبيق قبل حذف الإصدار المثبّت. ستفقد بيانات التطبيق.</string>
+    <string name="install_issue_downgrade_title">إصدار أحدث مثبّت</string>
+    <string name="install_issue_downgrade_message">لا يثبّت Android إصدارًا أقدم فوق إصدار أحدث. يجب حذف الإصدار المثبّت أولًا. ستفقد بيانات التطبيق.</string>
+    <string name="install_issue_android_title">إصدار Android قديم جدًا</string>
+    <string name="install_issue_android_message">يحتاج هذا التطبيق إلى إصدار Android أحدث من إصدار هذا الجهاز.</string>
+    <string name="install_issue_device_title">غير مناسب لهذا الجهاز</string>
+    <string name="install_issue_device_message">لا تحتوي المجموعة على ملفات لبنية هذا الجهاز: فقد استُخرجت على جهاز مختلف.</string>
+    <string name="install_failure_blocked">حظر النظام هذا التثبيت.</string>
+    <string name="install_failure_conflict">تتعارض هذه الحزمة مع تطبيق موجود بالفعل على الجهاز.</string>
+    <string name="install_failure_incompatible">هذه الحزمة غير متوافقة مع هذا الجهاز.</string>
+    <string name="install_failure_invalid">الحزمة تالفة أو غير مكتملة.</string>
+    <string name="install_failure_storage">لا توجد مساحة تخزين كافية على هذا الجهاز.</string>
+    <string name="install_failure_unknown">تعذر على النظام إكمال التثبيت.</string>
 
     <string name="settings_appearance">المظهر</string>
     <string name="settings_theme">السمة</string>

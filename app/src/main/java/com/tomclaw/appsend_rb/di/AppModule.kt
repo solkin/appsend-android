@@ -2,6 +2,7 @@ package com.tomclaw.appsend_rb.di
 
 import android.app.Application
 import android.content.Context
+import com.tomclaw.appsend_rb.data.AndroidPackageInstaller
 import com.tomclaw.appsend_rb.data.PackageArchiveInspector
 import com.tomclaw.appsend_rb.data.PackageManagerAppsRepository
 import com.tomclaw.appsend_rb.data.SelectableExportStorage
@@ -16,6 +17,7 @@ import com.tomclaw.appsend_rb.domain.ExportManager
 import com.tomclaw.appsend_rb.domain.ExportManagerImpl
 import com.tomclaw.appsend_rb.domain.ExportStorage
 import com.tomclaw.appsend_rb.domain.InstalledAppsRepository
+import com.tomclaw.appsend_rb.domain.PackageInstallerGateway
 import com.tomclaw.appsend_rb.domain.UnseenExports
 import com.tomclaw.appsend_rb.domain.Analytics
 import com.tomclaw.appsend_rb.screen.exportprogress.ExportServiceGuard
@@ -61,6 +63,18 @@ class AppModule(private val app: Application) {
     internal fun provideAppsRepository(
         repository: PackageManagerAppsRepository,
     ): InstalledAppsRepository = repository
+
+    @Provides
+    @Singleton
+    internal fun providePackageInstaller(
+        context: Context,
+        schedulers: SchedulersFactory,
+    ): AndroidPackageInstaller = AndroidPackageInstaller(context, schedulers)
+
+    @Provides
+    internal fun provideInstallerGateway(
+        installer: AndroidPackageInstaller,
+    ): PackageInstallerGateway = installer
 
     @Provides
     @Singleton

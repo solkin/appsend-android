@@ -2,6 +2,7 @@ package com.tomclaw.appsend_rb.screen.exports
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.BundleCompat
 import androidx.fragment.app.Fragment
 import com.tomclaw.appsend_rb.R
@@ -9,6 +10,7 @@ import com.tomclaw.appsend_rb.databinding.FragmentExportsBinding
 import com.tomclaw.appsend_rb.domain.ExportedFile
 import com.tomclaw.appsend_rb.getComponent
 import com.tomclaw.appsend_rb.screen.exports.di.ExportsModule
+import com.tomclaw.appsend_rb.screen.install.createInstallIntent
 import com.tomclaw.appsend_rb.screen.main.BottomBarHost
 import com.tomclaw.appsend_rb.util.ExportFolderPicker
 import com.tomclaw.appsend_rb.util.shareFiles
@@ -20,6 +22,9 @@ class ExportsFragment : Fragment(R.layout.fragment_exports), ExportsRouter {
     lateinit var presenter: ExportsPresenter
 
     private lateinit var folderPicker: ExportFolderPicker
+    private val filePicker = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        uri?.let { presenter.onPackageFilePicked(it.toString()) }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val state = savedInstanceState?.let { BundleCompat.getParcelable(it, KEY_STATE, ExportsState::class.java) }
@@ -79,6 +84,14 @@ class ExportsFragment : Fragment(R.layout.fragment_exports), ExportsRouter {
 
     override fun shareFiles(files: List<ExportedFile>) {
         requireContext().shareFiles(files)
+    }
+
+    override fun install(uri: String) {
+        startActivity(createInstallIntent(requireContext(), uri))
+    }
+
+    override fun pickPackageFile() {
+        filePicker.launch(arrayOf("*/*"))
     }
 
     override fun pickFolder() {

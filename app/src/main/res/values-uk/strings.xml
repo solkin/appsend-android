@@ -9,6 +9,7 @@
     <string name="open">Відкрити</string>
     <string name="remove">Видалити</string>
     <string name="selected">Вибрано</string>
+    <string name="install">Установити</string>
     <string name="send_to">Поділитися через</string>
 
     <string name="tab_apps">Застосунки</string>
@@ -87,6 +88,7 @@
     <string name="export_template_hint">{name}, {package}, {version}, {code}</string>
     <string name="export_format_bundle">.apks\nповний набір, %s</string>
     <string name="export_format_base">base.apk\nлише основний, %s</string>
+    <string name="export_notice_bundle">AppSend може сам встановити цей файл. Системний інсталятор не відкриває файли .apks.</string>
     <string name="export_notice_base">Лише base APK може не встановитися або не працювати без split-файлів.</string>
     <plurals name="export_title_apps">
         <item quantity="one">Витягти %d застосунок</item>
@@ -133,6 +135,7 @@
     <string name="clear_exports">Видалити всі файли</string>
     <string name="clear_exports_message">Усі файли .apk і .apks у теці %s буде видалено, зокрема й не створені AppSend.</string>
     <string name="cache_clearing_failed">Не вдалося видалити файл</string>
+    <string name="install_from_file">Установити з файлу</string>
     <string name="select_files">Вибрати файли</string>
     <string name="no_files_selected">Виберіть принаймні один файл</string>
     <plurals name="delete_selected_exports">
@@ -142,6 +145,50 @@
         <item quantity="other">Буде видалено %d файлів.</item>
     </plurals>
 
+    <string name="install_title_new">Установити %s</string>
+    <string name="install_title_update">Оновити %s</string>
+    <string name="install_version">%1$s · %2$s</string>
+    <string name="install_version_change">%1$s → %2$s · %3$s</string>
+    <string name="install_versions_compare">Файл: %1$s · встановлено: %2$s</string>
+    <string name="install_file_version">Версія %s</string>
+    <string name="install_check_device">Пристрій</string>
+    <string name="install_check_device_ok">Підходить для цього пристрою</string>
+    <string name="install_check_signature">Підпис</string>
+    <string name="install_check_signature_ok">Збігається зі встановленою версією</string>
+    <string name="install_check_android">Android</string>
+    <string name="install_check_android_value">Потрібен API %d або новіший</string>
+    <string name="install_check_files">Вміст</string>
+    <string name="install_check_files_base">Лише base APK</string>
+    <plurals name="install_check_files_value">
+        <item quantity="one">Основний і %d split-файл</item>
+        <item quantity="few">Основний і %d split-файли</item>
+        <item quantity="many">Основний і %d split-файлів</item>
+        <item quantity="other">Основний і %d split-файла</item>
+    </plurals>
+    <string name="install_permission_notice">Android один раз запитає, чи дозволити AppSend встановлювати застосунки.</string>
+    <string name="install_allow_and_install">Дозволити й установити</string>
+    <string name="install_replace">Видалити й установити</string>
+    <string name="install_in_progress">Установлення: %s</string>
+    <string name="install_writing">Передавання файлів інсталятору</string>
+    <string name="install_awaiting_confirmation">Очікування вашого підтвердження</string>
+    <string name="install_done">Установлено: %s</string>
+    <string name="install_failed">Не вдалося встановити</string>
+    <string name="install_unreadable_title">Це не пакет застосунку</string>
+    <string name="install_unreadable_message">Не вдалося прочитати файл як пакет .apk або .apks.</string>
+    <string name="install_issue_signature_title">Підпис відрізняється</string>
+    <string name="install_issue_signature_message">Файл підписано іншим ключем. Android не оновить застосунок, доки встановлену версію не буде видалено. Дані застосунку буде втрачено.</string>
+    <string name="install_issue_downgrade_title">Установлено новішу версію</string>
+    <string name="install_issue_downgrade_message">Android не встановлює старішу версію поверх новішої. Спочатку потрібно видалити встановлену версію. Дані застосунку буде втрачено.</string>
+    <string name="install_issue_android_title">Версія Android занадто стара</string>
+    <string name="install_issue_android_message">Застосунку потрібна новіша версія Android, ніж на цьому пристрої.</string>
+    <string name="install_issue_device_title">Не підходить для цього пристрою</string>
+    <string name="install_issue_device_message">У наборі немає файлів для архітектури цього пристрою: його витягнуто на іншому пристрої.</string>
+    <string name="install_failure_blocked">Система заблокувала це встановлення.</string>
+    <string name="install_failure_conflict">Цей пакет конфліктує із застосунком, який уже є на пристрої.</string>
+    <string name="install_failure_incompatible">Цей пакет несумісний із цим пристроєм.</string>
+    <string name="install_failure_invalid">Пакет пошкоджено або він неповний.</string>
+    <string name="install_failure_storage">На пристрої недостатньо пам’яті.</string>
+    <string name="install_failure_unknown">Системі не вдалося завершити встановлення.</string>
 
     <string name="settings_appearance">Вигляд</string>
     <string name="settings_theme">Тема</string>

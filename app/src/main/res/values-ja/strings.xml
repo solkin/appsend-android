@@ -9,6 +9,7 @@
     <string name="open">開く</string>
     <string name="remove">削除</string>
     <string name="selected">選択中</string>
+    <string name="install">インストール</string>
     <string name="send_to">共有先</string>
 
     <string name="tab_apps">アプリ</string>
@@ -84,6 +85,7 @@
     <string name="export_template_hint">{name}, {package}, {version}, {code}</string>
     <string name="export_format_bundle">.apks\nフルセット、%s</string>
     <string name="export_format_base">base.apk\nベースのみ、%s</string>
+    <string name="export_notice_bundle">このファイルは AppSend 自身でインストールできます。システムのインストーラーは .apks ファイルを開けません。</string>
     <string name="export_notice_base">ベース APK だけでは、split ファイルがないためインストールできない、または動作しない可能性があります。</string>
     <plurals name="export_title_apps">
         <item quantity="other">%d 個のアプリを抽出</item>
@@ -121,12 +123,54 @@
     <string name="clear_exports">すべてのファイルを削除</string>
     <string name="clear_exports_message">%s 内のすべての .apk と .apks ファイルが削除されます。AppSend で作成していないファイルも含まれます。</string>
     <string name="cache_clearing_failed">ファイルを削除できませんでした</string>
+    <string name="install_from_file">ファイルからインストール</string>
     <string name="select_files">ファイルを選択</string>
     <string name="no_files_selected">ファイルを1つ以上選択してください</string>
     <plurals name="delete_selected_exports">
         <item quantity="other">%d 個のファイルが削除されます。</item>
     </plurals>
 
+    <string name="install_title_new">%s をインストール</string>
+    <string name="install_title_update">%s を更新</string>
+    <string name="install_version">%1$s · %2$s</string>
+    <string name="install_version_change">%1$s → %2$s · %3$s</string>
+    <string name="install_versions_compare">ファイル: %1$s · インストール済み: %2$s</string>
+    <string name="install_file_version">バージョン %s</string>
+    <string name="install_check_device">端末</string>
+    <string name="install_check_device_ok">この端末に対応しています</string>
+    <string name="install_check_signature">署名</string>
+    <string name="install_check_signature_ok">インストール済みのバージョンと一致</string>
+    <string name="install_check_android">Android</string>
+    <string name="install_check_android_value">API %d 以上が必要</string>
+    <string name="install_check_files">内容</string>
+    <string name="install_check_files_base">Base APK のみ</string>
+    <plurals name="install_check_files_value">
+        <item quantity="other">ベースと split ファイル %d 個</item>
+    </plurals>
+    <string name="install_permission_notice">AppSend にアプリのインストールを許可するかどうか、Android が一度だけ確認します。</string>
+    <string name="install_allow_and_install">許可してインストール</string>
+    <string name="install_replace">削除してインストール</string>
+    <string name="install_in_progress">%s をインストール中</string>
+    <string name="install_writing">インストーラーにファイルを渡しています</string>
+    <string name="install_awaiting_confirmation">確認を待っています</string>
+    <string name="install_done">%s をインストールしました</string>
+    <string name="install_failed">インストールに失敗しました</string>
+    <string name="install_unreadable_title">アプリのパッケージではありません</string>
+    <string name="install_unreadable_message">このファイルを .apk または .apks パッケージとして読み取れませんでした。</string>
+    <string name="install_issue_signature_title">署名が異なります</string>
+    <string name="install_issue_signature_message">このファイルは別の鍵で署名されています。インストール済みのバージョンを削除するまで、Android はアプリを更新しません。アプリのデータは失われます。</string>
+    <string name="install_issue_downgrade_title">新しいバージョンがインストール済み</string>
+    <string name="install_issue_downgrade_message">Android は新しいバージョンに古いバージョンを上書きインストールしません。先にインストール済みのバージョンを削除する必要があります。アプリのデータは失われます。</string>
+    <string name="install_issue_android_title">Android のバージョンが古すぎます</string>
+    <string name="install_issue_android_message">このアプリには、この端末より新しい Android が必要です。</string>
+    <string name="install_issue_device_title">この端末には対応していません</string>
+    <string name="install_issue_device_message">セットにこの端末のアーキテクチャ用のファイルがありません。別の端末で抽出されたものです。</string>
+    <string name="install_failure_blocked">システムによってインストールがブロックされました。</string>
+    <string name="install_failure_conflict">このパッケージは、端末にすでにあるアプリと競合しています。</string>
+    <string name="install_failure_incompatible">このパッケージはこの端末と互換性がありません。</string>
+    <string name="install_failure_invalid">パッケージが破損しているか、不完全です。</string>
+    <string name="install_failure_storage">この端末のストレージ容量が足りません。</string>
+    <string name="install_failure_unknown">システムがインストールを完了できませんでした。</string>
 
     <string name="settings_appearance">外観</string>
     <string name="settings_theme">テーマ</string>

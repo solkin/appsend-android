@@ -84,6 +84,15 @@
         android:textColor="?attr/colorOnSurfaceVariant"
         android:visibility="gone" />
 
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/install_from_file"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:text="@string/install_from_file"
+        app:icon="@drawable/ic_install" />
+
     <com.google.android.material.floatingtoolbar.FloatingToolbarLayout
         android:id="@+id/floating_toolbar"
         style="@style/Widget.Material3.FloatingToolbar.Vibrant"

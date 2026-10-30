@@ -230,6 +230,8 @@ class ExportsPresenterTest {
 
         override fun rowLongClicks(): Observable<ExportsRow.File> = longClicks
 
+        override fun installClicks(): Observable<ExportedFile> = Observable.never()
+
         override fun shareClicks(): Observable<ExportedFile> = Observable.never()
 
         override fun deleteConfirmations(): Observable<ExportedFile> = deleteRelay
@@ -237,6 +239,8 @@ class ExportsPresenterTest {
         override fun clearConfirmations(): Observable<Unit> = Observable.never()
 
         override fun changeFolderClicks(): Observable<Unit> = Observable.never()
+
+        override fun installFromFileClicks(): Observable<Unit> = Observable.never()
 
         override fun selectClicks(): Observable<Unit> = selectRelay
 
@@ -259,6 +263,10 @@ class ExportsPresenterTest {
         override fun shareFiles(files: List<ExportedFile>) {
             shared += files
         }
+
+        override fun install(uri: String) = Unit
+
+        override fun pickPackageFile() = Unit
 
         override fun pickFolder() = Unit
 
