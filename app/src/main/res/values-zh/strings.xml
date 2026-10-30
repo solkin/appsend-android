@@ -1,48 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">AppSend</string>
-    <string name="bytes">%d B</string>
-    <string name="kibibytes">%.1f KB</string>
-    <string name="mibibytes">%.1f MB</string>
-    <string name="gigibytes">%.1f GB</string>
+    <string name="app_name">AppSend</string>
     <string name="please_wait">請稍候…</string>
-    <string name="app_extract_success">已成功解壓縮至「下載」目錄</string>
-    <string name="app_extract_failed">應用提取失敗 :(</string>
-    <string name="refresh">更新</string>
-    <string name="tomclaw_software">TomClaw 軟體</string>
-    <string name="app_version">版本 %1$s (%2$d)</string>
-    <string name="info">資訊</string>
-    <string name="rate_app">評價應用</string>
-    <string name="all_apps">查看該作者的所有應用</string>
-    <string name="pref_base_title">基本設定</string>
-    <string name="pref_summary_runnable">僅顯示可執行應用</string>
-    <string name="pref_title_runnable">可執行套件</string>
+    <string name="back">返回</string>
+    <string name="cancel">取消</string>
+    <string name="continue_anyway">仍然繼續</string>
+    <string name="done">完成</string>
+    <string name="open">開啟</string>
+    <string name="remove">移除</string>
+    <string name="selected">已選取</string>
+    <string name="send_to">分享至</string>
+
+    <string name="tab_apps">應用程式</string>
+    <string name="tab_exports">匯出</string>
     <string name="settings">設定</string>
-    <string name="send_to">分享方式</string>
-    <string name="pref_summary_sort_order">套用清單排序選項</string>
-    <string name="extract_apk">將 APK 提取到下載資料夾</string>
-    <string name="share_apk">分享應用</string>
-    <string name="find_on_gp">在 Google Play 上尋找</string>
-    <string name="pref_title_clear_cache">清除快取</string>
-    <string name="pref_summary_clear_cache">刪除先前提取到下載資料夾的所有 APK 文件</string>
-    <string name="cache_cleared_successfully">快取已成功清除</string>
-    <string name="cache_clearing_failed">清除快取出錯</string>
-    <string name="write_permission_extract">要保存提取的應用程式文件，您需要擁有寫入磁碟的權限。</string>
+
     <string name="menu_search">搜尋</string>
-    <string name="run_app">運行應用</string>
-    <string name="non_launchable_package">此軟體包無法運作。</string>
-    <string name="app_details">顯示詳情</string>
-    <string name="donate">支持本項目</string>
-    <string name="donate_title">給開發者一些獎勵吧！</string>
-    <string name="donate_description">這樣他就會繼續帶給我們更新驚喜 :)</string>
-    <string name="donate_button">送他一塊巧克力</string>
-    <string name="purchase_error">發生錯誤，請重試。</string>
-    <string name="thank_you">感謝您的支持！</string>
-    <string name="pref_title_dark_theme">深色主題</string>
-    <string name="pref_dark_theme_system">應用設計採用深色系</string>
-    <string name="remove">解除安裝</string>
+    <string name="search_apps_hint">搜尋 %d 個應用程式</string>
+    <string name="apps_loading_failed">無法載入應用程式清單</string>
+    <string name="apps_empty">沒有符合篩選條件的應用程式</string>
+    <string name="app_row_meta">%1$s · %2$s · %3$s</string>
+    <string name="badge_new">新</string>
+    <string name="badge_split">split</string>
+    <string name="filter_system">系統</string>
+    <string name="filter_split">Split APK</string>
+    <string name="filter_runnable">可執行</string>
+    <string name="sort_name">名稱</string>
+    <string name="sort_size">大小</string>
+    <string name="sort_updated">更新時間</string>
+    <string name="sort_installed">安裝時間</string>
+    <string name="select_apps">選取應用程式</string>
+    <string name="select_all">全選</string>
+    <string name="share_selected_apks">分享</string>
+    <string name="extract_selected_apks">提取</string>
+    <string name="cancel_selection">取消選取</string>
+    <string name="selected_apps_count">已選取 %d 項</string>
+    <string name="no_apps_selected">請至少選取一個應用程式</string>
+    <string name="write_permission_extract">若要儲存應用程式檔案，您需要授予儲存空間權限</string>
+    <string name="backup_limitations_warning_title">備份限制</string>
+    <string name="backup_limitations_warning_message">系統應用程式與 split APK 應用程式可能無法作為完整備份還原。匯出的檔案可能缺少所需的 split 檔案，或依賴韌體／系統權限，因此可能無法在其他裝置上安裝或運作。</string>
+
+    <string name="find_on_gp">在 Google Play 上尋找</string>
+    <string name="non_launchable_package">此套件無法執行。</string>
+    <string name="app_details_copy_package">複製套件名稱</string>
+    <string name="app_details_package_copied">已複製套件名稱</string>
+    <string name="app_details_version">版本</string>
+    <string name="app_details_version_value">%1$s (%2$d)</string>
+    <string name="app_details_unknown_value">未知</string>
+    <string name="app_details_installed">安裝時間</string>
+    <string name="app_details_updated">更新時間</string>
+    <string name="app_details_size">大小</string>
+    <string name="app_details_path">路徑</string>
+    <string name="app_details_installer">安裝來源</string>
+    <string name="app_details_sdk">Android</string>
+    <string name="app_details_sdk_value">最低 API %1$d / 目標 API %2$d</string>
+    <string name="app_details_signature">SHA-256 簽章</string>
+    <string name="app_details_permissions">權限</string>
+    <string name="app_details_permissions_summary">已請求 %1$d 項，其中危險 %2$d 項</string>
+    <string name="app_details_open_system_details">開啟系統詳細資料</string>
+    <string name="app_details_status">狀態</string>
+    <string name="app_details_status_user">使用者應用程式</string>
+    <string name="app_details_status_system">系統應用程式</string>
+    <string name="app_details_status_single">單一 APK</string>
+    <string name="app_details_status_split">split APK</string>
+    <string name="app_details_status_value">%1$s，%2$s</string>
+    <plurals name="app_details_size_split">
+        <item quantity="other">%1$s：基礎 %2$s 與 %3$d 個 split 檔案 %4$s</item>
+    </plurals>
+
+    <string name="required_permissions">權限</string>
     <string name="unknown_permission_description">未知權限</string>
-    <string name="required_permissions">所需權限</string>
-    <string name="unable_to_get_permissions">無法取得應用程式所需的權限列表</string>
-    <string name="no_requested_permissions">該應用程式不需要任何特殊權限。</string>
+    <string name="permissions_filter_all">全部，%d</string>
+    <string name="permissions_filter_dangerous">危險，%d</string>
+    <string name="permissions_filter_granted">已授予，%d</string>
+    <string name="permissions_section_dangerous">危險</string>
+    <string name="permissions_section_normal">一般</string>
+    <string name="permission_granted">已授予</string>
+    <string name="permission_not_granted">未授予</string>
+
+    <string name="export_folder">資料夾</string>
+    <string name="export_folder_default">Downloads / Apps</string>
+    <string name="export_file_name">檔案名稱</string>
+    <string name="export_template_hint">{name}, {package}, {version}, {code}</string>
+    <string name="export_format_bundle">.apks\n完整套組，%s</string>
+    <string name="export_format_base">base.apk\n僅基礎，%s</string>
+    <string name="export_notice_base">僅有基礎 APK 時，若缺少 split 檔案，可能無法安裝或運作。</string>
+    <plurals name="export_title_apps">
+        <item quantity="other">提取 %d 個應用程式</item>
+    </plurals>
+    <plurals name="export_files_count">
+        <item quantity="other">%d 個檔案</item>
+    </plurals>
+
+    <string name="export_channel">應用程式匯出</string>
+    <string name="export_progress_title">正在提取 %1$d／%2$d</string>
+    <string name="export_progress_bytes">%1$s／%2$s</string>
+    <string name="export_finished">已完成</string>
+    <string name="export_finished_with_failures">已完成，但有錯誤</string>
+    <string name="export_minimize">最小化</string>
+    <string name="export_retry">重試</string>
+    <string name="export_status_queued">等待中</string>
+    <string name="export_status_failed">無法讀取檔案</string>
+    <string name="export_status_cancelled">已取消</string>
+
+    <plurals name="exports_summary">
+        <item quantity="other">%1$s · %2$d 個檔案 · %3$s</item>
+    </plurals>
+    <string name="exports_empty">提取的應用程式會顯示在這裡</string>
+    <string name="exports_filter_all">全部</string>
+    <string name="exports_filter_installed">已安裝</string>
+    <string name="exports_filter_outdated">已過時</string>
+    <string name="exports_today">今天</string>
+    <string name="exports_this_week">本週</string>
+    <string name="exports_earlier">更早</string>
+    <string name="export_state_not_installed">未安裝</string>
+    <string name="export_state_current">已安裝此版本</string>
+    <string name="export_state_newer">已安裝較新的版本</string>
+    <string name="export_state_older">已安裝較舊的版本</string>
+    <string name="change_export_folder">變更資料夾</string>
+    <string name="clear_exports">移除所有檔案</string>
+    <string name="clear_exports_message">%s 中的所有 .apk 和 .apks 檔案都會被移除，包括並非由 AppSend 建立的檔案。</string>
+    <string name="cache_clearing_failed">無法移除檔案</string>
+    <string name="select_files">選取檔案</string>
+    <string name="no_files_selected">請至少選取一個檔案</string>
+    <plurals name="delete_selected_exports">
+        <item quantity="other">將移除 %d 個檔案。</item>
+    </plurals>
+
+
+    <string name="settings_appearance">外觀</string>
+    <string name="settings_theme">主題</string>
+    <string name="settings_theme_system">系統</string>
+    <string name="settings_theme_light">淺色</string>
+    <string name="settings_theme_dark">深色</string>
+    <string name="settings_dynamic_colors">桌布色彩</string>
+    <string name="settings_dynamic_colors_summary">Android 12 及更新版本的動態色彩</string>
+    <string name="settings_export">匯出</string>
+    <string name="settings_export_format">split 應用程式的格式</string>
+    <string name="settings_export_format_bundle">.apks，完整套組</string>
+    <string name="settings_export_format_base">base.apk，僅基礎</string>
+    <string name="settings_data">資料</string>
+    <string name="settings_analytics">匿名統計資料</string>
+    <string name="settings_analytics_summary">使用情況與當機報告。重新啟動後完全生效</string>
+    <string name="settings_about">關於</string>
+    <string name="settings_version">版本</string>
+    <string name="rate_app">評價此應用程式</string>
+    <string name="all_apps">作者的應用程式</string>
+    <string name="tomclaw_software">TomClaw Software</string>
 </resources>

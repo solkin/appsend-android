@@ -1,53 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AppSend</string>
-    <string name="bytes">%d B</string>
-    <string name="kibibytes">%.1f KB</string>
-    <string name="mibibytes">%.1f MB</string>
-    <string name="gigibytes">%.1f GB</string>
     <string name="please_wait">Please, wait…</string>
-    <string name="app_extract_success">Successfully extracted to &lt;b>Downloads&lt;/b> directory</string>
-    <string name="app_extract_failed">Exporting failed :(</string>
-    <string name="apps_loading_failed">Unable to load applications list</string>
-    <string name="refresh">Refresh</string>
-    <string name="badge_new">New</string>
-    <string name="tomclaw_software">TomClaw Software</string>
-    <string name="app_version">Version %1$s (%2$d)</string>
-    <string name="info">Info</string>
-    <string name="rate_app">Rate this application</string>
-    <string name="all_apps">Author\'s applications</string>
-    <string name="pref_base_title">Base settings</string>
-    <string name="pref_summary_runnable">Show runnable packages only</string>
-    <string name="pref_title_runnable">Runnable packages</string>
-    <string name="settings">Settings</string>
+    <string name="back">Back</string>
+    <string name="cancel">Cancel</string>
+    <string name="continue_anyway">Continue anyway</string>
+    <string name="done">Done</string>
+    <string name="open">Open</string>
+    <string name="remove">Remove</string>
+    <string name="selected">Selected</string>
     <string name="send_to">Share with</string>
+
+    <string name="tab_apps">Apps</string>
+    <string name="tab_exports">Exports</string>
+    <string name="settings">Settings</string>
+
+    <string name="menu_search">Search</string>
+    <string name="search_apps_hint">Search %d apps</string>
+    <string name="apps_loading_failed">Unable to load applications list</string>
+    <string name="apps_empty">No apps match these filters</string>
+    <string name="app_row_meta">%1$s · %2$s · %3$s</string>
+    <string name="badge_new">New</string>
+    <string name="badge_split">split</string>
     <string name="filter_system">System</string>
+    <string name="filter_split">Split APK</string>
+    <string name="filter_runnable">Runnable</string>
     <string name="sort_name">Name</string>
     <string name="sort_size">Size</string>
     <string name="sort_updated">Updated</string>
     <string name="sort_installed">Installed</string>
-    <string name="extract_apk">Extract apk into Downloads</string>
-    <string name="share_apk">Share apk via apps</string>
-    <string name="find_on_gp">Find in Google Play</string>
-    <string name="pref_title_clear_cache">Clear cache</string>
-    <string name="pref_summary_clear_cache">Remove all previously extracted APK files in Downloads directory</string>
-    <string name="cache_cleared_successfully">Cache cleared successfully</string>
-    <string name="cache_clearing_failed">Cache clearing failed</string>
+    <string name="select_apps">Select apps</string>
+    <string name="select_all">Select all</string>
+    <string name="share_selected_apks">Share</string>
+    <string name="extract_selected_apks">Extract</string>
+    <string name="cancel_selection">Cancel selection</string>
+    <string name="selected_apps_count">%d selected</string>
+    <string name="no_apps_selected">Select at least one app</string>
     <string name="write_permission_extract">In order to save application file you will need to grant storage permission</string>
-    <string name="menu_search">Search</string>
-    <string name="run_app">Run application</string>
+    <string name="backup_limitations_warning_title">Backup limitations</string>
+    <string name="backup_limitations_warning_message">System apps and split APK apps may not be restored as a complete backup. The exported file can miss required split files or depend on firmware/system privileges, so it may not install or work on another device.</string>
+
+    <string name="find_on_gp">Find in Google Play</string>
     <string name="non_launchable_package">This package is not runnable.</string>
-    <string name="app_details">Show details</string>
-    <string name="pref_title_dark_theme">Dark theme</string>
-    <string name="pref_dark_theme_system">Dark colors in application appearance</string>
-    <string name="remove">Remove</string>
-    <string name="unknown_permission_description">Unknown permission</string>
-    <string name="required_permissions">Required permissions</string>
-    <string name="unable_to_get_permissions">Unable to get list or app\'s required permissions</string>
-    <string name="no_requested_permissions">App does not have requested permissions.</string>
     <string name="app_details_copy_package">Copy package name</string>
     <string name="app_details_package_copied">Package name copied</string>
-    <string name="app_details_package">Package name</string>
     <string name="app_details_version">Version</string>
     <string name="app_details_version_value">%1$s (%2$d)</string>
     <string name="app_details_unknown_value">Unknown</string>
@@ -55,8 +51,12 @@
     <string name="app_details_updated">Updated</string>
     <string name="app_details_size">Size</string>
     <string name="app_details_path">Path</string>
+    <string name="app_details_installer">Installed from</string>
+    <string name="app_details_sdk">Android</string>
+    <string name="app_details_sdk_value">min API %1$d / target API %2$d</string>
+    <string name="app_details_signature">SHA-256 signature</string>
     <string name="app_details_permissions">Permissions</string>
-    <string name="app_details_open_permissions">Open permissions</string>
+    <string name="app_details_permissions_summary">%1$d requested, %2$d dangerous</string>
     <string name="app_details_open_system_details">Open system details</string>
     <string name="app_details_status">Status</string>
     <string name="app_details_status_user">User app</string>
@@ -64,25 +64,93 @@
     <string name="app_details_status_single">single APK</string>
     <string name="app_details_status_split">split APK</string>
     <string name="app_details_status_value">%1$s, %2$s</string>
-    <string name="select_apps">Select apps</string>
-    <string name="share_selected_apks">Share</string>
-    <string name="extract_selected_apks">Extract</string>
-    <string name="cancel_selection">Cancel selection</string>
-    <string name="selected_apps_count">%d selected</string>
-    <string name="no_apps_selected">Select at least one app</string>
-    <string name="backup_limitations_warning_title">Backup limitations</string>
-    <string name="backup_limitations_warning_message">System apps and split APK apps may not be restored as a complete backup. The exported file can miss required split files or depend on firmware/system privileges, so it may not install or work on another device.</string>
-    <string name="continue_anyway">Continue anyway</string>
-    <string name="cancel">Cancel</string>
-    <plurals name="app_details_permissions_count">
-        <item quantity="one">%d requested</item>
-        <item quantity="other">%d requested</item>
+    <plurals name="app_details_size_split">
+        <item quantity="one">%1$s: base %2$s and %3$d split file %4$s</item>
+        <item quantity="other">%1$s: base %2$s and %3$d split files %4$s</item>
     </plurals>
-    <plurals name="apps_extract_success">
-        <item quantity="one">%d app extracted to Downloads</item>
-        <item quantity="other">%d apps extracted to Downloads</item>
+
+    <string name="required_permissions">Permissions</string>
+    <string name="unknown_permission_description">Unknown permission</string>
+    <string name="permissions_filter_all">All, %d</string>
+    <string name="permissions_filter_dangerous">Dangerous, %d</string>
+    <string name="permissions_filter_granted">Granted, %d</string>
+    <string name="permissions_section_dangerous">Dangerous</string>
+    <string name="permissions_section_normal">Normal</string>
+    <string name="permission_granted">Granted</string>
+    <string name="permission_not_granted">Not granted</string>
+
+    <string name="export_folder">Folder</string>
+    <string name="export_folder_default">Downloads / Apps</string>
+    <string name="export_file_name">File name</string>
+    <string name="export_template_hint">{name}, {package}, {version}, {code}</string>
+    <string name="export_format_bundle">.apks\nfull set, %s</string>
+    <string name="export_format_base">base.apk\nbase only, %s</string>
+    <string name="export_notice_bundle">Installing a .apks file takes an app that supports split APKs. The system installer does not open it.</string>
+    <string name="export_notice_base">The base APK alone may not install or work without its split files.</string>
+    <plurals name="export_title_apps">
+        <item quantity="one">Extract %d app</item>
+        <item quantity="other">Extract %d apps</item>
     </plurals>
-    <!-- Spoken by accessibility services for Knopochki's own surfaces. -->
-    <string name="a11y_bottom_sheet">Bottom sheet</string>
-    <string name="a11y_navigation_drawer">Navigation drawer</string>
+    <plurals name="export_files_count">
+        <item quantity="one">%d file</item>
+        <item quantity="other">%d files</item>
+    </plurals>
+
+    <string name="export_channel">App export</string>
+    <string name="export_progress_title">Extracting %1$d of %2$d</string>
+    <string name="export_progress_bytes">%1$s of %2$s</string>
+    <string name="export_finished">Finished</string>
+    <string name="export_finished_with_failures">Finished with errors</string>
+    <string name="export_minimize">Minimize</string>
+    <string name="export_retry">Retry</string>
+    <string name="export_status_queued">Waiting</string>
+    <string name="export_status_failed">Could not read the file</string>
+    <string name="export_status_cancelled">Cancelled</string>
+
+    <plurals name="exports_summary">
+        <item quantity="one">%1$s · %2$d file · %3$s</item>
+        <item quantity="other">%1$s · %2$d files · %3$s</item>
+    </plurals>
+    <string name="exports_empty">Extracted apps will appear here</string>
+    <string name="exports_filter_all">All</string>
+    <string name="exports_filter_installed">Installed</string>
+    <string name="exports_filter_outdated">Outdated</string>
+    <string name="exports_today">Today</string>
+    <string name="exports_this_week">This week</string>
+    <string name="exports_earlier">Earlier</string>
+    <string name="export_state_not_installed">not installed</string>
+    <string name="export_state_current">this version is installed</string>
+    <string name="export_state_newer">a newer version is installed</string>
+    <string name="export_state_older">an older version is installed</string>
+    <string name="change_export_folder">Change folder</string>
+    <string name="clear_exports">Remove all files</string>
+    <string name="clear_exports_message">Every .apk and .apks file in %s will be removed, including ones not made by AppSend.</string>
+    <string name="cache_clearing_failed">Could not remove the file</string>
+    <string name="select_files">Select files</string>
+    <string name="no_files_selected">Select at least one file</string>
+    <plurals name="delete_selected_exports">
+        <item quantity="one">%d file will be removed.</item>
+        <item quantity="other">%d files will be removed.</item>
+    </plurals>
+
+
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_dynamic_colors">Colors from wallpaper</string>
+    <string name="settings_dynamic_colors_summary">Dynamic colors of Android 12 and newer</string>
+    <string name="settings_export">Export</string>
+    <string name="settings_export_format">Format of split apps</string>
+    <string name="settings_export_format_bundle">.apks, the full set</string>
+    <string name="settings_export_format_base">base.apk, base only</string>
+    <string name="settings_data">Data</string>
+    <string name="settings_analytics">Anonymous statistics</string>
+    <string name="settings_analytics_summary">Usage and crash reports. Applies fully after restart</string>
+    <string name="settings_about">About</string>
+    <string name="settings_version">Version</string>
+    <string name="rate_app">Rate this application</string>
+    <string name="all_apps">Author\'s applications</string>
+    <string name="tomclaw_software">TomClaw Software</string>
 </resources>

@@ -1,17 +1,15 @@
 package com.tomclaw.appsend_rb.screen.apps
 
-import android.net.Uri
-import android.os.Build
-import android.os.Bundle
-import com.tomclaw.appsend.util.Analytics
-import com.tomclaw.appsend_rb.dto.AppEntity
-import com.tomclaw.appsend_rb.screen.apps.adapter.ItemClickListener
-import com.tomclaw.appsend_rb.screen.apps.adapter.app.AppItem
-import com.tomclaw.appsend_rb.util.SchedulersFactory
+import com.tomclaw.appsend_rb.domain.AppFilter
+import com.tomclaw.appsend_rb.domain.ExportFormat
+import com.tomclaw.appsend_rb.domain.InstalledApp
+import com.tomclaw.appsend_rb.domain.ValueFormatter
+import com.tomclaw.appsend_rb.domain.Analytics
+import com.tomclaw.appsend_rb.domain.SchedulersFactory
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.plusAssign
 
-interface AppsPresenter : ItemClickListener {
+interface AppsPresenter {
 
     fun attachView(view: AppsView)
 
@@ -21,689 +19,247 @@ interface AppsPresenter : ItemClickListener {
 
     fun detachRouter()
 
-    fun saveState(): Bundle
-
-    fun onBackPressed()
-
     fun onResume()
 
-    fun invalidateAppsList()
+    fun onHidden()
 
-    interface AppsRouter {
+    fun saveState(): AppsState
 
-        fun showPrefsScreen()
-
-        fun showInfoScreen()
-
-        fun leaveScreen()
-
-        fun runApp(packageName: String): Boolean
-
-        fun openGooglePlay(packageName: String)
-
-        fun showRequestedPermissions(permissions: List<String>)
-
-        fun showAppDetails(entity: AppEntity)
-
-        fun runAppUninstall(packageName: String)
-
-        fun shareApk(uri: Uri)
-
-        fun shareApks(uris: List<Uri>)
-
-        /**
-         * [onDenied] reports whether the refusal is final ("don't ask again"), in
-         * which case only [openAppSettings] can still turn the permission on.
-         */
-        fun requestPermissions(
-            onGranted: () -> Unit,
-            onDenied: (permanentlyDenied: Boolean) -> Unit
-        )
-
-        fun openAppSettings()
-
-    }
+    fun destroy()
 
 }
 
 class AppsPresenterImpl(
     private val interactor: AppsInteractor,
-    private val appEntityConverter: AppEntityConverter,
-    private val preferences: PreferencesProvider,
+    private val formatter: ValueFormatter,
     private val schedulers: SchedulersFactory,
     private val analytics: Analytics,
-    state: Bundle?
+    state: AppsState?,
+    private val clock: () -> Long = System::currentTimeMillis,
 ) : AppsPresenter {
 
     private var view: AppsView? = null
-    private var router: AppsPresenter.AppsRouter? = null
+    private var router: AppsRouter? = null
+    private val viewSubscriptions = CompositeDisposable()
+    private val dataSubscriptions = CompositeDisposable()
 
-    private var entities: List<AppEntity>? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-        state?.getParcelableArrayList(KEY_ENTITIES, AppEntity::class.java)
-    } else {
-        @Suppress("DEPRECATION")
-        state?.getParcelableArrayList(KEY_ENTITIES)
-    }
-
-    private var packageMayBeDeleted: String? = state?.getString(KEY_PACKAGE_MAY_BE_DELETED)
-    private var selectionMode: Boolean = state?.getBoolean(KEY_SELECTION_MODE) ?: false
-    private var screenTracked: Boolean = state?.getBoolean(KEY_SCREEN_TRACKED) ?: false
-    private var searchActive: Boolean = state?.getBoolean(KEY_SEARCH_ACTIVE) ?: false
-    private var selectedPackages: Set<String> = state?.getStringArrayList(KEY_SELECTED_PACKAGES)
-        ?.toSet()
-        ?: emptySet()
-
-    // The chips are the only control for these two, and they persist their choice.
-    private var sortOrder: Int =
-        state?.getInt(KEY_SORT_ORDER, preferences.getSortOrder()) ?: preferences.getSortOrder()
-    private var showSystem: Boolean =
-        state?.getBoolean(KEY_SHOW_SYSTEM, preferences.isShowSystemApps())
-            ?: preferences.isShowSystemApps()
+    private var apps: List<InstalledApp>? = null
+    private var filter: AppFilter = interactor.filter()
+    private var query: String = ""
+    private var refreshing = false
+    private var failed = false
+    private var selectionMode = state?.selectionMode ?: false
+    private var selected: Set<String> = state?.selected?.toSet().orEmpty()
+    private var pendingUninstalls: List<String> = state?.pendingUninstalls.orEmpty()
 
     init {
-        // Z-A lost its control when the sort setting was folded into the chips.
-        // Fold a value stored by an older version into A-Z, so the highlighted
-        // chip cannot disagree with the order the list is actually in.
-        if (sortOrder == NAME_DESCENDING) {
-            sortOrder = NAME_ASCENDING
-            preferences.setSortOrder(NAME_ASCENDING)
-        }
+        dataSubscriptions += interactor.apps()
+            .observeOn(schedulers.mainThread())
+            .subscribe { snapshot ->
+                apps = snapshot
+                val installed = snapshot.mapTo(HashSet()) { it.packageName }
+                selected = selected.intersect(installed)
+                render()
+            }
+        analytics.trackEvent("screen_open", mapOf("screen" to "apps"))
+        load(pull = false)
     }
-
-    private val subscriptions = CompositeDisposable()
 
     override fun attachView(view: AppsView) {
         this.view = view
-        trackScreenOpen()
-        subscriptions += view.refreshClicks().subscribe { onRefreshClicked() }
-        subscriptions += view.prefsClicks().subscribe { onPrefsClicked() }
-        subscriptions += view.infoClicks().subscribe { onInfoClicked() }
-        subscriptions += view.appMenuClicks().subscribe { onAppMenuClicked(it) }
-        subscriptions += view.appItemClicks().subscribe { onItemClick(it) }
-        subscriptions += view.appItemLongClicks().subscribe { onItemLongClick(it) }
-        subscriptions += view.selectionClicks().subscribe { enterSelectionMode() }
-        subscriptions += view.batchShareClicks().subscribe { onBatchShareClicked() }
-        subscriptions += view.batchExtractClicks().subscribe { onBatchExtractClicked() }
-        subscriptions += view.cancelSelectionClicks().subscribe { leaveSelectionMode("toolbar") }
-        subscriptions += view.searchTextChanged().subscribe { text -> onSearchTextChanged(text) }
-        subscriptions += view.searchCloseChanged().subscribe { onSearchClosed() }
-        subscriptions += view.sortSelectedClicks().subscribe { onSortSelected(it) }
-        subscriptions += view.systemToggleClicks().subscribe { onSystemToggled(it) }
-        subscriptions += view.appSettingsClicks().subscribe { onAppSettingsClicked() }
-
-        view.setFilters(sortOrder, showSystem)
-
-        entities.takeIf { it != null }
-            ?.run { applyAppEntities(this) }
-            ?: loadAppItems()
-    }
-
-    private fun onSortSelected(order: Int) {
-        if (sortOrder == order) return
-        sortOrder = order
-        preferences.setSortOrder(order)
-        analytics.trackEvent("apps_sort_changed", mapOf("sort_order" to order.analyticsValue()))
-        loadAppItems()
-    }
-
-    private fun onSystemToggled(show: Boolean) {
-        if (showSystem == show) return
-        showSystem = show
-        preferences.setShowSystemApps(show)
-        analytics.trackEvent("apps_filter_system", mapOf("show_system" to show.analyticsValue()))
-        loadAppItems()
-    }
-
-    private fun onRefreshClicked() {
-        analytics.trackEvent("apps_refresh")
-        loadAppItems()
-    }
-
-    private fun onPrefsClicked() {
-        analytics.trackEvent("navigation_opened", mapOf("screen" to "settings"))
-        router?.showPrefsScreen()
-    }
-
-    private fun onInfoClicked() {
-        analytics.trackEvent("navigation_opened", mapOf("screen" to "about"))
-        router?.showInfoScreen()
-    }
-
-    private fun onAppSettingsClicked() {
-        analytics.trackEvent("permission_settings_opened")
-        router?.openAppSettings()
-    }
-
-    private fun onAppMenuClicked(pair: Pair<Int, AppItem>) {
-        val item = pair.second
-        when (pair.first) {
-            ACTION_RUN_APP -> {
-                trackAppAction("run_app", item)
-                router?.runApp(item.packageName)
-                    ?.let { result ->
-                        analytics.trackEvent(
-                            "app_action_result",
-                            mapOf("action" to "run_app", "result" to result.analyticsValue())
-                        )
-                        if (!result) view?.showAppLaunchError()
-                    }
-            }
-            ACTION_FIND_IN_GP -> {
-                trackAppAction("open_google_play", item)
-                packageMayBeDeleted = item.packageName
-                router?.openGooglePlay(item.packageName)
-            }
-            ACTION_SHARE_APP -> {
-                trackAppAction("share_apk", item)
-                shareApp(item)
-            }
-            ACTION_EXTRACT_APP -> {
-                trackAppAction("extract_apk", item)
-                extractApp(item)
-            }
-            ACTION_SHOW_PERMISSIONS -> {
-                trackAppAction("open_permissions", item)
-                showPermissions(item)
-            }
-            ACTION_SHOW_DETAILS -> {
-                trackAppAction("open_details", item)
-                showAppDetails(item)
-            }
-            ACTION_REMOVE_APP -> {
-                trackAppAction("uninstall", item)
-                packageMayBeDeleted = item.packageName
-                router?.runAppUninstall(item.packageName)
-            }
+        viewSubscriptions += view.refreshRequests().subscribe {
+            analytics.trackEvent("apps_refresh")
+            load(pull = true)
         }
-    }
-
-    private fun trackScreenOpen() {
-        if (screenTracked) {
-            return
+        viewSubscriptions += view.itemClicks().subscribe(::onItemClick)
+        viewSubscriptions += view.itemLongClicks().subscribe(::onItemLongClick)
+        viewSubscriptions += view.sortChanges().subscribe { updateFilter(filter.copy(sort = it)) }
+        viewSubscriptions += view.systemFilterChanges().subscribe { updateFilter(filter.copy(showSystem = it)) }
+        viewSubscriptions += view.splitFilterChanges().subscribe { updateFilter(filter.copy(splitOnly = it)) }
+        viewSubscriptions += view.runnableFilterChanges().subscribe { updateFilter(filter.copy(runnableOnly = it)) }
+        viewSubscriptions += view.queryChanges().subscribe {
+            query = it
+            render()
         }
-        screenTracked = true
-        analytics.trackEvent(
-            "screen_open",
-            mapOf(
-                "screen" to "apps",
-                "show_system" to preferences.isShowSystemApps().analyticsValue(),
-                "runnable_only" to preferences.isRunnableOnly().analyticsValue(),
-                "sort_order" to preferences.getSortOrder().analyticsValue()
-            )
-        )
-    }
-
-    private fun trackAppAction(action: String, item: AppItem) {
-        analytics.trackEvent(
-            "app_action_selected",
-            mapOf("action" to action) + item.analyticsTags()
-        )
-    }
-
-    private fun AppItem.analyticsTags(): Map<String, String> {
-        val entity = entities?.find { it.packageName == packageName }
-        return mapOf(
-            "system" to (entity?.system ?: false).analyticsValue(),
-            "split" to (entity?.split ?: false).analyticsValue(),
-            "has_permissions" to (!entity?.requestedPermissions.isNullOrEmpty()).analyticsValue()
-        )
-    }
-
-    private fun AppEntity.analyticsTags(): Map<String, String> {
-        return mapOf(
-            "system" to system.analyticsValue(),
-            "split" to split.analyticsValue(),
-            "has_permissions" to (!requestedPermissions.isNullOrEmpty()).analyticsValue()
-        )
-    }
-
-    private fun List<AppEntity>.analyticsFields(): Map<String, Double> {
-        return mapOf(
-            "count" to size.toDouble(),
-            "system_count" to count { it.system }.toDouble(),
-            "split_count" to count { it.split }.toDouble()
-        )
-    }
-
-    private fun Int.analyticsValue(): String {
-        return when (this) {
-            NAME_ASCENDING -> "name_ascending"
-            NAME_DESCENDING -> "name_descending"
-            APP_SIZE -> "app_size"
-            INSTALL_TIME -> "install_time"
-            UPDATE_TIME -> "update_time"
-            else -> "unknown"
-        }
-    }
-
-    private fun Boolean.analyticsValue(): String = toString()
-
-    private fun Throwable.trackNonFatal(event: String, tags: Map<String, String> = emptyMap()) {
-        analytics.trackException(this, mapOf("event" to event) + tags)
-    }
-
-    private fun String.searchLengthBucket(): String {
-        return when (length) {
-            in 0..2 -> "short"
-            in 3..10 -> "medium"
-            else -> "long"
-        }
-    }
-
-    private fun onSearchTextChanged(query: String) {
-        if (query.isNotBlank() && !searchActive) {
-            searchActive = true
-            analytics.trackEvent(
-                "apps_search_used",
-                mapOf("query_length" to query.searchLengthBucket())
-            )
-        }
-        filterApps(query)
-    }
-
-    private fun onSearchClosed() {
-        if (searchActive) {
-            searchActive = false
-            analytics.trackEvent("apps_search_closed")
-        }
-        filterApps("")
+        viewSubscriptions += view.selectClicks().subscribe { setSelectionMode(true) }
+        viewSubscriptions += view.cancelSelectionClicks().subscribe { setSelectionMode(false) }
+        viewSubscriptions += view.selectAllClicks().subscribe { toggleSelectAll() }
+        viewSubscriptions += view.shareClicks().subscribe { onShareClicked() }
+        viewSubscriptions += view.extractClicks().subscribe { onExtractClicked() }
+        viewSubscriptions += view.removeClicks().subscribe { onRemoveClicked() }
+        viewSubscriptions += view.backupWarningConfirmations().subscribe { share() }
+        render()
     }
 
     override fun detachView() {
-        subscriptions.clear()
-        this.view = null
+        viewSubscriptions.clear()
+        view = null
     }
 
-    override fun attachRouter(router: AppsPresenter.AppsRouter) {
+    override fun attachRouter(router: AppsRouter) {
         this.router = router
     }
 
     override fun detachRouter() {
-        this.router = null
-    }
-
-    override fun invalidateAppsList() {
-        loadAppItems()
-    }
-
-    private fun loadAppItems() {
-        subscriptions += interactor.loadApps(
-            systemApps = showSystem,
-            runnableOnly = preferences.isRunnableOnly(),
-            sortOrder = sortOrder
-        )
-            .observeOn(schedulers.mainThread())
-            .doOnSubscribe { view?.showProgress() }
-            .doAfterTerminate { view?.showContent() }
-            .subscribe({ entities ->
-                analytics.trackEvent(
-                    "apps_loaded",
-                    mapOf(
-                        "show_system" to showSystem.analyticsValue(),
-                        "runnable_only" to preferences.isRunnableOnly().analyticsValue(),
-                        "sort_order" to sortOrder.analyticsValue()
-                    ),
-                    entities.analyticsFields()
-                )
-                applyAppEntities(entities)
-            }, { error ->
-                error.trackNonFatal("apps_load_failed")
-                analytics.trackEvent("apps_load_failed")
-                view?.showAppsLoadingError()
-            })
-    }
-
-    private fun filterApps(query: String) {
-        entities.takeIf { it != null }
-            ?.filter { it.matchesSearchQuery(query) }
-            ?.run { bindAppEntities(this) }
-            ?: loadAppItems()
-    }
-
-    private fun AppEntity.matchesSearchQuery(query: String): Boolean {
-        return label.contains(query, ignoreCase = true) ||
-                packageName.contains(query, ignoreCase = true)
-    }
-
-    private fun applyAppEntities(entities: List<AppEntity>) {
-        this.entities = entities
-        selectedPackages = selectedPackages.intersect(entities.map { it.packageName }.toSet())
-        bindAppEntities(entities)
-    }
-
-    private fun bindAppEntities(entities: List<AppEntity>) {
-        var id: Long = 0
-        val items = entities
-            .map {
-                appEntityConverter.convert(
-                    id++,
-                    it,
-                    selectable = selectionMode,
-                    selected = selectedPackages.contains(it.packageName)
-                )
-            }
-        view?.setApps(items)
-        view?.showSelectionMode(selectionMode, selectedPackages.size)
-    }
-
-    private fun shareApp(item: AppItem) {
-        val entity = entities?.find { it.packageName == item.packageName } ?: return
-        confirmBackupLimitationsIfNeeded(listOf(entity), "share_apk") {
-            router?.requestPermissions(
-                onGranted = { shareApp(entity) },
-                onDenied = { permanentlyDenied ->
-                    analytics.trackEvent("app_action_denied", mapOf("action" to "share_apk", "reason" to "write_permission"))
-                    view?.showWritePermissionsRequiredError(permanentlyDenied)
-                }
-            )
-        }
-    }
-
-    private fun extractApp(item: AppItem) {
-        val entity = entities?.find { it.packageName == item.packageName } ?: return
-        confirmBackupLimitationsIfNeeded(listOf(entity), "extract_apk") {
-            router?.requestPermissions(
-                onGranted = { extractApp(entity) },
-                onDenied = { permanentlyDenied ->
-                    analytics.trackEvent("app_action_denied", mapOf("action" to "extract_apk", "reason" to "write_permission"))
-                    view?.showWritePermissionsRequiredError(permanentlyDenied)
-                }
-            )
-        }
-    }
-
-    private fun shareApp(entity: AppEntity) {
-        analytics.trackEvent("apk_export_started", mapOf("action" to "share_apk") + entity.analyticsTags())
-        subscriptions += interactor.exportApp(entity)
-            .observeOn(schedulers.mainThread())
-            .doOnSubscribe { view?.showProgress() }
-            .doAfterTerminate { view?.showContent() }
-            .subscribe({ file ->
-                analytics.trackEvent("apk_export_succeeded", mapOf("action" to "share_apk") + entity.analyticsTags())
-                router?.shareApk(file)
-            }, { error ->
-                error.trackNonFatal("apk_export_failed", mapOf("action" to "share_apk") + entity.analyticsTags())
-                analytics.trackEvent("apk_export_failed", mapOf("action" to "share_apk") + entity.analyticsTags())
-                view?.showAppExportError()
-            })
-    }
-
-    private fun extractApp(entity: AppEntity) {
-        analytics.trackEvent("apk_export_started", mapOf("action" to "extract_apk") + entity.analyticsTags())
-        subscriptions += interactor.exportApp(entity)
-            .observeOn(schedulers.mainThread())
-            .doOnSubscribe { view?.showProgress() }
-            .doAfterTerminate { view?.showContent() }
-            .subscribe({
-                analytics.trackEvent("apk_export_succeeded", mapOf("action" to "extract_apk") + entity.analyticsTags())
-                view?.showExtractSuccess()
-            }, { error ->
-                error.trackNonFatal("apk_export_failed", mapOf("action" to "extract_apk") + entity.analyticsTags())
-                analytics.trackEvent("apk_export_failed", mapOf("action" to "extract_apk") + entity.analyticsTags())
-                view?.showAppExportError()
-            })
-    }
-
-    private fun showPermissions(item: AppItem) {
-        subscriptions += interactor.loadApp(item.packageName)
-            .observeOn(schedulers.mainThread())
-            .subscribe({ entity ->
-                entity.requestedPermissions?.let {
-                    analytics.trackEvent(
-                        "permissions_opened",
-                        entity.analyticsTags(),
-                        mapOf("permissions_count" to entity.requestedPermissions.size.toDouble())
-                    )
-                    router?.showRequestedPermissions(entity.requestedPermissions)
-                } ?: run {
-                    analytics.trackEvent("permissions_empty", entity.analyticsTags())
-                    view?.showNoRequestedPermissionsMessage()
-                }
-            }, { error ->
-                error.trackNonFatal("permissions_load_failed")
-                analytics.trackEvent("permissions_load_failed")
-                view?.showUnableToGetPermissionsError()
-            })
-    }
-
-    private fun showAppDetails(item: AppItem) {
-        entities?.find { it.packageName == item.packageName }
-            ?.let {
-                analytics.trackEvent("app_details_opened", it.analyticsTags())
-                router?.showAppDetails(it)
-            }
-    }
-
-    override fun saveState() = Bundle().apply {
-        entities?.let { putParcelableArrayList(KEY_ENTITIES, ArrayList(it)) }
-        packageMayBeDeleted?.let { putString(KEY_PACKAGE_MAY_BE_DELETED, packageMayBeDeleted) }
-        putBoolean(KEY_SELECTION_MODE, selectionMode)
-        putBoolean(KEY_SCREEN_TRACKED, screenTracked)
-        putBoolean(KEY_SEARCH_ACTIVE, searchActive)
-        putStringArrayList(KEY_SELECTED_PACKAGES, ArrayList(selectedPackages))
-        putInt(KEY_SORT_ORDER, sortOrder)
-        putBoolean(KEY_SHOW_SYSTEM, showSystem)
-    }
-
-    override fun onBackPressed() {
-        if (selectionMode) {
-            leaveSelectionMode("back")
-        } else {
-            router?.leaveScreen()
-        }
+        router = null
     }
 
     override fun onResume() {
-        packageMayBeDeleted?.let { pkg ->
-            checkAppExist(pkg)
-            packageMayBeDeleted = null
-        }
+        val next = pendingUninstalls.firstOrNull() ?: return
+        pendingUninstalls = pendingUninstalls.drop(1)
+        router?.uninstall(next)
     }
 
-    private fun checkAppExist(packageName: String) {
-        subscriptions += interactor.loadApp(packageName)
+    /** Another tab took over: nothing here may keep holding the bottom bar or Back. */
+    override fun onHidden() {
+        if (selectionMode) setSelectionMode(false)
+        view?.closeSearch()
+    }
+
+    override fun destroy() {
+        dataSubscriptions.clear()
+    }
+
+    override fun saveState() = AppsState(
+        selectionMode = selectionMode,
+        selected = ArrayList(selected),
+        pendingUninstalls = ArrayList(pendingUninstalls),
+    )
+
+    private fun load(pull: Boolean) {
+        refreshing = pull
+        failed = false
+        render()
+        dataSubscriptions += interactor.refresh()
             .observeOn(schedulers.mainThread())
-            .subscribe({}, {
-                entities?.let { actual ->
-                    val entity = actual.find { it.packageName == packageName }
-                        ?: return@subscribe
-                    analytics.trackEvent("app_uninstalled")
-                    applyAppEntities(actual - entity)
-                }
+            .subscribe({
+                refreshing = false
+                render()
+            }, { error ->
+                refreshing = false
+                failed = true
+                analytics.trackException(error, mapOf("event" to "apps_load_failed"))
+                render()
             })
     }
 
-    override fun onItemClick(item: AppItem) {
+    private fun updateFilter(value: AppFilter) {
+        if (filter == value) return
+        filter = value
+        interactor.saveFilter(value)
+        render()
+    }
+
+    private fun onItemClick(item: AppItem) {
         if (selectionMode) {
-            toggleSelection(item.packageName)
-        } else {
-            analytics.trackEvent("app_menu_opened", item.analyticsTags())
-            view?.showAppMenu(item)
-        }
-    }
-
-    override fun onItemLongClick(item: AppItem) {
-        if (!selectionMode) {
-            selectionMode = true
-            selectedPackages = selectedPackages + item.packageName
-            analytics.trackEvent(
-                "selection_mode_entered",
-                mapOf("source" to "long_click"),
-                mapOf("selected_count" to selectedPackages.size.toDouble())
-            )
-            bindCurrentEntities()
-        }
-    }
-
-    private fun enterSelectionMode() {
-        selectionMode = true
-        analytics.trackEvent(
-            "selection_mode_entered",
-            mapOf("source" to "toolbar"),
-            mapOf("selected_count" to selectedPackages.size.toDouble())
-        )
-        bindCurrentEntities()
-    }
-
-    private fun leaveSelectionMode(reason: String) {
-        analytics.trackEvent(
-            "selection_mode_exited",
-            mapOf("reason" to reason),
-            mapOf("selected_count" to selectedPackages.size.toDouble())
-        )
-        selectionMode = false
-        selectedPackages = emptySet()
-        bindCurrentEntities()
-    }
-
-    private fun toggleSelection(packageName: String) {
-        selectedPackages = if (selectedPackages.contains(packageName)) {
-            selectedPackages - packageName
-        } else {
-            selectedPackages + packageName
-        }
-        analytics.trackEvent(
-            "selection_changed",
-            emptyMap(),
-            mapOf("selected_count" to selectedPackages.size.toDouble())
-        )
-        bindCurrentEntities()
-    }
-
-    private fun bindCurrentEntities() {
-        entities?.let { bindAppEntities(it) }
-    }
-
-    private fun getSelectedEntities(): List<AppEntity> {
-        return entities.orEmpty().filter { selectedPackages.contains(it.packageName) }
-    }
-
-    private fun onBatchShareClicked() {
-        val selectedEntities = getSelectedEntities()
-        if (selectedEntities.isEmpty()) {
-            analytics.trackEvent("batch_action_empty", mapOf("action" to "share_apks"))
-            view?.showNoAppsSelectedMessage()
-            return
-        }
-        confirmBackupLimitationsIfNeeded(selectedEntities, "share_apks") {
-            router?.requestPermissions(
-                onGranted = { shareApps(selectedEntities) },
-                onDenied = { permanentlyDenied ->
-                    analytics.trackEvent(
-                        "batch_action_denied",
-                        mapOf("action" to "share_apks", "reason" to "write_permission"),
-                        selectedEntities.analyticsFields()
-                    )
-                    view?.showWritePermissionsRequiredError(permanentlyDenied)
-                }
-            )
-        }
-    }
-
-    private fun onBatchExtractClicked() {
-        val selectedEntities = getSelectedEntities()
-        if (selectedEntities.isEmpty()) {
-            analytics.trackEvent("batch_action_empty", mapOf("action" to "extract_apks"))
-            view?.showNoAppsSelectedMessage()
-            return
-        }
-        confirmBackupLimitationsIfNeeded(selectedEntities, "extract_apks") {
-            router?.requestPermissions(
-                onGranted = { extractApps(selectedEntities) },
-                onDenied = { permanentlyDenied ->
-                    analytics.trackEvent(
-                        "batch_action_denied",
-                        mapOf("action" to "extract_apks", "reason" to "write_permission"),
-                        selectedEntities.analyticsFields()
-                    )
-                    view?.showWritePermissionsRequiredError(permanentlyDenied)
-                }
-            )
-        }
-    }
-
-    private fun confirmBackupLimitationsIfNeeded(
-        entities: List<AppEntity>,
-        action: String,
-        onConfirmed: () -> Unit
-    ) {
-        if (entities.hasBackupLimitations()) {
-            analytics.trackEvent(
-                "backup_limitations_shown",
-                mapOf("action" to action),
-                entities.analyticsFields()
-            )
-            view?.showBackupLimitationsWarning {
-                analytics.trackEvent(
-                    "backup_limitations_confirmed",
-                    mapOf("action" to action),
-                    entities.analyticsFields()
-                )
-                onConfirmed()
+            selected = if (item.packageName in selected) {
+                selected - item.packageName
+            } else {
+                selected + item.packageName
             }
+            render()
         } else {
-            onConfirmed()
+            router?.openDetails(item.packageName)
         }
     }
 
-    private fun List<AppEntity>.hasBackupLimitations(): Boolean {
-        return any { it.system || it.split }
+    private fun onItemLongClick(item: AppItem) {
+        if (selectionMode) return
+        selected = setOf(item.packageName)
+        setSelectionMode(true)
     }
 
-    private fun shareApps(entities: List<AppEntity>) {
-        analytics.trackEvent("batch_export_started", mapOf("action" to "share_apks"), entities.analyticsFields())
-        subscriptions += io.reactivex.rxjava3.core.Observable.fromIterable(entities)
-            .concatMap { interactor.exportApp(it) }
-            .toList()
-            .observeOn(schedulers.mainThread())
-            .doOnSubscribe { view?.showProgress() }
-            .doAfterTerminate { view?.showContent() }
-            .subscribe({ uris ->
-                analytics.trackEvent(
-                    "batch_export_succeeded",
-                    mapOf("action" to "share_apks"),
-                    entities.analyticsFields() + mapOf("exported_count" to uris.size.toDouble())
-                )
-                leaveSelectionMode("completed")
-                router?.shareApks(uris)
-            }, { error ->
-                error.trackNonFatal("batch_export_failed", mapOf("action" to "share_apks"))
-                analytics.trackEvent("batch_export_failed", mapOf("action" to "share_apks"), entities.analyticsFields())
-                view?.showAppExportError()
-            })
+    private fun setSelectionMode(enabled: Boolean) {
+        selectionMode = enabled
+        if (!enabled) selected = emptySet()
+        render()
     }
 
-    private fun extractApps(entities: List<AppEntity>) {
-        analytics.trackEvent("batch_export_started", mapOf("action" to "extract_apks"), entities.analyticsFields())
-        subscriptions += io.reactivex.rxjava3.core.Observable.fromIterable(entities)
-            .concatMap { interactor.exportApp(it) }
-            .toList()
-            .observeOn(schedulers.mainThread())
-            .doOnSubscribe { view?.showProgress() }
-            .doAfterTerminate { view?.showContent() }
-            .subscribe({ uris ->
-                val count = uris.size
-                analytics.trackEvent(
-                    "batch_export_succeeded",
-                    mapOf("action" to "extract_apks"),
-                    entities.analyticsFields() + mapOf("exported_count" to count.toDouble())
-                )
-                leaveSelectionMode("completed")
-                view?.showBatchExtractSuccess(count)
-            }, { error ->
-                error.trackNonFatal("batch_export_failed", mapOf("action" to "extract_apks"))
-                analytics.trackEvent("batch_export_failed", mapOf("action" to "extract_apks"), entities.analyticsFields())
-                view?.showAppExportError()
-            })
+    private fun toggleSelectAll() {
+        val visible = visibleApps().map { it.packageName }
+        selected = if (selected.containsAll(visible)) emptySet() else visible.toSet()
+        render()
     }
+
+    private fun selectedApps(): List<InstalledApp> =
+        apps.orEmpty().filter { it.packageName in selected }
+
+    private fun onShareClicked() {
+        val chosen = selectedApps()
+        if (chosen.isEmpty()) {
+            view?.showNothingSelected()
+            return
+        }
+        // A system app, or a split one reduced to its base, may not reinstall from the file.
+        val limited = chosen.any {
+            it.system || (it.split && interactor.exportFormat() == ExportFormat.BASE)
+        }
+        if (limited) view?.showBackupWarning() else share()
+    }
+
+    private fun share() {
+        interactor.share(selectedApps())
+        setSelectionMode(false)
+        router?.openExportProgress()
+    }
+
+    private fun onExtractClicked() {
+        val chosen = selectedApps().map { it.packageName }
+        if (chosen.isEmpty()) {
+            view?.showNothingSelected()
+            return
+        }
+        router?.openExportOptions(chosen)
+        setSelectionMode(false)
+    }
+
+    private fun onRemoveClicked() {
+        val chosen = selectedApps()
+        if (chosen.isEmpty()) {
+            view?.showNothingSelected()
+            return
+        }
+        // Each removal is one system dialog, so they run one at a time, on resume.
+        pendingUninstalls = chosen.map { it.packageName }
+        setSelectionMode(false)
+        onResume()
+    }
+
+    private fun visibleApps(): List<InstalledApp> =
+        interactor.arrange(apps.orEmpty(), filter)
+
+    private fun render() {
+        val view = view ?: return
+        val loaded = apps
+        val visible = visibleApps()
+        view.render(
+            AppsViewModel(
+                items = visible.map(::toItem),
+                searchResults = interactor.search(apps.orEmpty(), query).map(::toItem),
+                loading = loaded == null && !failed,
+                refreshing = refreshing,
+                failed = failed && loaded == null,
+                empty = loaded != null && visible.isEmpty(),
+                total = loaded?.size ?: 0,
+                filter = filter,
+                selectionMode = selectionMode,
+                selectedCount = selected.size,
+                selectedSize = formatter.bytes(selectedApps().sumOf { it.totalSize }),
+            )
+        )
+    }
+
+    private fun toItem(app: InstalledApp) = AppItem(
+        packageName = app.packageName,
+        name = app.label,
+        version = app.versionName,
+        size = formatter.bytes(app.totalSize),
+        updated = formatter.relativeTime(app.lastUpdateTime),
+        split = app.split,
+        fresh = clock() - app.lastUpdateTime < NEW_APP_WINDOW_MS,
+        selected = selectionMode && app.packageName in selected,
+    )
 
 }
 
-private const val KEY_ENTITIES = "entities"
-private const val KEY_PACKAGE_MAY_BE_DELETED = "package_may_be_deleted"
-private const val KEY_SELECTION_MODE = "selection_mode"
-private const val KEY_SCREEN_TRACKED = "screen_tracked"
-private const val KEY_SEARCH_ACTIVE = "search_active"
-private const val KEY_SELECTED_PACKAGES = "selected_packages"
-private const val KEY_SORT_ORDER = "sort_order"
-private const val KEY_SHOW_SYSTEM = "show_system"
+private const val NEW_APP_WINDOW_MS = 24L * 60 * 60 * 1000

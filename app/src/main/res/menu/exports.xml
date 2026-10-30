@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_select"
+        android:icon="@drawable/ic_checklist"
+        android:title="@string/select_files"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_change_folder"
+        android:title="@string/change_export_folder"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_clear"
+        android:title="@string/clear_exports"
+        app:showAsAction="never" />
+</menu>

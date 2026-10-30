@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="cardview_elevation">2dp</dimen>
+    <dimen name="app_icon_size">42dp</dimen>
+    <dimen name="app_icon_size_large">60dp</dimen>
 </resources>

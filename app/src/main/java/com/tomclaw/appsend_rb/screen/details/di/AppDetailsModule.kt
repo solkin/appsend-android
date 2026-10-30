@@ -1,51 +1,51 @@
 package com.tomclaw.appsend_rb.screen.details.di
 
-import android.annotation.SuppressLint
 import android.content.Context
-import com.tomclaw.appsend.util.Analytics
-import com.tomclaw.appsend_rb.dto.AppEntity
-import com.tomclaw.appsend_rb.screen.apps.PreferencesProvider
-import com.tomclaw.appsend_rb.screen.apps.PreferencesProviderImpl
+import com.tomclaw.appsend_rb.data.AndroidValueFormatter
+import com.tomclaw.appsend_rb.data.SystemClipboard
+import com.tomclaw.appsend_rb.domain.AppPreferences
+import com.tomclaw.appsend_rb.domain.ExportManager
+import com.tomclaw.appsend_rb.domain.InstalledAppsRepository
+import com.tomclaw.appsend_rb.screen.details.AppDetailsActivity
+import com.tomclaw.appsend_rb.screen.details.AppDetailsInteractorImpl
 import com.tomclaw.appsend_rb.screen.details.AppDetailsPresenter
 import com.tomclaw.appsend_rb.screen.details.AppDetailsPresenterImpl
-import com.tomclaw.appsend_rb.screen.details.AppDetailsResourceProvider
-import com.tomclaw.appsend_rb.screen.details.AppDetailsResourceProviderImpl
+import com.tomclaw.appsend_rb.screen.details.AppDetailsResourcesImpl
+import com.tomclaw.appsend_rb.domain.Analytics
 import com.tomclaw.appsend_rb.util.PerActivity
+import com.tomclaw.appsend_rb.domain.SchedulersFactory
 import dagger.Module
 import dagger.Provides
-import java.text.DateFormat
-import java.text.SimpleDateFormat
+import dagger.Subcomponent
+
+@PerActivity
+@Subcomponent(modules = [AppDetailsModule::class])
+interface AppDetailsComponent {
+
+    fun inject(activity: AppDetailsActivity)
+
+}
 
 @Module
 class AppDetailsModule(
     private val context: Context,
-    private val entity: AppEntity
+    private val packageName: String,
 ) {
 
     @Provides
     @PerActivity
     internal fun providePresenter(
-        resourceProvider: AppDetailsResourceProvider,
-        analytics: Analytics
-    ): AppDetailsPresenter = AppDetailsPresenterImpl(entity, resourceProvider, analytics)
-
-    @Provides
-    @PerActivity
-    internal fun providePreferencesProvider(): PreferencesProvider {
-        return PreferencesProviderImpl(context)
-    }
-
-    @Provides
-    @PerActivity
-    internal fun provideResourceProvider(dateFormat: DateFormat): AppDetailsResourceProvider {
-        return AppDetailsResourceProviderImpl(context, dateFormat)
-    }
-
-    @SuppressLint("SimpleDateFormat")
-    @Provides
-    @PerActivity
-    internal fun provideDateFormat(): DateFormat {
-        return SimpleDateFormat("dd.MM.yy")
-    }
+        repository: InstalledAppsRepository,
+        preferences: AppPreferences,
+        exports: ExportManager,
+        schedulers: SchedulersFactory,
+        analytics: Analytics,
+    ): AppDetailsPresenter = AppDetailsPresenterImpl(
+        packageName,
+        AppDetailsInteractorImpl(repository, preferences, exports, SystemClipboard(context)),
+        AppDetailsResourcesImpl(context, AndroidValueFormatter(context)),
+        schedulers,
+        analytics,
+    )
 
 }

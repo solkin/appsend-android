@@ -1,147 +1,154 @@
 package com.tomclaw.appsend_rb.screen.details
 
+import android.view.LayoutInflater
+import androidx.core.view.isVisible
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.jakewharton.rxrelay3.PublishRelay
 import com.tomclaw.appsend_rb.R
-import com.tomclaw.knopochki.core.Box
-import com.tomclaw.knopochki.core.Column
-import com.tomclaw.knopochki.core.Insets
-import com.tomclaw.knopochki.core.KnopochkiView
-import com.tomclaw.knopochki.core.Node
-import com.tomclaw.knopochki.core.Scroll
-import com.tomclaw.knopochki.draw.Icons
-import com.tomclaw.knopochki.draw.Shape
-import com.tomclaw.knopochki.theme.Role
-import com.tomclaw.knopochki.widget.Button
-import com.tomclaw.knopochki.widget.ButtonStyle
-import com.tomclaw.knopochki.widget.Divider
-import com.tomclaw.knopochki.widget.Snackbar
-import com.tomclaw.knopochki.widget.Surface
-import com.tomclaw.knopochki.widget.Text
-import com.tomclaw.knopochki.widget.TextStyle
-import com.tomclaw.knopochki.widget.TopAppBar
+import com.tomclaw.appsend_rb.databinding.ActivityDetailsBinding
+import com.tomclaw.appsend_rb.databinding.ItemInfoRowBinding
+import com.tomclaw.appsend_rb.util.AppIcons
+import com.tomclaw.appsend_rb.util.applySystemBarInsets
 import io.reactivex.rxjava3.core.Observable
 
 interface AppDetailsView {
 
-    fun navigationClicks(): Observable<Unit>
+    fun render(model: AppDetailsViewModel)
+
+    fun showPackageCopied()
+
+    fun showNotRunnable()
+
+    fun showBackupWarning()
+
+    fun backClicks(): Observable<Unit>
+
+    fun openClicks(): Observable<Unit>
+
+    fun extractClicks(): Observable<Unit>
+
+    fun shareClicks(): Observable<Unit>
 
     fun copyPackageClicks(): Observable<Unit>
 
     fun permissionsClicks(): Observable<Unit>
 
+    fun storeClicks(): Observable<Unit>
+
     fun systemDetailsClicks(): Observable<Unit>
 
-    fun setDetails(details: AppDetailsUi)
+    fun removeClicks(): Observable<Unit>
 
-    fun showPackageNameCopied()
+    fun backupWarningConfirmations(): Observable<Unit>
 
 }
 
-class AppDetailsViewImpl(knopochkiView: KnopochkiView) : AppDetailsView {
+class AppDetailsViewImpl(private val binding: ActivityDetailsBinding) : AppDetailsView {
 
-    private val resources = knopochkiView.context.resources
+    private val context = binding.root.context
+    private val iconSize = context.resources.getDimensionPixelSize(R.dimen.app_icon_size_large)
 
-    private val navigationRelay = PublishRelay.create<Unit>()
-    private val copyPackageRelay = PublishRelay.create<Unit>()
+    private val backRelay = PublishRelay.create<Unit>()
+    private val openRelay = PublishRelay.create<Unit>()
+    private val extractRelay = PublishRelay.create<Unit>()
+    private val shareRelay = PublishRelay.create<Unit>()
+    private val copyRelay = PublishRelay.create<Unit>()
     private val permissionsRelay = PublishRelay.create<Unit>()
+    private val storeRelay = PublishRelay.create<Unit>()
     private val systemDetailsRelay = PublishRelay.create<Unit>()
-
-    private val label = Text("", style = TextStyle.TITLE_LARGE, role = Role.ON_SURFACE)
-    private val packageName = Text("", style = TextStyle.BODY_SMALL, role = Role.ON_SURFACE_VARIANT)
-    private val version = value()
-    private val installTime = value()
-    private val updateTime = value()
-    private val size = value()
-    private val status = value()
-    private val path = value()
-    private val permissions = value()
-
-    private val openPermissions = Button(
-        resources.getString(R.string.app_details_open_permissions),
-        ButtonStyle.OUTLINED,
-    ) { permissionsRelay.accept(Unit) }
-
-    private val snackbar = Snackbar()
+    private val removeRelay = PublishRelay.create<Unit>()
+    private val backupWarningRelay = PublishRelay.create<Unit>()
 
     init {
-        val bar = TopAppBar(
-            title = resources.getString(R.string.app_details),
-            navigationIcon = Icons.ARROW_BACK,
-            onNavigationClick = { navigationRelay.accept(Unit) },
-        )
-        val card = Surface(
-            content = Column(paddingDp = 4f)
-                .add(row(R.string.app_details_version, version))
-                .add(Divider(insetStartDp = 16f))
-                .add(row(R.string.app_details_installed, installTime))
-                .add(Divider(insetStartDp = 16f))
-                .add(row(R.string.app_details_updated, updateTime))
-                .add(Divider(insetStartDp = 16f))
-                .add(row(R.string.app_details_size, size))
-                .add(Divider(insetStartDp = 16f))
-                .add(row(R.string.app_details_status, status))
-                .add(Divider(insetStartDp = 16f))
-                .add(row(R.string.app_details_path, path))
-                .add(Divider(insetStartDp = 16f))
-                .add(row(R.string.app_details_permissions, permissions)),
-            containerRole = Role.SURFACE_CONTAINER_LOW,
-            cornerToken = Shape.LARGE,
-            paddingDp = 4f,
-        )
-        val content = Column(spacingDp = 12f, paddingDp = 16f)
-            .add(label)
-            .add(packageName)
-            .add(
-                Button(
-                    resources.getString(R.string.app_details_copy_package),
-                    ButtonStyle.OUTLINED,
-                ) { copyPackageRelay.accept(Unit) }
-            )
-            .add(card)
-            .add(openPermissions)
-            .add(
-                Button(
-                    resources.getString(R.string.app_details_open_system_details),
-                    ButtonStyle.OUTLINED,
-                ) { systemDetailsRelay.accept(Unit) }
-            )
-        val scroll = Scroll(Insets(content, applyBottom = true, applySides = true))
-        scroll.onScroll = { bar.onContentScrolled(it) }
-        knopochkiView.root = Box()
-            .add(Column().add(bar).addFilling(scroll))
-            .add(Insets(snackbar, applyBottom = true, applySides = true))
+        binding.appBar.applySystemBarInsets(top = true)
+        binding.content.applySystemBarInsets(bottom = true)
+        binding.toolbar.setNavigationOnClickListener { backRelay.accept(Unit) }
+        binding.packageRow.setOnClickListener { copyRelay.accept(Unit) }
+        binding.openButton.setOnClickListener { openRelay.accept(Unit) }
+        binding.extractButton.setOnClickListener { extractRelay.accept(Unit) }
+        binding.shareButton.setOnClickListener { shareRelay.accept(Unit) }
+
+        val actions = binding.actionRows
+        actions.permissionsRow.title.setText(R.string.app_details_permissions)
+        actions.permissionsRow.icon.setImageResource(R.drawable.ic_shield)
+        actions.permissionsRow.card.setOnClickListener { permissionsRelay.accept(Unit) }
+        actions.storeRow.title.setText(R.string.find_on_gp)
+        actions.storeRow.icon.setImageResource(R.drawable.ic_store)
+        actions.storeRow.card.setOnClickListener { storeRelay.accept(Unit) }
+        actions.systemRow.title.setText(R.string.app_details_open_system_details)
+        actions.systemRow.icon.setImageResource(R.drawable.ic_info)
+        actions.systemRow.card.setOnClickListener { systemDetailsRelay.accept(Unit) }
+        actions.removeRow.title.setText(R.string.remove)
+        actions.removeRow.icon.setImageResource(R.drawable.ic_delete)
+        actions.removeRow.card.setOnClickListener { removeRelay.accept(Unit) }
+        listOf(actions.permissionsRow, actions.storeRow, actions.systemRow, actions.removeRow)
+            .forEachIndexed { index, row ->
+                row.root.updateAppearance(index, ACTION_ROW_COUNT)
+                row.chevron.isVisible = index == 0
+                row.subtitle.isVisible = index == 0
+            }
     }
 
-    private fun value() = Text("", style = TextStyle.BODY_LARGE, role = Role.ON_SURFACE)
+    override fun render(model: AppDetailsViewModel) {
+        binding.title.text = model.label
+        binding.packageName.text = model.packageName
+        binding.openButton.isEnabled = model.canOpen
+        AppIcons.load(context, model.packageName, iconSize) { _, bitmap ->
+            binding.icon.setImageBitmap(bitmap)
+        }
 
-    private fun row(labelRes: Int, value: Text): Node =
-        Column(spacingDp = 2f, paddingDp = 12f)
-            .add(Text(resources.getString(labelRes), style = TextStyle.BODY_SMALL, role = Role.ON_SURFACE_VARIANT))
-            .add(value)
+        val rows = binding.infoRows
+        rows.removeAllViews()
+        val inflater = LayoutInflater.from(context)
+        model.rows.forEachIndexed { index, row ->
+            val item = ItemInfoRowBinding.inflate(inflater, rows, true)
+            item.root.updateAppearance(index, model.rows.size)
+            item.label.text = row.label
+            item.value.text = row.value
+        }
 
-    override fun navigationClicks(): Observable<Unit> = navigationRelay
+        binding.actionRows.permissionsRow.subtitle.text = model.permissions
+        binding.actionRows.permissionsRow.card.isEnabled = model.hasPermissions
+    }
 
-    override fun copyPackageClicks(): Observable<Unit> = copyPackageRelay
+    override fun showPackageCopied() {
+        Snackbar.make(binding.root, R.string.app_details_package_copied, Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun showNotRunnable() {
+        Snackbar.make(binding.root, R.string.non_launchable_package, Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun showBackupWarning() {
+        MaterialAlertDialogBuilder(context)
+            .setTitle(R.string.backup_limitations_warning_title)
+            .setMessage(R.string.backup_limitations_warning_message)
+            .setNegativeButton(R.string.cancel, null)
+            .setPositiveButton(R.string.continue_anyway) { _, _ -> backupWarningRelay.accept(Unit) }
+            .show()
+    }
+
+    override fun backClicks(): Observable<Unit> = backRelay
+
+    override fun openClicks(): Observable<Unit> = openRelay
+
+    override fun extractClicks(): Observable<Unit> = extractRelay
+
+    override fun shareClicks(): Observable<Unit> = shareRelay
+
+    override fun copyPackageClicks(): Observable<Unit> = copyRelay
 
     override fun permissionsClicks(): Observable<Unit> = permissionsRelay
 
+    override fun storeClicks(): Observable<Unit> = storeRelay
+
     override fun systemDetailsClicks(): Observable<Unit> = systemDetailsRelay
 
-    override fun setDetails(details: AppDetailsUi) {
-        label.text = details.label
-        packageName.text = details.packageName
-        version.text = details.version
-        installTime.text = details.installTime
-        updateTime.text = details.updateTime
-        size.text = details.size
-        path.text = details.path
-        permissions.text = details.permissions
-        status.text = details.status
-        openPermissions.enabled = details.permissionsEnabled
-    }
+    override fun removeClicks(): Observable<Unit> = removeRelay
 
-    override fun showPackageNameCopied() {
-        snackbar.show(resources.getString(R.string.app_details_package_copied))
-    }
+    override fun backupWarningConfirmations(): Observable<Unit> = backupWarningRelay
 
 }
+
+private const val ACTION_ROW_COUNT = 4

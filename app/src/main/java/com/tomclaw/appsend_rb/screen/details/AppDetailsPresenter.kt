@@ -1,7 +1,9 @@
 package com.tomclaw.appsend_rb.screen.details
 
-import com.tomclaw.appsend.util.Analytics
-import com.tomclaw.appsend_rb.dto.AppEntity
+import com.tomclaw.appsend_rb.domain.AppDetails
+import com.tomclaw.appsend_rb.domain.ExportFormat
+import com.tomclaw.appsend_rb.domain.Analytics
+import com.tomclaw.appsend_rb.domain.SchedulersFactory
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.plusAssign
 
@@ -15,122 +17,159 @@ interface AppDetailsPresenter {
 
     fun detachRouter()
 
-    fun onBackPressed()
+    fun destroy()
 
-    interface AppDetailsRouter {
+}
 
-        fun copyPackageName(packageName: String)
+interface AppDetailsRouter {
 
-        fun showRequestedPermissions(permissions: List<String>)
+    fun launch(packageName: String): Boolean
 
-        fun showSystemDetails(packageName: String)
+    fun openExportOptions(packageName: String)
 
-        fun leaveScreen()
+    fun openExportProgress()
 
-    }
+    fun openPermissions(packageName: String)
+
+    fun openStorePage(packageName: String)
+
+    fun openSystemDetails(packageName: String)
+
+    fun uninstall(packageName: String)
+
+    fun leave()
 
 }
 
 class AppDetailsPresenterImpl(
-    private val entity: AppEntity,
-    private val resourceProvider: AppDetailsResourceProvider,
-    private val analytics: Analytics
+    private val packageName: String,
+    private val interactor: AppDetailsInteractor,
+    private val resources: AppDetailsResources,
+    private val schedulers: SchedulersFactory,
+    private val analytics: Analytics,
 ) : AppDetailsPresenter {
 
     private var view: AppDetailsView? = null
-    private var router: AppDetailsPresenter.AppDetailsRouter? = null
+    private var router: AppDetailsRouter? = null
+    private val viewSubscriptions = CompositeDisposable()
+    private val dataSubscriptions = CompositeDisposable()
+    private var details: AppDetails? = null
+    private var knownInRepository = false
+    private var leavePending = false
 
-    private val subscriptions = CompositeDisposable()
+    init {
+        analytics.trackEvent("screen_open", mapOf("screen" to "app_details"))
+        dataSubscriptions += interactor.changes(packageName)
+            .observeOn(schedulers.mainThread())
+            .subscribe { matches ->
+                if (matches.isEmpty() && knownInRepository) {
+                    leave()
+                } else {
+                    knownInRepository = matches.isNotEmpty()
+                    load()
+                }
+            }
+        load()
+    }
 
     override fun attachView(view: AppDetailsView) {
         this.view = view
-
-        analytics.trackEvent("screen_open", mapOf("screen" to "app_details") + entity.analyticsTags())
-        subscriptions += view.navigationClicks().subscribe { onBackPressed() }
-        subscriptions += view.copyPackageClicks().subscribe { copyPackageName() }
-        subscriptions += view.permissionsClicks().subscribe { showPermissions() }
-        subscriptions += view.systemDetailsClicks().subscribe { showSystemDetails() }
-
-        bindDetails()
+        viewSubscriptions += view.backClicks().subscribe { leave() }
+        viewSubscriptions += view.openClicks().subscribe { onOpen() }
+        viewSubscriptions += view.extractClicks().subscribe { router?.openExportOptions(packageName) }
+        viewSubscriptions += view.shareClicks().subscribe { onShare() }
+        viewSubscriptions += view.copyPackageClicks().subscribe { onCopyPackage() }
+        viewSubscriptions += view.permissionsClicks().subscribe { router?.openPermissions(packageName) }
+        viewSubscriptions += view.storeClicks().subscribe { router?.openStorePage(packageName) }
+        viewSubscriptions += view.systemDetailsClicks().subscribe { router?.openSystemDetails(packageName) }
+        viewSubscriptions += view.removeClicks().subscribe { router?.uninstall(packageName) }
+        viewSubscriptions += view.backupWarningConfirmations().subscribe { share() }
+        details?.let(::render)
     }
 
     override fun detachView() {
-        subscriptions.clear()
-        this.view = null
+        viewSubscriptions.clear()
+        view = null
     }
 
-    override fun attachRouter(router: AppDetailsPresenter.AppDetailsRouter) {
+    override fun attachRouter(router: AppDetailsRouter) {
         this.router = router
+        if (leavePending) router.leave()
     }
 
     override fun detachRouter() {
-        this.router = null
+        router = null
     }
 
-    override fun onBackPressed() {
-        analytics.trackEvent("navigation_back", mapOf("screen" to "app_details"))
-        router?.leaveScreen()
+    override fun destroy() {
+        dataSubscriptions.clear()
     }
 
-    private fun bindDetails() {
-        view?.setDetails(
-            AppDetailsUi(
-                label = entity.label,
-                packageName = entity.packageName,
-                version = resourceProvider.formatVersion(entity),
-                installTime = resourceProvider.formatTime(entity.firstInstallTime),
-                updateTime = resourceProvider.formatTime(entity.lastUpdateTime),
-                size = resourceProvider.formatSize(entity.size),
-                path = entity.path,
-                permissions = resourceProvider.formatPermissionsCount(entity.requestedPermissions?.size ?: 0),
-                status = resourceProvider.formatStatus(entity.system, entity.split),
-                permissionsEnabled = !entity.requestedPermissions.isNullOrEmpty()
+    /** The app may be removed from the system screen on top: leave once back in front. */
+    private fun leave() {
+        leavePending = true
+        router?.leave()
+    }
+
+    private fun load() {
+        dataSubscriptions += interactor.details(packageName)
+            .observeOn(schedulers.mainThread())
+            .subscribe({
+                details = it
+                render(it)
+            }, { error ->
+                analytics.trackException(error, mapOf("event" to "app_details_failed"))
+                leave()
+            })
+    }
+
+    private fun render(details: AppDetails) {
+        val app = details.app
+        view?.render(
+            AppDetailsViewModel(
+                packageName = app.packageName,
+                label = app.label,
+                canOpen = app.launchable,
+                rows = listOfNotNull(
+                    InfoRow(resources.versionLabel(), resources.version(app)),
+                    InfoRow(resources.sizeLabel(), resources.size(app)),
+                    InfoRow(resources.statusLabel(), resources.status(app)),
+                    details.installerLabel?.let { InfoRow(resources.installerLabel(), it) },
+                    InfoRow(resources.installedLabel(), resources.date(app.firstInstallTime)),
+                    InfoRow(resources.updatedLabel(), resources.date(app.lastUpdateTime)),
+                    InfoRow(resources.sdkLabel(), resources.sdk(details.minSdk, details.targetSdk)),
+                    details.signatureSha256?.let { InfoRow(resources.signatureLabel(), it) },
+                    InfoRow(resources.pathLabel(), details.basePath),
+                ),
+                permissions = resources.permissionsSummary(
+                    details.permissions.size,
+                    details.permissions.count { it.dangerous },
+                ),
+                hasPermissions = details.permissions.isNotEmpty(),
             )
         )
     }
 
-    private fun copyPackageName() {
-        analytics.trackEvent("app_details_action_selected", mapOf("action" to "copy_package_name") + entity.analyticsTags())
-        router?.copyPackageName(entity.packageName)
-        view?.showPackageNameCopied()
+    private fun onOpen() {
+        if (router?.launch(packageName) == false) view?.showNotRunnable()
     }
 
-    private fun showPermissions() {
-        entity.requestedPermissions?.takeIf { it.isNotEmpty() }
-            ?.let {
-                analytics.trackEvent(
-                    "app_details_action_selected",
-                    mapOf("action" to "open_permissions") + entity.analyticsTags(),
-                    mapOf("permissions_count" to it.size.toDouble())
-                )
-                router?.showRequestedPermissions(it)
-            }
+    private fun onCopyPackage() {
+        interactor.copyPackageName(packageName)
+        view?.showPackageCopied()
     }
 
-    private fun showSystemDetails() {
-        analytics.trackEvent("app_details_action_selected", mapOf("action" to "open_system_details") + entity.analyticsTags())
-        router?.showSystemDetails(entity.packageName)
+    private fun onShare() {
+        val app = details?.app ?: return
+        val limited = app.system || (app.split && interactor.exportFormat() == ExportFormat.BASE)
+        if (limited) view?.showBackupWarning() else share()
     }
 
-    private fun AppEntity.analyticsTags(): Map<String, String> {
-        return mapOf(
-            "system" to system.toString(),
-            "split" to split.toString(),
-            "has_permissions" to (!requestedPermissions.isNullOrEmpty()).toString()
-        )
+    private fun share() {
+        val app = details?.app ?: return
+        analytics.trackEvent("app_action_selected", mapOf("action" to "share", "split" to app.split.toString()))
+        interactor.share(app)
+        router?.openExportProgress()
     }
 
 }
-
-data class AppDetailsUi(
-    val label: String,
-    val packageName: String,
-    val version: String,
-    val installTime: String,
-    val updateTime: String,
-    val size: String,
-    val path: String,
-    val permissions: String,
-    val status: String,
-    val permissionsEnabled: Boolean
-)

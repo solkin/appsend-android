@@ -1,48 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">AppSend</string>
-    <string name="bytes">%d B</string>
-    <string name="kibibytes">%.1f KB</string>
-    <string name="mibibytes">%.1f MB</string>
-    <string name="gigibytes">%.1f GB</string>
+    <string name="app_name">AppSend</string>
     <string name="please_wait">お待ちください…</string>
-    <string name="app_extract_success">&lt;b>ダウンロード&lt;/b>ディレクトリに正常に解凍されました</string>
-    <string name="app_extract_failed">アプリの解凍に失敗しました :(</string>
-    <string name="refresh">アップデート</string>
-    <string name="tomclaw_software">TomClaw Software</string>
-    <string name="app_version">バージョン %1$s (%2$d)</string>
-    <string name="info">情報</string>
-    <string name="rate_app">アプリを評価</string>
-    <string name="all_apps">この作者のすべてのアプリ</string>
-    <string name="pref_base_title">基本設定</string>
-    <string name="pref_summary_runnable">実行可能アプリのみを表示する</string>
-    <string name="pref_title_runnable">実行可能パッケージ</string>
+    <string name="back">戻る</string>
+    <string name="cancel">キャンセル</string>
+    <string name="continue_anyway">このまま続行</string>
+    <string name="done">完了</string>
+    <string name="open">開く</string>
+    <string name="remove">削除</string>
+    <string name="selected">選択中</string>
+    <string name="send_to">共有先</string>
+
+    <string name="tab_apps">アプリ</string>
+    <string name="tab_exports">エクスポート</string>
     <string name="settings">設定</string>
-    <string name="send_to">共有方法</string>
-    <string name="pref_summary_sort_order">アプリリストの並べ替えオプション</string>
-    <string name="extract_apk">APKをダウンロードフォルダに解凍</string>
-    <string name="share_apk">アプリを共有</string>
-    <string name="find_on_gp">Google Playで検索</string>
-    <string name="pref_title_clear_cache">キャッシュを消去</string>
-    <string name="pref_summary_clear_cache">ダウンロードフォルダに解凍したすべてのAPKファイルを削除します</string>
-    <string name="cache_cleared_successfully">キャッシュを正常に消去しました</string>
-    <string name="cache_clearing_failed">キャッシュの消去中にエラーが発生しました</string>
-    <string name="write_permission_extract">解凍したアプリケーションファイルを保存するには、ディスクへの書き込み権限が必要です。</string>
+
     <string name="menu_search">検索</string>
-    <string name="run_app">アプリケーションを実行</string>
-    <string name="non_launchable_package">このパッケージは実行できません。</string>
-    <string name="app_details">表示詳細</string>
-    <string name="donate">プロジェクトにご協力ください</string>
-    <string name="donate_title">開発者にプレゼントを贈りましょう！</string>
-    <string name="donate_description">開発者はこれからもアップデートで私たちを喜ばせてくれるでしょう :)</string>
-    <string name="donate_button">チョコレートバーを贈りましょう</string>
-    <string name="purchase_error">エラーが発生しました。もう一度お試しください。</string>
-    <string name="thank_you">ご協力ありがとうございます！</string>
-    <string name="pref_title_dark_theme">ダークテーマ</string>
-    <string name="pref_dark_theme_system">アプリケーションデザインのダークカラー</string>
-    <string name="remove">アンインストール</string>
+    <string name="search_apps_hint">%d 個のアプリを検索</string>
+    <string name="apps_loading_failed">アプリの一覧を読み込めません</string>
+    <string name="apps_empty">条件に一致するアプリはありません</string>
+    <string name="app_row_meta">%1$s · %2$s · %3$s</string>
+    <string name="badge_new">新着</string>
+    <string name="badge_split">split</string>
+    <string name="filter_system">システム</string>
+    <string name="filter_split">Split APK</string>
+    <string name="filter_runnable">起動可能</string>
+    <string name="sort_name">名前</string>
+    <string name="sort_size">サイズ</string>
+    <string name="sort_updated">更新日</string>
+    <string name="sort_installed">インストール日</string>
+    <string name="select_apps">アプリを選択</string>
+    <string name="select_all">すべて選択</string>
+    <string name="share_selected_apks">共有</string>
+    <string name="extract_selected_apks">抽出</string>
+    <string name="cancel_selection">選択を解除</string>
+    <string name="selected_apps_count">%d 件選択中</string>
+    <string name="no_apps_selected">アプリを1つ以上選択してください</string>
+    <string name="write_permission_extract">アプリのファイルを保存するには、ストレージへのアクセスを許可する必要があります</string>
+    <string name="backup_limitations_warning_title">バックアップの制限</string>
+    <string name="backup_limitations_warning_message">システムアプリや split APK のアプリは、完全なバックアップとして復元できない場合があります。エクスポートしたファイルに必要な split ファイルが含まれていなかったり、ファームウェアやシステム権限に依存していたりするため、別の端末ではインストールできない、または動作しない可能性があります。</string>
+
+    <string name="find_on_gp">Google Play で探す</string>
+    <string name="non_launchable_package">このパッケージは起動できません。</string>
+    <string name="app_details_copy_package">パッケージ名をコピー</string>
+    <string name="app_details_package_copied">パッケージ名をコピーしました</string>
+    <string name="app_details_version">バージョン</string>
+    <string name="app_details_version_value">%1$s (%2$d)</string>
+    <string name="app_details_unknown_value">不明</string>
+    <string name="app_details_installed">インストール日</string>
+    <string name="app_details_updated">更新日</string>
+    <string name="app_details_size">サイズ</string>
+    <string name="app_details_path">パス</string>
+    <string name="app_details_installer">インストール元</string>
+    <string name="app_details_sdk">Android</string>
+    <string name="app_details_sdk_value">最小 API %1$d / ターゲット API %2$d</string>
+    <string name="app_details_signature">SHA-256 署名</string>
+    <string name="app_details_permissions">権限</string>
+    <string name="app_details_permissions_summary">要求 %1$d 件、うち危険 %2$d 件</string>
+    <string name="app_details_open_system_details">システムの詳細を開く</string>
+    <string name="app_details_status">ステータス</string>
+    <string name="app_details_status_user">ユーザーアプリ</string>
+    <string name="app_details_status_system">システムアプリ</string>
+    <string name="app_details_status_single">単一 APK</string>
+    <string name="app_details_status_split">split APK</string>
+    <string name="app_details_status_value">%1$s、%2$s</string>
+    <plurals name="app_details_size_split">
+        <item quantity="other">%1$s: ベース %2$s と split ファイル %3$d 個 %4$s</item>
+    </plurals>
+
+    <string name="required_permissions">権限</string>
     <string name="unknown_permission_description">不明な権限</string>
-    <string name="required_permissions">必要な権限</string>
-    <string name="unable_to_get_permissions">必要なアプリケーション権限のリストを取得できません</string>
-    <string name="no_requested_permissions">このアプリケーションは特別な権限を必要としません。</string>
+    <string name="permissions_filter_all">すべて、%d</string>
+    <string name="permissions_filter_dangerous">危険、%d</string>
+    <string name="permissions_filter_granted">許可済み、%d</string>
+    <string name="permissions_section_dangerous">危険</string>
+    <string name="permissions_section_normal">通常</string>
+    <string name="permission_granted">許可済み</string>
+    <string name="permission_not_granted">未許可</string>
+
+    <string name="export_folder">フォルダ</string>
+    <string name="export_folder_default">Downloads / Apps</string>
+    <string name="export_file_name">ファイル名</string>
+    <string name="export_template_hint">{name}, {package}, {version}, {code}</string>
+    <string name="export_format_bundle">.apks\nフルセット、%s</string>
+    <string name="export_format_base">base.apk\nベースのみ、%s</string>
+    <string name="export_notice_base">ベース APK だけでは、split ファイルがないためインストールできない、または動作しない可能性があります。</string>
+    <plurals name="export_title_apps">
+        <item quantity="other">%d 個のアプリを抽出</item>
+    </plurals>
+    <plurals name="export_files_count">
+        <item quantity="other">%d 個のファイル</item>
+    </plurals>
+
+    <string name="export_channel">アプリのエクスポート</string>
+    <string name="export_progress_title">抽出中 %1$d / %2$d</string>
+    <string name="export_progress_bytes">%1$s / %2$s</string>
+    <string name="export_finished">完了</string>
+    <string name="export_finished_with_failures">エラーありで完了</string>
+    <string name="export_minimize">最小化</string>
+    <string name="export_retry">再試行</string>
+    <string name="export_status_queued">待機中</string>
+    <string name="export_status_failed">ファイルを読み取れませんでした</string>
+    <string name="export_status_cancelled">キャンセルしました</string>
+
+    <plurals name="exports_summary">
+        <item quantity="other">%1$s · %2$d 個のファイル · %3$s</item>
+    </plurals>
+    <string name="exports_empty">抽出したアプリがここに表示されます</string>
+    <string name="exports_filter_all">すべて</string>
+    <string name="exports_filter_installed">インストール済み</string>
+    <string name="exports_filter_outdated">古い</string>
+    <string name="exports_today">今日</string>
+    <string name="exports_this_week">今週</string>
+    <string name="exports_earlier">それ以前</string>
+    <string name="export_state_not_installed">未インストール</string>
+    <string name="export_state_current">このバージョンがインストール済み</string>
+    <string name="export_state_newer">新しいバージョンがインストール済み</string>
+    <string name="export_state_older">古いバージョンがインストール済み</string>
+    <string name="change_export_folder">フォルダを変更</string>
+    <string name="clear_exports">すべてのファイルを削除</string>
+    <string name="clear_exports_message">%s 内のすべての .apk と .apks ファイルが削除されます。AppSend で作成していないファイルも含まれます。</string>
+    <string name="cache_clearing_failed">ファイルを削除できませんでした</string>
+    <string name="select_files">ファイルを選択</string>
+    <string name="no_files_selected">ファイルを1つ以上選択してください</string>
+    <plurals name="delete_selected_exports">
+        <item quantity="other">%d 個のファイルが削除されます。</item>
+    </plurals>
+
+
+    <string name="settings_appearance">外観</string>
+    <string name="settings_theme">テーマ</string>
+    <string name="settings_theme_system">システム</string>
+    <string name="settings_theme_light">ライト</string>
+    <string name="settings_theme_dark">ダーク</string>
+    <string name="settings_dynamic_colors">壁紙から色を抽出</string>
+    <string name="settings_dynamic_colors_summary">Android 12 以降のダイナミックカラー</string>
+    <string name="settings_export">エクスポート</string>
+    <string name="settings_export_format">split アプリの形式</string>
+    <string name="settings_export_format_bundle">.apks、フルセット</string>
+    <string name="settings_export_format_base">base.apk、ベースのみ</string>
+    <string name="settings_data">データ</string>
+    <string name="settings_analytics">匿名の統計情報</string>
+    <string name="settings_analytics_summary">使用状況とクラッシュのレポート。完全に反映されるには再起動が必要です</string>
+    <string name="settings_about">アプリについて</string>
+    <string name="settings_version">バージョン</string>
+    <string name="rate_app">アプリを評価</string>
+    <string name="all_apps">作者のアプリ</string>
+    <string name="tomclaw_software">TomClaw Software</string>
 </resources>

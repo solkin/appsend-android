@@ -1,48 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">AppSend</string>
-    <string name="bytes">%d B</string>
-    <string name="kibibytes">%.1f KB</string>
-    <string name="mibibytes">%.1f MB</string>
-    <string name="gigibytes">%.1f GB</string>
+    <string name="app_name">AppSend</string>
     <string name="please_wait">Iltimos, kuting…</string>
-    <string name="app_extract_success">Ilova &lt;b>Yuklashlar&lt;/b> katalogiga muvaffaqiyatli oʻrnatildi.</string>
-    <string name="app_extract_failed">Ilovani oʻrnatishda xatolik yuz berdi :(</string>
-    <string name="refresh">Yangilash</string>
-    <string name="tomclaw_software">TomClaw Dasturi</string>
-    <string name="app_version">%1$s versiyasi (%2$d)</string>
-    <string name="info">Ma\'lumot</string>
-    <string name="rate_app">Ilovani baholang</string>
-    <string name="all_apps">Ushbu muallifning barcha ilovalari</string>
-    <string name="pref_base_title">Asosiy sozlamalar</string>
-    <string name="pref_summary_runnable">Faqat bajariladigan ilovalarni ko\'rsatish</string>
-    <string name="pref_title_runnable">Bajariladigan paketlar</string>
-    <string name="settings">Sozlamalar</string>
-    <string name="send_to">Ulashish orqali</string>
-    <string name="pref_summary_sort_order">Ilovalar ro\'yxatini saralash imkoniyatlari</string>
-    <string name="extract_apk">APKni Yuklab olishlarga ajratib olish</string>
-    <string name="share_apk">Ilovani ulashish</string>
-    <string name="find_on_gp">Google Play\'da topish</string>
-    <string name="pref_title_clear_cache">Keshni tozalash</string>
-    <string name="pref_summary_clear_cache">Ilgari chiqarilgan barcha APK fayllarini Yuklab olishlar papkasiga o\'chirish</string>
-    <string name="cache_cleared_successfully">Kesh muvaffaqiyatli tozalandi</string>
-    <string name="cache_clearing_failed">Keshni tozalashda xato</string>
-    <string name="write_permission_extract">Olib tashlangan ilova faylini saqlash uchun diskka yozish huquqini yoqishingiz kerak.</string>
-    <string name="menu_search">Qidiruv</string>
-    <string name="run_app">Ilovani ishga tushirish</string>
-    <string name="non_launchable_package">Ushbu paketni ishga tushirib bo\'lmaydi.</string>
-    <string name="app_details">Tafsilotlarni ko\'rsatish</string>
-    <string name="donate">Loyihaga yordam berish</string>
-    <string name="donate_title">Ishlab chiquvchiga sovg\'a bering!</string>
-    <string name="donate_description">Va u bizni yangilanishlar bilan xursand qilishda davom etadi :)</string>
-    <string name="donate_button">Shokoladli baton bering</string>
-    <string name="purchase_error">Xatolik yuz berdi. Iltimos, qayta urinib ko\'ring.</string>
-    <string name="thank_you">Qo\'llab-quvvatlaganingiz uchun tashakkur!</string>
-    <string name="pref_title_dark_theme">To\'q rangli mavzu</string>
-    <string name="pref_dark_theme_system">Ilova dizaynidagi to\'q ranglar</string>
+    <string name="back">Orqaga</string>
+    <string name="cancel">Bekor qilish</string>
+    <string name="continue_anyway">Baribir davom etish</string>
+    <string name="done">Tayyor</string>
+    <string name="open">Ochish</string>
     <string name="remove">O\'chirish</string>
+    <string name="selected">Tanlangan</string>
+    <string name="send_to">Ulashish orqali</string>
+
+    <string name="tab_apps">Ilovalar</string>
+    <string name="tab_exports">Eksportlar</string>
+    <string name="settings">Sozlamalar</string>
+
+    <string name="menu_search">Qidiruv</string>
+    <string name="search_apps_hint">%d ta ilova ichidan qidirish</string>
+    <string name="apps_loading_failed">Ilovalar ro\'yxatini yuklab bo\'lmadi</string>
+    <string name="apps_empty">Bu filtrlarga mos ilova yo\'q</string>
+    <string name="app_row_meta">%1$s · %2$s · %3$s</string>
+    <string name="badge_new">Yangi</string>
+    <string name="badge_split">split</string>
+    <string name="filter_system">Tizim</string>
+    <string name="filter_split">Split APK</string>
+    <string name="filter_runnable">Ishga tushadigan</string>
+    <string name="sort_name">Nomi</string>
+    <string name="sort_size">Hajmi</string>
+    <string name="sort_updated">Yangilangan</string>
+    <string name="sort_installed">O\'rnatilgan</string>
+    <string name="select_apps">Ilovalarni tanlash</string>
+    <string name="select_all">Hammasini tanlash</string>
+    <string name="share_selected_apks">Ulashish</string>
+    <string name="extract_selected_apks">Chiqarib olish</string>
+    <string name="cancel_selection">Tanlovni bekor qilish</string>
+    <string name="selected_apps_count">Tanlandi: %d</string>
+    <string name="no_apps_selected">Kamida bitta ilovani tanlang</string>
+    <string name="write_permission_extract">Ilova faylini saqlash uchun xotiraga ruxsat berishingiz kerak</string>
+    <string name="backup_limitations_warning_title">Zaxira nusxa cheklovlari</string>
+    <string name="backup_limitations_warning_message">Tizim ilovalari va split APK ilovalari to\'liq zaxira nusxa sifatida tiklanmasligi mumkin. Eksport qilingan faylda kerakli split fayllar bo\'lmasligi yoki u proshivka/tizim imtiyozlariga bog\'liq bo\'lishi mumkin, shuning uchun u boshqa qurilmada o\'rnatilmasligi yoki ishlamasligi mumkin.</string>
+
+    <string name="find_on_gp">Google Play\'da topish</string>
+    <string name="non_launchable_package">Ushbu paketni ishga tushirib bo\'lmaydi.</string>
+    <string name="app_details_copy_package">Paket nomini nusxalash</string>
+    <string name="app_details_package_copied">Paket nomi nusxalandi</string>
+    <string name="app_details_version">Versiya</string>
+    <string name="app_details_version_value">%1$s (%2$d)</string>
+    <string name="app_details_unknown_value">Noma\'lum</string>
+    <string name="app_details_installed">O\'rnatilgan sana</string>
+    <string name="app_details_updated">Yangilangan sana</string>
+    <string name="app_details_size">Hajmi</string>
+    <string name="app_details_path">Joylashuvi</string>
+    <string name="app_details_installer">Qayerdan o\'rnatilgan</string>
+    <string name="app_details_sdk">Android</string>
+    <string name="app_details_sdk_value">min. API %1$d / maqsadli API %2$d</string>
+    <string name="app_details_signature">SHA-256 imzosi</string>
+    <string name="app_details_permissions">Ruxsatlar</string>
+    <string name="app_details_permissions_summary">So\'ralgan: %1$d, xavfli: %2$d</string>
+    <string name="app_details_open_system_details">Tizim ma\'lumotlarini ochish</string>
+    <string name="app_details_status">Holati</string>
+    <string name="app_details_status_user">Foydalanuvchi ilovasi</string>
+    <string name="app_details_status_system">Tizim ilovasi</string>
+    <string name="app_details_status_single">bitta APK</string>
+    <string name="app_details_status_split">split APK</string>
+    <string name="app_details_status_value">%1$s, %2$s</string>
+    <plurals name="app_details_size_split">
+        <item quantity="one">%1$s: asosiy %2$s va %3$d ta split fayl %4$s</item>
+        <item quantity="other">%1$s: asosiy %2$s va %3$d ta split fayl %4$s</item>
+    </plurals>
+
+    <string name="required_permissions">Ruxsatlar</string>
     <string name="unknown_permission_description">Noma\'lum ruxsat</string>
-    <string name="required_permissions">Kerakli ruxsatlar</string>
-    <string name="unable_to_get_permissions">Kerakli ilova ruxsatlari ro\'yxatini olib bo\'lmadi</string>
-    <string name="no_requested_permissions">Ilova hech qanday maxsus ruxsatlarni talab qilmaydi.</string>
+    <string name="permissions_filter_all">Hammasi, %d</string>
+    <string name="permissions_filter_dangerous">Xavfli, %d</string>
+    <string name="permissions_filter_granted">Berilgan, %d</string>
+    <string name="permissions_section_dangerous">Xavfli</string>
+    <string name="permissions_section_normal">Oddiy</string>
+    <string name="permission_granted">Berilgan</string>
+    <string name="permission_not_granted">Berilmagan</string>
+
+    <string name="export_folder">Jild</string>
+    <string name="export_folder_default">Downloads / Apps</string>
+    <string name="export_file_name">Fayl nomi</string>
+    <string name="export_template_hint">{name}, {package}, {version}, {code}</string>
+    <string name="export_format_bundle">.apks\nto\'liq to\'plam, %s</string>
+    <string name="export_format_base">base.apk\nfaqat asosiy, %s</string>
+    <string name="export_notice_base">Faqat base APK split fayllarsiz o\'rnatilmasligi yoki ishlamasligi mumkin.</string>
+    <plurals name="export_title_apps">
+        <item quantity="one">%d ta ilovani chiqarib olish</item>
+        <item quantity="other">%d ta ilovani chiqarib olish</item>
+    </plurals>
+    <plurals name="export_files_count">
+        <item quantity="one">%d ta fayl</item>
+        <item quantity="other">%d ta fayl</item>
+    </plurals>
+
+    <string name="export_channel">Ilovalarni eksport qilish</string>
+    <string name="export_progress_title">Chiqarib olinmoqda: %1$d / %2$d</string>
+    <string name="export_progress_bytes">%1$s / %2$s</string>
+    <string name="export_finished">Tugadi</string>
+    <string name="export_finished_with_failures">Xatolar bilan tugadi</string>
+    <string name="export_minimize">Kichraytirish</string>
+    <string name="export_retry">Qayta urinish</string>
+    <string name="export_status_queued">Kutilmoqda</string>
+    <string name="export_status_failed">Faylni o\'qib bo\'lmadi</string>
+    <string name="export_status_cancelled">Bekor qilindi</string>
+
+    <plurals name="exports_summary">
+        <item quantity="one">%1$s · %2$d ta fayl · %3$s</item>
+        <item quantity="other">%1$s · %2$d ta fayl · %3$s</item>
+    </plurals>
+    <string name="exports_empty">Chiqarib olingan ilovalar shu yerda ko\'rinadi</string>
+    <string name="exports_filter_all">Hammasi</string>
+    <string name="exports_filter_installed">O\'rnatilgan</string>
+    <string name="exports_filter_outdated">Eskirgan</string>
+    <string name="exports_today">Bugun</string>
+    <string name="exports_this_week">Shu hafta</string>
+    <string name="exports_earlier">Avvalroq</string>
+    <string name="export_state_not_installed">o\'rnatilmagan</string>
+    <string name="export_state_current">shu versiya o\'rnatilgan</string>
+    <string name="export_state_newer">yangiroq versiya o\'rnatilgan</string>
+    <string name="export_state_older">eskiroq versiya o\'rnatilgan</string>
+    <string name="change_export_folder">Jildni o\'zgartirish</string>
+    <string name="clear_exports">Barcha fayllarni o\'chirish</string>
+    <string name="clear_exports_message">%s ichidagi barcha .apk va .apks fayllar oʻchiriladi, AppSend yaratmaganlari ham.</string>
+    <string name="cache_clearing_failed">Faylni o\'chirib bo\'lmadi</string>
+    <string name="select_files">Fayllarni tanlash</string>
+    <string name="no_files_selected">Kamida bitta faylni tanlang</string>
+    <plurals name="delete_selected_exports">
+        <item quantity="one">%d ta fayl oʻchiriladi.</item>
+        <item quantity="other">%d ta fayl oʻchiriladi.</item>
+    </plurals>
+
+
+    <string name="settings_appearance">Ko\'rinish</string>
+    <string name="settings_theme">Mavzu</string>
+    <string name="settings_theme_system">Tizim</string>
+    <string name="settings_theme_light">Yorug\'</string>
+    <string name="settings_theme_dark">Qorong\'i</string>
+    <string name="settings_dynamic_colors">Ranglar oboydan</string>
+    <string name="settings_dynamic_colors_summary">Android 12 va undan yangi versiyalardagi dinamik ranglar</string>
+    <string name="settings_export">Eksport</string>
+    <string name="settings_export_format">Split ilovalar formati</string>
+    <string name="settings_export_format_bundle">.apks, to\'liq to\'plam</string>
+    <string name="settings_export_format_base">base.apk, faqat asosiy</string>
+    <string name="settings_data">Ma\'lumotlar</string>
+    <string name="settings_analytics">Anonim statistika</string>
+    <string name="settings_analytics_summary">Foydalanish va nosozlik hisobotlari. To\'liq qayta ishga tushirilgandan keyin kuchga kiradi</string>
+    <string name="settings_about">Ilova haqida</string>
+    <string name="settings_version">Versiya</string>
+    <string name="rate_app">Ilovani baholang</string>
+    <string name="all_apps">Muallifning ilovalari</string>
+    <string name="tomclaw_software">TomClaw Software</string>
 </resources>

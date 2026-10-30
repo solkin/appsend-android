@@ -3,34 +3,28 @@ package com.tomclaw.appsend_rb.screen.permissions
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.OnBackPressedCallback
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.tomclaw.appsend_rb.databinding.ActivityPermissionsBinding
 import com.tomclaw.appsend_rb.getComponent
 import com.tomclaw.appsend_rb.screen.permissions.di.PermissionsModule
-import com.tomclaw.appsend_rb.util.installKnopochki
 import javax.inject.Inject
 
-class PermissionsActivity : AppCompatActivity(), PermissionsPresenter.PermissionsRouter {
+class PermissionsActivity : AppCompatActivity(), PermissionsRouter {
 
     @Inject
     lateinit var presenter: PermissionsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val permissions = intent?.getStringArrayListExtra(EXTRA_PERMISSIONS)
-            ?: throw IllegalArgumentException("Permissions list is required")
-        val presenterState = savedInstanceState?.getBundle(KEY_PRESENTER_STATE)
+        val packageName = requireNotNull(intent.getStringExtra(EXTRA_PACKAGE))
         application.getComponent()
-            .permissionsComponent(PermissionsModule(this, permissions, presenterState))
-            .inject(activity = this)
-
+            .permissionsComponent(PermissionsModule(packageName))
+            .inject(this)
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        val knopochkiView = installKnopochki()
-        val view = PermissionsViewImpl(knopochkiView)
-        presenter.attachView(view)
-
-        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() = presenter.onBackPressed()
-        })
+        val binding = ActivityPermissionsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        presenter.attachView(PermissionsViewImpl(binding))
     }
 
     override fun onStart() {
@@ -48,22 +42,13 @@ class PermissionsActivity : AppCompatActivity(), PermissionsPresenter.Permission
         super.onDestroy()
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putBundle(KEY_PRESENTER_STATE, presenter.saveState())
-    }
-
-    override fun leaveScreen() {
+    override fun leave() {
         finish()
     }
 
 }
 
-fun createPermissionsActivityIntent(
-    context: Context,
-    permissions: List<String>
-): Intent = Intent(context, PermissionsActivity::class.java)
-    .putStringArrayListExtra(EXTRA_PERMISSIONS, ArrayList(permissions))
+fun createPermissionsIntent(context: Context, packageName: String): Intent =
+    Intent(context, PermissionsActivity::class.java).putExtra(EXTRA_PACKAGE, packageName)
 
-private const val EXTRA_PERMISSIONS = "permissions"
-private const val KEY_PRESENTER_STATE = "presenter_state"
+private const val EXTRA_PACKAGE = "package_name"

@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28"
         tools:ignore="ScopedStorage" />
-    <uses-permission
-        android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
     <uses-permission
         android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
@@ -39,25 +41,30 @@
             android:value="${BANANALYTICS_API_KEY}" />
 
         <activity
+            android:name=".screen.main.MainActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+
+        <!-- Launchers pin this component name, so it outlives the class it once was. -->
+        <activity-alias
             android:name=".screen.apps.AppsActivity"
             android:exported="true"
-            android:launchMode="singleTop">
+            android:targetActivity=".screen.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity-alias>
+
+        <activity android:name=".screen.details.AppDetailsActivity" />
+        <activity android:name=".screen.permissions.PermissionsActivity" />
         <activity
-            android:name=".screen.about.AboutActivity"
-            android:label="@string/info" />
-        <activity
-            android:name=".screen.permissions.PermissionsActivity"
-            android:label="@string/required_permissions" />
-        <activity
-            android:name=".screen.details.AppDetailsActivity"
-            android:label="@string/app_details" />
-        <activity
-            android:name="com.tomclaw.appsend_rb.SettingsActivity"
-            android:label="@string/settings" />
+            android:name=".screen.exportprogress.ExportProgressActivity"
+            android:launchMode="singleTop" />
+        <service
+            android:name=".screen.exportprogress.ExportService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
     </application>
 </manifest>

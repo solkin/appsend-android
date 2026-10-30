@@ -1,48 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">AppSend</string>
-    <string name="bytes">%c B</string>
-    <string name="kibibytes">%.1F KB</string>
-    <string name="mibibytes">%.1F M</string>
-    <string name="gigibytes">%.1GB m</string>
-    <string name="please_wait">Xin vui lòng chờ đợi.…</string>
-    <string name="app_extract_success">Trích xuất thành công vào thư mục &lt;b>Tải xuống&lt;/b></string>
-    <string name="app_extract_failed">Không thể trích xuất ứng dụng: (</string>
-    <string name="refresh">Cập nhật</string>
-    <string name="tomclaw_software">Phần Mềm TomClaw</string>
-    <string name="app_version">Phiên bản %1 s s (%2 d d)</string>
-    <string name="info">Thông tin</string>
-    <string name="rate_app">Đánh giá ứng dụng</string>
-    <string name="all_apps">Tất cả các ứng dụng của tác giả</string>
-    <string name="pref_base_title">Cài đặt cơ bản</string>
-    <string name="pref_summary_runnable">Chỉ hiển thị các ứng dụng thực thi</string>
-    <string name="pref_title_runnable">Các gói thực thi</string>
-    <string name="settings">Cài đặt</string>
+    <string name="app_name">AppSend</string>
+    <string name="please_wait">Vui lòng đợi…</string>
+    <string name="back">Quay lại</string>
+    <string name="cancel">Hủy</string>
+    <string name="continue_anyway">Vẫn tiếp tục</string>
+    <string name="done">Xong</string>
+    <string name="open">Mở</string>
+    <string name="remove">Xóa</string>
+    <string name="selected">Đã chọn</string>
     <string name="send_to">Chia sẻ qua</string>
-    <string name="pref_summary_sort_order">Tùy chọn để sắp xếp danh sách các ứng dụng</string>
-    <string name="extract_apk">Trích xuất apk Để Tải xuống</string>
-    <string name="share_apk">Chia sẻ ứng dụng</string>
-    <string name="find_on_gp">Tìm Trên Google Play</string>
-    <string name="pref_title_clear_cache">Xóa bộ nhớ cache</string>
-    <string name="pref_summary_clear_cache">Xóa tất cả CÁC TỆP APK ĐÃ giải nén trước đó trong thư mục Tải xuống</string>
-    <string name="cache_cleared_successfully">Cache xóa thành công</string>
-    <string name="cache_clearing_failed">Lỗi xóa bộ nhớ Cache</string>
-    <string name="write_permission_extract">Để lưu tệp ứng dụng được giải nén, bạn phải cho phép ghi vào đĩa.</string>
+
+    <string name="tab_apps">Ứng dụng</string>
+    <string name="tab_exports">Đã trích xuất</string>
+    <string name="settings">Cài đặt</string>
+
     <string name="menu_search">Tìm kiếm</string>
-    <string name="run_app">Khởi chạy ứng dụng</string>
-    <string name="non_launchable_package">Gói này không thể được bắt đầu.</string>
-    <string name="app_details">Hiển thị chi tiết</string>
-    <string name="donate">Hỗ Trợ Dự Án</string>
-    <string name="donate_title">Đối xử với nhà phát triển!</string>
-    <string name="donate_description">Và anh ấy sẽ tiếp tục thích thú với các bản cập nhật :)</string>
-    <string name="donate_button">Cho tôi một thanh sô cô la</string>
-    <string name="purchase_error">Một trục trặc đã xảy ra. Hãy thử lại.</string>
-    <string name="thank_you">Cảm ơn sự hỗ trợ!</string>
-    <string name="pref_title_dark_theme">Chủ đề tối</string>
-    <string name="pref_dark_theme_system">Màu tối trong thiết kế ứng dụng</string>
-    <string name="remove">Loại bỏ</string>
-    <string name="unknown_permission_description">Độ phân giải không xác định</string>
-    <string name="required_permissions">Quyền yêu cầu</string>
-    <string name="unable_to_get_permissions">Không thể nhận được danh sách các quyền ứng dụng cần thiết</string>
-    <string name="no_requested_permissions">Ứng dụng không yêu cầu bất kỳ quyền đặc biệt nào.</string>
+    <string name="search_apps_hint">Tìm trong %d ứng dụng</string>
+    <string name="apps_loading_failed">Không thể tải danh sách ứng dụng</string>
+    <string name="apps_empty">Không có ứng dụng nào khớp với bộ lọc</string>
+    <string name="app_row_meta">%1$s · %2$s · %3$s</string>
+    <string name="badge_new">Mới</string>
+    <string name="badge_split">split</string>
+    <string name="filter_system">Hệ thống</string>
+    <string name="filter_split">Split APK</string>
+    <string name="filter_runnable">Chạy được</string>
+    <string name="sort_name">Tên</string>
+    <string name="sort_size">Kích thước</string>
+    <string name="sort_updated">Cập nhật</string>
+    <string name="sort_installed">Cài đặt</string>
+    <string name="select_apps">Chọn ứng dụng</string>
+    <string name="select_all">Chọn tất cả</string>
+    <string name="share_selected_apks">Chia sẻ</string>
+    <string name="extract_selected_apks">Trích xuất</string>
+    <string name="cancel_selection">Hủy chọn</string>
+    <string name="selected_apps_count">Đã chọn %d</string>
+    <string name="no_apps_selected">Chọn ít nhất một ứng dụng</string>
+    <string name="write_permission_extract">Để lưu tệp ứng dụng, bạn cần cấp quyền truy cập bộ nhớ</string>
+    <string name="backup_limitations_warning_title">Hạn chế của bản sao lưu</string>
+    <string name="backup_limitations_warning_message">Ứng dụng hệ thống và ứng dụng split APK có thể không được khôi phục như một bản sao lưu đầy đủ. Tệp đã xuất có thể thiếu các tệp split cần thiết hoặc phụ thuộc vào firmware/đặc quyền hệ thống, nên có thể không cài đặt được hoặc không hoạt động trên thiết bị khác.</string>
+
+    <string name="find_on_gp">Tìm trên Google Play</string>
+    <string name="non_launchable_package">Gói này không thể chạy.</string>
+    <string name="app_details_copy_package">Sao chép tên gói</string>
+    <string name="app_details_package_copied">Đã sao chép tên gói</string>
+    <string name="app_details_version">Phiên bản</string>
+    <string name="app_details_version_value">%1$s (%2$d)</string>
+    <string name="app_details_unknown_value">Không rõ</string>
+    <string name="app_details_installed">Ngày cài đặt</string>
+    <string name="app_details_updated">Cập nhật lần cuối</string>
+    <string name="app_details_size">Kích thước</string>
+    <string name="app_details_path">Đường dẫn</string>
+    <string name="app_details_installer">Cài đặt từ</string>
+    <string name="app_details_sdk">Android</string>
+    <string name="app_details_sdk_value">API tối thiểu %1$d / API mục tiêu %2$d</string>
+    <string name="app_details_signature">Chữ ký SHA-256</string>
+    <string name="app_details_permissions">Quyền</string>
+    <string name="app_details_permissions_summary">Yêu cầu %1$d, nguy hiểm %2$d</string>
+    <string name="app_details_open_system_details">Mở thông tin hệ thống</string>
+    <string name="app_details_status">Trạng thái</string>
+    <string name="app_details_status_user">Ứng dụng người dùng</string>
+    <string name="app_details_status_system">Ứng dụng hệ thống</string>
+    <string name="app_details_status_single">APK đơn</string>
+    <string name="app_details_status_split">split APK</string>
+    <string name="app_details_status_value">%1$s, %2$s</string>
+    <plurals name="app_details_size_split">
+        <item quantity="other">%1$s: gốc %2$s và %3$d tệp split %4$s</item>
+    </plurals>
+
+    <string name="required_permissions">Quyền</string>
+    <string name="unknown_permission_description">Quyền không xác định</string>
+    <string name="permissions_filter_all">Tất cả, %d</string>
+    <string name="permissions_filter_dangerous">Nguy hiểm, %d</string>
+    <string name="permissions_filter_granted">Đã cấp, %d</string>
+    <string name="permissions_section_dangerous">Nguy hiểm</string>
+    <string name="permissions_section_normal">Thông thường</string>
+    <string name="permission_granted">Đã cấp</string>
+    <string name="permission_not_granted">Chưa cấp</string>
+
+    <string name="export_folder">Thư mục</string>
+    <string name="export_folder_default">Downloads / Apps</string>
+    <string name="export_file_name">Tên tệp</string>
+    <string name="export_template_hint">{name}, {package}, {version}, {code}</string>
+    <string name="export_format_bundle">.apks\ntrọn bộ, %s</string>
+    <string name="export_format_base">base.apk\nchỉ bản gốc, %s</string>
+    <string name="export_notice_base">Chỉ có base APK thì có thể không cài đặt được hoặc không hoạt động nếu thiếu các tệp split.</string>
+    <plurals name="export_title_apps">
+        <item quantity="other">Trích xuất %d ứng dụng</item>
+    </plurals>
+    <plurals name="export_files_count">
+        <item quantity="other">%d tệp</item>
+    </plurals>
+
+    <string name="export_channel">Xuất ứng dụng</string>
+    <string name="export_progress_title">Đang trích xuất %1$d/%2$d</string>
+    <string name="export_progress_bytes">%1$s/%2$s</string>
+    <string name="export_finished">Đã xong</string>
+    <string name="export_finished_with_failures">Đã xong, có lỗi</string>
+    <string name="export_minimize">Thu nhỏ</string>
+    <string name="export_retry">Thử lại</string>
+    <string name="export_status_queued">Đang chờ</string>
+    <string name="export_status_failed">Không thể đọc tệp</string>
+    <string name="export_status_cancelled">Đã hủy</string>
+
+    <plurals name="exports_summary">
+        <item quantity="other">%1$s · %2$d tệp · %3$s</item>
+    </plurals>
+    <string name="exports_empty">Ứng dụng đã trích xuất sẽ xuất hiện ở đây</string>
+    <string name="exports_filter_all">Tất cả</string>
+    <string name="exports_filter_installed">Đã cài đặt</string>
+    <string name="exports_filter_outdated">Đã cũ</string>
+    <string name="exports_today">Hôm nay</string>
+    <string name="exports_this_week">Tuần này</string>
+    <string name="exports_earlier">Trước đó</string>
+    <string name="export_state_not_installed">chưa cài đặt</string>
+    <string name="export_state_current">đã cài đặt phiên bản này</string>
+    <string name="export_state_newer">đã cài đặt phiên bản mới hơn</string>
+    <string name="export_state_older">đã cài đặt phiên bản cũ hơn</string>
+    <string name="change_export_folder">Đổi thư mục</string>
+    <string name="clear_exports">Xóa tất cả tệp</string>
+    <string name="clear_exports_message">Mọi tệp .apk và .apks trong %s sẽ bị xóa, kể cả những tệp không do AppSend tạo.</string>
+    <string name="cache_clearing_failed">Không thể xóa tệp</string>
+    <string name="select_files">Chọn tệp</string>
+    <string name="no_files_selected">Hãy chọn ít nhất một tệp</string>
+    <plurals name="delete_selected_exports">
+        <item quantity="other">%d tệp sẽ bị xóa.</item>
+    </plurals>
+
+
+    <string name="settings_appearance">Giao diện</string>
+    <string name="settings_theme">Chủ đề</string>
+    <string name="settings_theme_system">Hệ thống</string>
+    <string name="settings_theme_light">Sáng</string>
+    <string name="settings_theme_dark">Tối</string>
+    <string name="settings_dynamic_colors">Màu từ hình nền</string>
+    <string name="settings_dynamic_colors_summary">Màu động của Android 12 trở lên</string>
+    <string name="settings_export">Xuất</string>
+    <string name="settings_export_format">Định dạng ứng dụng split</string>
+    <string name="settings_export_format_bundle">.apks, trọn bộ</string>
+    <string name="settings_export_format_base">base.apk, chỉ bản gốc</string>
+    <string name="settings_data">Dữ liệu</string>
+    <string name="settings_analytics">Thống kê ẩn danh</string>
+    <string name="settings_analytics_summary">Báo cáo sử dụng và sự cố. Áp dụng đầy đủ sau khi khởi động lại</string>
+    <string name="settings_about">Giới thiệu</string>
+    <string name="settings_version">Phiên bản</string>
+    <string name="rate_app">Đánh giá ứng dụng</string>
+    <string name="all_apps">Ứng dụng của tác giả</string>
+    <string name="tomclaw_software">TomClaw Software</string>
 </resources>

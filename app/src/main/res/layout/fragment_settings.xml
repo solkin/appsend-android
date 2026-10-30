@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="center_vertical"
+            android:text="@string/settings"
+            android:textAppearance="?attr/textAppearanceTitleLarge" />
+
+        <TextView
+            style="@style/TextAppearance.AppSend.Section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:accessibilityHeading="true"
+            android:paddingHorizontal="4dp"
+            android:paddingBottom="6dp"
+            android:text="@string/settings_appearance" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Material3.CardView.Filled"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            app:cardBackgroundColor="?attr/colorSurfaceContainer">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/settings_theme"
+                    android:textAppearance="@style/TextAppearance.AppSend.RowTitle" />
+
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/themes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <Button
+                        android:id="@+id/theme_system"
+                        style="@style/Widget.Material3Expressive.Button.TonalButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/settings_theme_system" />
+
+                    <Button
+                        android:id="@+id/theme_light"
+                        style="@style/Widget.Material3Expressive.Button.TonalButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/settings_theme_light" />
+
+                    <Button
+                        android:id="@+id/theme_dark"
+                        style="@style/Widget.Material3Expressive.Button.TonalButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/settings_theme_dark" />
+
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <include
+            android:id="@+id/dynamic_colors"
+            layout="@layout/item_switch_row" />
+
+        <TextView
+            style="@style/TextAppearance.AppSend.Section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:accessibilityHeading="true"
+            android:paddingHorizontal="4dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="6dp"
+            android:text="@string/settings_export" />
+
+        <include
+            android:id="@+id/format_row"
+            layout="@layout/item_action_row" />
+
+        <include
+            android:id="@+id/folder_row"
+            layout="@layout/item_action_row" />
+
+        <include
+            android:id="@+id/template_row"
+            layout="@layout/item_action_row" />
+
+        <TextView
+            style="@style/TextAppearance.AppSend.Section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:accessibilityHeading="true"
+            android:paddingHorizontal="4dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="6dp"
+            android:text="@string/settings_data" />
+
+        <include
+            android:id="@+id/analytics"
+            layout="@layout/item_switch_row" />
+
+        <TextView
+            style="@style/TextAppearance.AppSend.Section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:accessibilityHeading="true"
+            android:paddingHorizontal="4dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="6dp"
+            android:text="@string/settings_about" />
+
+        <include
+            android:id="@+id/version_row"
+            layout="@layout/item_action_row" />
+
+        <include
+            android:id="@+id/rate_row"
+            layout="@layout/item_action_row" />
+
+        <include
+            android:id="@+id/developer_row"
+            layout="@layout/item_action_row" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -12,9 +12,9 @@ import android.util.LruCache
 import java.util.concurrent.Executors
 
 /**
- * Lightweight package-icon → [Bitmap] loader for Knopochki's `Image` node.
+ * Lightweight package-icon → [Bitmap] loader.
  *
- * Icons are rasterised off the main thread, cached in memory by package name and
+ * Icons are rasterised off the main thread, cached in memory by package name and size and
  * delivered back on the main thread. The callback echoes the package name so a
  * recycled list row can drop a result that arrived after it was rebound.
  */
@@ -27,8 +27,8 @@ object AppIcons {
     private val executor = Executors.newFixedThreadPool(4)
     private val main = Handler(Looper.getMainLooper())
 
-    /** Returns an already-decoded icon without touching disk, or null on a miss. */
-    fun cached(packageName: String): Bitmap? = cache.get(packageName)
+    /** Forgets every icon: an updated package may well have a new one. */
+    fun evictAll() = cache.evictAll()
 
     /**
      * Loads the icon for [packageName], rasterised to [sizePx] square. On a cache
@@ -41,11 +41,14 @@ object AppIcons {
         sizePx: Int,
         onReady: (packageName: String, bitmap: Bitmap) -> Unit,
     ) {
-        cache.get(packageName)?.let { onReady(packageName, it); return }
+        val key = "$packageName|$sizePx"
+        cache.get(key)?.let { onReady(packageName, it); return }
         val pm = context.applicationContext.packageManager
         executor.execute {
-            val bitmap = render(pm, packageName, sizePx) ?: return@execute
-            cache.put(packageName, bitmap)
+            val icon = render(pm, packageName, sizePx)
+            // Cached apart from the app's own: a package missing now may be installed next.
+            if (icon != null) cache.put(key, icon)
+            val bitmap = icon ?: defaultIcon(pm, sizePx) ?: return@execute
             main.post { onReady(packageName, bitmap) }
         }
     }
@@ -53,14 +56,15 @@ object AppIcons {
     private fun render(pm: PackageManager, packageName: String, sizePx: Int): Bitmap? = try {
         rasterize(pm.getApplicationIcon(packageName), sizePx)
     } catch (ignored: Throwable) {
-        // Some packages refuse to hand over an icon at all. A row with a blank
-        // square reads as a rendering bug, so fall back to the platform's own
-        // stand-in — the same one the launcher shows.
-        defaultIcon(pm, sizePx)
+        null
     }
 
+    // Some packages refuse to hand over an icon at all. A row with a blank square reads
+    // as a rendering bug, so fall back to the same stand-in the launcher shows.
+
     private fun defaultIcon(pm: PackageManager, sizePx: Int): Bitmap? = try {
-        rasterize(pm.defaultActivityIcon, sizePx)
+        val key = "default|$sizePx"
+        cache.get(key) ?: rasterize(pm.defaultActivityIcon, sizePx).also { cache.put(key, it) }
     } catch (ignored: Throwable) {
         null
     }

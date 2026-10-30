@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp">
+
+    <include
+        android:id="@+id/permissions_row"
+        layout="@layout/item_action_row" />
+
+    <include
+        android:id="@+id/store_row"
+        layout="@layout/item_action_row" />
+
+    <include
+        android:id="@+id/system_row"
+        layout="@layout/item_action_row" />
+
+    <include
+        android:id="@+id/remove_row"
+        layout="@layout/item_action_row" />
+
+</LinearLayout>
