@@ -41,6 +41,9 @@ sealed interface InstallEvent {
 
     data object AwaitingConfirmation : InstallEvent
 
+    /** The system's dialog is gone. The outcome is the system's to report from here on. */
+    data object Applying : InstallEvent
+
     data object Installed : InstallEvent
 
     data class Failed(val failure: InstallFailure) : InstallEvent
@@ -65,16 +68,22 @@ interface PackageInstallerGateway {
 
     /**
      * Starts installing, or joins the install already running for this file. Replays the
-     * latest event, then follows. An install of another file is abandoned. An install
-     * outlives its subscribers until [cancel].
+     * latest event, then follows. An install of another file is abandoned, unless it was
+     * left to run: then it is only forgotten. An install outlives its subscribers until [cancel].
      */
     fun install(candidate: PackageCandidate): Observable<InstallEvent>
 
     /** The confirmation was handed to the system, so it must not be shown again. */
     fun confirmationShown(uri: String)
 
+    /** The user is back from the system's dialog, whichever way they answered it. */
+    fun confirmationAnswered(uri: String)
+
     /** Abandons this file's install if unfinished and forgets it. Other files are left alone. */
     fun cancel(uri: String)
+
+    /** Stops watching this file's install but lets it run: past the dialog, it cannot be stopped reliably. */
+    fun leave(uri: String)
 
 }
 

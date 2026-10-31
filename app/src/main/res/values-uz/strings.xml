@@ -159,6 +159,8 @@
     <string name="install_in_progress">%s o\'rnatilmoqda</string>
     <string name="install_writing">Fayllar o\'rnatuvchiga uzatilmoqda</string>
     <string name="install_awaiting_confirmation">Tasdiqlashingiz kutilmoqda</string>
+    <string name="install_applying">Android ilovani o\'rnatmoqda</string>
+    <string name="install_hide">Yashirish</string>
     <string name="install_done">%s o\'rnatildi</string>
     <string name="install_failed">O\'rnatib bo\'lmadi</string>
     <string name="install_unreadable_title">Ilova paketi emas</string>

@@ -53,6 +53,11 @@ class InstallActivity : AppCompatActivity(), InstallRouter {
         if (::presenter.isInitialized) presenter.onResume()
     }
 
+    override fun onPause() {
+        if (::presenter.isInitialized) presenter.onPause()
+        super.onPause()
+    }
+
     override fun onStop() {
         if (::presenter.isInitialized) presenter.detachRouter()
         super.onStop()

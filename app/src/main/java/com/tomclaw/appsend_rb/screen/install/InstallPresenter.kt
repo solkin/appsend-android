@@ -17,6 +17,8 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.kotlin.plusAssign
 
+enum class InstallStage { WRITING, CONFIRMING, APPLYING }
+
 sealed interface InstallViewModel {
 
     data object Loading : InstallViewModel
@@ -49,7 +51,7 @@ sealed interface InstallViewModel {
         val packageName: String?,
         val label: String,
         val percent: Int,
-        val awaitingConfirmation: Boolean,
+        val stage: InstallStage,
     ) : InstallViewModel
 
     data class Installed(
@@ -82,7 +84,11 @@ interface InstallInteractor {
 
     fun confirmationShown()
 
+    fun confirmationAnswered()
+
     fun cancel()
+
+    fun leave()
 
 }
 
@@ -110,7 +116,11 @@ class InstallInteractorImpl(
 
     override fun confirmationShown() = gateway.confirmationShown(uri)
 
+    override fun confirmationAnswered() = gateway.confirmationAnswered(uri)
+
     override fun cancel() = gateway.cancel(uri)
+
+    override fun leave() = gateway.leave(uri)
 
 }
 
@@ -140,6 +150,8 @@ interface InstallPresenter {
 
     fun onResume()
 
+    fun onPause()
+
     fun saveState(): InstallState
 
     fun destroy()
@@ -163,6 +175,7 @@ class InstallPresenterImpl(
     private var model: InstallViewModel = InstallViewModel.Loading
     private var candidate: PackageCandidate? = null
     private var pendingConfirmation: InstallConfirmation? = null
+    private var confirmationCovering = false
     private var restored = state
 
     init {
@@ -170,7 +183,7 @@ class InstallPresenterImpl(
         val ongoing = interactor.ongoing()
         if (ongoing != null) {
             candidate = ongoing
-            show(installingModel(ongoing, percent = 0, awaiting = false))
+            show(installingModel(ongoing, percent = 0, InstallStage.WRITING))
             followInstall(ongoing)
         } else {
             inspect()
@@ -207,9 +220,18 @@ class InstallPresenterImpl(
 
     /** The user may be back from settings or from uninstalling: re-check what stands now. */
     override fun onResume() {
+        if (confirmationCovering && stage() == InstallStage.CONFIRMING) interactor.confirmationAnswered()
+        confirmationCovering = false
         val current = candidate ?: return
         if (model is InstallViewModel.Ready || model is InstallViewModel.Blocked) evaluate(current)
     }
+
+    /** A resume alone proves nothing: the screen also resumes right after launching the dialog. */
+    override fun onPause() {
+        confirmationCovering = pendingConfirmation == null && stage() == InstallStage.CONFIRMING
+    }
+
+    private fun stage(): InstallStage? = (model as? InstallViewModel.Installing)?.stage
 
     override fun saveState() = InstallState(
         installed = model is InstallViewModel.Installed,
@@ -276,7 +298,7 @@ class InstallPresenterImpl(
             return
         }
         analytics.trackEvent("install_started", mapOf("splits" to current.splitCount.toString()))
-        show(installingModel(current, percent = 0, awaiting = false))
+        show(installingModel(current, percent = 0, InstallStage.WRITING))
         followInstall(current)
     }
 
@@ -293,18 +315,21 @@ class InstallPresenterImpl(
                 installingModel(
                     current,
                     percent = if (event.totalBytes > 0) (event.writtenBytes * 100 / event.totalBytes).toInt() else 0,
-                    awaiting = false,
+                    InstallStage.WRITING,
                 )
             )
             is InstallEvent.ConfirmationRequired -> {
-                show(installingModel(current, percent = 100, awaiting = true))
+                show(installingModel(current, percent = 100, InstallStage.CONFIRMING))
                 pendingConfirmation = event.confirmation
                 launchPendingConfirmation()
             }
             InstallEvent.AwaitingConfirmation -> {
                 pendingConfirmation = null
-                show(installingModel(current, percent = 100, awaiting = true))
+                // A re-created screen sees no pause of its own: the dialog was launched before it.
+                confirmationCovering = true
+                show(installingModel(current, percent = 100, InstallStage.CONFIRMING))
             }
+            InstallEvent.Applying -> show(installingModel(current, percent = 100, InstallStage.APPLYING))
             InstallEvent.Installed -> {
                 pendingConfirmation = null
                 interactor.cancel()
@@ -326,8 +351,8 @@ class InstallPresenterImpl(
         }
     }
 
-    private fun installingModel(current: PackageCandidate, percent: Int, awaiting: Boolean) =
-        InstallViewModel.Installing(current.packageName, current.label, percent.coerceIn(0, 100), awaiting)
+    private fun installingModel(current: PackageCandidate, percent: Int, stage: InstallStage) =
+        InstallViewModel.Installing(current.packageName, current.label, percent.coerceIn(0, 100), stage)
 
     /** The system's dialog can only start from a visible screen, so it may have to wait. */
     private fun launchPendingConfirmation() {
@@ -340,7 +365,11 @@ class InstallPresenterImpl(
 
     private fun onDismiss() {
         installSubscription?.dispose()
-        interactor.cancel()
+        if (stage() == InstallStage.APPLYING) {
+            interactor.leave()
+        } else {
+            interactor.cancel()
+        }
         router?.leave()
     }
 

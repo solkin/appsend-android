@@ -8,6 +8,8 @@ import android.content.Intent
 import android.content.pm.PackageInstaller
 import android.content.pm.PackageManager
 import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.provider.Settings
 import androidx.core.content.IntentCompat
 import androidx.core.content.pm.PackageInfoCompat
@@ -41,6 +43,7 @@ class AndroidPackageInstaller(
 ) : PackageInstallerGateway {
 
     private val packageManager = context.packageManager
+    private val mainThread = Handler(Looper.getMainLooper())
     private val lock = Any()
     private var active: ActiveInstall? = null
 
@@ -58,13 +61,27 @@ class AndroidPackageInstaller(
 
         @Volatile
         var finished = false
+
+        @Volatile
+        var left = false
     }
 
     fun onStatus(intent: Intent) {
         val sessionId = intent.getIntExtra(PackageInstaller.EXTRA_SESSION_ID, NO_SESSION)
-        val install = synchronized(lock) { active?.takeIf { it.sessionId == sessionId } } ?: return
-        val event = toEvent(intent)
-        if (event !is InstallEvent.ConfirmationRequired) install.finished = true
+        val install = synchronized(lock) {
+            active?.takeIf { it.sessionId == sessionId && !it.finished }
+        } ?: return
+        deliver(install, toEvent(intent))
+    }
+
+    private fun deliver(install: ActiveInstall, event: InstallEvent) {
+        synchronized(lock) {
+            if (event !is InstallEvent.ConfirmationRequired) {
+                install.finished = true
+                // Nobody is left to read this outcome, and it must not greet the next visit.
+                if (install.left && active === install) active = null
+            }
+        }
         install.events.accept(event)
     }
 
@@ -175,13 +192,13 @@ class AndroidPackageInstaller(
     }
 
     override fun ongoing(uri: String): PackageCandidate? = synchronized(lock) {
-        active?.takeIf { it.candidate.uri == uri }?.candidate
+        active?.takeIf { it.candidate.uri == uri && !it.left }?.candidate
     }
 
     override fun install(candidate: PackageCandidate): Observable<InstallEvent> {
         synchronized(lock) {
             active?.let { current ->
-                if (current.candidate.uri == candidate.uri) return current.events.hide()
+                if (current.candidate.uri == candidate.uri && !current.left) return current.events.hide()
                 release(current)
                 // Whoever watched the displaced install must not wait for it forever.
                 current.events.accept(InstallEvent.Failed(InstallFailure.ABORTED))
@@ -206,6 +223,7 @@ class AndroidPackageInstaller(
                 }
             }
             install.sessionId = installer.createSession(params)
+            watchSession(installer, install)
             installer.openSession(install.sessionId).use { session ->
                 write(install, session)
                 synchronized(lock) {
@@ -222,6 +240,35 @@ class AndroidPackageInstaller(
         } catch (error: RuntimeException) {
             abandon(installer, install)
             finish(install, InstallFailure.UNKNOWN)
+        }
+    }
+
+    /**
+     * The status broadcast says how an install ended, and it is the only one that says why.
+     * Should it never come, this keeps the screen from waiting for it forever.
+     */
+    private fun watchSession(installer: PackageInstaller, install: ActiveInstall) {
+        installer.registerSessionCallback(object : PackageInstaller.SessionCallback() {
+            override fun onCreated(sessionId: Int) = Unit
+
+            override fun onBadgingChanged(sessionId: Int) = Unit
+
+            override fun onActiveChanged(sessionId: Int, active: Boolean) = Unit
+
+            override fun onProgressChanged(sessionId: Int, progress: Float) = Unit
+
+            override fun onFinished(sessionId: Int, success: Boolean) {
+                if (sessionId != install.sessionId) return
+                installer.unregisterSessionCallback(this)
+                mainThread.postDelayed({ onSessionFinished(install, success) }, STATUS_GRACE_MS)
+            }
+        }, mainThread)
+    }
+
+    private fun onSessionFinished(install: ActiveInstall, success: Boolean) {
+        val waiting = synchronized(lock) { active === install && !install.finished }
+        if (waiting) {
+            deliver(install, if (success) InstallEvent.Installed else InstallEvent.Failed(InstallFailure.UNKNOWN))
         }
     }
 
@@ -304,8 +351,16 @@ class AndroidPackageInstaller(
     }
 
     override fun confirmationShown(uri: String) {
-        val install = synchronized(lock) { active?.takeIf { it.candidate.uri == uri } }
-        install?.events?.accept(InstallEvent.AwaitingConfirmation)
+        unfinished(uri)?.events?.accept(InstallEvent.AwaitingConfirmation)
+    }
+
+    override fun confirmationAnswered(uri: String) {
+        unfinished(uri)?.events?.accept(InstallEvent.Applying)
+    }
+
+    /** An outcome already delivered is the last word: it must stay the one that gets replayed. */
+    private fun unfinished(uri: String): ActiveInstall? = synchronized(lock) {
+        active?.takeIf { it.candidate.uri == uri && !it.finished }
     }
 
     override fun cancel(uri: String) {
@@ -314,11 +369,20 @@ class AndroidPackageInstaller(
         }
     }
 
+    override fun leave(uri: String) {
+        synchronized(lock) {
+            active?.takeIf { it.candidate.uri == uri }?.let { install ->
+                install.left = true
+                if (install.finished) active = null
+            }
+        }
+    }
+
     /** Called under [lock]. A session still being written notices the flag and abandons itself. */
     private fun release(install: ActiveInstall) {
         active = null
         install.cancelled = true
-        if (install.committed && !install.finished) {
+        if (install.committed && !install.finished && !install.left) {
             abandon(packageManager.packageInstaller, install)
         }
     }
@@ -371,6 +435,7 @@ private class InstallCancelledException : RuntimeException()
 
 private const val NO_SESSION = -1
 private const val BUFFER_SIZE = 512 * 1024
+private const val STATUS_GRACE_MS = 2000L
 
 private val SIGNATURE_FLAGS = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
     PackageManager.GET_SIGNING_CERTIFICATES

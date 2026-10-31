@@ -183,6 +183,8 @@
     <string name="install_in_progress">جارٍ تثبيت %s</string>
     <string name="install_writing">جارٍ تمرير الملفات إلى المثبّت</string>
     <string name="install_awaiting_confirmation">بانتظار تأكيدك</string>
+    <string name="install_applying">يثبّت Android التطبيق</string>
+    <string name="install_hide">إخفاء</string>
     <string name="install_done">تم تثبيت %s</string>
     <string name="install_failed">فشل التثبيت</string>
     <string name="install_unreadable_title">ليست حزمة تطبيق</string>

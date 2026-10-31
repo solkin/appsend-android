@@ -153,6 +153,8 @@
     <string name="install_in_progress">%s をインストール中</string>
     <string name="install_writing">インストーラーにファイルを渡しています</string>
     <string name="install_awaiting_confirmation">確認を待っています</string>
+    <string name="install_applying">Android がアプリをインストールしています</string>
+    <string name="install_hide">非表示</string>
     <string name="install_done">%s をインストールしました</string>
     <string name="install_failed">インストールに失敗しました</string>
     <string name="install_unreadable_title">アプリのパッケージではありません</string>

@@ -83,8 +83,10 @@
         <item name="android:layout_height">72dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:maxLines">1</item>
-        <item name="android:paddingHorizontal">4dp</item>
-        <item name="android:paddingVertical">8dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:paddingBottom">8dp</item>
         <item name="autoSizeMaxTextSize">14sp</item>
         <item name="autoSizeMinTextSize">10sp</item>
         <item name="autoSizeTextType">uniform</item>
@@ -98,8 +100,10 @@
         <item name="android:layout_height">72dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:maxLines">1</item>
-        <item name="android:paddingHorizontal">4dp</item>
-        <item name="android:paddingVertical">8dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:paddingBottom">8dp</item>
         <item name="autoSizeMaxTextSize">14sp</item>
         <item name="autoSizeMinTextSize">10sp</item>
         <item name="autoSizeTextType">uniform</item>

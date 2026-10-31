@@ -182,11 +182,23 @@ class InstallViewImpl(
             model.packageName,
             context.getString(R.string.install_in_progress, model.label),
             context.getString(
-                if (model.awaitingConfirmation) R.string.install_awaiting_confirmation else R.string.install_writing
+                when (model.stage) {
+                    InstallStage.WRITING -> R.string.install_writing
+                    InstallStage.CONFIRMING -> R.string.install_awaiting_confirmation
+                    InstallStage.APPLYING -> R.string.install_applying
+                }
             ),
         )
         binding.progress.isVisible = true
-        binding.progress.setProgressCompat(model.percent, true)
+        if (model.stage == InstallStage.APPLYING) {
+            // The system reports no progress of its own, and a full bar would look frozen.
+            // Setting a progress here would turn the indicator determinate again.
+            binding.progress.isIndeterminate = true
+            binding.dismissButton.setText(R.string.install_hide)
+        } else {
+            binding.progress.isIndeterminate = false
+            binding.progress.setProgressCompat(model.percent, true)
+        }
     }
 
     private fun renderInstalled(model: InstallViewModel.Installed) {

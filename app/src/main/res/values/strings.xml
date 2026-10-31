@@ -159,6 +159,8 @@
     <string name="install_in_progress">Installing %s</string>
     <string name="install_writing">Passing files to the installer</string>
     <string name="install_awaiting_confirmation">Waiting for your confirmation</string>
+    <string name="install_applying">Android is installing the app</string>
+    <string name="install_hide">Hide</string>
     <string name="install_done">%s is installed</string>
     <string name="install_failed">Installation failed</string>
     <string name="install_unreadable_title">Not an app package</string>

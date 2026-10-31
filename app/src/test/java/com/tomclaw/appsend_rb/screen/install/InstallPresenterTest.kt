@@ -97,10 +97,136 @@ class InstallPresenterTest {
         val confirmation = object : InstallConfirmation {}
         interactor.events.accept(InstallEvent.ConfirmationRequired(confirmation))
         assertEquals(listOf(confirmation), router.confirmations)
-        assertEquals(true, (view.last as InstallViewModel.Installing).awaitingConfirmation)
+        assertEquals(InstallStage.CONFIRMING, stage())
 
         interactor.events.accept(InstallEvent.Installed)
         assertTrue(view.last is InstallViewModel.Installed)
+    }
+
+    @Test
+    fun `coming back from the dialog shows that the system is installing`() {
+        confirmationOnScreen()
+        presenter.onResume()
+        assertEquals(1, interactor.confirmationsAnswered)
+        assertEquals(InstallStage.APPLYING, stage())
+        interactor.events.accept(InstallEvent.Installed)
+        assertTrue(view.last is InstallViewModel.Installed)
+    }
+
+    @Test
+    fun `a resume before the dialog has covered the screen says nothing about the answer`() {
+        presenter
+        view.installRelay.accept(Unit)
+        presenter.detachRouter()
+        interactor.events.accept(InstallEvent.ConfirmationRequired(object : InstallConfirmation {}))
+        presenter.attachRouter(router)
+        presenter.onResume()
+        assertEquals(0, interactor.confirmationsAnswered)
+        assertEquals(InstallStage.CONFIRMING, stage())
+
+        presenter.onPause()
+        presenter.onResume()
+        assertEquals(InstallStage.APPLYING, stage())
+    }
+
+    @Test
+    fun `pausing while a confirmation has not been launched is not an answer`() {
+        presenter
+        view.installRelay.accept(Unit)
+        presenter.detachRouter()
+        interactor.events.accept(InstallEvent.ConfirmationRequired(object : InstallConfirmation {}))
+        presenter.onPause()
+        presenter.onResume()
+        assertEquals(0, interactor.confirmationsAnswered)
+        assertEquals(InstallStage.CONFIRMING, stage())
+    }
+
+    @Test
+    fun `pausing while writing is not an answer`() {
+        presenter
+        view.installRelay.accept(Unit)
+        interactor.events.accept(InstallEvent.Writing(10, 100))
+        presenter.onPause()
+        presenter.onResume()
+        assertEquals(0, interactor.confirmationsAnswered)
+        assertEquals(InstallStage.WRITING, stage())
+    }
+
+    @Test
+    fun `refusing in the dialog returns to the ready state even after the sheet came back`() {
+        confirmationOnScreen()
+        presenter.onResume()
+        interactor.events.accept(InstallEvent.Failed(InstallFailure.ABORTED))
+        assertTrue(view.last is InstallViewModel.Ready)
+        assertEquals(1, interactor.cancels)
+    }
+
+    @Test
+    fun `an outcome that came before the sheet did is not overwritten`() {
+        confirmationOnScreen()
+        interactor.events.accept(InstallEvent.Failed(InstallFailure.ABORTED))
+        presenter.onResume()
+        assertEquals(0, interactor.confirmationsAnswered)
+        assertTrue(view.last is InstallViewModel.Ready)
+    }
+
+    @Test
+    fun `a failure while the system installs is shown`() {
+        confirmationOnScreen()
+        presenter.onResume()
+        interactor.events.accept(InstallEvent.Failed(InstallFailure.CONFLICT))
+        assertEquals(InstallFailure.CONFLICT, (view.last as InstallViewModel.Failed).failure)
+    }
+
+    @Test
+    fun `the system asking again shows its dialog again`() {
+        confirmationOnScreen()
+        presenter.onResume()
+        interactor.events.accept(InstallEvent.ConfirmationRequired(object : InstallConfirmation {}))
+        assertEquals(2, router.confirmations.size)
+        assertEquals(InstallStage.CONFIRMING, stage())
+        presenter.onPause()
+        presenter.onResume()
+        assertEquals(InstallStage.APPLYING, stage())
+    }
+
+    @Test
+    fun `leaving while the system installs lets it finish`() {
+        confirmationOnScreen()
+        presenter.onResume()
+        view.dismissRelay.accept(Unit)
+        assertEquals(1, interactor.leaves)
+        assertEquals(0, interactor.cancels)
+        assertEquals(1, router.leaves)
+    }
+
+    @Test
+    fun `leaving before the dialog is answered still cancels`() {
+        confirmationOnScreen()
+        view.dismissRelay.accept(Unit)
+        assertEquals(0, interactor.leaves)
+        assertEquals(1, interactor.cancels)
+    }
+
+    @Test
+    fun `a screen re-created after the dialog was launched learns it is back`() {
+        interactor.ongoingCandidate = candidate
+        presenter
+        interactor.events.accept(InstallEvent.AwaitingConfirmation)
+        assertEquals(InstallStage.CONFIRMING, stage())
+        presenter.onResume()
+        assertEquals(1, interactor.confirmationsAnswered)
+        assertEquals(InstallStage.APPLYING, stage())
+    }
+
+    @Test
+    fun `a re-created screen picks up the stage the install has reached`() {
+        interactor.ongoingCandidate = candidate
+        presenter
+        interactor.events.accept(InstallEvent.Applying)
+        assertEquals(InstallStage.APPLYING, stage())
+        view.dismissRelay.accept(Unit)
+        assertEquals(1, interactor.leaves)
     }
 
     @Test
@@ -204,6 +330,15 @@ class InstallPresenterTest {
         assertEquals(InstallFailure.STORAGE, (view.last as InstallViewModel.Failed).failure)
     }
 
+    private fun stage() = (view.last as InstallViewModel.Installing).stage
+
+    private fun confirmationOnScreen() {
+        presenter
+        view.installRelay.accept(Unit)
+        interactor.events.accept(InstallEvent.ConfirmationRequired(object : InstallConfirmation {}))
+        presenter.onPause()
+    }
+
     private inner class FakeInteractor : InstallInteractor {
 
         var inspection: Single<PackageCandidate> = Single.just(candidate)
@@ -216,6 +351,8 @@ class InstallPresenterTest {
         var inspections = 0
         var cancels = 0
         var confirmationsShown = 0
+        var confirmationsAnswered = 0
+        var leaves = 0
 
         override fun inspect(): Single<PackageCandidate> {
             inspections++
@@ -228,8 +365,17 @@ class InstallPresenterTest {
             confirmationsShown++
         }
 
+        override fun confirmationAnswered() {
+            confirmationsAnswered++
+            events.accept(InstallEvent.Applying)
+        }
+
         override fun cancel() {
             cancels++
+        }
+
+        override fun leave() {
+            leaves++
         }
 
         override fun installedVersion(packageName: String): InstalledVersion? = null
@@ -270,6 +416,7 @@ class InstallPresenterTest {
     private class FakeRouter : InstallRouter {
 
         var permissionRequests = 0
+        var leaves = 0
         val confirmations = ArrayList<InstallConfirmation>()
 
         override fun requestInstallPermission() {
@@ -284,7 +431,9 @@ class InstallPresenterTest {
 
         override fun launch(packageName: String) = Unit
 
-        override fun leave() = Unit
+        override fun leave() {
+            leaves++
+        }
 
     }
 

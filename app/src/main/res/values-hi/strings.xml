@@ -159,6 +159,8 @@
     <string name="install_in_progress">%s इंस्टॉल हो रहा है</string>
     <string name="install_writing">फ़ाइलें इंस्टॉलर को दी जा रही हैं</string>
     <string name="install_awaiting_confirmation">आपकी पुष्टि की प्रतीक्षा है</string>
+    <string name="install_applying">Android ऐप इंस्टॉल कर रहा है</string>
+    <string name="install_hide">छिपाएं</string>
     <string name="install_done">%s इंस्टॉल हो गया</string>
     <string name="install_failed">इंस्टॉल नहीं हो सका</string>
     <string name="install_unreadable_title">ऐप पैकेज नहीं है</string>

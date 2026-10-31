@@ -159,6 +159,8 @@
     <string name="install_in_progress">در حال نصب %s</string>
     <string name="install_writing">در حال ارسال فایل‌ها به نصب‌کننده</string>
     <string name="install_awaiting_confirmation">در انتظار تأیید شما</string>
+    <string name="install_applying">Android در حال نصب برنامه است</string>
+    <string name="install_hide">پنهان کردن</string>
     <string name="install_done">%s نصب شد</string>
     <string name="install_failed">نصب ناموفق بود</string>
     <string name="install_unreadable_title">بستهٔ برنامه نیست</string>

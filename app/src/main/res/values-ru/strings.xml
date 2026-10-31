@@ -171,6 +171,8 @@
     <string name="install_in_progress">Установка: %s</string>
     <string name="install_writing">Передача файлов установщику</string>
     <string name="install_awaiting_confirmation">Ожидание вашего подтверждения</string>
+    <string name="install_applying">Android устанавливает приложение</string>
+    <string name="install_hide">Скрыть</string>
     <string name="install_done">Установлено: %s</string>
     <string name="install_failed">Не удалось установить</string>
     <string name="install_unreadable_title">Это не пакет приложения</string>

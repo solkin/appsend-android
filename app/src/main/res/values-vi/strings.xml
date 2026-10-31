@@ -153,6 +153,8 @@
     <string name="install_in_progress">Đang cài đặt %s</string>
     <string name="install_writing">Đang chuyển tệp cho trình cài đặt</string>
     <string name="install_awaiting_confirmation">Đang chờ bạn xác nhận</string>
+    <string name="install_applying">Android đang cài đặt ứng dụng</string>
+    <string name="install_hide">Ẩn</string>
     <string name="install_done">Đã cài đặt %s</string>
     <string name="install_failed">Cài đặt không thành công</string>
     <string name="install_unreadable_title">Không phải gói ứng dụng</string>

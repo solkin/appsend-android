@@ -153,6 +153,8 @@
     <string name="install_in_progress">正在安裝 %s</string>
     <string name="install_writing">正在將檔案傳給安裝程式</string>
     <string name="install_awaiting_confirmation">等待您確認</string>
+    <string name="install_applying">Android 正在安裝應用程式</string>
+    <string name="install_hide">隱藏</string>
     <string name="install_done">已安裝 %s</string>
     <string name="install_failed">安裝失敗</string>
     <string name="install_unreadable_title">不是應用程式套件</string>
