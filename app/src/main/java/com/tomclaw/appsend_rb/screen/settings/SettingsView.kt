@@ -66,12 +66,15 @@ class SettingsViewImpl(private val binding: FragmentSettingsBinding) : SettingsV
         }
         binding.dynamicColors.title.setText(R.string.settings_dynamic_colors)
         binding.dynamicColors.subtitle.setText(R.string.settings_dynamic_colors_summary)
+        // Both toggles share one id, so restored state would mix them up: render() sets them instead.
+        binding.dynamicColors.toggle.isSaveEnabled = false
         binding.dynamicColors.toggle.setOnCheckedChangeListener { _, checked ->
             if (!applyingModel) dynamicColorRelay.accept(checked)
         }
         binding.analytics.title.setText(R.string.settings_analytics)
         binding.analytics.subtitle.setText(R.string.settings_analytics_summary)
         binding.analytics.root.updateAppearance(0, 1)
+        binding.analytics.toggle.isSaveEnabled = false
         binding.analytics.toggle.setOnCheckedChangeListener { _, checked ->
             if (!applyingModel) analyticsRelay.accept(checked)
         }

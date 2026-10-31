@@ -105,24 +105,39 @@
                     style="@style/Widget.Material3Expressive.Button.TonalButton"
                     android:layout_width="wrap_content"
                     android:layout_height="52dp"
-                    android:text="@string/open" />
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:paddingHorizontal="12dp"
+                    android:text="@string/open"
+                    app:autoSizeMaxTextSize="14sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeTextType="uniform" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/extract_button"
                     style="@style/Widget.Material3Expressive.Button"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="52dp"
                     android:layout_weight="1"
+                    android:maxLines="1"
+                    android:paddingHorizontal="12dp"
                     android:text="@string/extract_selected_apks"
-                    app:icon="@drawable/ic_extract" />
+                    app:autoSizeMaxTextSize="14sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeTextType="uniform" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/share_button"
                     style="@style/Widget.Material3Expressive.Button.TonalButton"
                     android:layout_width="wrap_content"
                     android:layout_height="52dp"
-                    android:contentDescription="@string/share_selected_apks"
-                    app:icon="@drawable/ic_share" />
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:paddingHorizontal="12dp"
+                    android:text="@string/share_selected_apks"
+                    app:autoSizeMaxTextSize="14sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeTextType="uniform" />
 
             </com.google.android.material.button.MaterialButtonGroup>
 

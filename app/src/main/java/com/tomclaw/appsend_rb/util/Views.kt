@@ -7,6 +7,8 @@ import androidx.core.view.updatePadding
 
 /** Pads the view by the system bars, on top of the padding it already has. */
 fun View.applySystemBarInsets(top: Boolean = false, bottom: Boolean = false) {
+    val initialLeft = paddingLeft
+    val initialRight = paddingRight
     val initialTop = paddingTop
     val initialBottom = paddingBottom
     ViewCompat.setOnApplyWindowInsetsListener(this) { view, insets ->
@@ -14,8 +16,8 @@ fun View.applySystemBarInsets(top: Boolean = false, bottom: Boolean = false) {
             WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
         )
         view.updatePadding(
-            left = bars.left,
-            right = bars.right,
+            left = initialLeft + bars.left,
+            right = initialRight + bars.right,
             top = if (top) initialTop + bars.top else initialTop,
             bottom = if (bottom) initialBottom + bars.bottom else initialBottom,
         )
