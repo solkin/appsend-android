@@ -1,0 +1,156 @@
+# Cutting a build for testers.
+#
+# Tag a commit `v5.0-93` and push it, and this signs a release APK and hands it to
+# Bananalytics, which keeps the download link, the version — read out of the APK
+# rather than typed anywhere — and the mapping file that turns an obfuscated stack
+# trace back into names. The mapping goes up in the same request as the APK it
+# belongs to: a mapping of another build is worse than none.
+#
+# Two different keys are in play. The one built into the app (sdk scope) lets it
+# report; the one used here (`BANANALYTICS_UPLOAD_KEY`, upload scope) lets CI
+# publish, so it is only ever read at this step and never reaches an APK.
+#
+# Hosted runners rather than the box Mandarin builds on: this repository is public,
+# and a self-hosted runner would run whatever a pull request from a fork asks of it.
+
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      notify:
+        description: Tell testers a build is waiting
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+env:
+  BANANALYTICS_HOST: ${{ vars.BANANALYTICS_HOST || 'https://bnn.citron.dev' }}
+
+jobs:
+  # The tests and lint first: a build that fails them goes to nobody.
+  check:
+    uses: ./.github/workflows/check.yml
+
+  publish:
+    name: Build and publish
+    needs: check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # Release notes are the commits since the previous tag, and a shallow
+          # checkout cannot see either the tags or the range between them.
+          fetch-depth: 0
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@v5
+
+      # Named one by one rather than left to fail later: a missing secret would
+      # otherwise turn into an unsigned APK or a 401 from the upload, minutes in.
+      - name: Every secret this needs is set
+        env:
+          APPSEND_KEYSTORE_BASE64: ${{ secrets.APPSEND_KEYSTORE_BASE64 }}
+          APPSEND_KEYSTORE_PASSWORD: ${{ secrets.APPSEND_KEYSTORE_PASSWORD }}
+          APPSEND_KEY_ALIAS: ${{ secrets.APPSEND_KEY_ALIAS }}
+          APPSEND_KEY_PASSWORD: ${{ secrets.APPSEND_KEY_PASSWORD }}
+          BANANALYTICS_UPLOAD_KEY: ${{ secrets.BANANALYTICS_UPLOAD_KEY }}
+        run: |
+          missing=0
+          for name in APPSEND_KEYSTORE_BASE64 APPSEND_KEYSTORE_PASSWORD APPSEND_KEY_ALIAS APPSEND_KEY_PASSWORD BANANALYTICS_UPLOAD_KEY; do
+            if [ -z "${!name}" ]; then echo "secret not set: $name"; missing=1; fi
+          done
+          exit $missing
+
+      # Into the runner's scratch space rather than the checkout: anything under the
+      # checkout is one careless `upload-artifact` away from being published.
+      - name: Unpack the signing key
+        env:
+          KEYSTORE: ${{ secrets.APPSEND_KEYSTORE_BASE64 }}
+        run: printf '%s' "$KEYSTORE" | base64 -d > "$RUNNER_TEMP/appsend.keystore"
+
+      - name: Build
+        env:
+          APPSEND_KEYSTORE: ${{ runner.temp }}/appsend.keystore
+          APPSEND_KEYSTORE_PASSWORD: ${{ secrets.APPSEND_KEYSTORE_PASSWORD }}
+          APPSEND_KEY_ALIAS: ${{ secrets.APPSEND_KEY_ALIAS }}
+          APPSEND_KEY_PASSWORD: ${{ secrets.APPSEND_KEY_PASSWORD }}
+        run: ./gradlew assembleRelease
+
+      - name: Find what was built
+        id: build
+        run: |
+          apk=$(ls app/build/outputs/apk/release/*.apk)
+          [ "$(echo "$apk" | wc -l)" -eq 1 ] || { echo "expected one APK, found:"; echo "$apk"; exit 1; }
+          # The suffix the build adds when it had no key. Testers cannot install
+          # one, so it is a failure here rather than a puzzle for them.
+          case "$apk" in *-unsigned.apk) echo "built unsigned: $apk"; exit 1;; esac
+          echo "apk=$apk" >> "$GITHUB_OUTPUT"
+          echo "built $apk"
+
+      - name: Write the release notes
+        id: notes
+        run: |
+          notes=
+          from=
+          if [ "$GITHUB_REF_TYPE" = tag ]; then
+            # Fetched again, by name: on a tag push the checkout writes a lightweight
+            # tag from the commit, so the message somebody wrote is not on the runner.
+            git fetch --force origin "refs/tags/$GITHUB_REF_NAME:refs/tags/$GITHUB_REF_NAME"
+
+            # An annotated tag carries what somebody wrote for testers, and that beats
+            # commit subjects. Asking a lightweight tag for its message would hand back
+            # the commit's instead, so `cat-file -t` tells the two apart.
+            if [ "$(git cat-file -t "$GITHUB_REF_NAME")" = tag ]; then
+              notes=$(git for-each-ref --format='%(contents)' "refs/tags/$GITHUB_REF_NAME")
+              from="the tag message"
+            fi
+            if [ -z "$(printf '%s' "$notes" | tr -d '[:space:]')" ]; then
+              previous=$(git describe --tags --abbrev=0 "$GITHUB_REF_NAME^" 2>/dev/null || true)
+              notes=$(git log --no-merges --pretty='- %s' "${previous:+$previous..}$GITHUB_REF_NAME")
+              from="commits since ${previous:-the beginning}"
+            fi
+          else
+            # A build cut by hand off a branch: the tip is all there is to say.
+            notes=$(git log --no-merges --pretty='- %s' -1)
+            from="the last commit"
+          fi
+
+          echo "notes from $from:"
+          echo "$notes"
+          {
+            echo "notes<<EOF"
+            echo "$notes"
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Publish to Bananalytics
+        env:
+          UPLOAD_KEY: ${{ secrets.BANANALYTICS_UPLOAD_KEY }}
+          APK: ${{ steps.build.outputs.apk }}
+          NOTES: ${{ steps.notes.outputs.notes }}
+          # A tag is a build meant for somebody; a run started by hand is often a
+          # rehearsal, so that one asks.
+          NOTIFY: ${{ github.event_name == 'push' && 'true' || inputs.notify }}
+        run: |
+          mapping="$RUNNER_TEMP/mapping.txt.gz"
+          gzip -9 -c app/build/outputs/mapping/release/mapping.txt > "$mapping"
+          du -h "$APK" "$mapping"
+
+          # --fail-with-body: stops on an HTTP error and prints what the server said.
+          curl -sS --fail-with-body -X POST "$BANANALYTICS_HOST/api/v1/releases" \
+            -H "X-API-Key: $UPLOAD_KEY" \
+            -F "apk=@$APK" \
+            -F "mapping=@$mapping" \
+            --form-string "release_notes=$NOTES" \
+            -F "notify=$NOTIFY"
+          echo

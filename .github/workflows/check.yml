@@ -1,0 +1,35 @@
+# The gate every change goes through. Releases run the same checks before they
+# build (see release.yml): a tag on a commit that fails them publishes nothing.
+
+name: Check
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Tests and lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 21
+
+      # Held at v5, as in Mandarin: v6 moves caching into a proprietary component.
+      - uses: gradle/actions/setup-gradle@v5
+
+      - name: Unit tests
+        run: ./gradlew testDebugUnitTest
+
+      - name: Lint
+        run: ./gradlew lintDebug

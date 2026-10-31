@@ -5,13 +5,37 @@ plugins {
     id 'kotlin-parcelize'
 }
 
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) localPropertiesFile.withInputStream { localProperties.load(it) }
+
+def signingSetting = { String name ->
+    def value = project.findProperty(name) ?: localProperties.getProperty(name) ?: System.getenv(name)
+    return value ? value.toString() : null
+}
+
+def releaseSigning = [
+    store: signingSetting('APPSEND_KEYSTORE'),
+    storePassword: signingSetting('APPSEND_KEYSTORE_PASSWORD'),
+    alias: signingSetting('APPSEND_KEY_ALIAS'),
+    keyPassword: signingSetting('APPSEND_KEY_PASSWORD'),
+]
+if (releaseSigning.values().any { !it } || !rootProject.file(releaseSigning.store).exists()) {
+    releaseSigning = null
+}
+
 android {
-    signingConfigs {
-        release {
-            if (project.hasProperty("storeFile")) storeFile file("$rootDir/" + project.storeFile)
-            if (project.hasProperty("storePassword")) storePassword project.storePassword
-            if (project.hasProperty("keyAlias")) keyAlias project.keyAlias
-            if (project.hasProperty("keyPassword")) keyPassword project.keyPassword
+    // The release key, when whoever is building has one. Read from Gradle properties,
+    // local.properties or the environment, never from the repository. Without it the
+    // release build still assembles, unsigned, which is all a check of the build wants.
+    if (releaseSigning != null) {
+        signingConfigs {
+            release {
+                storeFile rootProject.file(releaseSigning.store)
+                storePassword releaseSigning.storePassword
+                keyAlias releaseSigning.alias
+                keyPassword releaseSigning.keyPassword
+            }
         }
     }
     compileSdk = 36
@@ -43,7 +67,7 @@ android {
             debuggable false
             shrinkResources = true
             jniDebuggable false
-            signingConfig = signingConfigs.release
+            signingConfig = signingConfigs.findByName("release")
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.txt'
         }
     }
