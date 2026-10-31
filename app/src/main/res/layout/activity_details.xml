@@ -93,53 +93,35 @@
 
             </LinearLayout>
 
-            <com.google.android.material.button.MaterialButtonGroup
-                style="@style/Widget.Material3Expressive.MaterialButtonGroup.Connected"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="16dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/open_button"
-                    style="@style/Widget.Material3Expressive.Button.TonalButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="52dp"
-                    android:layout_weight="1"
-                    android:maxLines="1"
-                    android:paddingHorizontal="12dp"
+                    style="@style/Widget.AppSend.ActionButton.Tonal"
                     android:text="@string/open"
-                    app:autoSizeMaxTextSize="14sp"
-                    app:autoSizeMinTextSize="10sp"
-                    app:autoSizeTextType="uniform" />
+                    app:icon="@drawable/ic_open" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/extract_button"
-                    style="@style/Widget.Material3Expressive.Button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="52dp"
-                    android:layout_weight="1"
-                    android:maxLines="1"
-                    android:paddingHorizontal="12dp"
+                    style="@style/Widget.AppSend.ActionButton"
+                    android:layout_marginStart="8dp"
                     android:text="@string/extract_selected_apks"
-                    app:autoSizeMaxTextSize="14sp"
-                    app:autoSizeMinTextSize="10sp"
-                    app:autoSizeTextType="uniform" />
+                    app:icon="@drawable/ic_extract" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/share_button"
-                    style="@style/Widget.Material3Expressive.Button.TonalButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="52dp"
-                    android:layout_weight="1"
-                    android:maxLines="1"
-                    android:paddingHorizontal="12dp"
+                    style="@style/Widget.AppSend.ActionButton.Tonal"
+                    android:layout_marginStart="8dp"
                     android:text="@string/share_selected_apks"
-                    app:autoSizeMaxTextSize="14sp"
-                    app:autoSizeMinTextSize="10sp"
-                    app:autoSizeTextType="uniform" />
+                    app:icon="@drawable/ic_share" />
 
-            </com.google.android.material.button.MaterialButtonGroup>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/info_rows"

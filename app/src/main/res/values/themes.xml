@@ -77,6 +77,37 @@
         <item name="contentPaddingRight">0dp</item>
     </style>
 
+    <!-- An equal-width action with its icon above the label: the label must fit in every language. -->
+    <style name="Widget.AppSend.ActionButton" parent="Widget.Material3Expressive.Button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">72dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingHorizontal">4dp</item>
+        <item name="android:paddingVertical">8dp</item>
+        <item name="autoSizeMaxTextSize">14sp</item>
+        <item name="autoSizeMinTextSize">10sp</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="cornerRadius">20dp</item>
+        <item name="iconGravity">top</item>
+        <item name="iconPadding">4dp</item>
+    </style>
+
+    <style name="Widget.AppSend.ActionButton.Tonal" parent="Widget.Material3Expressive.Button.TonalButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">72dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingHorizontal">4dp</item>
+        <item name="android:paddingVertical">8dp</item>
+        <item name="autoSizeMaxTextSize">14sp</item>
+        <item name="autoSizeMinTextSize">10sp</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="cornerRadius">20dp</item>
+        <item name="iconGravity">top</item>
+        <item name="iconPadding">4dp</item>
+    </style>
+
     <style name="TextAppearance.AppSend.Section" parent="TextAppearance.Material3.LabelLarge">
         <item name="android:textColor">?attr/colorPrimary</item>
     </style>
