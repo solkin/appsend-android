@@ -82,7 +82,10 @@
     <string name="export_folder">フォルダ</string>
     <string name="export_folder_default">Downloads / Apps</string>
     <string name="export_file_name">ファイル名</string>
-    <string name="export_template_hint">{name}, {package}, {version}, {code}</string>
+    <string name="export_token_name">名前</string>
+    <string name="export_token_package">パッケージ</string>
+    <string name="export_token_version">バージョン</string>
+    <string name="export_token_code">ビルド</string>
     <string name="export_format_bundle">.apks\nフルセット、%s</string>
     <string name="export_format_base">base.apk\nベースのみ、%s</string>
     <string name="export_notice_bundle">このファイルは AppSend 自身でインストールできます。システムのインストーラーは .apks ファイルを開けません。</string>

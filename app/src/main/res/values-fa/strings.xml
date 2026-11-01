@@ -83,7 +83,10 @@
     <string name="export_folder">پوشه</string>
     <string name="export_folder_default">Downloads / Apps</string>
     <string name="export_file_name">نام فایل</string>
-    <string name="export_template_hint">{name}، {package}، {version}، {code}</string>
+    <string name="export_token_name">نام</string>
+    <string name="export_token_package">بسته</string>
+    <string name="export_token_version">نسخه</string>
+    <string name="export_token_code">ساخت</string>
     <string name="export_format_bundle">.apks\nمجموعهٔ کامل، %s</string>
     <string name="export_format_base">base.apk\nفقط پایه، %s</string>
     <string name="export_notice_bundle">AppSend می‌تواند این فایل را خودش نصب کند. نصب‌کنندهٔ سیستم فایل‌های .apks را باز نمی‌کند.</string>

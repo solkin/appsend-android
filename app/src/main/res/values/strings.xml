@@ -83,7 +83,10 @@
     <string name="export_folder">Folder</string>
     <string name="export_folder_default">Downloads / Apps</string>
     <string name="export_file_name">File name</string>
-    <string name="export_template_hint">{name}, {package}, {version}, {code}</string>
+    <string name="export_token_name">Name</string>
+    <string name="export_token_package">Package</string>
+    <string name="export_token_version">Version</string>
+    <string name="export_token_code">Build</string>
     <string name="export_format_bundle">.apks\nfull set, %s</string>
     <string name="export_format_base">base.apk\nbase only, %s</string>
     <string name="export_notice_bundle">AppSend can install this file itself. The system installer does not open .apks files.</string>

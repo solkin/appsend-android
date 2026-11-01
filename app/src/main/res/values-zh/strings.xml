@@ -82,7 +82,10 @@
     <string name="export_folder">資料夾</string>
     <string name="export_folder_default">Downloads / Apps</string>
     <string name="export_file_name">檔案名稱</string>
-    <string name="export_template_hint">{name}, {package}, {version}, {code}</string>
+    <string name="export_token_name">名称</string>
+    <string name="export_token_package">包名</string>
+    <string name="export_token_version">版本</string>
+    <string name="export_token_code">构建号</string>
     <string name="export_format_bundle">.apks\n完整套組，%s</string>
     <string name="export_format_base">base.apk\n僅基礎，%s</string>
     <string name="export_notice_bundle">AppSend 可以自行安裝此檔案。系統安裝程式無法開啟 .apks 檔案。</string>

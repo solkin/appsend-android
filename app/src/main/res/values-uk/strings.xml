@@ -85,7 +85,10 @@
     <string name="export_folder">Тека</string>
     <string name="export_folder_default">Downloads / Apps</string>
     <string name="export_file_name">Назва файлу</string>
-    <string name="export_template_hint">{name}, {package}, {version}, {code}</string>
+    <string name="export_token_name">Назва</string>
+    <string name="export_token_package">Пакет</string>
+    <string name="export_token_version">Версія</string>
+    <string name="export_token_code">Збірка</string>
     <string name="export_format_bundle">.apks\nповний набір, %s</string>
     <string name="export_format_base">base.apk\nлише основний, %s</string>
     <string name="export_notice_bundle">AppSend може сам встановити цей файл. Системний інсталятор не відкриває файли .apks.</string>

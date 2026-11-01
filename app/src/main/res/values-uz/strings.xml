@@ -83,7 +83,10 @@
     <string name="export_folder">Jild</string>
     <string name="export_folder_default">Downloads / Apps</string>
     <string name="export_file_name">Fayl nomi</string>
-    <string name="export_template_hint">{name}, {package}, {version}, {code}</string>
+    <string name="export_token_name">Nomi</string>
+    <string name="export_token_package">Paket</string>
+    <string name="export_token_version">Versiya</string>
+    <string name="export_token_code">Yig‘ilish</string>
     <string name="export_format_bundle">.apks\nto\'liq to\'plam, %s</string>
     <string name="export_format_base">base.apk\nfaqat asosiy, %s</string>
     <string name="export_notice_bundle">AppSend bu faylni o\'zi o\'rnata oladi. Tizim o\'rnatuvchisi .apks fayllarini ochmaydi.</string>

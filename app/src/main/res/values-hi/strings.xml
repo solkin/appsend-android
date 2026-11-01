@@ -83,7 +83,10 @@
     <string name="export_folder">फ़ोल्डर</string>
     <string name="export_folder_default">Downloads / Apps</string>
     <string name="export_file_name">फ़ाइल का नाम</string>
-    <string name="export_template_hint">{name}, {package}, {version}, {code}</string>
+    <string name="export_token_name">नाम</string>
+    <string name="export_token_package">पैकेज</string>
+    <string name="export_token_version">संस्करण</string>
+    <string name="export_token_code">बिल्ड</string>
     <string name="export_format_bundle">.apks\nपूरा सेट, %s</string>
     <string name="export_format_base">base.apk\nसिर्फ़ बेस, %s</string>
     <string name="export_notice_bundle">AppSend यह फ़ाइल खुद इंस्टॉल कर सकता है। सिस्टम इंस्टॉलर .apks फ़ाइलें नहीं खोलता।</string>

@@ -82,7 +82,10 @@
     <string name="export_folder">Thư mục</string>
     <string name="export_folder_default">Downloads / Apps</string>
     <string name="export_file_name">Tên tệp</string>
-    <string name="export_template_hint">{name}, {package}, {version}, {code}</string>
+    <string name="export_token_name">Tên</string>
+    <string name="export_token_package">Gói</string>
+    <string name="export_token_version">Phiên bản</string>
+    <string name="export_token_code">Bản dựng</string>
     <string name="export_format_bundle">.apks\ntrọn bộ, %s</string>
     <string name="export_format_base">base.apk\nchỉ bản gốc, %s</string>
     <string name="export_notice_bundle">AppSend có thể tự cài đặt tệp này. Trình cài đặt của hệ thống không mở được tệp .apks.</string>

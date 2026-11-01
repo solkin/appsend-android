@@ -1,14 +1,12 @@
 package com.tomclaw.appsend_rb.screen.exportoptions
 
-import android.view.LayoutInflater
 import androidx.core.view.isVisible
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.jakewharton.rxrelay3.PublishRelay
 import com.tomclaw.appsend_rb.R
-import com.tomclaw.appsend_rb.databinding.DialogTemplateBinding
 import com.tomclaw.appsend_rb.databinding.FragmentExportOptionsBinding
 import com.tomclaw.appsend_rb.domain.ExportFormat
+import com.tomclaw.appsend_rb.util.showFileNameTemplateDialog
 import io.reactivex.rxjava3.core.Observable
 
 interface ExportOptionsView {
@@ -57,7 +55,9 @@ class ExportOptionsViewImpl(private val binding: FragmentExportOptionsBinding) :
         binding.nameRow.title.setText(R.string.export_file_name)
         binding.nameRow.icon.setImageResource(R.drawable.ic_file)
         binding.nameRow.root.updateAppearance(1, 2)
-        binding.nameRow.card.setOnClickListener { showTemplateDialog() }
+        binding.nameRow.card.setOnClickListener {
+            showFileNameTemplateDialog(context, template, templateRelay::accept)
+        }
         binding.extractButton.setOnClickListener { extractRelay.accept(Unit) }
         binding.shareButton.setOnClickListener { shareRelay.accept(Unit) }
     }
@@ -86,19 +86,6 @@ class ExportOptionsViewImpl(private val binding: FragmentExportOptionsBinding) :
         template = model.template
         binding.extractButton.isEnabled = model.ready
         binding.shareButton.isEnabled = model.ready
-    }
-
-    private fun showTemplateDialog() {
-        val dialog = DialogTemplateBinding.inflate(LayoutInflater.from(context))
-        dialog.input.setText(template)
-        MaterialAlertDialogBuilder(context)
-            .setTitle(R.string.export_file_name)
-            .setView(dialog.root)
-            .setNegativeButton(R.string.cancel, null)
-            .setPositiveButton(android.R.string.ok) { _, _ ->
-                dialog.input.text?.toString()?.takeIf { it.isNotBlank() }?.let(templateRelay::accept)
-            }
-            .show()
     }
 
     override fun showStorageAccessRequired(canOpenSettings: Boolean) {

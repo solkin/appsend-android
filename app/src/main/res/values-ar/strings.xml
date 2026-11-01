@@ -87,7 +87,10 @@
     <string name="export_folder">المجلد</string>
     <string name="export_folder_default">Downloads / Apps</string>
     <string name="export_file_name">اسم الملف</string>
-    <string name="export_template_hint">{name}، {package}، {version}، {code}</string>
+    <string name="export_token_name">الاسم</string>
+    <string name="export_token_package">الحزمة</string>
+    <string name="export_token_version">الإصدار</string>
+    <string name="export_token_code">البناء</string>
     <string name="export_format_bundle">.apks\nالمجموعة الكاملة، %s</string>
     <string name="export_format_base">base.apk\nالأساسي فقط، %s</string>
     <string name="export_notice_bundle">يستطيع AppSend تثبيت هذا الملف بنفسه. مثبّت النظام لا يفتح ملفات .apks.</string>

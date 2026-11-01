@@ -1,14 +1,19 @@
 package com.tomclaw.appsend_rb.domain
 
+const val TOKEN_NAME = "{name}"
+const val TOKEN_PACKAGE = "{package}"
+const val TOKEN_VERSION = "{version}"
+const val TOKEN_CODE = "{code}"
+
 private val UNSAFE_CHARS = Regex("""[\\/:*?"<>|\p{Cntrl}]""")
 
-/** Builds an export file name. Tokens: `{name}`, `{package}`, `{version}`, `{code}`. */
+/** Builds an export file name from a template made of the `TOKEN_*` values and plain text. */
 fun exportFileName(template: String, app: InstalledApp, format: ExportFormat): String {
     val stem = template
-        .replace("{name}", app.label)
-        .replace("{package}", app.packageName)
-        .replace("{version}", app.versionName)
-        .replace("{code}", app.versionCode.toString())
+        .replace(TOKEN_NAME, app.label)
+        .replace(TOKEN_PACKAGE, app.packageName)
+        .replace(TOKEN_VERSION, app.versionName)
+        .replace(TOKEN_CODE, app.versionCode.toString())
         .replace(UNSAFE_CHARS, "_")
         .trim()
         .trim('.')

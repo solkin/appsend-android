@@ -1,15 +1,14 @@
 package com.tomclaw.appsend_rb.screen.settings
 
-import android.view.LayoutInflater
 import androidx.core.view.isVisible
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.jakewharton.rxrelay3.PublishRelay
 import com.tomclaw.appsend_rb.R
-import com.tomclaw.appsend_rb.databinding.DialogTemplateBinding
 import com.tomclaw.appsend_rb.databinding.FragmentSettingsBinding
 import com.tomclaw.appsend_rb.domain.ExportFormat
 import com.tomclaw.appsend_rb.domain.ThemeMode
 import com.tomclaw.appsend_rb.util.applySystemBarInsets
+import com.tomclaw.appsend_rb.util.showFileNameTemplateDialog
 import io.reactivex.rxjava3.core.Observable
 
 interface SettingsView {
@@ -81,7 +80,9 @@ class SettingsViewImpl(private val binding: FragmentSettingsBinding) : SettingsV
 
         action(binding.formatRow, R.string.settings_export_format, 0, 3) { showFormatDialog() }
         action(binding.folderRow, R.string.export_folder, 1, 3) { folderRelay.accept(Unit) }
-        action(binding.templateRow, R.string.export_file_name, 2, 3) { showTemplateDialog() }
+        action(binding.templateRow, R.string.export_file_name, 2, 3) {
+            showFileNameTemplateDialog(context, template, templateRelay::accept)
+        }
 
         action(binding.versionRow, R.string.settings_version, 0, 3) {}
         binding.versionRow.icon.setImageResource(R.drawable.ic_info)
@@ -152,19 +153,6 @@ class SettingsViewImpl(private val binding: FragmentSettingsBinding) : SettingsV
             .setSingleChoiceItems(labels, formats.indexOf(format)) { dialog, index ->
                 formatRelay.accept(formats[index])
                 dialog.dismiss()
-            }
-            .show()
-    }
-
-    private fun showTemplateDialog() {
-        val dialog = DialogTemplateBinding.inflate(LayoutInflater.from(context))
-        dialog.input.setText(template)
-        MaterialAlertDialogBuilder(context)
-            .setTitle(R.string.export_file_name)
-            .setView(dialog.root)
-            .setNegativeButton(R.string.cancel, null)
-            .setPositiveButton(android.R.string.ok) { _, _ ->
-                dialog.input.text?.toString()?.takeIf { it.isNotBlank() }?.let(templateRelay::accept)
             }
             .show()
     }
