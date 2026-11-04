@@ -1,6 +1,7 @@
 package com.tomclaw.appsend_rb.screen.exportprogress
 
 import com.tomclaw.appsend_rb.domain.ExportAction
+import com.tomclaw.appsend_rb.domain.ExportItem
 import com.tomclaw.appsend_rb.domain.ExportManager
 import com.tomclaw.appsend_rb.domain.ExportSession
 import com.tomclaw.appsend_rb.domain.ExportStatus
@@ -70,7 +71,8 @@ class ExportProgressPresenterImpl(
     private var router: ExportProgressRouter? = null
     private val viewSubscriptions = CompositeDisposable()
     private val dataSubscriptions = CompositeDisposable()
-    private var session = ExportSession()
+    // Not an empty session: the screen would show it as finished until the first sample.
+    private var session = manager.current
     private var sharing = false
     private var leavePending = false
 
@@ -171,14 +173,23 @@ class ExportProgressPresenterImpl(
                         label = item.label,
                         status = item.status,
                         percent = percent(item.writtenBytes, item.totalBytes),
-                        note = item.file?.name
-                            ?: "${formatter.bytes(item.writtenBytes)} / ${formatter.bytes(item.totalBytes)}",
+                        note = note(item),
                         position = index,
                         total = items.size,
                     )
                 },
             )
         )
+    }
+
+    /**
+     * Formatting sizes is slow, and this runs for every row several times a second:
+     * only the rows that show a note get one.
+     */
+    private fun note(item: ExportItem): String = when (item.status) {
+        ExportStatus.DONE -> item.file?.name.orEmpty()
+        ExportStatus.RUNNING -> "${formatter.bytes(item.writtenBytes)} / ${formatter.bytes(item.totalBytes)}"
+        ExportStatus.QUEUED, ExportStatus.FAILED, ExportStatus.CANCELLED -> ""
     }
 
     private fun percent(part: Long, whole: Long): Int =
