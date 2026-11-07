@@ -9,7 +9,6 @@
     <string name="open">باز کردن</string>
     <string name="remove">حذف</string>
     <string name="selected">انتخاب‌شده</string>
-    <string name="install">نصب</string>
     <string name="send_to">هم‌رسانی با</string>
 
     <string name="tab_apps">برنامه‌ها</string>
@@ -89,7 +88,7 @@
     <string name="export_token_code">ساخت</string>
     <string name="export_format_bundle">.apks\nمجموعهٔ کامل، %s</string>
     <string name="export_format_base">base.apk\nفقط پایه، %s</string>
-    <string name="export_notice_bundle">AppSend می‌تواند این فایل را خودش نصب کند. نصب‌کنندهٔ سیستم فایل‌های .apks را باز نمی‌کند.</string>
+    <string name="export_notice_bundle">نصب فایل .apks به برنامه‌ای نیاز دارد که از فایل‌های split پشتیبانی کند. نصب‌کنندهٔ سیستم آن را باز نمی‌کند.</string>
     <string name="export_notice_base">base APK به‌تنهایی ممکن است بدون فایل‌های split نصب نشود یا کار نکند.</string>
     <plurals name="export_title_apps">
         <item quantity="one">استخراج %d برنامه</item>
@@ -130,7 +129,6 @@
     <string name="clear_exports">حذف همهٔ فایل‌ها</string>
     <string name="clear_exports_message">همهٔ فایل‌های ‎.apk و ‎.apks در %s حذف می‌شوند، از جمله فایل‌هایی که AppSend نساخته است.</string>
     <string name="cache_clearing_failed">فایل حذف نشد</string>
-    <string name="install_from_file">نصب از فایل</string>
     <string name="select_files">انتخاب فایل‌ها</string>
     <string name="no_files_selected">دست‌کم یک فایل انتخاب کنید</string>
     <plurals name="delete_selected_exports">
@@ -138,50 +136,6 @@
         <item quantity="other">%d فایل حذف می‌شود.</item>
     </plurals>
 
-    <string name="install_title_new">نصب %s</string>
-    <string name="install_title_update">به‌روزرسانی %s</string>
-    <string name="install_version">%1$s · %2$s</string>
-    <string name="install_version_change">%1$s → %2$s · %3$s</string>
-    <string name="install_versions_compare">فایل: %1$s · نصب‌شده: %2$s</string>
-    <string name="install_file_version">نسخهٔ %s</string>
-    <string name="install_check_device">دستگاه</string>
-    <string name="install_check_device_ok">برای این دستگاه مناسب است</string>
-    <string name="install_check_signature">امضا</string>
-    <string name="install_check_signature_ok">با نسخهٔ نصب‌شده مطابقت دارد</string>
-    <string name="install_check_android">Android</string>
-    <string name="install_check_android_value">به API %d یا بالاتر نیاز دارد</string>
-    <string name="install_check_files">محتویات</string>
-    <string name="install_check_files_base">فقط Base APK</string>
-    <plurals name="install_check_files_value">
-        <item quantity="one">پایه و %d فایل split</item>
-        <item quantity="other">پایه و %d فایل split</item>
-    </plurals>
-    <string name="install_permission_notice">Android یک بار از شما می‌پرسد که آیا به AppSend اجازهٔ نصب برنامه می‌دهید.</string>
-    <string name="install_allow_and_install">اجازه و نصب</string>
-    <string name="install_replace">حذف و نصب</string>
-    <string name="install_in_progress">در حال نصب %s</string>
-    <string name="install_writing">در حال ارسال فایل‌ها به نصب‌کننده</string>
-    <string name="install_awaiting_confirmation">در انتظار تأیید شما</string>
-    <string name="install_applying">Android در حال نصب برنامه است</string>
-    <string name="install_hide">پنهان کردن</string>
-    <string name="install_done">%s نصب شد</string>
-    <string name="install_failed">نصب ناموفق بود</string>
-    <string name="install_unreadable_title">بستهٔ برنامه نیست</string>
-    <string name="install_unreadable_message">این فایل به‌عنوان بستهٔ .apk یا .apks خوانده نشد.</string>
-    <string name="install_issue_signature_title">امضا متفاوت است</string>
-    <string name="install_issue_signature_message">این فایل با کلید دیگری امضا شده است. Android تا زمانی که نسخهٔ نصب‌شده حذف نشود، برنامه را به‌روزرسانی نمی‌کند. داده‌های برنامه از بین می‌روند.</string>
-    <string name="install_issue_downgrade_title">نسخهٔ جدیدتر نصب است</string>
-    <string name="install_issue_downgrade_message">Android نسخهٔ قدیمی‌تر را روی نسخهٔ جدیدتر نصب نمی‌کند. ابتدا باید نسخهٔ نصب‌شده حذف شود. داده‌های برنامه از بین می‌روند.</string>
-    <string name="install_issue_android_title">نسخهٔ Android خیلی قدیمی است</string>
-    <string name="install_issue_android_message">این برنامه به نسخهٔ جدیدتری از Android نیاز دارد.</string>
-    <string name="install_issue_device_title">برای این دستگاه مناسب نیست</string>
-    <string name="install_issue_device_message">این مجموعه فایلی برای معماری این دستگاه ندارد: روی دستگاه دیگری استخراج شده است.</string>
-    <string name="install_failure_blocked">سیستم این نصب را مسدود کرد.</string>
-    <string name="install_failure_conflict">این بسته با برنامه‌ای که از قبل روی دستگاه است تداخل دارد.</string>
-    <string name="install_failure_incompatible">این بسته با این دستگاه سازگار نیست.</string>
-    <string name="install_failure_invalid">بسته آسیب دیده یا ناقص است.</string>
-    <string name="install_failure_storage">فضای ذخیره‌سازی این دستگاه کافی نیست.</string>
-    <string name="install_failure_unknown">سیستم نتوانست نصب را کامل کند.</string>
 
     <string name="settings_appearance">ظاهر</string>
     <string name="settings_theme">تم</string>

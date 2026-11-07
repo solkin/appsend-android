@@ -1,9 +1,8 @@
 # AppSend
 
-Extracts the APKs of apps installed on your Android device and installs them back.
+Extracts the APKs of apps installed on your Android device so they can be kept or passed on.
 
 * Extracts single APK apps as `.apk` and split apps as one `.apks` set, system apps included. No root required.
-* Installs `.apk` and `.apks` files, split apps included, with a check of the device, the signature and the version first.
 * Batch export and share, with progress in the background and retry for a failed app.
 * Keeps track of exported files: which are installed and which are outdated.
 * Shows app details: size with splits, source, SDK levels, signature and permissions with their state.

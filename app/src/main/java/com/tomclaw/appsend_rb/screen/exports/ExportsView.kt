@@ -43,8 +43,6 @@ interface ExportsView {
 
     fun rowLongClicks(): Observable<ExportsRow.File>
 
-    fun installClicks(): Observable<ExportedFile>
-
     fun shareClicks(): Observable<ExportedFile>
 
     fun deleteConfirmations(): Observable<ExportedFile>
@@ -52,8 +50,6 @@ interface ExportsView {
     fun clearConfirmations(): Observable<Unit>
 
     fun changeFolderClicks(): Observable<Unit>
-
-    fun installFromFileClicks(): Observable<Unit>
 
     fun selectClicks(): Observable<Unit>
 
@@ -80,12 +76,10 @@ class ExportsViewImpl(
     private val filterRelay = PublishRelay.create<ExportsFilter>()
     private val rowClickRelay = PublishRelay.create<ExportsRow.File>()
     private val rowLongClickRelay = PublishRelay.create<ExportsRow.File>()
-    private val installRelay = PublishRelay.create<ExportedFile>()
     private val shareRelay = PublishRelay.create<ExportedFile>()
     private val deleteRelay = PublishRelay.create<ExportedFile>()
     private val clearRelay = PublishRelay.create<Unit>()
     private val changeFolderRelay = PublishRelay.create<Unit>()
-    private val installFromFileRelay = PublishRelay.create<Unit>()
     private val selectRelay = PublishRelay.create<Unit>()
     private val cancelSelectionRelay = PublishRelay.create<Unit>()
     private val selectAllRelay = PublishRelay.create<Unit>()
@@ -100,7 +94,6 @@ class ExportsViewImpl(
             rowClickRelay.accept(row)
         },
         onLongClick = rowLongClickRelay::accept,
-        onInstall = installRelay::accept,
         onShare = shareRelay::accept,
     )
     private val selectionBack = object : OnBackPressedCallback(false) {
@@ -134,7 +127,6 @@ class ExportsViewImpl(
                 }
             )
         }
-        binding.installFromFile.setOnClickListener { installFromFileRelay.accept(Unit) }
         binding.shareButton.setOnClickListener { shareSelectedRelay.accept(Unit) }
         binding.deleteButton.setOnClickListener { deleteSelectedRelay.accept(Unit) }
     }
@@ -158,7 +150,6 @@ class ExportsViewImpl(
         binding.filters.isVisible = !selecting
         binding.selectionBar.isVisible = selecting
         binding.floatingToolbar.isVisible = selecting
-        binding.installFromFile.isVisible = !selecting
         binding.selectionBar.title = context.getString(R.string.selected_apps_count, model.selectedCount)
         binding.selectionBar.subtitle = model.selectedSize
     }
@@ -205,8 +196,6 @@ class ExportsViewImpl(
 
     override fun rowLongClicks(): Observable<ExportsRow.File> = rowLongClickRelay
 
-    override fun installClicks(): Observable<ExportedFile> = installRelay
-
     override fun shareClicks(): Observable<ExportedFile> = shareRelay
 
     override fun deleteConfirmations(): Observable<ExportedFile> = deleteRelay
@@ -214,8 +203,6 @@ class ExportsViewImpl(
     override fun clearConfirmations(): Observable<Unit> = clearRelay
 
     override fun changeFolderClicks(): Observable<Unit> = changeFolderRelay
-
-    override fun installFromFileClicks(): Observable<Unit> = installFromFileRelay
 
     override fun selectClicks(): Observable<Unit> = selectRelay
 
@@ -234,7 +221,6 @@ class ExportsViewImpl(
 private class ExportsAdapter(
     private val onClick: (ExportsRow.File, View) -> Unit,
     private val onLongClick: (ExportsRow.File) -> Unit,
-    private val onInstall: (ExportedFile) -> Unit,
     private val onShare: (ExportedFile) -> Unit,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -307,9 +293,7 @@ private class ExportsAdapter(
                 true
             }
             binding.card.isChecked = row.selected
-            binding.install.isVisible = !row.selectable
             binding.share.isVisible = !row.selectable
-            binding.install.setOnClickListener { onInstall(entry.file) }
             binding.share.setOnClickListener { onShare(entry.file) }
             binding.check.isVisible = row.selected
             binding.icon.isVisible = !row.selected

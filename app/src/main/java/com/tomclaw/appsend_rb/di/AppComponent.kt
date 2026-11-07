@@ -1,9 +1,6 @@
 package com.tomclaw.appsend_rb.di
 
-import com.tomclaw.appsend_rb.data.AndroidPackageInstaller
 import com.tomclaw.appsend_rb.domain.ExportManager
-import com.tomclaw.appsend_rb.screen.install.di.InstallComponent
-import com.tomclaw.appsend_rb.screen.install.di.InstallModule
 import com.tomclaw.appsend_rb.domain.Analytics
 import com.tomclaw.appsend_rb.screen.apps.di.AppsComponent
 import com.tomclaw.appsend_rb.screen.apps.di.AppsModule
@@ -31,10 +28,6 @@ interface AppComponent {
     fun analytics(): Analytics
 
     fun exportManager(): ExportManager
-
-    fun packageInstaller(): AndroidPackageInstaller
-
-    fun installComponent(module: InstallModule): InstallComponent
 
     fun mainComponent(module: MainModule): MainComponent
 

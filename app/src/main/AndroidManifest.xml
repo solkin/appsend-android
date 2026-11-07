@@ -11,7 +11,6 @@
         android:maxSdkVersion="28"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission
         android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
@@ -62,25 +61,10 @@
         <activity
             android:name=".screen.exportprogress.ExportProgressActivity"
             android:launchMode="singleTop" />
-        <activity
-            android:name=".screen.install.InstallActivity"
-            android:exported="true"
-            android:theme="@style/AppTheme.Sheet">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:scheme="content" />
-                <data android:mimeType="application/vnd.android.package-archive" />
-            </intent-filter>
-        </activity>
-
         <service
             android:name=".screen.exportprogress.ExportService"
             android:exported="false"
             android:foregroundServiceType="dataSync" />
 
-        <receiver
-            android:name=".data.InstallStatusReceiver"
-            android:exported="false" />
     </application>
 </manifest>

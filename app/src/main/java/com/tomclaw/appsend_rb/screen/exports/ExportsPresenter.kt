@@ -43,10 +43,6 @@ interface ExportsRouter {
 
     fun shareFiles(files: List<ExportedFile>)
 
-    fun install(uri: String)
-
-    fun pickPackageFile()
-
     fun pickFolder()
 
 }
@@ -64,8 +60,6 @@ interface ExportsPresenter {
     fun onResume()
 
     fun onHidden()
-
-    fun onPackageFilePicked(uri: String)
 
     fun onFolderPicked(uri: String)
 
@@ -109,12 +103,10 @@ class ExportsPresenterImpl(
         }
         viewSubscriptions += view.rowClicks().subscribe(::onRowClick)
         viewSubscriptions += view.rowLongClicks().subscribe(::onRowLongClick)
-        viewSubscriptions += view.installClicks().subscribe { router?.install(it.uri) }
         viewSubscriptions += view.shareClicks().subscribe { router?.shareFiles(listOf(it)) }
         viewSubscriptions += view.deleteConfirmations().subscribe { delete(listOf(it)) }
         viewSubscriptions += view.clearConfirmations().subscribe { clear() }
         viewSubscriptions += view.changeFolderClicks().subscribe { router?.pickFolder() }
-        viewSubscriptions += view.installFromFileClicks().subscribe { router?.pickPackageFile() }
         viewSubscriptions += view.selectClicks().subscribe { setSelectionMode(true) }
         viewSubscriptions += view.cancelSelectionClicks().subscribe { setSelectionMode(false) }
         viewSubscriptions += view.selectAllClicks().subscribe { toggleSelectAll() }
@@ -151,10 +143,6 @@ class ExportsPresenterImpl(
     override fun destroy() {
         dataSubscriptions.clear()
         loadSubscription?.dispose()
-    }
-
-    override fun onPackageFilePicked(uri: String) {
-        router?.install(uri)
     }
 
     override fun onFolderPicked(uri: String) {

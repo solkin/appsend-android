@@ -9,7 +9,6 @@
     <string name="open">開啟</string>
     <string name="remove">移除</string>
     <string name="selected">已選取</string>
-    <string name="install">安裝</string>
     <string name="send_to">分享至</string>
 
     <string name="tab_apps">應用程式</string>
@@ -88,7 +87,7 @@
     <string name="export_token_code">构建号</string>
     <string name="export_format_bundle">.apks\n完整套組，%s</string>
     <string name="export_format_base">base.apk\n僅基礎，%s</string>
-    <string name="export_notice_bundle">AppSend 可以自行安裝此檔案。系統安裝程式無法開啟 .apks 檔案。</string>
+    <string name="export_notice_bundle">安裝 .apks 檔案需要支援 split APK 的應用程式。系統安裝程式無法開啟此檔案。</string>
     <string name="export_notice_base">僅有基礎 APK 時，若缺少 split 檔案，可能無法安裝或運作。</string>
     <plurals name="export_title_apps">
         <item quantity="other">提取 %d 個應用程式</item>
@@ -126,56 +125,12 @@
     <string name="clear_exports">移除所有檔案</string>
     <string name="clear_exports_message">%s 中的所有 .apk 和 .apks 檔案都會被移除，包括並非由 AppSend 建立的檔案。</string>
     <string name="cache_clearing_failed">無法移除檔案</string>
-    <string name="install_from_file">從檔案安裝</string>
     <string name="select_files">選取檔案</string>
     <string name="no_files_selected">請至少選取一個檔案</string>
     <plurals name="delete_selected_exports">
         <item quantity="other">將移除 %d 個檔案。</item>
     </plurals>
 
-    <string name="install_title_new">安裝 %s</string>
-    <string name="install_title_update">更新 %s</string>
-    <string name="install_version">%1$s · %2$s</string>
-    <string name="install_version_change">%1$s → %2$s · %3$s</string>
-    <string name="install_versions_compare">檔案：%1$s · 已安裝：%2$s</string>
-    <string name="install_file_version">版本 %s</string>
-    <string name="install_check_device">裝置</string>
-    <string name="install_check_device_ok">適用於此裝置</string>
-    <string name="install_check_signature">簽章</string>
-    <string name="install_check_signature_ok">與已安裝的版本相符</string>
-    <string name="install_check_android">Android</string>
-    <string name="install_check_android_value">需要 API %d 或更新版本</string>
-    <string name="install_check_files">內容</string>
-    <string name="install_check_files_base">僅基礎 APK</string>
-    <plurals name="install_check_files_value">
-        <item quantity="other">基礎與 %d 個 split 檔案</item>
-    </plurals>
-    <string name="install_permission_notice">Android 會詢問一次是否允許 AppSend 安裝應用程式。</string>
-    <string name="install_allow_and_install">允許並安裝</string>
-    <string name="install_replace">移除並安裝</string>
-    <string name="install_in_progress">正在安裝 %s</string>
-    <string name="install_writing">正在將檔案傳給安裝程式</string>
-    <string name="install_awaiting_confirmation">等待您確認</string>
-    <string name="install_applying">Android 正在安裝應用程式</string>
-    <string name="install_hide">隱藏</string>
-    <string name="install_done">已安裝 %s</string>
-    <string name="install_failed">安裝失敗</string>
-    <string name="install_unreadable_title">不是應用程式套件</string>
-    <string name="install_unreadable_message">無法將此檔案讀取為 .apk 或 .apks 套件。</string>
-    <string name="install_issue_signature_title">簽章不同</string>
-    <string name="install_issue_signature_message">此檔案使用另一個金鑰簽署。在移除已安裝的版本之前，Android 不會更新該應用程式，且應用程式資料將會遺失。</string>
-    <string name="install_issue_downgrade_title">已安裝較新的版本</string>
-    <string name="install_issue_downgrade_message">Android 不會將較舊的版本安裝在較新的版本之上。必須先移除已安裝的版本，且應用程式資料將會遺失。</string>
-    <string name="install_issue_android_title">Android 版本過舊</string>
-    <string name="install_issue_android_message">此應用程式需要比這部裝置更新的 Android 版本。</string>
-    <string name="install_issue_device_title">不適用於此裝置</string>
-    <string name="install_issue_device_message">此套組沒有適用於這部裝置架構的檔案：它是在另一部裝置上提取的。</string>
-    <string name="install_failure_blocked">系統已封鎖此次安裝。</string>
-    <string name="install_failure_conflict">此套件與裝置上已有的應用程式衝突。</string>
-    <string name="install_failure_incompatible">此套件與這部裝置不相容。</string>
-    <string name="install_failure_invalid">套件已損毀或不完整。</string>
-    <string name="install_failure_storage">這部裝置的儲存空間不足。</string>
-    <string name="install_failure_unknown">系統無法完成安裝。</string>
 
     <string name="settings_appearance">外觀</string>
     <string name="settings_theme">主題</string>

@@ -43,21 +43,6 @@
         <item name="enableEdgeToEdge">true</item>
     </style>
 
-    <!-- The install screen is a bottom sheet over whatever the user came from. -->
-    <style name="AppTheme.Sheet">
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowAnimationStyle">@null</item>
-    </style>
-
-    <style name="ShapeAppearanceOverlay.AppSend.Sheet" parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopLeft">28dp</item>
-        <item name="cornerSizeTopRight">28dp</item>
-        <item name="cornerSizeBottomLeft">0dp</item>
-        <item name="cornerSizeBottomRight">0dp</item>
-    </style>
-
     <style name="Widget.AppSend.Row" parent="Widget.Material3.ListItemCardView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

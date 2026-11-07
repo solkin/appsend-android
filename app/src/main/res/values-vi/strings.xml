@@ -9,7 +9,6 @@
     <string name="open">Mở</string>
     <string name="remove">Xóa</string>
     <string name="selected">Đã chọn</string>
-    <string name="install">Cài đặt</string>
     <string name="send_to">Chia sẻ qua</string>
 
     <string name="tab_apps">Ứng dụng</string>
@@ -88,7 +87,7 @@
     <string name="export_token_code">Bản dựng</string>
     <string name="export_format_bundle">.apks\ntrọn bộ, %s</string>
     <string name="export_format_base">base.apk\nchỉ bản gốc, %s</string>
-    <string name="export_notice_bundle">AppSend có thể tự cài đặt tệp này. Trình cài đặt của hệ thống không mở được tệp .apks.</string>
+    <string name="export_notice_bundle">Để cài đặt tệp .apks cần một ứng dụng hỗ trợ split APK. Trình cài đặt của hệ thống không mở được tệp này.</string>
     <string name="export_notice_base">Chỉ có base APK thì có thể không cài đặt được hoặc không hoạt động nếu thiếu các tệp split.</string>
     <plurals name="export_title_apps">
         <item quantity="other">Trích xuất %d ứng dụng</item>
@@ -126,56 +125,12 @@
     <string name="clear_exports">Xóa tất cả tệp</string>
     <string name="clear_exports_message">Mọi tệp .apk và .apks trong %s sẽ bị xóa, kể cả những tệp không do AppSend tạo.</string>
     <string name="cache_clearing_failed">Không thể xóa tệp</string>
-    <string name="install_from_file">Cài đặt từ tệp</string>
     <string name="select_files">Chọn tệp</string>
     <string name="no_files_selected">Hãy chọn ít nhất một tệp</string>
     <plurals name="delete_selected_exports">
         <item quantity="other">%d tệp sẽ bị xóa.</item>
     </plurals>
 
-    <string name="install_title_new">Cài đặt %s</string>
-    <string name="install_title_update">Cập nhật %s</string>
-    <string name="install_version">%1$s · %2$s</string>
-    <string name="install_version_change">%1$s → %2$s · %3$s</string>
-    <string name="install_versions_compare">Tệp: %1$s · đã cài đặt: %2$s</string>
-    <string name="install_file_version">Phiên bản %s</string>
-    <string name="install_check_device">Thiết bị</string>
-    <string name="install_check_device_ok">Phù hợp với thiết bị này</string>
-    <string name="install_check_signature">Chữ ký</string>
-    <string name="install_check_signature_ok">Khớp với phiên bản đã cài đặt</string>
-    <string name="install_check_android">Android</string>
-    <string name="install_check_android_value">Cần API %d trở lên</string>
-    <string name="install_check_files">Nội dung</string>
-    <string name="install_check_files_base">Chỉ base APK</string>
-    <plurals name="install_check_files_value">
-        <item quantity="other">Bản gốc và %d tệp split</item>
-    </plurals>
-    <string name="install_permission_notice">Android sẽ hỏi một lần để cho phép AppSend cài đặt ứng dụng.</string>
-    <string name="install_allow_and_install">Cho phép và cài đặt</string>
-    <string name="install_replace">Xóa và cài đặt</string>
-    <string name="install_in_progress">Đang cài đặt %s</string>
-    <string name="install_writing">Đang chuyển tệp cho trình cài đặt</string>
-    <string name="install_awaiting_confirmation">Đang chờ bạn xác nhận</string>
-    <string name="install_applying">Android đang cài đặt ứng dụng</string>
-    <string name="install_hide">Ẩn</string>
-    <string name="install_done">Đã cài đặt %s</string>
-    <string name="install_failed">Cài đặt không thành công</string>
-    <string name="install_unreadable_title">Không phải gói ứng dụng</string>
-    <string name="install_unreadable_message">Không thể đọc tệp này như một gói .apk hoặc .apks.</string>
-    <string name="install_issue_signature_title">Chữ ký khác nhau</string>
-    <string name="install_issue_signature_message">Tệp này được ký bằng một khóa khác. Android sẽ không cập nhật ứng dụng cho đến khi phiên bản đã cài đặt bị xóa. Dữ liệu của ứng dụng sẽ bị mất.</string>
-    <string name="install_issue_downgrade_title">Đã cài đặt phiên bản mới hơn</string>
-    <string name="install_issue_downgrade_message">Android không cài đặt phiên bản cũ hơn đè lên phiên bản mới hơn. Cần xóa phiên bản đã cài đặt trước. Dữ liệu của ứng dụng sẽ bị mất.</string>
-    <string name="install_issue_android_title">Phiên bản Android quá cũ</string>
-    <string name="install_issue_android_message">Ứng dụng này cần phiên bản Android mới hơn phiên bản trên thiết bị này.</string>
-    <string name="install_issue_device_title">Không phù hợp với thiết bị này</string>
-    <string name="install_issue_device_message">Bộ tệp không có tệp cho kiến trúc của thiết bị này: bộ tệp đã được trích xuất trên một thiết bị khác.</string>
-    <string name="install_failure_blocked">Hệ thống đã chặn lần cài đặt này.</string>
-    <string name="install_failure_conflict">Gói này xung đột với một ứng dụng đã có trên thiết bị.</string>
-    <string name="install_failure_incompatible">Gói này không tương thích với thiết bị này.</string>
-    <string name="install_failure_invalid">Gói bị hỏng hoặc không đầy đủ.</string>
-    <string name="install_failure_storage">Thiết bị này không đủ dung lượng lưu trữ.</string>
-    <string name="install_failure_unknown">Hệ thống không thể hoàn tất việc cài đặt.</string>
 
     <string name="settings_appearance">Giao diện</string>
     <string name="settings_theme">Chủ đề</string>

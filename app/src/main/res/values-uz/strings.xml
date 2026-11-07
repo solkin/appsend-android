@@ -9,7 +9,6 @@
     <string name="open">Ochish</string>
     <string name="remove">O\'chirish</string>
     <string name="selected">Tanlangan</string>
-    <string name="install">O\'rnatish</string>
     <string name="send_to">Ulashish orqali</string>
 
     <string name="tab_apps">Ilovalar</string>
@@ -89,7 +88,7 @@
     <string name="export_token_code">Yig‘ilish</string>
     <string name="export_format_bundle">.apks\nto\'liq to\'plam, %s</string>
     <string name="export_format_base">base.apk\nfaqat asosiy, %s</string>
-    <string name="export_notice_bundle">AppSend bu faylni o\'zi o\'rnata oladi. Tizim o\'rnatuvchisi .apks fayllarini ochmaydi.</string>
+    <string name="export_notice_bundle">.apks faylini o\'rnatish uchun split APK\'ni qo\'llab-quvvatlaydigan ilova kerak. Tizim o\'rnatuvchisi uni ochmaydi.</string>
     <string name="export_notice_base">Faqat base APK split fayllarsiz o\'rnatilmasligi yoki ishlamasligi mumkin.</string>
     <plurals name="export_title_apps">
         <item quantity="one">%d ta ilovani chiqarib olish</item>
@@ -130,7 +129,6 @@
     <string name="clear_exports">Barcha fayllarni o\'chirish</string>
     <string name="clear_exports_message">%s ichidagi barcha .apk va .apks fayllar oʻchiriladi, AppSend yaratmaganlari ham.</string>
     <string name="cache_clearing_failed">Faylni o\'chirib bo\'lmadi</string>
-    <string name="install_from_file">Fayldan o\'rnatish</string>
     <string name="select_files">Fayllarni tanlash</string>
     <string name="no_files_selected">Kamida bitta faylni tanlang</string>
     <plurals name="delete_selected_exports">
@@ -138,50 +136,6 @@
         <item quantity="other">%d ta fayl oʻchiriladi.</item>
     </plurals>
 
-    <string name="install_title_new">%s ilovasini o\'rnatish</string>
-    <string name="install_title_update">%s ilovasini yangilash</string>
-    <string name="install_version">%1$s · %2$s</string>
-    <string name="install_version_change">%1$s → %2$s · %3$s</string>
-    <string name="install_versions_compare">Fayl: %1$s · o\'rnatilgan: %2$s</string>
-    <string name="install_file_version">Versiya %s</string>
-    <string name="install_check_device">Qurilma</string>
-    <string name="install_check_device_ok">Bu qurilmaga mos</string>
-    <string name="install_check_signature">Imzo</string>
-    <string name="install_check_signature_ok">O\'rnatilgan versiya bilan mos</string>
-    <string name="install_check_android">Android</string>
-    <string name="install_check_android_value">API %d yoki yangiroq kerak</string>
-    <string name="install_check_files">Tarkibi</string>
-    <string name="install_check_files_base">Faqat base APK</string>
-    <plurals name="install_check_files_value">
-        <item quantity="one">Asosiy va %d ta split fayl</item>
-        <item quantity="other">Asosiy va %d ta split fayl</item>
-    </plurals>
-    <string name="install_permission_notice">Android bir marta AppSend\'ga ilovalarni o\'rnatishga ruxsat berasizmi, deb so\'raydi.</string>
-    <string name="install_allow_and_install">Ruxsat berib o\'rnatish</string>
-    <string name="install_replace">O\'chirib o\'rnatish</string>
-    <string name="install_in_progress">%s o\'rnatilmoqda</string>
-    <string name="install_writing">Fayllar o\'rnatuvchiga uzatilmoqda</string>
-    <string name="install_awaiting_confirmation">Tasdiqlashingiz kutilmoqda</string>
-    <string name="install_applying">Android ilovani o\'rnatmoqda</string>
-    <string name="install_hide">Yashirish</string>
-    <string name="install_done">%s o\'rnatildi</string>
-    <string name="install_failed">O\'rnatib bo\'lmadi</string>
-    <string name="install_unreadable_title">Ilova paketi emas</string>
-    <string name="install_unreadable_message">Bu faylni .apk yoki .apks paketi sifatida o\'qib bo\'lmadi.</string>
-    <string name="install_issue_signature_title">Imzo boshqacha</string>
-    <string name="install_issue_signature_message">Bu fayl boshqa kalit bilan imzolangan. O\'rnatilgan versiya o\'chirilmaguncha Android ilovani yangilamaydi. Ilova ma\'lumotlari yo\'qoladi.</string>
-    <string name="install_issue_downgrade_title">Yangiroq versiya o\'rnatilgan</string>
-    <string name="install_issue_downgrade_message">Android yangiroq versiya ustiga eskisini o\'rnatmaydi. Avval o\'rnatilgan versiyani o\'chirish kerak. Ilova ma\'lumotlari yo\'qoladi.</string>
-    <string name="install_issue_android_title">Android versiyasi juda eski</string>
-    <string name="install_issue_android_message">Bu ilova uchun qurilmadagidan yangiroq Android versiyasi kerak.</string>
-    <string name="install_issue_device_title">Bu qurilmaga mos emas</string>
-    <string name="install_issue_device_message">To\'plamda bu qurilma arxitekturasi uchun fayllar yo\'q: u boshqa qurilmada chiqarib olingan.</string>
-    <string name="install_failure_blocked">Tizim bu o\'rnatishni blokladi.</string>
-    <string name="install_failure_conflict">Bu paket qurilmadagi ilova bilan to\'qnashadi.</string>
-    <string name="install_failure_incompatible">Bu paket ushbu qurilmaga mos kelmaydi.</string>
-    <string name="install_failure_invalid">Paket buzilgan yoki to\'liq emas.</string>
-    <string name="install_failure_storage">Bu qurilmada xotira yetarli emas.</string>
-    <string name="install_failure_unknown">Tizim o\'rnatishni yakunlay olmadi.</string>
 
     <string name="settings_appearance">Ko\'rinish</string>
     <string name="settings_theme">Mavzu</string>

@@ -9,7 +9,6 @@
     <string name="open">खोलें</string>
     <string name="remove">हटाएं</string>
     <string name="selected">चुना गया</string>
-    <string name="install">इंस्टॉल करें</string>
     <string name="send_to">इसके ज़रिए शेयर करें</string>
 
     <string name="tab_apps">ऐप्स</string>
@@ -89,7 +88,7 @@
     <string name="export_token_code">बिल्ड</string>
     <string name="export_format_bundle">.apks\nपूरा सेट, %s</string>
     <string name="export_format_base">base.apk\nसिर्फ़ बेस, %s</string>
-    <string name="export_notice_bundle">AppSend यह फ़ाइल खुद इंस्टॉल कर सकता है। सिस्टम इंस्टॉलर .apks फ़ाइलें नहीं खोलता।</string>
+    <string name="export_notice_bundle">.apks फ़ाइल इंस्टॉल करने के लिए ऐसा ऐप चाहिए जो split APK सपोर्ट करे। सिस्टम इंस्टॉलर इसे नहीं खोलता।</string>
     <string name="export_notice_base">सिर्फ़ बेस APK split फ़ाइलों के बिना शायद इंस्टॉल न हो या काम न करे।</string>
     <plurals name="export_title_apps">
         <item quantity="one">%d ऐप निकालें</item>
@@ -130,7 +129,6 @@
     <string name="clear_exports">सभी फ़ाइलें हटाएं</string>
     <string name="clear_exports_message">%s में सभी .apk और .apks फ़ाइलें हटा दी जाएंगी, जिनमें वे भी शामिल हैं जिन्हें AppSend ने नहीं बनाया।</string>
     <string name="cache_clearing_failed">फ़ाइल हटाई नहीं जा सकी</string>
-    <string name="install_from_file">फ़ाइल से इंस्टॉल करें</string>
     <string name="select_files">फ़ाइलें चुनें</string>
     <string name="no_files_selected">कम से कम एक फ़ाइल चुनें</string>
     <plurals name="delete_selected_exports">
@@ -138,50 +136,6 @@
         <item quantity="other">%d फ़ाइलें हटा दी जाएंगी।</item>
     </plurals>
 
-    <string name="install_title_new">%s इंस्टॉल करें</string>
-    <string name="install_title_update">%s अपडेट करें</string>
-    <string name="install_version">%1$s · %2$s</string>
-    <string name="install_version_change">%1$s → %2$s · %3$s</string>
-    <string name="install_versions_compare">फ़ाइल: %1$s · इंस्टॉल: %2$s</string>
-    <string name="install_file_version">वर्शन %s</string>
-    <string name="install_check_device">डिवाइस</string>
-    <string name="install_check_device_ok">इस डिवाइस के लिए उपयुक्त</string>
-    <string name="install_check_signature">सिग्नेचर</string>
-    <string name="install_check_signature_ok">इंस्टॉल किए गए वर्शन से मेल खाता है</string>
-    <string name="install_check_android">Android</string>
-    <string name="install_check_android_value">API %d या नया चाहिए</string>
-    <string name="install_check_files">सामग्री</string>
-    <string name="install_check_files_base">सिर्फ़ Base APK</string>
-    <plurals name="install_check_files_value">
-        <item quantity="one">बेस और %d split फ़ाइल</item>
-        <item quantity="other">बेस और %d split फ़ाइलें</item>
-    </plurals>
-    <string name="install_permission_notice">Android एक बार पूछेगा कि AppSend को ऐप्स इंस्टॉल करने दें या नहीं।</string>
-    <string name="install_allow_and_install">अनुमति दें और इंस्टॉल करें</string>
-    <string name="install_replace">हटाएं और इंस्टॉल करें</string>
-    <string name="install_in_progress">%s इंस्टॉल हो रहा है</string>
-    <string name="install_writing">फ़ाइलें इंस्टॉलर को दी जा रही हैं</string>
-    <string name="install_awaiting_confirmation">आपकी पुष्टि की प्रतीक्षा है</string>
-    <string name="install_applying">Android ऐप इंस्टॉल कर रहा है</string>
-    <string name="install_hide">छिपाएं</string>
-    <string name="install_done">%s इंस्टॉल हो गया</string>
-    <string name="install_failed">इंस्टॉल नहीं हो सका</string>
-    <string name="install_unreadable_title">ऐप पैकेज नहीं है</string>
-    <string name="install_unreadable_message">इस फ़ाइल को .apk या .apks पैकेज के रूप में पढ़ा नहीं जा सका।</string>
-    <string name="install_issue_signature_title">सिग्नेचर अलग है</string>
-    <string name="install_issue_signature_message">यह फ़ाइल किसी दूसरी कुंजी से साइन की गई है। इंस्टॉल किया गया वर्शन हटाए बिना Android ऐप अपडेट नहीं करेगा। ऐप का डेटा खो जाएगा।</string>
-    <string name="install_issue_downgrade_title">नया वर्शन इंस्टॉल है</string>
-    <string name="install_issue_downgrade_message">Android नए वर्शन के ऊपर पुराना वर्शन इंस्टॉल नहीं करता। पहले इंस्टॉल किया गया वर्शन हटाना होगा। ऐप का डेटा खो जाएगा।</string>
-    <string name="install_issue_android_title">Android वर्शन बहुत पुराना है</string>
-    <string name="install_issue_android_message">इस ऐप को इस डिवाइस से नए Android वर्शन की ज़रूरत है।</string>
-    <string name="install_issue_device_title">इस डिवाइस के लिए उपयुक्त नहीं</string>
-    <string name="install_issue_device_message">सेट में इस डिवाइस के आर्किटेक्चर की फ़ाइलें नहीं हैं: इसे किसी दूसरे डिवाइस पर निकाला गया था।</string>
-    <string name="install_failure_blocked">सिस्टम ने इस इंस्टॉलेशन को रोक दिया।</string>
-    <string name="install_failure_conflict">यह पैकेज डिवाइस पर पहले से मौजूद किसी ऐप से टकराता है।</string>
-    <string name="install_failure_incompatible">यह पैकेज इस डिवाइस के साथ संगत नहीं है।</string>
-    <string name="install_failure_invalid">पैकेज खराब या अधूरा है।</string>
-    <string name="install_failure_storage">इस डिवाइस में पर्याप्त स्टोरेज नहीं है।</string>
-    <string name="install_failure_unknown">सिस्टम इंस्टॉलेशन पूरा नहीं कर सका।</string>
 
     <string name="settings_appearance">दिखावट</string>
     <string name="settings_theme">थीम</string>

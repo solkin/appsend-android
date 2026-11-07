@@ -9,7 +9,6 @@
     <string name="open">Open</string>
     <string name="remove">Remove</string>
     <string name="selected">Selected</string>
-    <string name="install">Install</string>
     <string name="send_to">Share with</string>
 
     <string name="tab_apps">Apps</string>
@@ -89,7 +88,7 @@
     <string name="export_token_code">Build</string>
     <string name="export_format_bundle">.apks\nfull set, %s</string>
     <string name="export_format_base">base.apk\nbase only, %s</string>
-    <string name="export_notice_bundle">AppSend can install this file itself. The system installer does not open .apks files.</string>
+    <string name="export_notice_bundle">Installing a .apks file takes an app that supports split APKs. The system installer does not open it.</string>
     <string name="export_notice_base">The base APK alone may not install or work without its split files.</string>
     <plurals name="export_title_apps">
         <item quantity="one">Extract %d app</item>
@@ -130,7 +129,6 @@
     <string name="clear_exports">Remove all files</string>
     <string name="clear_exports_message">Every .apk and .apks file in %s will be removed, including ones not made by AppSend.</string>
     <string name="cache_clearing_failed">Could not remove the file</string>
-    <string name="install_from_file">Install from file</string>
     <string name="select_files">Select files</string>
     <string name="no_files_selected">Select at least one file</string>
     <plurals name="delete_selected_exports">
@@ -138,50 +136,6 @@
         <item quantity="other">%d files will be removed.</item>
     </plurals>
 
-    <string name="install_title_new">Install %s</string>
-    <string name="install_title_update">Update %s</string>
-    <string name="install_version">%1$s · %2$s</string>
-    <string name="install_version_change">%1$s → %2$s · %3$s</string>
-    <string name="install_versions_compare">File: %1$s · installed: %2$s</string>
-    <string name="install_file_version">Version %s</string>
-    <string name="install_check_device">Device</string>
-    <string name="install_check_device_ok">Suitable for this device</string>
-    <string name="install_check_signature">Signature</string>
-    <string name="install_check_signature_ok">Matches the installed version</string>
-    <string name="install_check_android">Android</string>
-    <string name="install_check_android_value">Needs API %d or newer</string>
-    <string name="install_check_files">Contents</string>
-    <string name="install_check_files_base">Base APK only</string>
-    <plurals name="install_check_files_value">
-        <item quantity="one">Base and %d split file</item>
-        <item quantity="other">Base and %d split files</item>
-    </plurals>
-    <string name="install_permission_notice">Android will ask you once to allow AppSend to install apps.</string>
-    <string name="install_allow_and_install">Allow and install</string>
-    <string name="install_replace">Remove and install</string>
-    <string name="install_in_progress">Installing %s</string>
-    <string name="install_writing">Passing files to the installer</string>
-    <string name="install_awaiting_confirmation">Waiting for your confirmation</string>
-    <string name="install_applying">Android is installing the app</string>
-    <string name="install_hide">Hide</string>
-    <string name="install_done">%s is installed</string>
-    <string name="install_failed">Installation failed</string>
-    <string name="install_unreadable_title">Not an app package</string>
-    <string name="install_unreadable_message">This file could not be read as an .apk or .apks package.</string>
-    <string name="install_issue_signature_title">Signature differs</string>
-    <string name="install_issue_signature_message">This file is signed with another key. Android will not update the app until the installed version is removed. The app\'s data will be lost.</string>
-    <string name="install_issue_downgrade_title">A newer version is installed</string>
-    <string name="install_issue_downgrade_message">Android does not install an older version over a newer one. The installed version has to be removed first. The app\'s data will be lost.</string>
-    <string name="install_issue_android_title">Android version is too old</string>
-    <string name="install_issue_android_message">This app needs a newer version of Android than this device has.</string>
-    <string name="install_issue_device_title">Not suitable for this device</string>
-    <string name="install_issue_device_message">The set has no files for this device\'s architecture: it was extracted on a different device.</string>
-    <string name="install_failure_blocked">The system blocked this installation.</string>
-    <string name="install_failure_conflict">This package conflicts with an app already on the device.</string>
-    <string name="install_failure_incompatible">This package is not compatible with this device.</string>
-    <string name="install_failure_invalid">The package is damaged or incomplete.</string>
-    <string name="install_failure_storage">There is not enough storage on this device.</string>
-    <string name="install_failure_unknown">The system could not complete the installation.</string>
 
     <string name="settings_appearance">Appearance</string>
     <string name="settings_theme">Theme</string>

@@ -9,7 +9,6 @@
     <string name="open">Открыть</string>
     <string name="remove">Удалить</string>
     <string name="selected">Выбрано</string>
-    <string name="install">Установить</string>
     <string name="send_to">Поделиться через</string>
 
     <string name="tab_apps">Приложения</string>
@@ -91,7 +90,7 @@
     <string name="export_token_code">Сборка</string>
     <string name="export_format_bundle">.apks\nполный набор, %s</string>
     <string name="export_format_base">base.apk\nтолько основной, %s</string>
-    <string name="export_notice_bundle">AppSend может сам установить этот файл. Системный установщик не открывает файлы .apks.</string>
+    <string name="export_notice_bundle">Для установки файла .apks нужно приложение с поддержкой split APK. Системный установщик его не открывает.</string>
     <string name="export_notice_base">Один base APK может не установиться или не работать без split-файлов.</string>
     <plurals name="export_title_apps">
         <item quantity="one">Извлечь %d приложение</item>
@@ -138,7 +137,6 @@
     <string name="clear_exports">Удалить все файлы</string>
     <string name="clear_exports_message">Все файлы .apk и .apks в папке %s будут удалены, в том числе не созданные AppSend.</string>
     <string name="cache_clearing_failed">Не удалось удалить файл</string>
-    <string name="install_from_file">Установить из файла</string>
     <string name="select_files">Выбрать файлы</string>
     <string name="no_files_selected">Выберите хотя бы один файл</string>
     <plurals name="delete_selected_exports">
@@ -148,52 +146,6 @@
         <item quantity="other">Будет удалено %d файлов.</item>
     </plurals>
 
-    <string name="install_title_new">Установить %s</string>
-    <string name="install_title_update">Обновить %s</string>
-    <string name="install_version">%1$s · %2$s</string>
-    <string name="install_version_change">%1$s → %2$s · %3$s</string>
-    <string name="install_versions_compare">Файл: %1$s · установлено: %2$s</string>
-    <string name="install_file_version">Версия %s</string>
-    <string name="install_check_device">Устройство</string>
-    <string name="install_check_device_ok">Подходит для этого устройства</string>
-    <string name="install_check_signature">Подпись</string>
-    <string name="install_check_signature_ok">Совпадает с установленной версией</string>
-    <string name="install_check_android">Android</string>
-    <string name="install_check_android_value">Нужен API %d или новее</string>
-    <string name="install_check_files">Содержимое</string>
-    <string name="install_check_files_base">Только base APK</string>
-    <plurals name="install_check_files_value">
-        <item quantity="one">Основной и %d split-файл</item>
-        <item quantity="few">Основной и %d split-файла</item>
-        <item quantity="many">Основной и %d split-файлов</item>
-        <item quantity="other">Основной и %d split-файла</item>
-    </plurals>
-    <string name="install_permission_notice">Android один раз спросит, разрешить ли AppSend устанавливать приложения.</string>
-    <string name="install_allow_and_install">Разрешить и установить</string>
-    <string name="install_replace">Удалить и установить</string>
-    <string name="install_in_progress">Установка: %s</string>
-    <string name="install_writing">Передача файлов установщику</string>
-    <string name="install_awaiting_confirmation">Ожидание вашего подтверждения</string>
-    <string name="install_applying">Android устанавливает приложение</string>
-    <string name="install_hide">Скрыть</string>
-    <string name="install_done">Установлено: %s</string>
-    <string name="install_failed">Не удалось установить</string>
-    <string name="install_unreadable_title">Это не пакет приложения</string>
-    <string name="install_unreadable_message">Не удалось прочитать файл как пакет .apk или .apks.</string>
-    <string name="install_issue_signature_title">Подпись отличается</string>
-    <string name="install_issue_signature_message">Файл подписан другим ключом. Android не обновит приложение, пока установленная версия не будет удалена. Данные приложения будут потеряны.</string>
-    <string name="install_issue_downgrade_title">Установлена более новая версия</string>
-    <string name="install_issue_downgrade_message">Android не устанавливает старую версию поверх новой. Сначала нужно удалить установленную версию. Данные приложения будут потеряны.</string>
-    <string name="install_issue_android_title">Версия Android слишком старая</string>
-    <string name="install_issue_android_message">Приложению нужна более новая версия Android, чем на этом устройстве.</string>
-    <string name="install_issue_device_title">Не подходит для этого устройства</string>
-    <string name="install_issue_device_message">В наборе нет файлов для архитектуры этого устройства: он был извлечён на другом устройстве.</string>
-    <string name="install_failure_blocked">Система заблокировала эту установку.</string>
-    <string name="install_failure_conflict">Этот пакет конфликтует с приложением, которое уже есть на устройстве.</string>
-    <string name="install_failure_incompatible">Этот пакет несовместим с этим устройством.</string>
-    <string name="install_failure_invalid">Пакет повреждён или неполон.</string>
-    <string name="install_failure_storage">На устройстве недостаточно памяти.</string>
-    <string name="install_failure_unknown">Системе не удалось завершить установку.</string>
 
     <string name="settings_appearance">Оформление</string>
     <string name="settings_theme">Тема</string>
